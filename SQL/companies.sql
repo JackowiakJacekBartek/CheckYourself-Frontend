@@ -13,6 +13,7 @@ create table Companies
 	id serial primary key,
 	name text not null,
 	description text not null
+	-- accountId..
 );
 
 create table ParametersTypesNames
@@ -69,20 +70,11 @@ create table JobAdvertisementsDetails
 	jobAdvertisementsId int references JobAdvertisements(id)
 );
 
-create table EmployerReviews
-(
-	id serial primary key,
-	name text not null,
-	rating int not null,
-	companyId int references Companies(id),
-	accountId int not null
-);
-
-create table EmployeeReviews
-(
-	Id serial primary key,
-	name text not null,
-	rating int not null,
-	companyId int references Companies(id),
-	accountId int not null
-);
+-- create table EmployerReviews
+-- (
+-- 	id serial primary key,
+-- 	name text not null,
+-- 	rating int not null,
+-- 	companyId int references Companies(id),
+-- 	accountId int not null
+-- );

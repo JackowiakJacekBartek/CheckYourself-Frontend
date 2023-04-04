@@ -23,7 +23,7 @@ create table Roles
 	name text
 );
 
-create table Accounts
+create table Accounts -- pracodawca/pracownik, poziom znanych języków
 (
 	id serial primary key not null,
 	email text not null unique,
@@ -42,14 +42,14 @@ create table Accounts
 	createdAt timestamp default now()
 );
 
-create table UserExtraData -- for fb, google, apple
+create table UserExtraData -- for fb, google, linkedin
 (
 	id serial primary key,
 	idAccount int references Accounts(id),
 	token text,
 	method text,
 	tokenDataJson text,
-    origin int not null, --1 fb, 2 google, 3 apple
+    origin int not null, -- 1 fb, 2 google, 3 linkedin
 	createdat timestamp default now()
 );
 

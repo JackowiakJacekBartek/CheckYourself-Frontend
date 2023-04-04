@@ -68,20 +68,3 @@ create table ConversationInvitations
 	idRoom int references Rooms(id) not null,
 	createdat timestamp default now()
 );
-
-create table ConnectedUsers
-(
-	id serial primary key,
-	email text not null,
-	createdat timestamp default now()
-);
-
-create table UserActivity
-(
-	id serial primary key,
-	email text not null,
-	idAccount int not null,
-	connectedFrom timestamp,
-	connectedTo timestamp,
-	createdat timestamp default now()
-);
