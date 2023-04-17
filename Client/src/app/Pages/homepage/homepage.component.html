@@ -1,1 +1,24 @@
-<p>homepage works!</p>
+<div class="homepage-conatiner">
+    <div class="homepage-header">
+        <div class="homepage-testing" style="margin-left: 5%;">
+            <div class="homepage-change-language">
+                <button mat-raised-button 
+                    color="warn" 
+                    style="margin-bottom: 5%; margin-top: 5%;"
+                    (click)="changeLanguage()"
+                >
+                    {{'HomePage.Change to' | translate}}
+                </button>
+            </div>
+            <div>{{'HomePage.Awesome text' | translate}}</div>
+            <div>Magic</div>
+            <div class="example-button-row" style="margin-top: 15%">
+                <button mat-raised-button>Basic</button>
+                <button mat-raised-button color="primary">Primary</button>
+                <button mat-raised-button color="accent">Accent</button>
+                <button mat-raised-button color="warn">Warn</button>
+                <button mat-raised-button disabled style="background-color: cadetblue;">Disabled</button>
+              </div>
+        </div>
+    </div>
+</div>
