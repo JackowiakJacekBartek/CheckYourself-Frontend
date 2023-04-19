@@ -1,0 +1,99 @@
+<div class="popup">
+  <div class="wrapper">
+    <div class="one">
+      <span>Check </span>
+      <img src="../../../../assets/logo.svg" class="filter-logo" alt="logo"/>
+      <span> Yourself</span>
+    </div>
+    <div class="two">
+      <div class="register">
+        <span>Zarejestruj się jako:</span>
+        <mat-radio-group [(ngModel)]="labelPosition" class="radio-group">
+          <mat-radio-button value="user">Użytkownik</mat-radio-button>
+          <mat-radio-button value="company">Firma</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+    <ng-container *ngIf="labelPosition === 'user'; else registerCompany">
+      <div class="three">
+        <form [formGroup]="registerUserFormGroup" (ngSubmit)="registerButton(registerUserFormGroup)">
+          <!--Imie-->
+          <mat-form-field appearance="fill">
+            <input matInput placeholder="Imię" formControlName="name">
+            <mat-error *ngIf="registerUserFormGroup.get('name')?.getError('required')">Należy podać imię</mat-error>
+            <mat-error *ngIf="registerUserFormGroup.get('name')?.getError('noSpaceAllowed')">Spacja niedozwolona</mat-error>
+          </mat-form-field>
+          <!--Nazwisko-->
+          <mat-form-field appearance="fill">
+            <input matInput placeholder="Nazwisko" formControlName="surname">
+            <mat-error *ngIf="registerUserFormGroup.get('surname')?.getError('required')">Należy podać nazwisko</mat-error>
+            <mat-error *ngIf="registerUserFormGroup.get('surname')?.getError('noSpaceAllowed')">Spacja niedozwolona</mat-error>
+          </mat-form-field>
+          <!--Email-->
+          <mat-form-field appearance="fill">
+            <input matInput placeholder="Email" formControlName="email" >
+            <mat-error *ngIf="registerUserFormGroup.get('email')?.getError('required')">Należy podać email</mat-error>
+            <mat-error *ngIf="registerUserFormGroup.get('email')?.getError('email')">Nieprawidłowy email</mat-error>
+          </mat-form-field>
+          <!--Hasło-->
+          <mat-form-field appearance="fill">
+            <input #input matInput placeholder="Hasło (min 8 znaków)" formControlName="password" type="password">
+            <mat-error *ngIf="registerUserFormGroup.get('password')?.getError('required')">Należy podać hasło</mat-error>
+            <mat-error *ngIf="registerUserFormGroup.get('password')?.invalid">{{getErrorPassword(input.value.length)}}</mat-error>
+          </mat-form-field>
+          <!--Potwierdź Hasło-->
+          <mat-form-field appearance="fill">
+            <input matInput placeholder="Potwierdź hasło" formControlName="confirmPassword" type="password">
+            <mat-error *ngIf="registerUserFormGroup.get('confirmPassword')?.getError('required')">Należy podać hasło</mat-error>
+            <mat-error *ngIf="registerUserFormGroup.get('confirmPassword')?.getError('mustMatch')">Hasła nie pasują</mat-error>
+          </mat-form-field>
+          <!--Button submit-->
+          <button mat-button class="registerButton"><span>Zarejestruj się</span></button>
+          <!--Checkbox-->
+          <mat-checkbox (click)="closeSnackBar()" formControlName="privacyCheckbox"><p>Akceptuje regulamin wraz z polityką ochrony danych osobowych</p></mat-checkbox>
+        </form>
+      </div>
+    </ng-container>
+    <ng-template #registerCompany>
+      <div class="four">
+        <form [formGroup]="registerCompanyFormGroup" (ngSubmit)="registerButton(registerCompanyFormGroup)">
+          <!--Nazwa firmy-->
+          <mat-form-field appearance="fill">
+            <input matInput placeholder="Nazwa firmy" formControlName="nameCompany">
+            <mat-error *ngIf="registerCompanyFormGroup.get('nameCompany')?.getError('required')">Należy podać nazwę firmy</mat-error>
+            <mat-error *ngIf="registerCompanyFormGroup.get('nameCompany')?.getError('noSpaceAllowed')">Spacja niedozwolona</mat-error>
+          </mat-form-field>
+          <!--NIP-->
+          <mat-form-field appearance="fill">
+            <input matInput placeholder="NIP" formControlName="nip">
+            <mat-error *ngIf="registerCompanyFormGroup.get('nip')?.getError('required')">Należy podać NIP</mat-error>
+            <mat-error *ngIf="registerCompanyFormGroup.get('nip')?.getError('invalidNumber')">Tylko cyfry</mat-error>
+          </mat-form-field>
+          <!--Email-->
+          <mat-form-field appearance="fill">
+            <input matInput placeholder="Email" formControlName="email" >
+            <mat-error *ngIf="registerCompanyFormGroup.get('email')?.getError('required')">Należy podać email</mat-error>
+            <mat-error *ngIf="registerCompanyFormGroup.get('email')?.getError('email')">Nieprawidłowy email</mat-error>
+          </mat-form-field>
+          <!--Hasło-->
+          <mat-form-field appearance="fill">
+            <input #input matInput placeholder="Hasło (min 8 znaków)" formControlName="password" type="password">
+            <mat-error *ngIf="registerCompanyFormGroup.get('password')?.getError('required')">Należy podać hasło</mat-error>
+            <mat-error *ngIf="registerCompanyFormGroup.get('password')?.invalid">{{getErrorPassword(input.value.length)}}</mat-error>
+          </mat-form-field>
+          <!--Potwierdź Hasło-->
+          <mat-form-field appearance="fill">
+            <input matInput placeholder="Potwierdź hasło" formControlName="confirmPassword" type="password">
+            <mat-error *ngIf="registerCompanyFormGroup.get('confirmPassword')?.getError('required')">Należy podać hasło</mat-error>
+            <mat-error *ngIf="registerCompanyFormGroup.get('confirmPassword')?.getError('mustMatch')">Hasła nie pasują</mat-error>
+          </mat-form-field>
+          <!--Button submit-->
+          <button mat-button class="registerButton"><span>Zarejestruj się</span></button>
+          <!--Checkbox-->
+          <mat-checkbox (click)="closeSnackBar()" formControlName="privacyCheckbox"><p>Akceptuje regulamin wraz z polityką ochrony danych osobowych</p></mat-checkbox>
+        </form>
+      </div>
+    </ng-template>
+    <div class="five">Posiadasz już konto? Zaloguj się </div>
+  </div>
+</div>

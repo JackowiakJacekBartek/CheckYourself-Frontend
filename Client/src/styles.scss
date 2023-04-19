@@ -1,4 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+* {
+  font-family: Lato, sans-serif ;
+}
+
+.registerButton {
+  height: 50px !important;
+  background: #059E8B !important;
+  margin-bottom: 1rem;
+
+  span {
+    color: white;
+  }
+}
+
+@media only screen and (max-height: 720px) {
+  html {
+    zoom: .9;
+  }
+}
+
+@media only screen and (max-height: 640px) {
+  html {
+    zoom: .8;
+  }
+}
+
+@media only screen and (max-height: 570px) {
+  html {
+    zoom: .7;
+  }
+}
+
+@media only screen and (max-height: 500px) {
+  html {
+    zoom: .6;
+  }
+}
+
+@media only screen and (max-height: 430px) {
+  html {
+    zoom: .5;
+  }
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
