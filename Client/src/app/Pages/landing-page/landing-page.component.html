@@ -1,0 +1,71 @@
+<mat-toolbar>
+  <div class="logo">
+    <div class="up">
+      <span>Check </span>
+      <img src="../../../assets/logo.svg" class="filter-logo" alt="logo"/>
+      <span> Yourself</span>
+    </div>
+    <span class="down">Bell the cat</span>
+  </div>
+  <div class="avatar">
+    <input type="image" src="../../../assets/avatar.svg" class="filter-avatar" alt="avatar"/>
+  </div>
+</mat-toolbar>
+<main>
+  <div class="wrapper">
+    <div class="one">
+      <mat-card class="register-card">
+        <mat-card-header class="mat-card-header">
+          <div class="icon1">
+            <div class="outer-div">
+              <mat-icon>show_chart</mat-icon>
+              <span>{{'Zwiększ ilość odpowiedzi na CV' | translate}}</span>
+            </div>
+          </div>
+          <div class="icon2">
+            <div class="outer-div">
+              <mat-icon>quiz</mat-icon>
+              <span>Sprawdź siebie</span>
+            </div>
+          </div>
+          <div class="icon3">
+            <div class="outer-div">
+              <mat-icon>search</mat-icon>
+              <span>Znajdź pracownika</span>
+            </div>
+          </div>
+        </mat-card-header>
+        <div class="border-bottom"></div>
+        <mat-card-content>
+          <h1>Tylko <span>5%</span> ogłoszeń w IT jest skierowane do juniorów...</h1>
+          <h3>Podejmij wyzwanie!</h3>
+          <p>1. Sprawdź swój poziom umiejętności</p>
+          <p>2. Aplikuj i ucz się w jednym</p>
+          <p>3. Pozwól się znaleźć pracodawcy</p>
+          <p>4. Rozwijaj się</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button class="registerButton" (click)="openDialog()"><span>Zarejestruj się</span></button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</main>
+<footer>
+  <div class="wrapperFooter">
+    <div class="one">
+      <a href="">O nas</a>
+      <a href="">Regulamin</a>
+      <a href="">Polityka prywatności</a>
+    </div>
+    <div class="two">
+      <span>Kontakt</span>
+      <span>ul. Piękna 20b / 37, 60-651 Poznań <br> checkyourself@gmail.com</span>
+    </div>
+    <div class="three">
+      <a href="">Jak działa Check Yourself</a>
+      <a href="">Zasady bezpieczeństwa</a>
+      <a href="">Aktualności</a>
+    </div>
+  </div>
+</footer>
