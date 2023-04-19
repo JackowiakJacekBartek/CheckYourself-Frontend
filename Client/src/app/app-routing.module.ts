@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { HomepageComponent } from './Pages/homepage/homepage.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {LandingPageComponent} from "./Pages/landing-page/landing-page.component";
 
 const routes: Routes = [
   {
-    path: '', component: HomepageComponent,
+    path: '', component: LandingPageComponent,
   },
   {
     path: '**', redirectTo: '',
@@ -15,4 +15,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

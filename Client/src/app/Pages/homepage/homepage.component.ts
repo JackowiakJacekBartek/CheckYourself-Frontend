@@ -12,10 +12,10 @@ export class HomepageComponent {
 
 
   public changeLanguage() {
-    if (this.translate.currentLang == "en") {
-      this.translate.use('pl');
-    } else {
+    if (this.translate.currentLang == "pl") {
       this.translate.use('en');
+    } else {
+      this.translate.use('pl');
     }
   }
 }
