@@ -1,8 +1,11 @@
 {
-    "HomePage": {
-        "Awesome text": "English Awesome",
-        "Change to": "Change to Polish"
-    },
+  "HomePage": {
+    "Awesome text": "English Awesome",
+    "Change to": "Change to Polish"
+  },
 
-  "Zwiększ ilość odpowiedzi na CV": "Increase your CV responses"
+  "LandingPage": {
+    "Increase your CV responses": "Increase your CV responses",
+    "Check yourself": "Check yourself"
+  }
 }

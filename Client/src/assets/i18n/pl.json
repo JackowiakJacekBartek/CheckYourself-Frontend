@@ -1,9 +1,13 @@
 {
-    "HomePage": {
-        "Awesome text": "Polskie Super",
-        "Change to": "Zmień na Angielski"
-    },
+  "HomePage": {
+    "Awesome text": "Polskie Super",
+    "Change to": "Zmień na Angielski"
+  },
 
-  "Zwiększ ilość odpowiedzi na CV": "Zwiększ ilość odpowiedzi na CV"
+  "LandingPage": {
+    "Increase your CV responses": "Zwiększ ilość odpowiedzi na CV",
+    "Check yourself": "Sprawdź się!"
+  }
+  
 
 }

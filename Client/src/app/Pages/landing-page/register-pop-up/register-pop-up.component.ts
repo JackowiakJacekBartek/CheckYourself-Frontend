@@ -1,11 +1,12 @@
-import {Component, OnDestroy} from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators
 } from "@angular/forms";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { INVALID, PASSWORD_LENGHT, VALID } from 'src/app/shared/constants/forms';
 
 @Component({
   selector: 'app-register-pop-up',
@@ -60,17 +61,17 @@ export class RegisterPopUpComponent implements OnDestroy {
   }
 
   registerButton(formGroup: FormGroup) {
-    if (formGroup.get('privacyCheckbox')?.status == 'INVALID') {
-      console.log('Polityka nie zaznaczona');
+    if (formGroup.get('privacyCheckbox')?.status == INVALID) {
+      console.log('Polityka niezaznaczona');
       this.openSnackBar('Uwaga! W celu rejestracji należy zaakceptować regulamin wraz z polityką ochrony danych osobowych.');
-    } else if (formGroup.status == "VALID")
+    } else if (formGroup.status === VALID)
       console.log(formGroup);
     else
       console.log('Invalid na formularzu');
   }
 
   getErrorPassword(pass: number) {
-    let passwordLength = 8 - pass;
+    let passwordLength = PASSWORD_LENGHT - pass;
     if (this.registerUserFormGroup.get('password')?.hasError('minlength')) {
       return 'Brakuje ' + passwordLength + ' znaków';
     }
