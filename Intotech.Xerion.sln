@@ -92,11 +92,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Intotech.Xerion.ImageServic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.ImageService.Bll", "Backend\Intotech.Xerion.ImageService\Intotech.Xerion.ImageService.Bll\Intotech.Xerion.ImageService.Bll.csproj", "{89497A36-155E-4F3D-8DCE-85F942B02E0B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Wheelo.ImageService.Api", "Backend\Intotech.Xerion.ImageService\Intotech.Wheelo.ImageService.Api\Intotech.Wheelo.ImageService.Api.csproj", "{6EBCF908-EEC7-40A2-97DD-189AB01A33EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.Dictionaries.Bll.Persistence.Interfaces", "Backend\Intotech.Xerion.Dictionaries\Intotech.Xerion.Dictionaries.Bll.Persistence.Interfaces\Intotech.Xerion.Dictionaries.Bll.Persistence.Interfaces.csproj", "{376E2991-1BB9-491F-B929-F92976988AEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intotech.Xerion.Dictionaries.Bll.Persistence.Interfaces", "Backend\Intotech.Xerion.Dictionaries\Intotech.Xerion.Dictionaries.Bll.Persistence.Interfaces\Intotech.Xerion.Dictionaries.Bll.Persistence.Interfaces.csproj", "{376E2991-1BB9-491F-B929-F92976988AEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.Dictionaries.Bll.Persistence", "Backend\Intotech.Xerion.Dictionaries\Intotech.Xerion.Dictionaries.Bll.Persistence\Intotech.Xerion.Dictionaries.Bll.Persistence.csproj", "{43DF3936-ABBE-4F67-9237-ECD3F475DC47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intotech.Xerion.Dictionaries.Bll.Persistence", "Backend\Intotech.Xerion.Dictionaries\Intotech.Xerion.Dictionaries.Bll.Persistence\Intotech.Xerion.Dictionaries.Bll.Persistence.csproj", "{43DF3936-ABBE-4F67-9237-ECD3F475DC47}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intotech.Xerion.ImageService.Api", "Backend\Intotech.Xerion.ImageService\Intotech.Xerion.ImageService.Api\Intotech.Xerion.ImageService.Api.csproj", "{41E4636F-4E82-4587-8E96-FC33F85D2B82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -248,10 +248,6 @@ Global
 		{89497A36-155E-4F3D-8DCE-85F942B02E0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89497A36-155E-4F3D-8DCE-85F942B02E0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89497A36-155E-4F3D-8DCE-85F942B02E0B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6EBCF908-EEC7-40A2-97DD-189AB01A33EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6EBCF908-EEC7-40A2-97DD-189AB01A33EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6EBCF908-EEC7-40A2-97DD-189AB01A33EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6EBCF908-EEC7-40A2-97DD-189AB01A33EB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{376E2991-1BB9-491F-B929-F92976988AEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{376E2991-1BB9-491F-B929-F92976988AEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{376E2991-1BB9-491F-B929-F92976988AEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -260,6 +256,10 @@ Global
 		{43DF3936-ABBE-4F67-9237-ECD3F475DC47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43DF3936-ABBE-4F67-9237-ECD3F475DC47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43DF3936-ABBE-4F67-9237-ECD3F475DC47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41E4636F-4E82-4587-8E96-FC33F85D2B82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41E4636F-4E82-4587-8E96-FC33F85D2B82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41E4636F-4E82-4587-8E96-FC33F85D2B82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41E4636F-4E82-4587-8E96-FC33F85D2B82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -291,9 +291,9 @@ Global
 		{97303181-7432-4085-B23A-BC8303B074BA} = {A43D89E9-98B8-44EE-8D4D-502F203C6F61}
 		{024308B7-0E99-4259-B211-7E57113C3E06} = {A43D89E9-98B8-44EE-8D4D-502F203C6F61}
 		{89497A36-155E-4F3D-8DCE-85F942B02E0B} = {4A7DF023-26E3-4284-B577-6CF6CA3D9403}
-		{6EBCF908-EEC7-40A2-97DD-189AB01A33EB} = {4A7DF023-26E3-4284-B577-6CF6CA3D9403}
 		{376E2991-1BB9-491F-B929-F92976988AEB} = {1F3F906D-6777-4170-BB05-130379C0FD51}
 		{43DF3936-ABBE-4F67-9237-ECD3F475DC47} = {1F3F906D-6777-4170-BB05-130379C0FD51}
+		{41E4636F-4E82-4587-8E96-FC33F85D2B82} = {4A7DF023-26E3-4284-B577-6CF6CA3D9403}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {37EB9609-5A62-4A1B-87D3-AE6ABEF4301C}
