@@ -1,0 +1,32 @@
+<div class="popup">
+  <div class="wrapper">
+    <div class="one">
+      <span>Check </span>
+      <img src="../../../../assets/logo.svg" class="filter-logo" alt="logo"/>
+      <span> Yourself</span>
+    </div>
+    <div class="two">
+      <div class="register">
+        <span>Zaloguj się</span>
+      </div>
+    </div>
+      <div class="three">
+        <form [formGroup]="loginUserFormGroup" (ngSubmit)="loginButton(loginUserFormGroup)">
+          <!--Imie-->
+          <mat-form-field appearance="fill">
+            <input matInput placeholder="Imię" formControlName="name">
+            <mat-error *ngIf="loginUserFormGroup.get('name')?.getError('required')">Należy podać imię</mat-error>
+          </mat-form-field>
+          <!--Hasło-->
+          <mat-form-field appearance="fill">
+            <input #input matInput placeholder="Hasło" formControlName="password" type="password">
+            <mat-error *ngIf="loginUserFormGroup.get('password')?.getError('required')">Należy podać hasło</mat-error>
+          </mat-form-field>
+          <!--Button submit-->
+          <button mat-button class="loginButton"><span>Zaloguj się</span></button>
+        </form>
+      </div>
+    <div class="four">Nie pamiętasz hasła?</div>
+    <div class="five">Nie masz konta? <button class="buttonRegisterLogin" (click)="openRegister()">Zarejestruj się</button></div>
+  </div>
+</div>

@@ -55,7 +55,7 @@
       </div>
     </ng-container>
     <ng-template #registerCompany>
-      <div class="four">
+      <div class="three">
         <form [formGroup]="registerCompanyFormGroup" (ngSubmit)="registerButton(registerCompanyFormGroup)">
           <!--Nazwa firmy-->
           <mat-form-field appearance="fill">
@@ -94,6 +94,6 @@
         </form>
       </div>
     </ng-template>
-    <div class="five">Posiadasz już konto? Zaloguj się </div>
+    <div class="five">Posiadasz już konto? <button class="buttonRegisterLogin" (click)="openLogin()">Zaloguj się </button></div>
   </div>
 </div>

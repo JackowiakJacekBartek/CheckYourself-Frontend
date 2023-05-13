@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {RegisterPopUpComponent} from "./register-pop-up/register-pop-up.component";
 import {TranslateService} from "@ngx-translate/core";
+import {LoginPopUpComponent} from "./login-pop-up/login-pop-up.component";
 
 @Component({
   selector: 'app-landing-page',
@@ -12,8 +13,12 @@ export class LandingPageComponent {
   constructor(public popUp: MatDialog, private translate: TranslateService) {
   }
 
-  openDialog() {
+  openRegister() {
     this.popUp.open(RegisterPopUpComponent);
+  }
+
+  openLogin() {
+    this.popUp.open(LoginPopUpComponent);
   }
 
   public changeLanguage() {
