@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  db:
+    container_name: "xerion_postgres"
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=example
+      - POSTGRES_DB=Xerion
+    ports:
+      - '5500:5432'
+volumes:
+  db:
+    driver: local
