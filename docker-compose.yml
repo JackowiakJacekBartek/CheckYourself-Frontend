@@ -5,10 +5,19 @@ services:
     image: postgres
     restart: always
     environment:
-      - POSTGRES_PASSWORD=example
-      - POSTGRES_DB=Xerion
+      - POSTGRES_PASSWORD=beatka
+      #- POSTGRES_DB=XerionTEST
     ports:
       - '5500:5432'
+  #db1:
+  #  container_name: "xerion_postgres2"
+  #  image: postgres
+  #  restart: always
+  #  environment:
+  #    - POSTGRES_PASSWORD=example
+  #    - POSTGRES_DB=Xerion2
+  #  ports:
+  #    - '5501:5432'
 volumes:
   db:
     driver: local
