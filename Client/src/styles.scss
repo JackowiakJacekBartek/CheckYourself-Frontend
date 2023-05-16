@@ -11,9 +11,10 @@ body {
   font-family: Lato, sans-serif ;
 }
 
-.registerButton {
+.registerButton, .loginButton{
   height: 50px !important;
   background: #059E8B !important;
+  margin-top: 1rem;
   margin-bottom: 1rem;
 
   span {

@@ -7,6 +7,8 @@ import {
 } from "@angular/forms";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { INVALID, PASSWORD_LENGHT, VALID } from 'src/app/shared/constants/forms';
+import {LoginPopUpComponent} from "../login-pop-up/login-pop-up.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-register-pop-up',
@@ -20,7 +22,7 @@ export class RegisterPopUpComponent implements OnDestroy {
   registerUserFormGroup: FormGroup;
   registerCompanyFormGroup: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder, private _snackBar: MatSnackBar) {
+  constructor(private _formBuilder: FormBuilder, private _snackBar: MatSnackBar, public popUp: MatDialog) {
     this.registerUserFormGroup = this._formBuilder.group({
       name: ['', [Validators.required, this.noSpaceAllowed]],
       surname: ['', [Validators.required, this.noSpaceAllowed]],
@@ -106,5 +108,10 @@ export class RegisterPopUpComponent implements OnDestroy {
     if (this.registerUserFormGroup.get('privacyCheckbox')?.status == 'VALID') {
       this._snackBar.dismiss();
     }
+  }
+
+  openLogin() {
+    this.popUp.closeAll();
+    this.popUp.open(LoginPopUpComponent);
   }
 }

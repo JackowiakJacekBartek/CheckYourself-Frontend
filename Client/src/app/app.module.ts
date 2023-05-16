@@ -24,6 +24,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { LoginPopUpComponent } from './Pages/landing-page/login-pop-up/login-pop-up.component';
 
 @NgModule({
   exports: [
@@ -35,7 +36,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     LoginComponent,
     AppComponent,
     LandingPageComponent,
-    RegisterPopUpComponent
+    RegisterPopUpComponent,
+    LoginPopUpComponent
   ],
   imports: [
     MatGridListModule,
