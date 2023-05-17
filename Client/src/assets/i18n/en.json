@@ -6,6 +6,58 @@
 
   "LandingPage": {
     "Increase your CV responses": "Increase your CV responses",
-    "Check yourself": "Check yourself"
+    "Check yourself": "Check yourself",
+    "Find an employee": "Find an employee",
+    "Only": "Only",
+    "Of IT ads are targetted to Juniors": " of IT ads are targetted to Juniors...",
+    "Take up a challange": "Take up a challange!",
+    "Check your skill level": "1. Check your skill level",
+    "Apply and learn all in one": "2. Apply and learn all in one",
+    "Let employer find you": "3. Let employer find you",
+    "Develop yourself": "4. Develop yourself",
+    "Sign up": "Sign up"
+  },
+  "Footer": {
+    "About us": "About us",
+    "Terms and Conditions": "Terms and Conditions",
+    "Privacy policy": "Privacy policy",
+    "Contact us": "Contact us",
+    "How Check Yourself works": "How Check Yourself works",
+    "Security policy": "Security policy",
+    "News": "News"
+  },
+  "Login": {
+    "Log in": "Log in",
+    "Sign up": "Sign up",
+    "Sign up as": "Sign up as:",
+    "User": "User",
+    "Company": "Company",
+    "Name": "Name",
+    "Surname": "Surname",
+    "Name of Company": "Name of Company",
+    "TIN": "TIN",
+    "You must enter your tax identification number": "You must enter your tax identification number",
+    "Only numbers": "Only numbers",
+    "Password": "Password",
+    "Password min 8 characters": "Password (min 8 characters)",
+    "Confirm password": "Confirm password",
+    "Forgot password": "Forgot password? ",
+    "You do not have an account": "You do not have an account? ",
+    "You already have an accout": "You already have an account? ",
+    "Create an account": "Create an account",
+    "You must enter your name": "You must enter your name",
+    "You must enter your surname": "You must enter your surname",
+    "You must enter your password": "You must enter your password",
+    "You must enter name of your company": "You must enter name of your company",
+    "Passwords does not match": "Passwords do not match",
+    "You must enter your Email": "You must enter your Email",
+    "Wrong email": "Wrong email",
+    "Space not allowed": "Space not allowed" ,
+    "I accept protection policy": "I accept the regulation along with the personal data protection policy"
   }
+ 
+
+
 }
+
+
