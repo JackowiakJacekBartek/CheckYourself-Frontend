@@ -6,8 +6,56 @@
 
   "LandingPage": {
     "Increase your CV responses": "Zwiększ ilość odpowiedzi na CV",
-    "Check yourself": "Sprawdź się!"
+    "Check yourself": "Sprawdź się!",
+    "Find an employee": "Znajdź Pracownika",
+    "Only": "Tylko",
+    "Of IT ads are targetted to Juniors": " ogłoszeń w IT jest skierowane do juniorów...",
+    "Take up a challange": "Podejmij wyzwanie!",
+    "Check your skill level": "1. Sprawdź swój poziom umiejętności",
+    "Apply and learn all in one": "2. Aplikuj i ucz się w jednym",
+    "Let employer find you": "3. Pozwól się znaleźć pracodawcy",
+    "Develop yourself": "4. Rozwijaj się",
+    "Sign up": "Zarejestruj się"
+  },
+  "Footer": {
+    "About us": "O nas",
+    "Terms and Conditions": "Regulamin",
+    "Privacy policy": "Polityka prywatności",
+    "Contact us": "Kontakt",
+    "How Check Yourself works": "Jak działa Check Yourself",
+    "Security policy": "Zasady bezpieczeństwa",
+    "News": "Aktualności"
+  },
+  "Login": {
+    "Log in": "Zaloguj się",
+    "Sign up": "Zarejestruj się",
+    "Sign up as": "Zarejestruj się jako:",
+    "User": "Użytkownik",
+    "Company": "Firma",
+    "Name": "Imię",
+    "Surname": "Nazwisko",
+    "Name of Company": "Nazwa firmy",
+    "TIN": "NIP",
+    "You must enter your tax identification number": "Należy podać nip",
+    "Only numbers": "Tylko cyfry",
+    "Password": "Hasło",
+    "Password min 8 characters": "Hasło (min 8 znaków)",
+    "Confirm password": "Potwierdź hasło",
+    "Forgot password": "Nie pamiętasz hasła? ",
+    "You do not have an account": "Nie masz konta? ",
+    "You already have an accout": "Masz już stwożone konto ",
+    "Create an account": "Zarejestruj się",
+    "You must enter your name": "Należy podać imię",
+    "You must enter your surname": "Należy podać nazwisko",
+    "You must enter your password": "Należy podać hasło",
+    "You must enter name of your company": "Należy odać nazwę firmy",
+    "Passwords does not match": "Hasła nie pasują",
+    "You must enter your Email": "Należy podać email",
+    "Wrong email": "Nieprawidłowy email",
+    "Space not allowed": "Spacja niedozwolona" ,
+    "I accept protection policy": "Akceptuje regulamin wraz z polityką ochrony danych osobowych"
   }
-  
+ 
+
 
 }
