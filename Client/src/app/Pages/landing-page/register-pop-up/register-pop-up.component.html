@@ -9,8 +9,8 @@
       <div class="register">
         <span>{{'Login.Sign up as' | translate}}</span>
         <mat-radio-group [(ngModel)]="labelPosition" class="radio-group">
-          <mat-radio-button value="user">Użytkownik</mat-radio-button>
-          <mat-radio-button value="company">Firma</mat-radio-button>
+          <mat-radio-button value="user">{{'Login.User' | translate}}</mat-radio-button>
+          <mat-radio-button value="company">{{'Login.Company' | translate}}</mat-radio-button>
         </mat-radio-group>
       </div>
     </div>
@@ -25,7 +25,7 @@
           </mat-form-field>
           <!--Nazwisko-->
           <mat-form-field appearance="fill">
-            <input matInput placeholder="{{'Login.Surame' | translate}}" formControlName="surname">
+            <input matInput placeholder="{{'Login.Surname' | translate}}" formControlName="surname">
             <mat-error *ngIf="registerUserFormGroup.get('surname')?.getError('required')">{{'Login.You must enter your surname' | translate}}</mat-error>
             <mat-error *ngIf="registerUserFormGroup.get('surname')?.getError('noSpaceAllowed')">{{'Login.Space not allowed' | translate}}</mat-error>
           </mat-form-field>
@@ -88,7 +88,7 @@
             <mat-error *ngIf="registerCompanyFormGroup.get('confirmPassword')?.getError('mustMatch')">{{'Login.Password does not match' | translate}}</mat-error>
           </mat-form-field>
           <!--Button submit-->
-          <button mat-button class="registerButton"><span>{{'Login.Sign in' | translate}}</span></button>
+          <button mat-button class="registerButton"><span>{{'Login.Sign up' | translate}}</span></button>
           <!--Checkbox-->
           <mat-checkbox (click)="closeSnackBar()" formControlName="privacyCheckbox"><p>{{'Login.I accept protection policy' | translate}}</p></mat-checkbox>
         </form>

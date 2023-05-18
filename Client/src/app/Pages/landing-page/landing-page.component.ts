@@ -16,16 +16,4 @@ export class LandingPageComponent {
   openRegister() {
     this.popUp.open(RegisterPopUpComponent);
   }
-
-  openLogin() {
-    this.popUp.open(LoginPopUpComponent);
-  }
-
-  public changeLanguage() {
-    if (this.translate.currentLang == "pl") {
-      this.translate.use('en');
-    } else {
-      this.translate.use('pl');
-    }
-  }
 }

@@ -18,8 +18,10 @@ export class AppComponent {
     }
 
     function setLanguage(langLocale: string) {
-      translate.setDefaultLang(langLocale);
-      translate.use(langLocale);
+      let defaultLanguage = localStorage.getItem('selectedLanguage');
+
+      translate.setDefaultLang(defaultLanguage ? defaultLanguage : langLocale);
+      translate.use(defaultLanguage ? defaultLanguage : langLocale);
     }
 
     let language = LANGUAGES.find(isLangSupported)

@@ -138,29 +138,9 @@ mat-card-header .icon3 {
   margin-top: 10px;
 }
 
-mat-toolbar {
-  background-color: #000;
-  height: 13%;
-}
-
 .registerButton {
   margin-top: 1rem;
   width: 70%;
-}
-
-.filter-logo {
-  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(84deg) brightness(103%);
-}
-
-.filter-avatar {
-  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(84deg) brightness(103%);
-  zoom: 0.9;
-  margin-right: 20px;
-  margin-top: 10px;
-}
-
-.filter-avatar:hover {
-  filter: invert(55%) sepia(98%) saturate(4756%) hue-rotate(148deg) brightness(100%);
 }
 
 .wrapperFooter {
@@ -186,50 +166,7 @@ mat-toolbar {
   }
 }
 
-mat-toolbar {
-  justify-content: space-between;
-}
 
-mat-toolbar .logo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-mat-toolbar .logo .down {
-  color: #059E8B;
-  font-size: 15px;
-  margin-right: 15px;
-}
-
-mat-toolbar .logo .up {
-  margin-left: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  text-transform: Uppercase;
-}
-
-mat-toolbar .toolbarIcons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-mat-toolbar .changeLanguageButton button {
-  margin-right: 50px;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  color: white;
-  scale: 1.5;
-}
-
-mat-toolbar .changeLanguageButton button:hover {
-  filter: invert(55%) sepia(98%) saturate(4756%) hue-rotate(148deg) brightness(100%);
-}
 
 a {
   color: #00A993;

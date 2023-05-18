@@ -1,5 +1,4 @@
 import {HomepageComponent} from './Pages/homepage/homepage.component';
-import {LoginComponent} from './Pages/login/login.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
@@ -25,6 +24,9 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { LoginPopUpComponent } from './Pages/landing-page/login-pop-up/login-pop-up.component';
+import { ToastrModule } from 'ngx-toastr';
+import { HeaderComponent } from './components/header/header/header.component';
+import { FooterComponent } from './components/footer/footer/footer.component';
 
 @NgModule({
   exports: [
@@ -33,11 +35,12 @@ import { LoginPopUpComponent } from './Pages/landing-page/login-pop-up/login-pop
   declarations: [
     AppComponent,
     HomepageComponent,
-    LoginComponent,
     AppComponent,
     LandingPageComponent,
     RegisterPopUpComponent,
-    LoginPopUpComponent
+    LoginPopUpComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     MatGridListModule,
@@ -66,7 +69,8 @@ import { LoginPopUpComponent } from './Pages/landing-page/login-pop-up/login-pop
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

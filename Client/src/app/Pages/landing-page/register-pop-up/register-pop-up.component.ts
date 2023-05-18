@@ -9,6 +9,9 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { INVALID, PASSWORD_LENGHT, VALID } from 'src/app/shared/constants/forms';
 import {LoginPopUpComponent} from "../login-pop-up/login-pop-up.component";
 import {MatDialog} from "@angular/material/dialog";
+import { LoginService } from '../login-pop-up/login.service';
+import { AccountRegister } from 'src/app/shared/models/accounts';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register-pop-up',
@@ -22,7 +25,13 @@ export class RegisterPopUpComponent implements OnDestroy {
   registerUserFormGroup: FormGroup;
   registerCompanyFormGroup: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder, private _snackBar: MatSnackBar, public popUp: MatDialog) {
+  constructor(
+    private _formBuilder: FormBuilder, 
+    private _snackBar: MatSnackBar, 
+    private popUp: MatDialog,
+    private loginService: LoginService,
+    private toastrService: ToastrService
+    ) {
     this.registerUserFormGroup = this._formBuilder.group({
       name: ['', [Validators.required, this.noSpaceAllowed]],
       surname: ['', [Validators.required, this.noSpaceAllowed]],
@@ -46,6 +55,9 @@ export class RegisterPopUpComponent implements OnDestroy {
     this._snackBar.dismiss();
   }
 
+  get fUser() { return this.registerUserFormGroup.controls; }
+  get fCompany() { return this.registerCompanyFormGroup.controls; }
+
   mustMatch(password: any, confirmPassword: any) {
     return (formGroup: FormGroup) => {
       const passwordControl = formGroup.controls[password];
@@ -66,11 +78,30 @@ export class RegisterPopUpComponent implements OnDestroy {
     if (formGroup.get('privacyCheckbox')?.status == INVALID) {
       console.log('Polityka niezaznaczona');
       this.openSnackBar('Uwaga! W celu rejestracji należy zaakceptować regulamin wraz z polityką ochrony danych osobowych.');
-    } else if (formGroup.status === VALID)
-      console.log(formGroup);
+    } else if (formGroup.status === VALID) {
+
+      let model: AccountRegister = {
+        firstname: this.fUser['name'].value,
+        lastname: this.fUser['surname'].value,
+        email: this.fUser['email'].value,
+        password: this.fUser['password'].value
+      };
+
+      this.loginService.Register(model).subscribe(res => {
+        console.log(res.errorMessage)
+        if(res.isSuccess) {
+          this.toastrService.success('Registered successfully')
+        }
+      });
+    }
     else
       console.log('Invalid na formularzu');
   }
+
+  success() {
+    this.toastrService.success('Message Success!', 'Title Success!');
+  }
+
 
   getErrorPassword(pass: number) {
     let passwordLength = PASSWORD_LENGHT - pass;
