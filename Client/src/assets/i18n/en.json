@@ -8,8 +8,8 @@
     "Increase your CV responses": "Increase your CV responses",
     "Check yourself": "Check yourself",
     "Find an employee": "Find an employee",
-    "Only": "Only ",
-    "Of IT ads are targetted to Juniors": " of IT ads are targetted to juniors...",
+    "Only": "Only",
+    "Of IT ads are targetted to Juniors": "of IT ads are targetted to juniors...",
     "Take up a challange": "Take up a challange!",
     "Check your skill level": "1. Check your skill level",
     "Apply and learn all in one": "2. Apply and learn all in one",
@@ -53,7 +53,10 @@
     "You must enter your Email": "You must enter your Email",
     "Wrong email": "Wrong email",
     "Space not allowed": "Space not allowed" ,
-    "I accept protection policy": "I accept the regulation along with the personal data protection policy"
+    "I accept protection policy": "I accept the regulation along with the personal data protection policy",
+    "Registered successfully": "Registered successfully",
+    "E-mail is not verified": "E-mail is not confirmed",
+    "No such account": "No such account"
   }
  
 

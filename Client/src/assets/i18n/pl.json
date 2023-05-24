@@ -8,8 +8,8 @@
     "Increase your CV responses": "Zwiększ ilość odpowiedzi na CV",
     "Check yourself": "Sprawdź się!",
     "Find an employee": "Znajdź Pracownika",
-    "Only": "Tylko ",
-    "Of IT ads are targetted to Juniors": " ogłoszeń w IT jest skierowane do juniorów...",
+    "Only": "Tylko",
+    "Of IT ads are targetted to Juniors": "ogłoszeń w IT jest skierowane do juniorów...",
     "Take up a challange": "Podejmij wyzwanie!",
     "Check your skill level": "1. Sprawdź swój poziom umiejętności",
     "Apply and learn all in one": "2. Aplikuj i ucz się w jednym",
@@ -53,7 +53,10 @@
     "You must enter your Email": "Należy podać email",
     "Wrong email": "Nieprawidłowy email",
     "Space not allowed": "Spacja niedozwolona" ,
-    "I accept protection policy": "Akceptuje regulamin wraz z polityką ochrony danych osobowych"
+    "I accept protection policy": "Akceptuje regulamin wraz z polityką ochrony danych osobowych",
+    "Registered successfully": "Zarejestrowano pomyślnie",
+    "E-mail is not verified": "E-mail nie jest zweryfikowany",
+    "No such account": "Konto nie istnieje"
   }
  
 

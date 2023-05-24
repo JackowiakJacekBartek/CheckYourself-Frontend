@@ -1,7 +1,7 @@
 import {HomepageComponent} from './Pages/homepage/homepage.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
@@ -27,6 +27,7 @@ import { LoginPopUpComponent } from './Pages/landing-page/login-pop-up/login-pop
 import { ToastrModule } from 'ngx-toastr';
 import { HeaderComponent } from './components/header/header/header.component';
 import { FooterComponent } from './components/footer/footer/footer.component';
+import { BasicInterceptorInterceptor } from './shared/helpers/interceptors/basic-interceptor.interceptor';
 
 @NgModule({
   exports: [
@@ -72,7 +73,9 @@ import { FooterComponent } from './components/footer/footer/footer.component';
     }),
     ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: BasicInterceptorInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -3,10 +3,12 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {VALID} from "../../../shared/constants/forms";
 import {RegisterPopUpComponent} from "../register-pop-up/register-pop-up.component";
 import {MatDialog} from "@angular/material/dialog";
-import { LoginService } from './login.service';
+import { LoginService } from '../account.service';
 import { AccountLogin } from 'src/app/shared/models/accounts';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import * as bcrypt from 'bcryptjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login-pop-up',
@@ -22,7 +24,8 @@ export class LoginPopUpComponent {
     private popUp: MatDialog, 
     private loginService: LoginService,
     private toastrService: ToastrService,
-    private route: Router
+    private route: Router,
+    private translate: TranslateService
     ) {
     this.loginUserFormGroup = this.formBuilder.group({
       name: ['', [Validators.required]],
@@ -34,10 +37,11 @@ export class LoginPopUpComponent {
 
   loginButton(loginUserFormGroup: FormGroup) {
     if (loginUserFormGroup.status === VALID) {
+      const salt = bcrypt.genSaltSync(10);
 
       let model: AccountLogin = {
         email: this.fUser['name'].value,
-        password: this.fUser['password'].value,
+        password: bcrypt.hashSync(this.fUser['password'].value, salt),
         method: "XerionTest",
         token: ""
       };
@@ -45,10 +49,10 @@ export class LoginPopUpComponent {
       this.loginService.Login(model).subscribe(res => {
         console.log(res.errorMessage)
         if (res.errorMessage === "E-mail jest niepotwierdzony.") {
-          this.toastrService.warning('E-mail is not confirmed');
+          this.toastrService.warning(this.translate.instant('Login.E-mail is not verified'));
         }
         if (res.errorMessage === "Konta nie znaleziono.") {
-          this.toastrService.error('No such account');
+          this.toastrService.error(this.translate.instant('Login.No such account'));
           this.popUp.closeAll();
           this.route.navigateByUrl('homepage')
         }
