@@ -4,6 +4,8 @@ drop table if exists ResetPassword;
 drop table if exists FailedLoginAttempts;
 drop table if exists UserExtraData;
 drop table if exists Accounts;
+drop table if exists WorkSchedule;
+drop table if exists EmploymentTypes;
 drop table if exists Roles;
 drop table if exists EmailsRegister;
 
@@ -23,20 +25,35 @@ create table Roles
 	name text
 );
 
+create table EmploymentTypes -- UoP, UZ
+(
+	id serial primary key,
+	name text
+);
+
+create table WorkSchedule -- remote, stationary
+(
+	id serial primary key,
+	name text
+);
+
 create table Accounts -- pracodawca/pracownik, poziom znanych języków
 (
 	id serial primary key not null,
 	email text not null unique,
 	name text,
 	surname text,
-	password text,
+	phoneNumber text,
+	birthDate timestamp,
+	idEmploymentType int references EmploymentTypes(id),
+	idWorkSchedule int references workSchedule(id),
+	password text not null,
 	verificationCode int,
 	verificationCodeValid timestamp,
-	RoleId int references roles(id) default 1,
+	idRole int references roles(id) default 1,
 	emailConfirmed bool default false,
 	allowsNotifications bool default false,
 	image text,
-	phoneNumber text,
 	refreshToken text,
 	refreshTokenValid timestamp,
 	createdAt timestamp default now()
