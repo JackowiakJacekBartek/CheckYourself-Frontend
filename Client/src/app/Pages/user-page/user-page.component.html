@@ -1,0 +1,97 @@
+<main>
+  <div class="wrapperUser">
+    <div class="sections">
+      <div class="header">
+        <img class="avatar" alt="avatar" src="{{person.image}}">
+        <span>{{person.name}}</span>
+        <span>{{person.title}}</span>
+      </div>
+      <div class="info">
+        <mat-grid-list cols="3" rowHeight="50px">
+          <mat-grid-tile *ngFor="let info of informations">
+            <mat-icon>{{ info.icon }}</mat-icon>
+            {{ info.text }}
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+      <div class="about">
+        <div class="sectionHeader">
+          <mat-icon>account_circle</mat-icon>
+          <span>O mnie:</span>
+        </div>
+        <span>{{person.about}}</span>
+      </div>
+      <div class="skills">
+        <div class="sectionHeader">
+          <mat-icon>computer</mat-icon>
+          <span>Umiejętności:</span>
+        </div>
+        <div class="masonryHolder">
+          <ul class="masonryBlocks" *ngFor="let skillCategory of skills | keyvalue: keepOrder">
+            <li class="title">{{ skillCategory.key + ':'}}</li>
+            <ul>
+              <li *ngFor="let skillValue of skillCategory.value | keyvalue">
+                <div class="element">
+                  <span>{{skillValue.key}}</span>
+                  <mat-progress-bar [color]="updateColor(skillValue.value)" mode="determinate"
+                                    value="{{skillValue.value}}"></mat-progress-bar>
+                  <span>{{skillValue.value + '%'}}</span>
+                </div>
+              </li>
+            </ul>
+          </ul>
+        </div>
+      </div>
+      <div class="experience">
+        <div class="section" *ngIf="experience">
+          <div class="sectionHeader">
+            <mat-icon>work</mat-icon>
+            <span>Doświadczenie:</span>
+          </div>
+          <ul class="sessions">
+            <li *ngFor="let exp of experience">
+              <div class="name">{{exp.name}}</div>
+              <div class="time">{{exp.time}}</div>
+              <p *ngFor="let expTasks of exp.tasks">&#x2022; {{expTasks}}</p>
+            </li>
+          </ul>
+        </div>
+        <div class="section" *ngIf="education">
+          <div class="sectionHeader">
+            <mat-icon>school</mat-icon>
+            <span>Wykształcenie:</span>
+          </div>
+          <ul class="sessions">
+            <li *ngFor="let edu of education">
+              <div class="name">{{edu.name}}</div>
+              <div class="time">{{edu.time}}</div>
+              <div class="time">{{edu.school}}</div>
+            </li>
+          </ul>
+        </div>
+        <div class="section" *ngIf="certificates">
+          <div class="sectionHeader">
+            <mat-icon>approval</mat-icon>
+            <span>Kursy i certyfikaty:</span>
+          </div>
+          <ul class="sessions">
+            <li *ngFor="let cert of certificates">
+              <div class="name">{{cert.name}}</div>
+              <div class="time">{{cert.time}}</div>
+              <div class="time">{{cert.cert}}</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="other">
+        <div class="organizations" *ngFor="let other of other">
+          <div class="sectionHeader">
+            <mat-icon>{{other.icon}}</mat-icon>
+            <span>{{other.name}}:</span>
+          </div>
+          <p *ngFor="let duties of other.duties">&#x2022; {{duties}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

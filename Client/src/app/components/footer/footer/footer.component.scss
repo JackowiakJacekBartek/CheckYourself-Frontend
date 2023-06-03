@@ -1,0 +1,36 @@
+footer {
+  background-color: #000;
+  height: 13%;
+}
+
+.wrapperFooter {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  grid-gap: 1px;
+  height: 100%;
+  color: #00A993;
+  font-size: 12px;
+
+  .one, .two, .three {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+a {
+  color: #00A993;
+  text-decoration-line: none;
+}
+
+a:hover {
+  color: white;
+}

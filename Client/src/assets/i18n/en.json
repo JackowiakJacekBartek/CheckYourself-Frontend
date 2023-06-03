@@ -57,10 +57,14 @@
     "Registered successfully": "Registered successfully",
     "E-mail is not verified": "E-mail is not confirmed",
     "No such account": "No such account"
+  },
+  "UserPage": {
+    "About me": "About me",
+    "Skills": "Skills",
+    "Experience": "Experience",
+    "Education": "Education",
+    "Courses and certificates": "Courses and certificates"
   }
- 
-
-
 }
 
 

@@ -1,7 +1,6 @@
 import {HomepageComponent} from './Pages/homepage/homepage.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
@@ -27,7 +26,10 @@ import { LoginPopUpComponent } from './Pages/landing-page/login-pop-up/login-pop
 import { ToastrModule } from 'ngx-toastr';
 import { HeaderComponent } from './components/header/header/header.component';
 import { FooterComponent } from './components/footer/footer/footer.component';
-import { BasicInterceptorInterceptor } from './shared/helpers/interceptors/basic-interceptor.interceptor';
+import { UserPageComponent } from "./Pages/user-page/user-page.component";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
+import {BasicInterceptorInterceptor} from "./shared/helpers/interceptors/basic-interceptor.interceptor";
 
 @NgModule({
   exports: [
@@ -41,7 +43,8 @@ import { BasicInterceptorInterceptor } from './shared/helpers/interceptors/basic
     RegisterPopUpComponent,
     LoginPopUpComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    UserPageComponent
   ],
   imports: [
     MatGridListModule,
@@ -71,7 +74,8 @@ import { BasicInterceptorInterceptor } from './shared/helpers/interceptors/basic
         deps: [HttpClient]
       }
     }),
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatProgressBarModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: BasicInterceptorInterceptor, multi: true}

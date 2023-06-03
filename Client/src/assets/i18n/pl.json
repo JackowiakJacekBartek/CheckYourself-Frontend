@@ -57,8 +57,15 @@
     "Registered successfully": "Zarejestrowano pomyślnie",
     "E-mail is not verified": "E-mail nie jest zweryfikowany",
     "No such account": "Konto nie istnieje"
+  },
+  "UserPage": {
+    "About me": "O mnie",
+    "Skills": "Umiejętności",
+    "Experience": "Doświadczenie",
+    "Education": "Wykształcenie",
+    "Courses and certificates": "Kursy i certyfikaty"
   }
- 
+
 
 
 }
