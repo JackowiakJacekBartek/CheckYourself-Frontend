@@ -9,11 +9,11 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { INVALID, PASSWORD_LENGHT, VALID } from 'src/app/shared/constants/forms';
 import {LoginPopUpComponent} from "../login-pop-up/login-pop-up.component";
 import {MatDialog} from "@angular/material/dialog";
-import { LoginService } from '../account.service';
+import { LoginRegisterService } from '../account.service';
 import { AccountRegister } from 'src/app/shared/models/accounts';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
-import * as bcrypt from 'bcryptjs';
+import { SHA256 } from 'crypto-js';
 
 @Component({
   selector: 'app-register-pop-up',
@@ -31,9 +31,9 @@ export class RegisterPopUpComponent implements OnDestroy {
     private _formBuilder: FormBuilder, 
     private _snackBar: MatSnackBar, 
     private popUp: MatDialog,
-    private loginService: LoginService,
+    private loginRegisterService: LoginRegisterService,
     private toastrService: ToastrService,
-    private translate: TranslateService
+    private translate: TranslateService,
     ) {
     this.registerUserFormGroup = this._formBuilder.group({
       name: ['', [Validators.required, this.noSpaceAllowed]],
@@ -82,16 +82,15 @@ export class RegisterPopUpComponent implements OnDestroy {
       console.log('Polityka niezaznaczona');
       this.openSnackBar('Uwaga! W celu rejestracji należy zaakceptować regulamin wraz z polityką ochrony danych osobowych.');
     } else if (formGroup.status === VALID) {
-      const salt = bcrypt.genSaltSync(10);
 
       let model: AccountRegister = {
         firstname: this.fUser['name'].value,
         lastname: this.fUser['surname'].value,
         email: this.fUser['email'].value,
-        password: bcrypt.hashSync(this.fUser['password'].value, salt)
+        password: SHA256(this.fUser['password'].value).toString()
       };
 
-      this.loginService.Register(model).subscribe(res => {
+      this.loginRegisterService.Register(model).subscribe(res => {
         console.log(res.errorMessage)
         if(res.isSuccess) {
           this.toastrService.success(this.translate.instant('Login.Registered successfully'))

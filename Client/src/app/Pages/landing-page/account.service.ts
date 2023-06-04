@@ -6,7 +6,7 @@ import { ReturnedResponse } from 'src/app/shared/models/returned-response';
 import { localUrl } from 'src/app/shared/constants/constants';
 
 @Injectable({ providedIn: 'root' })
-export class LoginService {
+export class LoginRegisterService {
     
     constructor(private http: HttpClient) { }
 
