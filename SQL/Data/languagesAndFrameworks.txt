@@ -1,0 +1,154 @@
+JavaScript:
+Frontend (F) i Backend (B)
+Frameworki frontendowe: React, Angular, Vue.js
+Frameworki backendowe: Node.js, Express.js
+
+Python:
+Backend (B)
+Frameworki backendowe: Django, Flask, Pyramid
+
+Java:
+Backend (B)
+Frameworki backendowe: Spring, JavaServer Faces (JSF), Play Framework
+
+Ruby:
+Backend (B)
+Frameworki backendowe: Ruby on Rails, Sinatra, Hanami
+
+PHP:
+Backend (B)
+Frameworki backendowe: Laravel, Symfony, CodeIgniter
+
+C#:
+Frontend (F) i Backend (B)
+Frameworki frontendowe: WinForms, WPF, ASP.NET
+Frameworki backendowe: .NET Core, Entity Framework
+
+Go:
+Backend (B)
+Frameworki backendowe: Gin, Echo, Revel
+
+Swift:
+Frontend (F) i Backend (B)
+Frameworki frontendowe: SwiftUI, UIKit
+Frameworki backendowe: Vapor
+
+TypeScript:
+Frontend (F) i Backend (B)
+Frameworki frontendowe: Angular, React, Vue.js
+Frameworki backendowe: Nest.js
+
+Kotlin:
+Backend (B)
+Frameworki backendowe: Spring Boot, Ktor
+
+Rust:
+Backend (B)
+Frameworki backendowe: Rocket, Actix
+
+Scala:
+Backend (B)
+Frameworki backendowe: Play Framework, Akka
+
+C++:
+Backend (B)
+Frameworki backendowe: Qt, Boost, POCO
+
+Objective-C:
+Frontend (F) i Backend (B)
+Frameworki frontendowe: Cocoa Touch, SwiftUI
+Frameworki backendowe: Cocoa, Foundation
+
+Lua:
+Backend (B)
+Frameworki backendowe: Lapis, OpenResty
+
+Perl:
+Backend (B)
+Frameworki backendowe: Mojolicious, Dancer
+
+R:
+Backend (B)
+Frameworki backendowe: Shiny, Plumber
+
+Shell:
+Backend (B)
+Frameworki backendowe: Bash, PowerShell
+
+Dart:
+Frontend (F) i Backend (B)
+Frameworki frontendowe: Flutter
+Frameworki backendowe: Aqueduct, Angel
+
+Julia:
+Backend (B)
+Frameworki backendowe: Genie, Franklin
+
+Groovy:
+Backend (B)
+Frameworki backendowe: Grails, Ratpack
+
+Crystal:
+Backend (B)
+Frameworki backendowe: Amber, Lucky
+
+Haxe:
+Frontend (F) i Backend (B)
+Frameworki frontendowe: OpenFL, Kha
+Frameworki backendowe: HaxeFlixel, HaxePunk
+
+Elm:
+Frontend (F)
+Frameworki frontendowe: Elm Architecture
+
+PureScript:
+Frontend (F)
+Frameworki frontendowe: Halogen, React Basic
+
+Reason:
+Frontend (F)
+Frameworki frontendowe: ReasonReact, BuckleScript
+
+Elixir:
+Backend (B)
+Frameworki backendowe: Phoenix, Nerves
+
+Erlang:
+Backend (B)
+Frameworki backendowe: Cowboy, Nitrogen
+
+Julia:
+Backend (B)
+Frameworki backendowe: Genie, JuliaWeb
+
+Lua:
+Backend (B)
+Frameworki backendowe: Lapis, Sailor
+
+SAS:
+Backend (B)
+Frameworki backendowe: SAS/AF, SAS/IML
+
+MATLAB:
+Backend (B)
+Frameworki backendowe: MATLAB Web App Server
+
+COBOL:
+Backend (B)
+Brak popularnych frameworków backendowych
+
+Fortran:
+Backend (B)
+Brak popularnych frameworków backendowych
+
+Ada:
+Backend (B)
+Brak popularnych frameworków backendowych
+
+LISP:
+Backend (B)
+Frameworki backendowe: Common Lisp, Clozure CL
+
+Prolog:
+Backend (B)
+Brak popularnych frameworków backendowych

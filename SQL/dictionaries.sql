@@ -11,8 +11,31 @@ drop table if exists Cities;
 drop table if exists Countries;
 drop table if exists Tags;
 drop table if exists Certificates;
+drop table if exists WorkSchedule;
+drop table if exists EmploymentTypes;
+drop table if exists SkillsDomain;
 
 
+
+create table SkillsDomain
+(
+	id serial primary key,
+	idParent int references SkillsDomain(id),
+	domain text not null,
+	isFinal int default 1 -- 1: has children, 2: does not have children, 3: can have children but also can be final
+);
+
+create table EmploymentTypes -- UoP, UZ
+(
+	id serial primary key,
+	name text
+);
+
+create table WorkSchedule -- remote, stationary
+(
+	id serial primary key,
+	name text
+);
 
 create table Certificates
 (
@@ -58,7 +81,7 @@ create table ForeignLanguages -- eng, pl, de
 (
 	id serial primary key,
 	name text not null,
-	idCountry int references Countries(id)
+	idCountry int references Countries(id) -- pomyslimy polska, deutsch, english
 );
 
 create table Environments -- windows, linux
@@ -83,14 +106,17 @@ create table ProgrammingLanguages -- c#,java
 (
 	id serial primary key,
 	name text not null
+	-- image
 );
 
+-- technologie szczegolowe
 create table Frameworks -- react, angular
 (
 	id serial primary key,
 	name text not null,
-	idCategory int references ProgrammingLanguageCategories(id),
-	idProgrammingLanguage int references ProgrammingLanguages(id)
+	-- image
+	idCategory int references ProgrammingLanguageCategories(id), -- back/front
+	idProgrammingLanguage int references ProgrammingLanguages(id) -- bootstrap?
 );
 
 create table Professions -- programmer, analyst
