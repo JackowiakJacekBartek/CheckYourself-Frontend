@@ -25,6 +25,11 @@ export class UserPageComponent {
     {text: 'janekdev.com', icon: "web"},
   ];
 
+  tags = [
+    {text: 'Java Lover'},
+    {text: 'JS Newbie'}
+  ];
+
   skills = {
     "Technologie frontend": {"HTML": 70, "CSS": 98, "JavaScript": 45},
     "Technologie backend": {"Java": 85, "Spring": 70, "Python": 45},
