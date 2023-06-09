@@ -118,7 +118,7 @@ create table AccountForeignLanguages
 create table AccountWorkExperiences
 (
 	id serial primary key,
-	idProfession int not null, --references Professions(id) not null, czy na pewno? moze lepiej text i chuj z dictionary
+	idProfession int not null, --references Professions(id) not null
 	idWorkCompany int not null, -- TODO!
 	idAccount int references Accounts(id) not null,
 	dateStart timestamp not null,
