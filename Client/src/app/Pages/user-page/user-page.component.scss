@@ -5,13 +5,15 @@ main {
   min-height: 100%-26%;
   display: flex;
   justify-content: center;
+  font-size: 15px;
+  font-weight: 300;
 }
 
 .wrapperUser {
   margin-top: 1%;
   margin-bottom: 1%;
   background-color: white;
-  max-width: 75%;
+  max-width: 1200px;
   border-radius: 25px;
 }
 
@@ -27,8 +29,8 @@ main {
     flex-direction: column;
 
     span {
-      font-size: 20px;
-      margin-top: 15px;
+      font-size: 24px;
+      margin-top: 20px;
     }
 
     & .avatar {
@@ -38,13 +40,15 @@ main {
   }
 
   & .info {
-    margin-top: $margin;
+    margin-top: 30px;
+    font-size: 15px;
   }
 
   & .about {
     margin-top: $margin;
     display: flex;
     flex-direction: column;
+    line-height: 23px;
   }
 
   & .skills {
@@ -72,9 +76,16 @@ main {
   & .other {
     margin-top: $margin;
     display: flex;
-    justify-content: space-around;
+    justify-content: left;
     margin-bottom: $margin;
-    zoom: 0.85;
+
+    & .organizations {
+      width: 33%;
+
+      p {
+        margin-left: 15px;
+      }
+    }
   }
 }
 
@@ -141,7 +152,6 @@ mat-progress-bar {
 
   p {
     margin: 0;
-    font-size: 13px;
   }
 
   p:first-of-type {
@@ -163,13 +173,13 @@ mat-progress-bar {
 
   &:before {
     content: '';
-    width: 15px;
-    height: 15px;
+    width: 16px;
+    height: 16px;
     background: white;
     border: 1px solid #4f4f4f;
     border-radius: 50%;
     position: absolute;
-    left: -10px;
+    left: -9.5px;
     top: 0px;
   }
 }
@@ -185,7 +195,33 @@ mat-progress-bar {
 
 p {
   color: #4f4f4f;
-  font-family: sans-serif;
   margin-top: 1rem;
   font-size: 13px;
+}
+
+.nameAndSurname {
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.text-inside-grid {
+  position: absolute;
+  left: 0px;
+}
+
+.tags {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.tag {
+  background-color: #F89820;
+  margin-right: 20px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.tag:nth-child(even) {
+  background-color: #F0DB4F;
 }
