@@ -58,25 +58,17 @@ create table Accounts -- pracodawca/pracownik, poziom znanych języków
 	salaryMax double precision
 );
 
-create table AccountOrganizationsAssociations
+create table AccountSoftSkillsTitles
 (
 	id serial primary key,
 	name text not null,
-	idAccount int references Accounts(id) not null,
 	createdAt timestamp default now()
 );
 
 create table AccountSoftSkills
 (
 	id serial primary key,
-	name text not null,
-	idAccount int references Accounts(id) not null,
-	createdAt timestamp default now()
-);
-
-create table AccountHobbies
-(
-	id serial primary key,
+	idAccountSoftSkillsTitle int references AccountSoftSkillsTitles(id),
 	name text not null,
 	idAccount int references Accounts(id) not null,
 	createdAt timestamp default now()
