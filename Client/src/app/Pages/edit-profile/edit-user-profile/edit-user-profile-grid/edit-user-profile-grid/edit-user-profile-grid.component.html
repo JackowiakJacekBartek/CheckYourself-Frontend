@@ -1,0 +1,126 @@
+<mat-grid-list cols="3" rowHeight="85px"> <!-- 65-->
+    <mat-grid-tile>
+      <div>
+          <mat-icon class="material-icons-outlined">pin_drop</mat-icon>
+          <mat-form-field appearance="outline" class="selector">
+              <mat-label>Adres</mat-label>
+              <mat-select class="selector2" [(value)]="selectedAdress">
+                <mat-option></mat-option>
+                <mat-option value="one">First option</mat-option>
+                <mat-option value="two">{{gridData?.place}}</mat-option>
+              </mat-select>
+          </mat-form-field>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div>
+          <mat-icon class="material-icons-outlined">call</mat-icon>
+          <mat-form-field>
+              <mat-label>Numer Telefonu</mat-label>
+              <input matInput 
+                  placeholder="Numer Telefonu" 
+                  [value]="gridData?.phone"
+                  type="text"
+              >
+            </mat-form-field>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+        <div>
+            <mat-icon class="material-icons-outlined">payments</mat-icon>
+            <mat-form-field appearance="outline">
+                <mat-label>Widełki</mat-label>
+                <mat-select [(value)]="selectedMoney">
+                    <mat-option></mat-option>
+                    <mat-option value="one">{{gridData?.salary}}</mat-option>
+                    <mat-option value="two">Second option</mat-option>
+                  </mat-select>
+              </mat-form-field>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <div>
+            <mat-icon class="material-icons-outlined">mail</mat-icon>
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput 
+                    placeholder="Email" 
+                    [value]="gridData?.email"
+                    type="email"
+                >
+              </mat-form-field>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <div>
+            <mat-icon class="material-icons-outlined">cake</mat-icon>
+            <mat-form-field appearance="outline" class="date-picker">
+                <mat-label>Data Urodzenia</mat-label>
+                <input matInput [matDatepicker]="picker" [value]="date">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <div>
+            <mat-icon class="material-icons-outlined">hourglass_top</mat-icon>
+            <mat-form-field appearance="outline">
+                <mat-label>Etat</mat-label>
+                <mat-select [(value)]="selectedWork">
+                    <mat-option></mat-option>
+                    <mat-option value="one">{{gridData?.workTime}}</mat-option>
+                    <mat-option value="two">Second option</mat-option>
+                  </mat-select>
+              </mat-form-field>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <div>
+            <mat-icon class="material-icons-outlined">link</mat-icon>
+            <mat-form-field>
+                <mat-label>Github</mat-label>
+                <input matInput 
+                    placeholder="Github" 
+                    [value]="gridData?.git"
+                    type="text"
+                >
+              </mat-form-field>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <div>
+            <mat-icon class="material-icons-outlined">link</mat-icon>
+            <mat-form-field>
+                <mat-label>LinkedIn</mat-label>
+                <input matInput 
+                    placeholder="LinkedIn" 
+                    [value]="gridData?.linkedIn"
+                    type="text"
+                >
+              </mat-form-field>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <div>
+            <mat-icon class="material-icons-outlined">web</mat-icon>
+            <mat-form-field>
+                <mat-label>Strona</mat-label>
+                <input matInput 
+                    placeholder="Strona" 
+                    [value]="gridData?.site"
+                    type="text"
+                >
+              </mat-form-field>
+        </div>
+      </mat-grid-tile>
+
+  </mat-grid-list>

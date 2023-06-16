@@ -36,6 +36,8 @@ export class LoginPopUpComponent {
   get fUser() { return this.loginUserFormGroup.controls; }
 
   loginButton(loginUserFormGroup: FormGroup) {
+    this.route.navigateByUrl('user-page')
+    this.popUp.closeAll();
     if (loginUserFormGroup.status === VALID) {
 
       let model: AccountLogin = {
@@ -44,16 +46,15 @@ export class LoginPopUpComponent {
         method: "XerionTest",
         token: ""
       };
-
+      
       this.loginRegisterService.Login(model).subscribe(res => {
-        console.log(res.errorMessage)
+        console.log(res.errorMessage)    
         if (res.errorMessage === "E-mail jest niepotwierdzony.") {
           this.toastrService.warning(this.translate.instant('Login.E-mail is not verified'));
         }
         if (res.errorMessage === "Konta nie znaleziono.") {
           this.toastrService.error(this.translate.instant('Login.No such account'));
-          this.popUp.closeAll();
-          this.route.navigateByUrl('homepage')
+          
         }
       });
     }

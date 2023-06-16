@@ -11,3 +11,7 @@ export interface AccountLogin {
     method: string,
     token: string
 }
+
+export interface UserProfile {
+
+}

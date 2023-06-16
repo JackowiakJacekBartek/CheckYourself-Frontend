@@ -1,7 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
-@import 'ngx-toastr/toastr';
+@use '@angular/material' as mat;
 
-html, body {
+@import 'ngx-toastr/toastr';
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined");
+@import 'themes.scss';
+
+html,
+body {
   height: 100%;
 }
 
@@ -65,3 +70,11 @@ body {
     zoom: .5;
   }
 }
+
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: transparent;
+}
+
+@include mat.core();
+@include mat.all-component-themes($light-theme);
