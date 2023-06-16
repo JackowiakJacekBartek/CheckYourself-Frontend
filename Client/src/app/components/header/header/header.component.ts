@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { LoginPopUpComponent } from 'src/app/Pages/landing-page/login-pop-up/login-pop-up.component';
 import {Router} from "@angular/router";
+import { DateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,8 @@ export class HeaderComponent {
   constructor(
     private popUp: MatDialog,
     private translate: TranslateService,
-    private router: Router
+    private router: Router,
+    private dateAdapter: DateAdapter<any>
     ) { }
 
   openLogin() {
@@ -32,5 +34,6 @@ export class HeaderComponent {
       this.translate.use('pl');
       localStorage.setItem('selectedLanguage', 'pl');
     }
+    this.dateAdapter.setLocale(localStorage.getItem('selectedLanguage'));
   }
 }

@@ -4,6 +4,7 @@ import {LandingPageComponent} from "./Pages/landing-page/landing-page.component"
 import { HomepageComponent } from './Pages/homepage/homepage.component';
 import { AuthGuard } from './shared/helpers/guards/auth.guard';
 import { UserPageComponent } from "./Pages/user-page/user-page.component";
+import { EditUserProfileComponent } from './Pages/edit-profile/edit-user-profile/edit-user-profile/edit-user-profile.component';
 
 const routes: Routes = [
   {
@@ -13,7 +14,10 @@ const routes: Routes = [
     path: 'homepage', component: HomepageComponent, canActivate:[AuthGuard]
   },
   {
-    path: 'userpage', component: UserPageComponent, canActivate:[AuthGuard]
+    path: 'user-page', component: UserPageComponent, canActivate:[AuthGuard]
+  },
+  {
+    path: 'edit-userpage', component: EditUserProfileComponent, canActivate:[AuthGuard]
   },
   {
     path: '**', redirectTo: '',

@@ -1,0 +1,115 @@
+@use '@angular/material' as mat;
+
+$light-mode-palette: (
+    50 : #e0f5f2,
+    100 : #b3e5df,
+    200 : #80d4c9,
+    300 : #4dc3b3,
+    400 : #26b6a3,
+    500 : #00a993,
+    600 : #00a28b,
+    700 : #009880,
+    800 : #008f76,
+    900 : #007e64,
+    A100 : #acffea,
+    A200 : #79ffdd,
+    A400 : #46ffd1,
+    A700 : #2cffca,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$light-mode-secondary-palette: (
+    50 : #fdefef,
+    100 : #fad6d7,
+    200 : #f7bbbd,
+    300 : #f49fa2,
+    400 : #f18b8e,
+    500 : #ef767a,
+    600 : #ed6e72,
+    700 : #eb6367,
+    800 : #e8595d,
+    900 : #e4464a,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffd3d4,
+    A700 : #ffb9bb,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$warn-palette: (
+    50 : #fde8e7,
+    100 : #f9c7c2,
+    200 : #f5a19a,
+    300 : #f17b72,
+    400 : #ee5f53,
+    500 : #eb4335,
+    600 : #e93d30,
+    700 : #e53428,
+    800 : #e22c22,
+    900 : #dd1e16,
+    A100 : #ffffff,
+    A200 : #ffdcda,
+    A400 : #ffaaa7,
+    A700 : #ff918e,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+$light-primary: mat.define-palette($light-mode-palette, 400);
+$light-accent: mat.define-palette($light-mode-secondary-palette, 300);
+$warn: mat.define-palette($warn-palette, 500);
+
+$light-theme: mat.define-light-theme((
+  color: (
+    primary: $light-primary,
+    accent: $light-accent,
+    warn: $warn,
+  ),
+  typography: mat.define-typography-config(),
+  density: -1,
+));

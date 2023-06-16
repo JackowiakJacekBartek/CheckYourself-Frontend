@@ -3,7 +3,7 @@ html, body {
 }
 
 main {
-  background: url("../../../assets/background.png") no-repeat;
+  background: url("../../../assets/images/background.png") no-repeat;
   background-size: cover;
   height: calc(100% - 26%);
 }
@@ -135,5 +135,6 @@ mat-card-header .icon3 {
 
 .registerButton {
   margin-top: 1rem;
+  margin-bottom: 1rem;
   width: 70%;
 }

@@ -10,7 +10,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatIconModule} from "@angular/material/icon";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
-import {MatListModule} from "@angular/material/list";
+import {MatListModule, MatSelectionList} from "@angular/material/list";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {MatToolbarModule} from "@angular/material/toolbar";
@@ -30,6 +30,11 @@ import { UserPageComponent } from "./Pages/user-page/user-page.component";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {BasicInterceptorInterceptor} from "./shared/helpers/interceptors/basic-interceptor.interceptor";
+import { EditUserProfileComponent } from './Pages/edit-profile/edit-user-profile/edit-user-profile/edit-user-profile.component';
+import { MatSelectModule } from '@angular/material/select';
+import { EditUserProfileGridComponent } from './Pages/edit-profile/edit-user-profile/edit-user-profile-grid/edit-user-profile-grid/edit-user-profile-grid.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   exports: [
@@ -44,7 +49,9 @@ import {BasicInterceptorInterceptor} from "./shared/helpers/interceptors/basic-i
     LoginPopUpComponent,
     HeaderComponent,
     FooterComponent,
-    UserPageComponent
+    UserPageComponent,
+    EditUserProfileComponent,
+    EditUserProfileGridComponent
   ],
   imports: [
     MatGridListModule,
@@ -56,6 +63,9 @@ import {BasicInterceptorInterceptor} from "./shared/helpers/interceptors/basic-i
     MatToolbarModule,
     MatDialogModule,
     MatRadioModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
