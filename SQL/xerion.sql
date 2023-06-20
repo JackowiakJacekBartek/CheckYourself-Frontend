@@ -41,7 +41,7 @@ create table Accounts -- pracodawca/pracownik, poziom znanych języków
 	description text,
 	birthDate timestamp,
 	-- idEmploymentType int references EmploymentTypes(id),
-	--idWorkSchedule int references workSchedule(id),
+	-- idWorkSchedule int references workSchedule(id),
 	password text not null,
 	verificationCode int,
 	verificationCodeValid timestamp,
@@ -52,15 +52,25 @@ create table Accounts -- pracodawca/pracownik, poziom znanych języków
 	refreshToken text,
 	refreshTokenValid timestamp,
 	createdAt timestamp default now(),
-	-- lastModificationDate timestamp default now(), stworzyc archiwalna tabele
+	lastModificationDate timestamp default now(), -- stworzyc archiwalna tabele
 	salaryMin double precision,
 	salaryMax double precision
+);
+
+create table AccountTags
+(
+	id serial primary key,
+	info text,
+	idTag int,
+	idAccount int references Accounts(id) not null,
+	createdAt timestamp default now()
 );
 
 create table AccountSoftSkillsTitles
 (
 	id serial primary key,
 	name text not null,
+	icon text,
 	createdAt timestamp default now()
 );
 
@@ -76,7 +86,7 @@ create table AccountSoftSkills
 create table AccountCoursesCertificates
 (
 	id serial primary key,
-	idCertificate int not null, --references Professions(id) not null, 
+	idCertificate int not null, --references Certificates(id) not null, 
 	certificateNumber text not null, -- TODO!
 	idAccount int references Accounts(id) not null,
 	idOrganizationIssuingCertificate int not null,

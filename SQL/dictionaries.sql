@@ -49,7 +49,8 @@ create table Certificates
 create table Tags
 (
 	id serial primary key,
-	name text not null
+	name text not null,
+	color text
 );
 
 create table Countries
