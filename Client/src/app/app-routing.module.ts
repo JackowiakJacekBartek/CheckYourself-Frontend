@@ -4,6 +4,7 @@ import {LandingPageComponent} from "./Pages/landing-page/landing-page.component"
 import { HomepageComponent } from './Pages/homepage/homepage.component';
 import { AuthGuard } from './shared/helpers/guards/auth.guard';
 import { UserPageComponent } from "./Pages/user-page/user-page.component";
+import {CompanyPageComponent} from "./pages/company-page/company-page.component";
 import { EditUserProfileComponent } from './Pages/edit-profile/edit-user-profile/edit-user-profile/edit-user-profile.component';
 
 const routes: Routes = [
@@ -18,6 +19,9 @@ const routes: Routes = [
   },
   {
     path: 'edit-userpage', component: EditUserProfileComponent, canActivate:[AuthGuard]
+  },
+  {
+    path: 'companypage', component: CompanyPageComponent, canActivate:[AuthGuard]
   },
   {
     path: '**', redirectTo: '',

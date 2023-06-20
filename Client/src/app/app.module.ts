@@ -30,6 +30,7 @@ import { UserPageComponent } from "./Pages/user-page/user-page.component";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {BasicInterceptorInterceptor} from "./shared/helpers/interceptors/basic-interceptor.interceptor";
+import { CompanyPageComponent } from './pages/company-page/company-page.component';
 import { EditUserProfileComponent } from './Pages/edit-profile/edit-user-profile/edit-user-profile/edit-user-profile.component';
 import { MatSelectModule } from '@angular/material/select';
 import { EditUserProfileGridComponent } from './Pages/edit-profile/edit-user-profile/edit-user-profile-grid/edit-user-profile-grid/edit-user-profile-grid.component';
@@ -50,6 +51,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     HeaderComponent,
     FooterComponent,
     UserPageComponent,
+    CompanyPageComponent,
     EditUserProfileComponent,
     EditUserProfileGridComponent
   ],
@@ -85,7 +87,7 @@ import { MatNativeDateModule } from '@angular/material/core';
       }
     }),
     ToastrModule.forRoot(),
-    MatProgressBarModule
+    MatProgressBarModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: BasicInterceptorInterceptor, multi: true}

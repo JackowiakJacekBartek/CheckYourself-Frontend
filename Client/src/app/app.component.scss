@@ -76,3 +76,31 @@
     color: white;
   }
 }
+
+//Background image for pages
+
+::ng-deep.main {
+  position: relative;
+  overflow: hidden;
+  min-height: 100%-26%;
+  display: flex;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 300;
+  background-color: #d9d9d9;
+  z-index: -2;
+}
+
+::ng-deep.main:before {
+  background-image: url("../assets/logo.svg");
+  filter: invert(82%) sepia(1%) saturate(17%) hue-rotate(314deg) brightness(101%) contrast(85%);
+  background-size: 300px 300px;
+  transform: rotate(45deg);
+  content: "";
+  position: absolute;
+  width: 5000px;
+  height: 5000px;
+  top: -2500px;
+  left: -2500px;
+  z-index: -1;
+}

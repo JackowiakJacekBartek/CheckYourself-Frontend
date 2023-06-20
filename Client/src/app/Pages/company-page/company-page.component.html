@@ -1,0 +1,34 @@
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+<main class="main">
+  <div class="wrapperUser">
+    <div class="sections">
+      <div class="header">
+        <div class="left">
+          <div class="logo">
+            <img class="avatar" alt="avatar" src="{{company.image}}">
+          </div>
+          <div class="companyName">
+            <div class="title">
+              <span>{{company.longName}}</span>
+            </div>
+            <div class="icons">
+              <mat-icon svgIcon="fb"></mat-icon>
+              <mat-icon svgIcon="twitter"></mat-icon>
+              <mat-icon svgIcon="instagram"></mat-icon>
+              <mat-icon svgIcon="linkedin"></mat-icon>
+            </div>
+          </div>
+        </div>
+        <div class="right">
+          <mat-icon svgIcon="pin"></mat-icon><span>Warszawa</span>
+          <mat-icon svgIcon="user"></mat-icon><span>5000+</span>
+        </div>
+      </div>
+      <div class="about">
+        <p>Cześć tu {{company.name}}!</p>
+        <p>{{company.about}}</p>
+      </div>
+    </div>
+  </div>
+</main>
