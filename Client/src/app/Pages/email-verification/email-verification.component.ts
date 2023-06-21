@@ -23,7 +23,7 @@ export class EmailVerificationComponent implements OnInit {
     this.urlParams.email = this.route.snapshot.params['email'];
     
       console.log(this.urlParams)
-      this.emailVerificationService.verifyEmail(this.urlParams);
+      this.emailVerificationService.verifyEmail(this.urlParams).subscribe(res => console.log(res))
   
 
   }
