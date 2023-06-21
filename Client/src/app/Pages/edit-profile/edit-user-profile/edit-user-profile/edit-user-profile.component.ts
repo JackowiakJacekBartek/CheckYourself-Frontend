@@ -1,5 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnChanges, SimpleChanges } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { EditUserProfileService } from '../edit-user-profile.service';
+import { UserProfile } from 'src/app/shared/models/accounts';
 
 @Component({
   selector: 'app-edit-user-profile',
@@ -115,9 +117,53 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit {
 
   hobby = ['siłownia', 'malowanie', 'tynkowanie'];
 
-  constructor(private ref: ChangeDetectorRef) {}
+  data!: UserProfile;
+
+
+  userProfileEditForm: FormGroup = this.formBuilder.group({
+    name: ['', [Validators.required]],
+    surname: ['', [Validators.required]],
+    aboutMe: ['', [Validators.required]],
+    languages: ['', [Validators.required]],
+    expirience: ['', [Validators.required]],
+    education: ['', [Validators.required]],
+    certificatesCourses: ['', [Validators.required]],
+    organizations: ['', [Validators.required]],
+    softSkills: ['', [Validators.required]],
+    hobby: ['', [Validators.required]],
+  });
+
+  userProfileEditGridForm: FormGroup = this.formBuilder.group({
+    adress: ['', [Validators.required]],
+    phone: ['', [Validators.required]],
+    salaryMin: ['', [Validators.required]],
+    salaryMax: ['', [Validators.required]],
+    email: ['', [Validators.required]],
+    dateOfBirth: ['', [Validators.required]],
+    workingTime: ['', [Validators.required]],
+    gitHub: ['', [Validators.required]],
+    linkedIn: ['', [Validators.required]],
+    site: ['', [Validators.required]],
+  });
+
+  
+  constructor(
+    private ref: ChangeDetectorRef, 
+    private editUserProfileService: EditUserProfileService,
+    private formBuilder: FormBuilder
+  ) { }
+
 
   ngAfterViewInit(): void {
+    this.ref.detectChanges();
+    this.editUserProfileService.getUserById(1).subscribe(res => {
+      this.data = res.methodResult;
+      console.log(this.data)
+      this.userProfileEditForm.setValue({
+        name: this.data.account.name,
+        surname: this.data.account.surname
+      });
+    })
     this.ref.detectChanges();
   }
 
@@ -126,6 +172,10 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit {
   keepOrder = (a: any, b: any) => {
     return a;
   };
+
+  click () {
+   console.log(this.userProfileEditGridForm.value)
+  }
 
   updateColor(progress: any) {
     if (progress < 50) {

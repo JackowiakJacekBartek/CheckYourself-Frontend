@@ -30,12 +30,13 @@ import { UserPageComponent } from "./Pages/user-page/user-page.component";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {BasicInterceptorInterceptor} from "./shared/helpers/interceptors/basic-interceptor.interceptor";
-import { CompanyPageComponent } from './pages/company-page/company-page.component';
+import { CompanyPageComponent } from './Pages/company-page/company-page.component';
 import { EditUserProfileComponent } from './Pages/edit-profile/edit-user-profile/edit-user-profile/edit-user-profile.component';
 import { MatSelectModule } from '@angular/material/select';
 import { EditUserProfileGridComponent } from './Pages/edit-profile/edit-user-profile/edit-user-profile-grid/edit-user-profile-grid/edit-user-profile-grid.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatSliderModule} from '@angular/material/slider';
 
 @NgModule({
   exports: [
@@ -68,6 +69,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSliderModule,
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
