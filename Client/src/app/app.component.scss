@@ -88,11 +88,11 @@
   font-size: 15px;
   font-weight: 300;
   background-color: #d9d9d9;
-  z-index: -2;
+  // z-index: -2;
 }
 
 ::ng-deep.main:before {
-  background-image: url("../assets/logo.svg");
+  background-image: url("../assets/images/logo.svg");
   filter: invert(82%) sepia(1%) saturate(17%) hue-rotate(314deg) brightness(101%) contrast(85%);
   background-size: 300px 300px;
   transform: rotate(45deg);
@@ -103,4 +103,8 @@
   top: -2500px;
   left: -2500px;
   z-index: -1;
+}
+
+::ng-deep.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: transparent;
 }
