@@ -4,8 +4,9 @@ import {LandingPageComponent} from "./Pages/landing-page/landing-page.component"
 import { HomepageComponent } from './Pages/homepage/homepage.component';
 import { AuthGuard } from './shared/helpers/guards/auth.guard';
 import { UserPageComponent } from "./Pages/user-page/user-page.component";
-import {CompanyPageComponent} from "./pages/company-page/company-page.component";
+import {CompanyPageComponent} from "./Pages/company-page/company-page.component";
 import { EditUserProfileComponent } from './Pages/edit-profile/edit-user-profile/edit-user-profile/edit-user-profile.component';
+import { EmailVerificationComponent } from './Pages/email-verification/email-verification.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,9 @@ const routes: Routes = [
   },
   {
     path: 'companypage', component: CompanyPageComponent, canActivate:[AuthGuard]
+  },
+  {
+    path: 'email-verification/:email/:code', component: EmailVerificationComponent, canActivate:[AuthGuard]
   },
   {
     path: '**', redirectTo: '',

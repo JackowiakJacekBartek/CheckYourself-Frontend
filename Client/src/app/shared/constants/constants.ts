@@ -7,4 +7,5 @@ export const LANGUAGES = [
     { locale: 'en' }
 ]
 
-export const localUrl = 'http://localhost:5010'
+// export const localUrl = 'http://localhost:5010'
+export const localUrl = 'http://20.13.171.179:5010'
