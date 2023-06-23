@@ -8,8 +8,8 @@
         <span class="nameAndSurname">{{person.name}}</span>
         <span>{{person.title}}</span>
       </div>
-      <div class="tags">
-        <div class="tag" *ngFor="let tag of tags">#{{tag.text}}</div>
+      <div class="tags"> <!-- remove onclick and style only needed for presentation mock of showing quiz view-->
+        <div class="tag" *ngFor="let tag of tags" onclick="window.location.href = 'quiz'" style="cursor: pointer;">#{{tag.text}}</div>
       </div>
       <div class="info">
         <mat-grid-list cols="3" rowHeight="50px">

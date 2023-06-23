@@ -36,6 +36,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { EditUserProfileGridComponent } from './Pages/edit-profile/edit-user-profile/edit-user-profile-grid/edit-user-profile-grid/edit-user-profile-grid.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { QuizCreatComponent } from './Pages/quizes/quiz-creat/quiz-creat.component';
+import { QuizSolveComponent } from './Pages/quizes/quiz-solve/quiz-solve.component';
+import { MultiChoiceQuestionComponent } from './Pages/quizes/quiz-solve/multi-choice-question/multi-choice-question.component';
+import { CompleteSentenceQuestionComponent } from './Pages/quizes/quiz-solve/complete-sentence-question/complete-sentence-question.component';
 import { EmailVerificationComponent } from './Pages/email-verification/email-verification.component';
 
 @NgModule({
@@ -55,6 +59,10 @@ import { EmailVerificationComponent } from './Pages/email-verification/email-ver
     CompanyPageComponent,
     EditUserProfileComponent,
     EditUserProfileGridComponent,
+    QuizCreatComponent,
+    QuizSolveComponent,
+    MultiChoiceQuestionComponent,
+    CompleteSentenceQuestionComponent,
     EmailVerificationComponent
   ],
   imports: [

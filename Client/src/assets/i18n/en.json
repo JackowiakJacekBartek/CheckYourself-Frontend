@@ -64,6 +64,12 @@
     "Experience": "Experience",
     "Education": "Education",
     "Courses and certificates": "Courses and certificates"
+  },
+  "Quiz": {
+    "What will be the output": "What will be the output",
+    "Next Question": "Next Question",
+    "Question": "Question",
+    "Complete Sentence": "Complete Sentence"
   }
 }
 

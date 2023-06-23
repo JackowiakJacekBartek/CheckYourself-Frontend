@@ -37,6 +37,7 @@ export class LoginPopUpComponent {
 
   loginButton(loginUserFormGroup: FormGroup) {
     this.popUp.closeAll();
+    this.route.navigateByUrl('user-page')
     if (loginUserFormGroup.status === VALID) {
 
       let model: AccountLogin = {
@@ -54,7 +55,6 @@ export class LoginPopUpComponent {
         if (res.errorMessage === "Konta nie znaleziono.") {
           this.toastrService.error(this.translate.instant('Login.No such account')); 
         }
-        this.route.navigateByUrl('user-page')
       });
     }
   }
