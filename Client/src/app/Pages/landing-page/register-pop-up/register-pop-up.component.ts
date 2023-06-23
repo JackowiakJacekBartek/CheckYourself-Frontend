@@ -14,6 +14,7 @@ import { AccountRegister } from 'src/app/shared/models/accounts';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 import { SHA256 } from 'crypto-js';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-pop-up',
@@ -34,6 +35,7 @@ export class RegisterPopUpComponent implements OnDestroy {
     private loginRegisterService: LoginRegisterService,
     private toastrService: ToastrService,
     private translate: TranslateService,
+    private route: Router
     ) {
     this.registerUserFormGroup = this._formBuilder.group({
       name: ['', [Validators.required, this.noSpaceAllowed]],
@@ -97,8 +99,14 @@ export class RegisterPopUpComponent implements OnDestroy {
         }
       });
     }
-    else
+    else {
       console.log('Invalid na formularzu');
+    }
+
+    if(formGroup.value.nip === '' || formGroup.value.nip) {
+      this.popUp.closeAll();
+      this.route.navigateByUrl('company-page')
+    }   
   }
 
   success() {
