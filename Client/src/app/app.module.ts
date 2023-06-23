@@ -55,7 +55,6 @@ import { EmailVerificationComponent } from './Pages/email-verification/email-ver
     CompanyPageComponent,
     EditUserProfileComponent,
     EditUserProfileGridComponent,
-    companyPage_jobsOffers,
     EmailVerificationComponent
   ],
   imports: [
