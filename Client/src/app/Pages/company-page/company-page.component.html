@@ -1,6 +1,6 @@
 <link rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
-<main class="main">
+<main class="page">
   <div class="wrapperUser">
     <div class="sections">
       <div class="header">
@@ -13,21 +13,131 @@
               <span>{{company.longName}}</span>
             </div>
             <div class="icons">
-              <mat-icon svgIcon="fb"></mat-icon>
-              <mat-icon svgIcon="twitter"></mat-icon>
-              <mat-icon svgIcon="instagram"></mat-icon>
-              <mat-icon svgIcon="linkedin"></mat-icon>
+              <mat-icon class="add" svgIcon="fb"></mat-icon>
+              <mat-icon class="add" svgIcon="twitter"></mat-icon>
+              <mat-icon class="add" svgIcon="instagram"></mat-icon>
+              <mat-icon class="add" svgIcon="linkedin"></mat-icon>
             </div>
           </div>
         </div>
         <div class="right">
-          <mat-icon svgIcon="pin"></mat-icon><span>Warszawa</span>
-          <mat-icon svgIcon="user"></mat-icon><span>5000+</span>
+          <mat-icon svgIcon="pin"></mat-icon>
+          <span>Warszawa</span>
+          <mat-icon svgIcon="user"></mat-icon>
+          <span>5000+</span>
         </div>
       </div>
       <div class="about">
         <p>Cześć tu {{company.name}}!</p>
         <p>{{company.about}}</p>
+      </div>
+      <div class="technology">
+        <p>Technologie:</p>
+        <mat-grid-list cols="8" rowHeight="50px">
+          <mat-grid-tile *ngFor="let icon of technology">
+            <mat-icon matTooltip="{{icon.replace('icon','')}}" svgIcon="{{icon}}"></mat-icon>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-icon class="add" svgIcon="addtool"></mat-icon>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+      <div class="tools">
+        <p>Narzędzia:</p>
+        <mat-grid-list cols="8" rowHeight="50px">
+          <mat-grid-tile *ngFor="let icon of tools">
+            <mat-icon matTooltip="{{icon.replace('icon','')}}" svgIcon="{{icon}}"></mat-icon>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-icon class="add" svgIcon="addtool"></mat-icon>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+      <div class="platforms">
+        <p>Platformy:</p>
+        <mat-grid-list cols="8" rowHeight="50px">
+          <mat-grid-tile *ngFor="let icon of platforms">
+            <mat-icon matTooltip="{{icon.replace('icon','')}}" svgIcon="{{icon}}"></mat-icon>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-icon class="add" svgIcon="addtool"></mat-icon>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+      <div class="gallery">
+        <p>Zdjęcia i filmy:</p>
+        <div>
+          <div style="display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px;">
+            <div class="container" style="grid-column: span 4; grid-row: span 2;">
+              <img src="background.png" style="width: 100%; height: 100%; object-fit: cover;"/>
+            </div>
+
+            <div class="container" style="grid-column: span 2; grid-row: span 1;">
+              <img src="background.png" style="width: 100%; height: 100%; object-fit: cover;"/>
+            </div>
+
+            <div class="container" style="grid-column: span 2; grid-row: span 1;">
+              <img src="background.png" style="width: 100%; height: 100%; object-fit: cover;"/>
+            </div>
+            <div class="container" style="grid-column: span 2; grid-row: span 1;">
+              <img src="background.png" style="width: 100%; height: 100%; object-fit: cover;"/>
+            </div>
+
+            <div class="container" style="grid-column: span 2; grid-row: span 1;">
+              <img src="background.png" style="width: 100%; height: 100%; object-fit: cover;"/>
+            </div>
+
+            <div class="container" style="grid-column: span 3; grid-row: span 1;">
+              <img src="background.png" style="width: 100%; height: 100%; object-fit: cover;"/>
+            </div>
+            <div class="container" style="grid-column: span 3; grid-row: span 1;">
+              <img src="background.png" style="width: 100%; height: 100%; object-fit: cover;"/>
+            </div>
+            <div class="container" style="grid-column: span 2; grid-row: span 1;">
+              <img src="background.png" style="width: 100%; height: 100%; object-fit: cover;"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="map">
+        <p>Nasze biura:</p>
+        <div style="overflow:hidden;max-width:100%;width:100%;height:400px;">
+          <div id="my-map-canvas" style="height:100%; width:100%;max-width:100%;">
+            <iframe style="height:100%;width:100%;border:0;" frameborder="0"
+                    src="https://www.google.com/maps/embed/v1/place?q=Młynarska+120,+Warszawa,+Poland&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe>
+          </div>
+          <style>#my-map-canvas img {
+            max-width: none !important;
+            background: none !important;
+            font-size: inherit;
+            font-weight: inherit;
+          }</style>
+        </div>
+      </div>
+      <div class="jobOffers">
+        <p>Oferty pracy:</p>
+        <div class="offer" *ngFor="let offer of offers">
+          <div class="left">
+            <img class="avatar" alt="avatar" src="{{company.image}}">
+            <div class="companyName">
+              <div class="jobName">
+                <span>{{offer.jobName}}</span>
+              </div>
+              <div>
+                <span>{{company.longName}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="center">
+            <div class="tags">
+              <div class="tag" *ngFor="let tag of offer.tags">{{tag}}</div>
+            </div>
+          </div>
+          <div class="right">
+            <p>Poznań</p>
+            <button mat-button class="applyButton"><span>Aplikuj</span></button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

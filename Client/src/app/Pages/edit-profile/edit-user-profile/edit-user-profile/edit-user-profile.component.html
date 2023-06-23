@@ -1,6 +1,6 @@
 <link rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
-<main>
+<main class="page">
   <div class="wrapperUser">
     <div class="sections">
       <div class="header">
@@ -11,7 +11,7 @@
         <span>
             <mat-form-field class="name-surname">
                 <mat-label>Imię</mat-label>
-                <input matInput 
+                <input matInput
                     placeholder="Imię"
                     [value]="person.name ? person.name : ''"
                 >
@@ -19,7 +19,7 @@
             <mat-form-field class="name-surname">
                 <mat-label>Nazwisko</mat-label>
                 <input matInput
-                    placeholder="Nazwisko" 
+                    placeholder="Nazwisko"
                     [value]="person.surname ? person.surname : ''"
                 >
             </mat-form-field>
@@ -38,7 +38,7 @@
         <div class="tag" *ngFor="let tag of tags">#{{tag.text}}</div>
       </div> -->
       <div class="info">
-        <app-edit-user-profile-grid 
+        <app-edit-user-profile-grid
           [data]="informations"
         >
         </app-edit-user-profile-grid>
@@ -51,11 +51,11 @@
         <span>
             <mat-form-field class="about-me-field" appearance="outline">
                 <!-- czy na pewno tu ma być 'imię' czy to po prostu placeholder na jirze -->
-                <mat-label>Placeholder</mat-label> 
-                <textarea matInput 
+                <mat-label>Placeholder</mat-label>
+                <textarea matInput
                     #aboutMe
                     maxlength="2000"
-                    type="text" 
+                    type="text"
                     placeholder="Powiedz coś o sobie"
                     [value]="person.about"
                     cdkTextareaAutosize
@@ -91,7 +91,7 @@
             <div class="add-language">
               <mat-icon class="material-icons-outlined add-button" (click)="addLang()">add_circle_outline</mat-icon>
             </div>
-          </div>   
+          </div>
       </div>
       <div class="experience">
         <div class="section">
@@ -106,7 +106,7 @@
                   <mat-label for="my-input">Nazwa stanowiska</mat-label>
                   <input matInput
                     id="my-input"
-                    class="card-input-field" 
+                    class="card-input-field"
                     placeholder="Nazwa stanowiska"
                     [value]="item.name"
                   >
@@ -121,7 +121,7 @@
                   </mat-date-range-input>
                   <mat-datepicker-toggle matIconSuffix [for]="pickerExp"></mat-datepicker-toggle>
                   <mat-date-range-picker #pickerExp></mat-date-range-picker>
-                
+
                   <mat-error *ngIf="rangeExp.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
                   <mat-error *ngIf="rangeExp.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
                 </mat-form-field>
@@ -130,12 +130,12 @@
                 <!-- *ngFor="let skillCategory of skills | keyvalue: keepOrder" -->
                 <ul class="masonryBlocks">
                   <li *ngFor="let task of item.tasks">
-                    <p>&#x2022; 
+                    <p>&#x2022;
                       <mat-form-field class="card-input">
                         <mat-label>Obowiązek</mat-label>
                         <input matInput
                           #inputField
-                          class="card-input-field" 
+                          class="card-input-field"
                           [matTooltip]="inputField.value"
                           placeholder="Obowiązek"
                           [value]="task"
@@ -165,7 +165,7 @@
               <div>
                 <mat-form-field class="card-input">
                   <mat-label>Nazwa kierunku</mat-label>
-                  <input matInput 
+                  <input matInput
                     class="card-input-field"
                     placeholder="Nazwa kierunku"
                     [value]="edu.name"
@@ -176,7 +176,7 @@
                 <mat-form-field class="card-input">
                   <mat-label>Nazwa uczelni</mat-label>
                   <input matInput
-                    class="card-input-field" 
+                    class="card-input-field"
                     placeholder="Nazwa uczelni"
                     [value]="edu.school"
                   >
@@ -201,7 +201,7 @@
                   </mat-date-range-input>
                   <mat-datepicker-toggle matIconSuffix [for]="pickerEdu"></mat-datepicker-toggle>
                   <mat-date-range-picker #pickerEdu></mat-date-range-picker>
-                
+
                   <mat-error *ngIf="rangeEdu.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
                   <mat-error *ngIf="rangeEdu.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
                 </mat-form-field>
@@ -222,7 +222,7 @@
               <div>
                 <mat-form-field class="card-input">
                   <mat-label>Nazwa certyfikatu</mat-label>
-                  <input matInput 
+                  <input matInput
                     class="card-input-field"
                     placeholder="Nazwa certyfikatu"
                     [value]="certificate.name"
@@ -233,7 +233,7 @@
                 <mat-form-field class="card-input">
                   <mat-label>Numer certyfikatu</mat-label>
                   <input matInput
-                    class="card-input-field" 
+                    class="card-input-field"
                     placeholder="Numer certyfikatu"
                     [value]="certificate.cert"
                   >
@@ -242,7 +242,7 @@
               <div>
                 <mat-form-field class="card-input">
                   <mat-label>Organizacja wydająca</mat-label>
-                  <input matInput 
+                  <input matInput
                     class="card-input-field"
                     placeholder="Organizacja wydająca"
                     [value]="certificate.org"
@@ -273,11 +273,11 @@
           <div class="other-wraper">
             <ul class="other-block">
               <li *ngFor="let org of organizations">
-                <p>&#x2022; 
+                <p>&#x2022;
                   <mat-form-field>
                     <mat-label>Organizacja</mat-label>
                     <input matInput
-                      class="card-input-field" 
+                      class="card-input-field"
                       placeholder="Organizacja"
                       [value]="org"
                     >
@@ -298,11 +298,11 @@
           <div class="other-wraper">
             <ul class="other-block">
               <li *ngFor="let skill of skills">
-                <p>&#x2022; 
+                <p>&#x2022;
                   <mat-form-field>
                     <mat-label>Umiejętność</mat-label>
                     <input matInput
-                      class="card-input-field" 
+                      class="card-input-field"
                       placeholder="Umiejętność"
                       [value]="skill"
                     >
@@ -323,11 +323,11 @@
           <div class="other-wraper">
             <ul class="other-block">
               <li *ngFor="let item of hobby">
-                <p>&#x2022; 
+                <p>&#x2022;
                   <mat-form-field>
                     <mat-label>Hobby</mat-label>
                     <input matInput
-                      class="card-input-field" 
+                      class="card-input-field"
                       placeholder="Hobby"
                       [value]="item"
                     >

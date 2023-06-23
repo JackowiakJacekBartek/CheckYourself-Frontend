@@ -55,6 +55,7 @@ import { EmailVerificationComponent } from './Pages/email-verification/email-ver
     CompanyPageComponent,
     EditUserProfileComponent,
     EditUserProfileGridComponent,
+    companyPage_jobsOffers,
     EmailVerificationComponent
   ],
   imports: [
@@ -92,7 +93,7 @@ import { EmailVerificationComponent } from './Pages/email-verification/email-ver
     MatProgressBarModule,
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: BasicInterceptorInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: BasicInterceptorInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
 })

@@ -22,7 +22,7 @@ const routes: Routes = [
     path: 'edit-userpage', component: EditUserProfileComponent, canActivate:[AuthGuard]
   },
   {
-    path: 'companypage', component: CompanyPageComponent, canActivate:[AuthGuard]
+    path: 'company-page', component: CompanyPageComponent, canActivate:[AuthGuard]
   },
   {
     path: 'email-verification/:email/:code', component: EmailVerificationComponent, canActivate:[AuthGuard]
