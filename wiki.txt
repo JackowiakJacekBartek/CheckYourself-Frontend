@@ -1,0 +1,11 @@
+http://20.13.171.179:5000
+
+http://20.13.171.179:5010/swagger/index.html
+
+Deployment: 
+
+C:\Program Files\PostgreSQL\15\data\pg_hba.conf
+host    all             all             20.13.171.179/32        trust
+
+FE: virtualka
+ng serve --host 0.0.0.0 --port 5000
