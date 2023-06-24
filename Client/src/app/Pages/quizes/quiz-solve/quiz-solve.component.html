@@ -1,0 +1,22 @@
+<div class="header">
+    <span class="header-question">{{'Quiz.Question' | translate}} 1/3</span>
+    <span class="header-time"><mat-icon class="material-icons-outlined hourglass">hourglass_top</mat-icon>2:34</span>
+</div>
+<div *ngIf="nextQuestion">
+    <app-multi-choice-question
+        [colors]="colors"
+        [mulitChoice]="mulitChoiceQuestions"
+        [questionImage]="questionImage"
+        [questionNumber]="nextQuestion"
+        (questionChanged)="onQuestionChanged($event)"
+    ></app-multi-choice-question>
+</div> 
+<div *ngIf="!nextQuestion">
+    <app-complete-sentence-question
+        [questionNumber]="nextQuestion"
+        (questionChanged)="onQuestionChanged($event)"
+    ></app-complete-sentence-question>
+</div>
+<div *ngIf="0">
+
+</div>
