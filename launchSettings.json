@@ -5,7 +5,7 @@
       "commandVersion": "1.0",
       "composeLaunchAction": "LaunchBrowser",
       "composeLaunchServiceName": "intotech.xerion.api",
-      "composeLaunchUrl": "{Scheme}://192.168.1.12:{ServicePort}/swagger",
+      "composeLaunchUrl": "{Scheme}://localhost:{ServicePort}/swagger",
       "serviceActions": {
         "intotech.xerion.api": "StartDebugging",
         "intotech.xerion.dictionaries.api": "StartDebugging",
