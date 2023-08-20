@@ -5,7 +5,7 @@ import {TranslateService} from "@ngx-translate/core";
 import {LoginPopUpComponent} from "./login-pop-up/login-pop-up.component";
 
 @Component({
-  selector: 'app-landing-page',
+  selector: 'app-landingpage',
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.scss']
 })

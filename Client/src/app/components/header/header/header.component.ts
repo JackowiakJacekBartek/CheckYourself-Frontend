@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
-import { LoginPopUpComponent } from 'src/app/Pages/landing-page/login-pop-up/login-pop-up.component';
+import { LoginPopUpComponent } from 'src/app/pages/landingpage/login-pop-up/login-pop-up.component';
 import {Router} from "@angular/router";
 import { DateAdapter } from '@angular/material/core';
 

@@ -70,5 +70,21 @@
     "Next Question": "Następne pytanie",
     "Question": "Pytanie",
     "Complete Sentence": "Uzupełnij zdania"
+  },
+  "EditUserpage": {
+    "Image uploaded": "Załadowano obraz",
+    "Place": "Miejscowość",
+    "Company Size": "Wielkość firmy",
+    "More than 5000": "Więcej niż 5000",
+    "Photos and movies": "Zdjęcia i filmy",
+    "Upload": "Przeglądaj",
+    "Our offices": "Nasze biura",
+    "Technology": "Technologie",
+    "Choose technology": "Wybierz technologie",
+    "Tools": "Narzędzia",
+    "Choose tools": "Wybierz narzędzia",
+    "Platforms": "Platformy",
+    "Choose platforms": "Wybierz platformy",
+    "Enter the address": "Wpisz adres"
   }
 }

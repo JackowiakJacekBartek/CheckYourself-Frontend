@@ -1,17 +1,5 @@
 $margin: 50px;
 
-.wrapperUser {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-top: 1%;
-  margin-bottom: 1%;
-  background-color: white;
-  min-width: 700px;
-  width: 70%;
-  border-radius: 25px;
-  padding-top: $margin;
-  padding-bottom: $margin;
-}
-
 .sections {
   width: 80%;
   margin-left: auto;
@@ -163,6 +151,7 @@ $margin: 50px;
     & .avatar {
       width: 135px;
       height: 135px;
+      border-radius: 10%;
     }
   }
 }

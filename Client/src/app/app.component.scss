@@ -77,6 +77,18 @@
   }
 }
 
+::ng-deep .wrapperUser {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 1%;
+  margin-bottom: 1%;
+  background-color: white;
+  max-width: 1200px;
+  width: 100%;
+  border-radius: 25px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
 //Background image for pages
 
 ::ng-deep .page {
@@ -88,20 +100,6 @@
   font-size: 15px;
   font-weight: 300;
   // z-index: -2;
-}
-
-::ng-deep.main:before {
-  background-image: url("../assets/images/logo.svg");
-  filter: invert(82%) sepia(1%) saturate(17%) hue-rotate(314deg) brightness(101%) contrast(85%);
-  background-size: 300px 300px;
-  transform: rotate(45deg);
-  content: "";
-  position: absolute;
-  width: 5000px;
-  height: 5000px;
-  top: -2500px;
-  left: -2500px;
-  z-index: -1;
 }
 
 ::ng-deep.mdc-text-field--filled:not(.mdc-text-field--disabled) {

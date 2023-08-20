@@ -1,15 +1,5 @@
 $margin: 50px;
 
-.wrapperUser {
-  margin-top: 1%;
-  margin-bottom: 1%;
-  background-color: white;
-  max-width: 1200px;
-  border-radius: 25px;
-  width: 100%; // zapytać angeli które lepiej wygląda to czy to niżej
-//   min-width: 70%; // widrh of the whole user profile box
-}
-
 .sections {
   width: 80%;
   margin-left: auto;
@@ -47,6 +37,11 @@ $margin: 50px;
   & .info {
     margin-top: 30px;
     font-size: 15px;
+
+    div {
+      position: absolute;
+      left: 5px;
+    }
   }
 
   & .about {
