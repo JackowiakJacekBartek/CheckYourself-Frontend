@@ -96,7 +96,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.Dictionarie
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.Dictionaries.Bll.Persistence", "Backend\Intotech.Xerion.Dictionaries\Intotech.Xerion.Dictionaries.Bll.Persistence\Intotech.Xerion.Dictionaries.Bll.Persistence.csproj", "{43DF3936-ABBE-4F67-9237-ECD3F475DC47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intotech.Xerion.ImageService.Api", "Backend\Intotech.Xerion.ImageService\Intotech.Xerion.ImageService.Api\Intotech.Xerion.ImageService.Api.csproj", "{41E4636F-4E82-4587-8E96-FC33F85D2B82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.ImageService.Api", "Backend\Intotech.Xerion.ImageService\Intotech.Xerion.ImageService.Api\Intotech.Xerion.ImageService.Api.csproj", "{41E4636F-4E82-4587-8E96-FC33F85D2B82}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{6046AA44-873A-452F-9485-403A6C1E7B44}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Common.Interfaces", "..\Intotech.Common\Intotech.Common.Interfaces\Intotech.Common.Interfaces.csproj", "{6F7F0C75-3AC6-4B5A-8AF2-0B2598C637CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -260,6 +264,14 @@ Global
 		{41E4636F-4E82-4587-8E96-FC33F85D2B82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41E4636F-4E82-4587-8E96-FC33F85D2B82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41E4636F-4E82-4587-8E96-FC33F85D2B82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6046AA44-873A-452F-9485-403A6C1E7B44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6046AA44-873A-452F-9485-403A6C1E7B44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6046AA44-873A-452F-9485-403A6C1E7B44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6046AA44-873A-452F-9485-403A6C1E7B44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F7F0C75-3AC6-4B5A-8AF2-0B2598C637CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F7F0C75-3AC6-4B5A-8AF2-0B2598C637CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F7F0C75-3AC6-4B5A-8AF2-0B2598C637CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F7F0C75-3AC6-4B5A-8AF2-0B2598C637CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -294,6 +306,7 @@ Global
 		{376E2991-1BB9-491F-B929-F92976988AEB} = {1F3F906D-6777-4170-BB05-130379C0FD51}
 		{43DF3936-ABBE-4F67-9237-ECD3F475DC47} = {1F3F906D-6777-4170-BB05-130379C0FD51}
 		{41E4636F-4E82-4587-8E96-FC33F85D2B82} = {4A7DF023-26E3-4284-B577-6CF6CA3D9403}
+		{6F7F0C75-3AC6-4B5A-8AF2-0B2598C637CE} = {851E6B87-BB63-4020-BDFE-5D3700053BA8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {37EB9609-5A62-4A1B-87D3-AE6ABEF4301C}

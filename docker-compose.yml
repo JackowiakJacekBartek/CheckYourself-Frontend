@@ -1,4 +1,5 @@
 version: '3.8'
+
 services:
   db:
     container_name: "xerion_postgres"
@@ -6,18 +7,24 @@ services:
     restart: always
     environment:
       - POSTGRES_PASSWORD=beatka
-      #- POSTGRES_DB=XerionTEST
+      #- POSTGRES_DB=XerionTEST creating db
     ports:
       - '5500:5432'
-  #db1:
-  #  container_name: "xerion_postgres2"
-  #  image: postgres
-  #  restart: always
-  #  environment:
-  #    - POSTGRES_PASSWORD=example
-  #    - POSTGRES_DB=Xerion2
-  #  ports:
-  #    - '5501:5432'
+
+  intotech.xerion.api:
+    container_name: "xerion_api"
+    image: ${DOCKER_REGISTRY-}intotechxerionapi
+    build:
+      context: .
+      dockerfile: Backend/Intotech.Xerion.Api/Dockerfile
+
+  intotech.xerion.dictionaries.api:
+    container_name: "xerion_dictionaries_api"
+    image: ${DOCKER_REGISTRY-}intotechxeriondictionariesapi
+    build:
+      context: .
+      dockerfile: Backend/Intotech.Xerion.Dictionaries/Intotech.Xerion.Dictionaries.Api/Dockerfile
+
 volumes:
   db:
     driver: local

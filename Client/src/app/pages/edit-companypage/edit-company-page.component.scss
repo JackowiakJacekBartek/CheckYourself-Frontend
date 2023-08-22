@@ -1,0 +1,168 @@
+$margin: 20px;
+
+.sections {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+
+    .left {
+      display: flex;
+
+      .companyName {
+        padding-left: 50px;
+        padding-right: 50px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        span {
+          font-size: 24px;
+        }
+
+        .icons {
+          height: 44px;
+        }
+      }
+    }
+
+    .right {
+      display: flex;
+
+      mat-form-field {
+        height: 10px;
+        margin-left: 15px;
+      }
+
+    }
+
+    & .avatar {
+      width: 135px;
+      height: 135px;
+      border-radius: 10%;
+    }
+  }
+
+  .info {
+    margin-top: $margin;
+
+    .text-inside-grid {
+      position: absolute;
+      left: 0px;
+    }
+
+    .add {
+      margin-right: 10px;
+    }
+  }
+
+  .about {
+    margin-top: $margin;
+    display: flex;
+    flex-direction: column;
+    line-height: 23px;
+
+    .about-me-field {
+      width: 100%;
+      min-height: 150px;
+    }
+  }
+
+  .techToolPlatform {
+    margin-top: $margin;
+    display: flex;
+    justify-content: space-between;
+
+    .column {
+      display: flex;
+      flex-direction: column;
+
+      span {
+        margin-bottom: 15px;
+      }
+    }
+  }
+
+  .photos {
+    margin-top: $margin;
+    display: flex;
+    flex-direction: column;
+
+    .button {
+      margin-top: 30px;
+      margin-bottom: 30px;
+      margin-left: 15px;
+
+      input[type="file"] {
+        display: none;
+      }
+
+      .custom-file-upload {
+        width: 100%;
+        background: #059E8B;
+        border-radius: 5px;
+
+        span {
+          color: white;
+          letter-spacing: 0.05rem;
+        }
+
+        cursor: pointer;
+        padding: 15px;
+      }
+
+      .custom-file-upload:hover {
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+    }
+
+    .images {
+      margin-left: 15px;
+      display: flex;
+
+      .image {
+        display: flex;
+        flex-direction: column;
+        margin-right: 15px;
+        align-items: center;
+
+        img {
+          object-fit: cover;
+        }
+
+        .mat-icon {
+          margin-top: 15px;
+          margin-bottom: 15px;
+          cursor: pointer;
+        }
+
+        mat-icon:hover {
+          color: gray;
+        }
+      }
+    }
+  }
+
+  .offices {
+    margin-top: $margin;
+
+    li:last-child {
+      list-style-type: none;
+      margin-left: 80px;
+    }
+
+    .mat-icon {
+      cursor: pointer;
+      margin-left: 80px;
+    }
+
+    mat-icon:hover {
+      color: gray;
+    }
+  }
+}

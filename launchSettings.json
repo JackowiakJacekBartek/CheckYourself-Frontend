@@ -1,0 +1,16 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "composeLaunchAction": "LaunchBrowser",
+      "composeLaunchServiceName": "intotech.xerion.api",
+      "composeLaunchUrl": "{Scheme}://localhost:{ServicePort}/swagger",
+      "serviceActions": {
+        "intotech.xerion.api": "StartDebugging",
+        "intotech.xerion.dictionaries.api": "StartDebugging",
+        "db": "StartWithoutDebugging"
+      }
+    }
+  }
+}

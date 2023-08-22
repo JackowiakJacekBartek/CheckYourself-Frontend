@@ -64,6 +64,28 @@
     "Experience": "Experience",
     "Education": "Education",
     "Courses and certificates": "Courses and certificates"
+  },
+  "Quiz": {
+    "What will be the output": "What will be the output",
+    "Next Question": "Next Question",
+    "Question": "Question",
+    "Complete Sentence": "Complete Sentence"
+  },
+  "EditUserpage": {
+    "Image uploaded": "Image uploaded",
+    "Place": "Place",
+    "Company Size": "Company Size",
+    "More than 5000": "More than 5000",
+    "Photos and movies": "Photos and movies",
+    "Upload": "Upload",
+    "Our offices": "Our offices",
+    "Technology": "Technology",
+    "Choose technology": "Choose technology",
+    "Tools": "Tools",
+    "Choose tools": "Choose tools",
+    "Platforms": "Platforms",
+    "Choose platforms": "Choose platforms",
+    "Enter the address": "Enter the address"
   }
 }
 
