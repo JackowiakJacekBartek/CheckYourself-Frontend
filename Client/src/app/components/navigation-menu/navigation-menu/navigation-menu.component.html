@@ -1,0 +1,14 @@
+<mat-sidenav-container class="container"  [hasBackdrop]="false">
+  <mat-sidenav class="sidenav" #sidenav id="sidenav" mode="over" opened="{{navMenuToggle}}" position="end">
+    <mat-nav-list>
+      <mat-list-item  routerLink="/"><span class="sidenav-list">Home</span></mat-list-item>
+      <mat-list-item routerLink="/userpage"><span class="sidenav-list">User</span></mat-list-item>
+      <mat-list-item routerLink="/companypage"><span class="sidenav-list">Company</span></mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="content">
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

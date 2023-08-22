@@ -27,6 +27,7 @@ import {
 export class AppComponent {
   title = 'Check Yourself';
   icons!: IconDto[];
+  navMenuToggle: boolean = false;
 
   constructor(private translate: TranslateService, private dateAdapter: DateAdapter<any>, public iconComponent: IconComponent) {
 
@@ -55,6 +56,10 @@ export class AppComponent {
     language ? setLanguage(language.locale) : setLanguage('en');
 
 
+  }
+
+  public sidenavClicked() {
+    this.navMenuToggle = !this.navMenuToggle;
   }
 
 }

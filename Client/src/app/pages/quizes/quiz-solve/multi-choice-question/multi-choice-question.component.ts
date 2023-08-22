@@ -10,8 +10,9 @@ export class MultiChoiceQuestionComponent implements OnInit, AfterViewInit {
 
   @Input() colors!: string[];
   @Input() mulitChoice: any;
-  @Input() questionImage: string = `${images}/no-image.svg`;
+  @Input() questionImage: string = `${images}/mockQuestion.png`;
   @Input() questionNumber: boolean = true;
+  imgPlaceholder: string = `${images}/mockQuestion.png`;
 
   @Output() questionChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 

@@ -65,3 +65,13 @@ mat-toolbar {
     background-color: #1E232B;
     height: 13%;
 }
+
+.nav-menu {
+    zoom: 0.9;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+.nav-menu:hover {
+    filter: invert(55%) sepia(98%) saturate(4756%) hue-rotate(148deg) brightness(100%);
+}

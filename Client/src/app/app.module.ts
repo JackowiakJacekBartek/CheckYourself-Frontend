@@ -45,6 +45,11 @@ import { EmailVerificationComponent } from './pages/email-verification/email-ver
 import { EditCompanyPageComponent } from './pages/edit-companypage/edit-company-page.component';
 import { JoboffersComponent } from './pages/joboffers/joboffers.component';
 import { EditJoboffersComponent } from './pages/edit-joboffers/edit-joboffers.component';
+import { NavigationMenuComponent } from './components/navigation-menu/navigation-menu/navigation-menu.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatMenuModule } from '@angular/material/menu';
+import { RouterModule } from '@angular/router';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   exports: [
@@ -70,7 +75,8 @@ import { EditJoboffersComponent } from './pages/edit-joboffers/edit-joboffers.co
     EmailVerificationComponent,
     EditCompanyPageComponent,
     JoboffersComponent,
-    EditJoboffersComponent
+    EditJoboffersComponent,
+    NavigationMenuComponent
   ],
   imports: [
     MatGridListModule,
@@ -95,8 +101,6 @@ import { EditJoboffersComponent } from './pages/edit-joboffers/edit-joboffers.co
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule,
-    MatIconModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -106,6 +110,10 @@ import { EditJoboffersComponent } from './pages/edit-joboffers/edit-joboffers.co
     }),
     ToastrModule.forRoot(),
     MatProgressBarModule,
+    MatSidenavModule,
+    MatMenuModule,
+    RouterModule,
+    MatExpansionModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: BasicInterceptorInterceptor, multi: true},

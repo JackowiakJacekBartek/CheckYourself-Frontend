@@ -14,8 +14,7 @@ import {EditJoboffersComponent} from "./pages/edit-joboffers/edit-joboffers.comp
 
 const routes: Routes = [
   {
-    // path: '', component: LandingPageComponent,
-    path: '', component: EditUserProfileComponent,
+    path: '', component: LandingPageComponent,
   },
   {
     path: 'homepage', component: HomepageComponent, canActivate:[AuthGuard]
