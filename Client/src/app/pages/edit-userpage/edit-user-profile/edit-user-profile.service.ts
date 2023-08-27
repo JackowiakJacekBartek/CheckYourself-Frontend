@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ReturnedResponse } from 'src/app/shared/models/returned-response';
 import { UserProfile } from 'src/app/shared/models/accounts';
+import { localUrl } from 'src/app/shared/constants/constants';
 
 @Injectable({ providedIn: 'root' })
 export class EditUserProfileService {
@@ -14,7 +15,7 @@ export class EditUserProfileService {
     }
 
     getUserById(id: number): Observable<ReturnedResponse<UserProfile>> {
-        return this.http.get<ReturnedResponse<UserProfile>>(`http://20.13.171.179:5010/${this.controller}/get-account-by-id?id=${id}`);
+        return this.http.get<ReturnedResponse<UserProfile>>(`${localUrl}/${this.controller}/get-account-by-id?id=${id}`);
     }
 
 }
