@@ -9,7 +9,12 @@ export interface AccountLogin {
     email: string,
     password: string,
     method: string,
-    token: string
+    // token: string
+}
+
+export interface User {
+    name: string;
+    token: string;
 }
 
 export interface UserProfile {

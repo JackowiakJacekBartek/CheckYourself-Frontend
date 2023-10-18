@@ -3,19 +3,30 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor,
-  HttpErrorResponse,
+  HttpInterceptor
 } from '@angular/common/http';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
+import { AccountService } from '../../services/user-service.service';
+import { User } from '../../models/accounts';
 
 @Injectable()
-export class BasicInterceptorInterceptor implements HttpInterceptor {
-  constructor() {}
+export class JwtInterceptor implements HttpInterceptor {
 
-  public intercept(
-    req: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
-    return next.handle(req);
+  constructor(private accountService: AccountService) {}
+
+  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    let currentUser!: User | null;
+
+    this.accountService.currentUser$.pipe(take(1)).subscribe(user => currentUser = user);
+    if (currentUser) {
+      request = request.clone({
+        setHeaders: {
+          Authorization: `Bearer ${currentUser.token}`
+        }
+      })
+    }
+
+    return next.handle(request);
   }
 }
