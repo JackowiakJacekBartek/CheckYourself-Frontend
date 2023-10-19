@@ -10,22 +10,81 @@
 
 .sidenav {
   display: flex;
-  align-items: center;
-  justify-content: center;
   width: 300px;
   background: rgba(12, 14, 17, 0.7);
   border-radius: 20px;
-  height: 90%;
+  height: 320px;
   top: 40px;
   margin-right: 20px;
   max-height: 1000px;
 
-  &-list {
+  &-end-item {
+    display: flex;
+    justify-content: center;
     color: white;
+  }
+
+  &-list {
+    &-item {
+      padding-top: 5px;
+      height: auto !important;
+      min-height: 40px;
+
+      &-quiz {
+
+        &-closed {
+          margin-top: 79px;
+          margin-bottom: -79px;
+        }
+      }
+    }
+  }
+
+  &-item {
+    display: flex;
+    height: auto;
+    color: white;
+
+    &-quiz {
+      display: flex;
+      color: white;
+    }
+    &-open {
+      margin-top: 20px;
+      margin-bottom: -20px;
+      background-color: red;
+    }
+    &-closed {
+      margin-top: 20px;
+      margin-bottom: -20px;
+      background-color: aqua;
+    }
   }
 }
 
 .content {
   flex-grow: 1;
   overflow: auto;
+}
+
+.icon {
+  margin-right: 10px;
+}
+
+.text {
+  margin-bottom: 5px;
+  font-weight: bold;
+
+  &-bottom {
+    display: flex;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.quiz-options {
+  height: auto;
+  padding-top: 5px;
+  min-height: 25px;
 }
