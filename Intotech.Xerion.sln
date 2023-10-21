@@ -102,6 +102,14 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Common.Interfaces", "..\Intotech.Common\Intotech.Common.Interfaces\Intotech.Common.Interfaces.csproj", "{6F7F0C75-3AC6-4B5A-8AF2-0B2598C637CE}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.Database", "Backend\Intotech.Xerion.Database\Intotech.Xerion.Database.csproj", "{04F2654B-1696-4598-B147-7C9EB25B46CC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.Bll.Manager", "Backend\Intotech.Xerion.Dictionaries\Intotech.Xerion.Bll.Manager\Intotech.Xerion.Bll.Manager.csproj", "{9E3B048F-ED58-4815-84D9-A89179B183B3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.Bll.Manager.Interfaces", "Backend\Intotech.Xerion.Dictionaries\Intotech.Xerion.Bll.Manager.Interfaces\Intotech.Xerion.Bll.Manager.Interfaces.csproj", "{08D614E0-3551-4335-BE16-01E9D37DEED5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intotech.Xerion.Dictionaries.Database", "Backend\Intotech.Xerion.Dictionaries\Intotech.Xerion.Dictionaries.Database\Intotech.Xerion.Dictionaries.Database.csproj", "{905975EA-93D0-40E4-B6C5-70EC443034C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -272,6 +280,22 @@ Global
 		{6F7F0C75-3AC6-4B5A-8AF2-0B2598C637CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F7F0C75-3AC6-4B5A-8AF2-0B2598C637CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F7F0C75-3AC6-4B5A-8AF2-0B2598C637CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04F2654B-1696-4598-B147-7C9EB25B46CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04F2654B-1696-4598-B147-7C9EB25B46CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04F2654B-1696-4598-B147-7C9EB25B46CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04F2654B-1696-4598-B147-7C9EB25B46CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E3B048F-ED58-4815-84D9-A89179B183B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E3B048F-ED58-4815-84D9-A89179B183B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E3B048F-ED58-4815-84D9-A89179B183B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E3B048F-ED58-4815-84D9-A89179B183B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08D614E0-3551-4335-BE16-01E9D37DEED5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08D614E0-3551-4335-BE16-01E9D37DEED5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08D614E0-3551-4335-BE16-01E9D37DEED5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08D614E0-3551-4335-BE16-01E9D37DEED5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{905975EA-93D0-40E4-B6C5-70EC443034C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{905975EA-93D0-40E4-B6C5-70EC443034C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{905975EA-93D0-40E4-B6C5-70EC443034C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{905975EA-93D0-40E4-B6C5-70EC443034C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -307,6 +331,9 @@ Global
 		{43DF3936-ABBE-4F67-9237-ECD3F475DC47} = {1F3F906D-6777-4170-BB05-130379C0FD51}
 		{41E4636F-4E82-4587-8E96-FC33F85D2B82} = {4A7DF023-26E3-4284-B577-6CF6CA3D9403}
 		{6F7F0C75-3AC6-4B5A-8AF2-0B2598C637CE} = {851E6B87-BB63-4020-BDFE-5D3700053BA8}
+		{9E3B048F-ED58-4815-84D9-A89179B183B3} = {1F3F906D-6777-4170-BB05-130379C0FD51}
+		{08D614E0-3551-4335-BE16-01E9D37DEED5} = {1F3F906D-6777-4170-BB05-130379C0FD51}
+		{905975EA-93D0-40E4-B6C5-70EC443034C8} = {1F3F906D-6777-4170-BB05-130379C0FD51}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {37EB9609-5A62-4A1B-87D3-AE6ABEF4301C}
