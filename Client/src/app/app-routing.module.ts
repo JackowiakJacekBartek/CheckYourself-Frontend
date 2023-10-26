@@ -11,6 +11,7 @@ import { EmailVerificationComponent } from './pages/email-verification/email-ver
 import {EditCompanyPageComponent} from "./pages/edit-companypage/edit-company-page.component";
 import {JoboffersComponent} from "./pages/joboffers/joboffers.component";
 import {EditJoboffersComponent} from "./pages/edit-joboffers/edit-joboffers.component";
+import {ListjoboffersComponent} from "./pages/listjoboffers/listjoboffers.component";
 
 const routes: Routes = [
   {
@@ -42,6 +43,9 @@ const routes: Routes = [
   },
   {
     path: 'edit-joboffers', component: EditJoboffersComponent, canActivate:[AuthGuard]
+  },
+  {
+    path: 'listjoboffers', component: ListjoboffersComponent, canActivate:[AuthGuard]
   },
   {
     path: '**', redirectTo: '',

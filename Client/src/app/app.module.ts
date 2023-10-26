@@ -50,6 +50,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { ListjoboffersComponent } from './pages/listjoboffers/listjoboffers.component';
 
 @NgModule({
   exports: [
@@ -76,7 +77,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     EditCompanyPageComponent,
     JoboffersComponent,
     EditJoboffersComponent,
-    NavigationMenuComponent
+    NavigationMenuComponent,
+    ListjoboffersComponent
   ],
   imports: [
     MatGridListModule,

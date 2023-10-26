@@ -50,6 +50,17 @@ export class EditCompanyPageComponent {
     }
   }
 
+  selectAvatar(event) {
+    if (event.target.files) {
+      let reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (event: any) => {
+        this.toastrService.warning(this.translate.instant('EditUserpage.Image uploaded'));
+        this.company.image = event.target.result;
+      }
+    }
+  }
+
   deleteFile(imgIndex: number) {
     this.imagesUrl.splice(imgIndex, 1);
   }

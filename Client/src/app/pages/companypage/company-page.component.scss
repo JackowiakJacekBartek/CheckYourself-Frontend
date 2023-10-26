@@ -5,89 +5,6 @@ $margin: 50px;
   margin-left: auto;
   margin-right: auto;
 
-  .jobOffers {
-    .offer {
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      border-radius: 12px;
-      padding: 10px;
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 30px;
-
-      .left {
-        display: flex;
-
-        .avatar {
-          width: 75px;
-          height: 75px;
-        }
-
-        .companyName {
-          padding-left: 20px;
-          padding-right: 20px;
-          display: flex;
-          justify-content: center;
-          flex-direction: column;
-
-          .jobName {
-            color: #C00A68B2;
-            font-weight: bold;
-          }
-        }
-      }
-
-      .center {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        .tags {
-          display: flex;
-          zoom: 0.8;
-
-          .tag {
-            border-style: solid;
-            margin-right: 20px;
-            padding: 10px;
-            color: #C00A68B2;
-          }
-
-          .tag:last-child {
-            margin-right: 0px;
-          }
-        }
-      }
-
-      .right {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        margin-right: 20px;
-
-        button {
-          width: 136px;
-          height: 30px;
-          background-color: #C00A68B2;
-          border: none;
-          color: white;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          margin: 4px 2px;
-          cursor: pointer;
-          border-radius: 4px;
-          font-size: 12px;
-        }
-
-        p {
-          margin: 5px 0 0;
-          display: flex;
-          justify-content: center;
-        }
-      }
-    }
-  }
-
   .about {
     margin-top: $margin;
 
@@ -96,7 +13,7 @@ $margin: 50px;
     }
   }
 
-  .technology, .tools, .platforms, .gallery, .map, .jobOffers {
+  .technology, .tools, .platforms, .gallery, .map {
     margin-top: $margin;
 
     p {
@@ -104,8 +21,8 @@ $margin: 50px;
     }
   }
 
-  .jobOffers p {
-    font-weight: bold;
+  .map {
+    margin-bottom: $margin;
   }
 
   & .header {
@@ -153,16 +70,6 @@ $margin: 50px;
       height: 135px;
       border-radius: 10%;
     }
-  }
-}
-
-.applyButton {
-  background: #C00A68B2 !important;
-  margin-bottom: 1rem !important;
-  font-weight: 400 !important;
-
-  span {
-    color: white;
   }
 }
 

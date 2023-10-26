@@ -13,6 +13,16 @@ $margin: 20px;
     .left {
       display: flex;
 
+      .logo {
+        input[type="file"] {
+          display: none;
+        }
+      }
+
+      .custom-file-upload:hover {
+        cursor: pointer;
+      }
+
       .companyName {
         padding-left: 50px;
         padding-right: 50px;

@@ -6,7 +6,10 @@
       <div class="header">
         <div class="left">
           <div class="logo">
-            <img class="avatar" alt="avatar" src="{{company.image}}">
+            <label class="custom-file-upload">
+              <input type="file" (change)="selectAvatar($event)"/>
+              <img class="avatar" alt="avatar" src="{{company.image}}">
+            </label>
           </div>
           <div class="companyName">
             <div class="title">
