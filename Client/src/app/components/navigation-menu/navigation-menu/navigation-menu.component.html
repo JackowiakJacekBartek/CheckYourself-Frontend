@@ -1,9 +1,48 @@
 <mat-sidenav-container class="container"  [hasBackdrop]="false">
   <mat-sidenav class="sidenav" #sidenav id="sidenav" mode="over" opened="{{navMenuToggle}}" position="end">
-    <mat-nav-list>
-      <mat-list-item  routerLink="/"><span class="sidenav-list">Home</span></mat-list-item>
-      <mat-list-item routerLink="/userpage"><span class="sidenav-list">User</span></mat-list-item>
-      <mat-list-item routerLink="/companypage"><span class="sidenav-list">Company</span></mat-list-item>
+    <mat-nav-list class="sidenav-list">
+      
+      <mat-list-item class="sidenav-list-item" routerLink="/userpage">
+        <span class="sidenav-item">
+          <span class="icon"><mat-icon class="material-icons-outlined">account_circle</mat-icon></span> 
+          <span class="text">Mój profil</span>
+        </span>
+      </mat-list-item>
+
+      <mat-list-item class="sidenav-list-item" routerLink="/joboffers">
+        <span class="sidenav-item">
+          <span class="icon"><mat-icon class="material-icons-outlined">work_outline</mat-icon></span>
+          <span class="text">Oferty pracy</span>
+        </span>
+      </mat-list-item>
+
+      <mat-list-item class="sidenav-list-item">
+        <span class="sidenav-item-quiz">
+          <div class="icon" (click)="activateDropdown()"><mat-icon class="material-icons-outlined" >{{getArrow()}}</mat-icon></div>
+          <span>
+            <span class="text">Quizzy</span>
+            <div *ngIf="isQuizDropdownActive">
+              <div class="quiz-options">Dodaj quizz</div>
+              <div class="quiz-options">Zarządzaj quizzami</div>
+              <div class="quiz-options">Zakup quizzy</div>
+            </div>
+          </span>
+        </span>
+      </mat-list-item>
+
+      <mat-list-item [class.sidenav-list-item-quiz-closed]="!isQuizDropdownActive" routerLink="/userpage"
+        >
+        <span class="sidenav-end-item">
+          <span class="text-bottom">Zobacz skalę oceniającą</span>
+        </span>
+      </mat-list-item>
+
+      <mat-list-item [class.sidenav-list-item-quiz-closed]="!isQuizDropdownActive" routerLink="/userpage">
+        <span class="sidenav-end-item">
+          <span class="text-bottom">Wyloguj się</span>
+        </span>
+      </mat-list-item>
+
     </mat-nav-list>
   </mat-sidenav>
 

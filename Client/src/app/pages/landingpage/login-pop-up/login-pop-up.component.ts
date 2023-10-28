@@ -9,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { SHA256 } from 'crypto-js';
+import { AccountService } from 'src/app/shared/services/user-service.service';
 
 @Component({
   selector: 'app-login-pop-up',
@@ -25,7 +26,8 @@ export class LoginPopUpComponent {
     private loginRegisterService: LoginRegisterService,
     private toastrService: ToastrService,
     private route: Router,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private accountService: AccountService
     ) {
     this.loginUserFormGroup = this.formBuilder.group({
       name: ['', [Validators.required]],
@@ -44,10 +46,10 @@ export class LoginPopUpComponent {
         email: this.fUser['name'].value,
         password: SHA256(this.fUser['password'].value).toString(),
         method: "XerionTest",
-        token: ""
+        // token: ""
       };
       
-      this.loginRegisterService.Login(model).subscribe(res => {
+      this.accountService.login(model).subscribe(res => {
         console.log(res.errorMessage)    
         if (res.errorMessage === "E-mail jest niepotwierdzony.") {
           this.toastrService.warning(this.translate.instant('Login.E-mail is not verified'));

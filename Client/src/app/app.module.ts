@@ -29,7 +29,7 @@ import { FooterComponent } from './components/footer/footer/footer.component';
 import { UserPageComponent } from "./pages/userpage/user-page.component";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
-import {BasicInterceptorInterceptor} from "./shared/helpers/interceptors/basic-interceptor.interceptor";
+import { JwtInterceptor} from "./shared/helpers/interceptors/basic-interceptor.interceptor";
 import { CompanyPageComponent } from './pages/companypage/company-page.component';
 import { EditUserProfileComponent } from './pages/edit-userpage/edit-user-profile/edit-user-profile/edit-user-profile.component';
 import { MatSelectModule } from '@angular/material/select';
@@ -118,7 +118,7 @@ import { ListjoboffersComponent } from './pages/listjoboffers/listjoboffers.comp
     MatExpansionModule,
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: BasicInterceptorInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
 })
