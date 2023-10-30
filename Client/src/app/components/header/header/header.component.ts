@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { LoginPopUpComponent } from 'src/app/pages/landingpage/login-pop-up/login-pop-up.component';
 import {Router} from "@angular/router";
 import { DateAdapter } from '@angular/material/core';
-import { images } from 'src/app/shared/constants/constants';
+import { icons } from 'src/app/shared/constants/constants';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +15,7 @@ export class HeaderComponent {
 
   @Output() public emitAction: EventEmitter<any> = new  EventEmitter<any>()
 
-  navImg: string = `${images}/nav-menu.svg`
+  navImg: string = `${icons}/nav-menu.svg`
 
   constructor(
     private popUp: MatDialog,
