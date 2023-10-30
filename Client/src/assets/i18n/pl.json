@@ -86,5 +86,15 @@
     "Platforms": "Platformy",
     "Choose platforms": "Wybierz platformy",
     "Enter the address": "Wpisz adres"
+  },
+  "NavigationMenu": {
+    "My profile": "Mój profil",
+    "Job offers": "Oferty pracy",
+    "Quizzes": "Quizzy",
+    "Add quizz": "Dodaj quizz",
+    "Manage quizzes": "Zarządzaj quizzami",
+    "Purchase quizz": "Zakup quizzy",
+    "Check grading scale": "Zobacz skalę oceniającą",
+    "Logout": "Wyloguj się"
   }
 }

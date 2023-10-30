@@ -5,14 +5,18 @@
       <mat-list-item class="sidenav-list-item" routerLink="/userpage">
         <span class="sidenav-item">
           <span class="icon"><mat-icon class="material-icons-outlined">account_circle</mat-icon></span> 
-          <span class="text">Mój profil</span>
+          <span class="text">
+            {{'NavigationMenu.My profile' | translate}}
+          </span>
         </span>
       </mat-list-item>
 
       <mat-list-item class="sidenav-list-item" routerLink="/joboffers">
         <span class="sidenav-item">
           <span class="icon"><mat-icon class="material-icons-outlined">work_outline</mat-icon></span>
-          <span class="text">Oferty pracy</span>
+          <span class="text">
+            {{'NavigationMenu.Job offers' | translate}}
+          </span>
         </span>
       </mat-list-item>
 
@@ -20,11 +24,19 @@
         <span class="sidenav-item-quiz">
           <div class="icon" (click)="activateDropdown()"><mat-icon class="material-icons-outlined" >{{getArrow()}}</mat-icon></div>
           <span>
-            <span class="text">Quizzy</span>
+            <span class="text">
+              {{'NavigationMenu.Quizzes' | translate}}
+            </span>
             <div *ngIf="isQuizDropdownActive">
-              <div class="quiz-options">Dodaj quizz</div>
-              <div class="quiz-options">Zarządzaj quizzami</div>
-              <div class="quiz-options">Zakup quizzy</div>
+              <div class="quiz-options">
+                {{'NavigationMenu.Add quizz' | translate}}
+              </div>
+              <div class="quiz-options">
+                {{'NavigationMenu.Manage quizzes' | translate}}
+              </div>
+              <div class="quiz-options">
+                {{'NavigationMenu.Purchase quizz' | translate}}
+              </div>
             </div>
           </span>
         </span>
@@ -33,13 +45,17 @@
       <mat-list-item [class.sidenav-list-item-quiz-closed]="!isQuizDropdownActive" routerLink="/userpage"
         >
         <span class="sidenav-end-item">
-          <span class="text-bottom">Zobacz skalę oceniającą</span>
+          <span class="text-bottom">
+            {{'NavigationMenu.Check grading scale' | translate}}
+          </span>
         </span>
       </mat-list-item>
 
       <mat-list-item [class.sidenav-list-item-quiz-closed]="!isQuizDropdownActive" routerLink="/userpage">
         <span class="sidenav-end-item">
-          <span class="text-bottom">Wyloguj się</span>
+          <span class="text-bottom">
+            {{'NavigationMenu.Logout' | translate}}
+          </span>
         </span>
       </mat-list-item>
 
