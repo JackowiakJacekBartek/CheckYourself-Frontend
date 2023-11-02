@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject, Subject, empty } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { localUrl } from '../constants/constants';
-import { AccountLogin, User } from '../models/accounts';
+import { AccountLogin, AccountLoginSuccess, User } from '../models/accounts';
 import { ReturnedResponse } from '../models/returned-response';
 
 @Injectable({
@@ -22,7 +22,7 @@ export class AccountService {
 
     public login(
         model: AccountLogin
-    ): Observable<ReturnedResponse<AccountLogin>> {
+    ): Observable<ReturnedResponse<AccountLoginSuccess>> {
         return this.http
         .post<ReturnedResponse<AccountLogin>>(
             `${localUrl}/${this.controller}/login`,

@@ -120,10 +120,11 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit {
   data!: UserProfile;
 
 
-  userProfileEditForm: FormGroup = this.formBuilder.group({
+  public userProfileEditForm: FormGroup = this.formBuilder.group({
     name: ['', [Validators.required]],
     surname: ['', [Validators.required]],
-    aboutMe: ['', [Validators.required]],
+    position: ['', [Validators.required]],
+    aboutMe: ['', []],
     languages: ['', [Validators.required]],
     expirience: ['', [Validators.required]],
     education: ['', [Validators.required]],
@@ -133,11 +134,11 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit {
     hobby: ['', [Validators.required]],
   });
 
-  userProfileEditGridForm: FormGroup = this.formBuilder.group({
+  public userProfileEditGridForm: FormGroup = this.formBuilder.group({
     adress: ['', [Validators.required]],
     phone: ['', [Validators.required]],
-    salaryMin: ['', [Validators.required]],
-    salaryMax: ['', [Validators.required]],
+    salarymin: [0, [Validators.required]],
+    salarymax: [0, [Validators.required]],
     email: ['', [Validators.required]],
     dateOfBirth: ['', [Validators.required]],
     workingTime: ['', [Validators.required]],
@@ -159,9 +160,12 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit {
     this.editUserProfileService.getUserById(1).subscribe(res => {
       this.data = res.methodResult;
       console.log(this.data)
+      if(!this.data) return;
       this.userProfileEditForm.patchValue({
         name: this.data.account.name,
-        surname: this.data.account.surname
+        surname: this.data.account.surname,
+        position: 'Backend',
+        aboutMe: this.data.account.description
       });
     })
     this.ref.detectChanges();

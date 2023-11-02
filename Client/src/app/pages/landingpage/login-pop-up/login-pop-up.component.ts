@@ -32,6 +32,7 @@ export class LoginPopUpComponent {
     this.loginUserFormGroup = this.formBuilder.group({
       name: ['', [Validators.required]],
       password: ['', [Validators.required]],
+      token: ['', []],
     });
   }
 
@@ -46,11 +47,13 @@ export class LoginPopUpComponent {
         email: this.fUser['name'].value,
         password: SHA256(this.fUser['password'].value).toString(),
         method: "XerionTest",
-        // token: ""
+        token: ""
       };
       
       this.accountService.login(model).subscribe(res => {
-        console.log(res.errorMessage)    
+        console.log(res.errorMessage)
+        console.log(res.methodResult)
+        console.log(res.methodResult.accessToken)
         if (res.errorMessage === "E-mail jest niepotwierdzony.") {
           this.toastrService.warning(this.translate.instant('Login.E-mail is not verified'));
         }

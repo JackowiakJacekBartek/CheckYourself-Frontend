@@ -21,18 +21,16 @@ constructor(private ref: ChangeDetectorRef) { }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log("bup")
-    console.log(this.data?.account.email)
-    // if(!this.data) return;
-
+    console.log(this.data?.account.birthdate)
+    if(!this.data) return;
     this.form.setValue({
       email: this.data?.account.email ? this.data.account.email : '',
       adress: 'Borowo 21',
       phone: this.data?.account.phoneNumber ? this.data?.account.phoneNumber : '000-000-000',
-      salaryMin: 25,
-      salaryMax: 50,
-      dateOfBirth: this.data?.account.birthDate ? this.data.account.birthDate : new Date('03-10-1999'),
-      workingTime: 'Pełen Etat',
+      salarymin: this.data?.account.salarymin,
+      salarymax: this.data?.account.salarymax,
+      dateOfBirth: this.data?.account.birthdate ? new Date(this.data.account.birthdate) : new Date('03-10-1999'),
+      workingTime: 'Full time',
       gitHub: 'git',
       linkedIn: 'linked',
       site: 'strona',

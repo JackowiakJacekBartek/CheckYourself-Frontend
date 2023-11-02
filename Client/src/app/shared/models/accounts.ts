@@ -9,7 +9,22 @@ export interface AccountLogin {
     email: string,
     password: string,
     method: string,
-    // token: string
+    token: string
+}
+
+export interface AccountLoginSuccess {
+    accessToken: string,
+    allowsnotifications: boolean,
+    email: string,
+    emailconfirmed: boolean,
+    firstName: string,
+    id: number,
+    lastName: string,
+    name: string,
+    refreshtoken: string,
+    refreshtokenvalid: string,
+    rolename: string,
+    surname: string
 }
 
 export interface User {
@@ -26,7 +41,7 @@ export interface UserProfile {
 
 export interface Account {
     allowsNotifications: boolean,
-    birthDate: Date,
+    birthdate: Date,
     createDate: Date,
     description?: string,
     email: string,
@@ -39,8 +54,8 @@ export interface Account {
     phoneNumber?: string,
     refreshToken: string,
     refreshTokenValid: Date,
-    salaryMax: number,
-    salaryMin: number,
+    salarymax: number,
+    salarymin: number,
     surname: string,
     verificationCode: number,
     verificationCodeValid: Date

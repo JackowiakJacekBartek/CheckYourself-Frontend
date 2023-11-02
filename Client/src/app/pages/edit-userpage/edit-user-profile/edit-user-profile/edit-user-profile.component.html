@@ -28,9 +28,10 @@
       <div class="profesion">
         <mat-form-field appearance="outline" class="selector">
           <mat-label>Na co aplikujesz?</mat-label>
-          <mat-select >
-            <mat-option value="one">First option</mat-option>
-            <mat-option value="two">Second option</mat-option>
+          <mat-select formControlName="position">
+            <mat-option></mat-option>
+            <mat-option value="Frontend">Frontend</mat-option>
+            <mat-option value="Backend">Backend</mat-option>
           </mat-select>
       </mat-form-field>
       </div>
@@ -49,12 +50,12 @@
         <span>
             <mat-form-field class="about-me-field" appearance="outline">
                 <!-- czy na pewno tu ma być 'imię' czy to po prostu placeholder na jirze -->
-                <mat-label>Placeholder</mat-label>
+                <mat-label>Tell us about yourself</mat-label>
                 <textarea matInput
                     #aboutMe
                     maxlength="2000"
                     type="text"
-                    placeholder="Powiedz coś o sobie"
+                    placeholder="Tell us about yourself"
                     formControlName="aboutMe"
                     cdkTextareaAutosize
                 ></textarea>
