@@ -1,9 +1,12 @@
 <main class="page">
   <div class="wrapperUser">
     <div class="sections">
-      <button mat-button class="newJobbButton" routerLink="/edit-companypage"><span>+ Dodaj nową oferte pracy</span></button>
+      <button mat-button class="newJobbButton" routerLink="/edit-joboffers"><span>+ Dodaj nową oferte pracy</span></button>
       <div class="jobOffers">
-        <div class="offer" *ngFor="let offer of offers">
+        <div class="noOffers" *ngIf="offers.length === 0">
+          <span>Brak ofert</span>
+        </div>
+        <div [@simpleFadeAnimation]="'in'" class="offer" *ngFor="let offer of offers; let i = index">
           <div class="left">
             <img class="avatar" alt="avatar" src="{{company.image}}">
             <div class="companyName">
@@ -22,7 +25,7 @@
           </div>
           <div class="right">
             <p>Poznań</p>
-            <button mat-button class="applyButton" (click)="areYouSure()"><span>Usuń</span></button>
+            <button mat-button class="applyButton" (click)="areYouSure(i)"><span>Usuń</span></button>
           </div>
         </div>
       </div>

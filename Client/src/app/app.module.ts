@@ -51,6 +51,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ListjoboffersComponent } from './pages/listjoboffers/listjoboffers.component';
+import { AreYouSurePopUpComponent } from './components/are-you-sure-pop-up/are-you-sure-pop-up.component';
 
 @NgModule({
   exports: [
@@ -78,7 +79,8 @@ import { ListjoboffersComponent } from './pages/listjoboffers/listjoboffers.comp
     JoboffersComponent,
     EditJoboffersComponent,
     NavigationMenuComponent,
-    ListjoboffersComponent
+    ListjoboffersComponent,
+    AreYouSurePopUpComponent
   ],
   imports: [
     MatGridListModule,

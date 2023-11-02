@@ -146,9 +146,9 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit {
     site: ['', [Validators.required]],
   });
 
-  
+
   constructor(
-    private ref: ChangeDetectorRef, 
+    private ref: ChangeDetectorRef,
     private editUserProfileService: EditUserProfileService,
     private formBuilder: FormBuilder
   ) { }
@@ -159,7 +159,7 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit {
     this.editUserProfileService.getUserById(1).subscribe(res => {
       this.data = res.methodResult;
       console.log(this.data)
-      this.userProfileEditForm.setValue({
+      this.userProfileEditForm.patchValue({
         name: this.data.account.name,
         surname: this.data.account.surname
       });

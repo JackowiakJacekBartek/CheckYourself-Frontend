@@ -17,7 +17,7 @@ adressOptions: string[] = ['Option 1', 'Option 2', 'Option 3'];
 constructor(private ref: ChangeDetectorRef) { }
 
   ngAfterViewInit(): void {
-    
+
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -26,7 +26,7 @@ constructor(private ref: ChangeDetectorRef) { }
     // if(!this.data) return;
 
     this.form.setValue({
-      email: this.data?.account.email ? this.data.account.email : '',
+      email: this.data?.account.email ? this.data.account.email : 'no email',
       adress: 'Borowo 21',
       phone: this.data?.account.phoneNumber ? this.data?.account.phoneNumber : '000-000-000',
       salaryMin: 25,
@@ -42,7 +42,7 @@ constructor(private ref: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     // this.gridData = this.data;
-    
+
   }
 
 }
