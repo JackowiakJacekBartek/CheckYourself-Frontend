@@ -126,12 +126,11 @@
 }
 
 .content-container {
-  flex: 1; /* Allow the content to stretch and fill available space */
+  flex: 1;
   display: flex;
   flex-direction: row;
 }
 
-/* Add styling to your header, navigation menu, and footer as needed */
 .app-footer {
   margin-top: auto; /* Push the footer to the bottom */
 }

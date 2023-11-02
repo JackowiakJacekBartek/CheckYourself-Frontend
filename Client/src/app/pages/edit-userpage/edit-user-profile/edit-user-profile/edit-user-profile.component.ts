@@ -159,7 +159,7 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit {
     this.editUserProfileService.getUserById(1).subscribe(res => {
       this.data = res.methodResult;
       console.log(this.data)
-      this.userProfileEditForm.setValue({
+      this.userProfileEditForm.patchValue({
         name: this.data.account.name,
         surname: this.data.account.surname
       });
@@ -167,15 +167,11 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit {
     this.ref.detectChanges();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {}
+  ngOnChanges(changes: SimpleChanges): void { }
 
   keepOrder = (a: any, b: any) => {
     return a;
   };
-
-  click () {
-   console.log(this.userProfileEditGridForm.value)
-  }
 
   updateColor(progress: any) {
     if (progress < 50) {
