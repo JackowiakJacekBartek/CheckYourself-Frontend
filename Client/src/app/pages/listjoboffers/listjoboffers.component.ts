@@ -1,11 +1,30 @@
 import {Component} from '@angular/core';
-import {LoginPopUpComponent} from "../landingpage/login-pop-up/login-pop-up.component";
 import {MatDialog} from "@angular/material/dialog";
+import {AreYouSurePopUpComponent} from "../../components/are-you-sure-pop-up/are-you-sure-pop-up.component";
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-listjoboffers',
   templateUrl: './listjoboffers.component.html',
-  styleUrls: ['./listjoboffers.component.scss']
+  styleUrls: ['./listjoboffers.component.scss'],
+  animations: [
+    // the fade-in/fade-out animation.
+    trigger('simpleFadeAnimation', [
+
+      // the "in" style determines the "resting" state of the element when it is visible.
+      state('in', style({opacity: 1})),
+
+      // fade in when created. this could also be written as transition('void => *')
+      transition(':enter', [
+        style({opacity: 0}),
+        animate(200)
+      ]),
+
+      // fade out when destroyed. this could also be written as transition('void => *')
+      transition(':leave',
+        animate(400, style({opacity: 0})))
+    ])
+  ]
 })
 export class ListjoboffersComponent {
 
@@ -47,7 +66,12 @@ export class ListjoboffersComponent {
     }
   ];
 
-  areYouSure() {
-    this.popUp.open(LoginPopUpComponent);
+  areYouSure(offerIndex: number) {
+    const dialogRef = this.popUp.open(AreYouSurePopUpComponent);
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result == 'tak') {
+        this.offers.splice(offerIndex, 1);
+      }
+    });
   }
 }

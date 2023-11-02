@@ -147,9 +147,9 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit {
     site: ['', [Validators.required]],
   });
 
-  
+
   constructor(
-    private ref: ChangeDetectorRef, 
+    private ref: ChangeDetectorRef,
     private editUserProfileService: EditUserProfileService,
     private formBuilder: FormBuilder
   ) { }
