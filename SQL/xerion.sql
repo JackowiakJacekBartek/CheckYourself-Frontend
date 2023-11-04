@@ -103,6 +103,8 @@ create table AccountCoursesCertificates
 	idOrganizationIssuingCertificate int not null,
 	certificateIssueDate timestamp not null,
 	expirationDate timestamp,
+	certificateName text not null, -- dirty
+	OrganizationIssuingCertificate text not null, -- dirty
 	createdAt timestamp default now()
 );
 
@@ -115,6 +117,9 @@ create table AccountEducations
 	idAccount int references Accounts(id) not null,
 	dateStart timestamp not null,
 	dateEnd timestamp,
+	professionName text not null, -- dirty
+	universityName text not null, -- dirty
+	professionalTitle text not null, -- dirty
 	createdAt timestamp default now()
 );
 
@@ -135,6 +140,7 @@ create table AccountWorkExperiences
 	idAccount int references Accounts(id) not null,
 	dateStart timestamp not null,
 	dateEnd timestamp,
+	workCompany text not null, -- dirty
 	createdAt timestamp default now()
 );
 
