@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { localUrl } from '../constants/constants';
 import { AccountLogin, AccountLoginSuccess, User } from '../models/accounts';
 import { ReturnedResponse } from '../models/returned-response';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ import { ReturnedResponse } from '../models/returned-response';
 export class AccountService {
     baseUrl = localUrl;
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private route: Router) {}
 
     private get controller() {
         return 'api/Account';
@@ -55,5 +56,6 @@ export class AccountService {
         localStorage.removeItem('userID')
         localStorage.removeItem('accessToken')
         localStorage.removeItem('refreshToken')
+        this.route.navigateByUrl('/');
     }
 }

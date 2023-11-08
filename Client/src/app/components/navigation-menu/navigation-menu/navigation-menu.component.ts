@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { AccountService } from 'src/app/shared/services/user-service.service';
 
 @Component({
   selector: 'app-navigation-menu',
@@ -12,12 +13,16 @@ export class NavigationMenuComponent {
   public isQuizDropdownActive: boolean = false;
   public returnLink: string = `/userpage/${localStorage.getItem('userID')}`
 
-  constructor() { }
+  constructor(private accountService: AccountService) { }
 
   public activateDropdown() {
     this.isQuizDropdownActive = !this.isQuizDropdownActive;
   }
   public getArrow() {
     return this.isQuizDropdownActive ? 'keyboard_arrow_up_outline' : 'keyboard_arrow_down_outline';
+  }
+
+  public logout() {
+    this.accountService.logout();
   }
 }
