@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, Renderer2 } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-navigation-menu',
@@ -9,7 +9,8 @@ export class NavigationMenuComponent {
 
   @Input() navMenuToggle;
 
-  isQuizDropdownActive: boolean = false;
+  public isQuizDropdownActive: boolean = false;
+  public returnLink: string = `/userpage/${localStorage.getItem('userID')}`
 
   constructor() { }
 
