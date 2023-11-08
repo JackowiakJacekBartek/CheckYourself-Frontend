@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Router } from '@angular/router';
 import { AccountService } from '../../services/user-service.service';
 
 
@@ -7,10 +7,8 @@ import { AccountService } from '../../services/user-service.service';
 export class AuthGuard {
     constructor(private router: Router, private accountService: AccountService) {}
 
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-      this.accountService.guardCheck();
-      const user = true;
-      if (user) {
+    canActivate() {
+      if (localStorage.getItem('accessToken')) {
         return true;
       }
 

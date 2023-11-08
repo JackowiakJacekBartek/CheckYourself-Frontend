@@ -4,6 +4,11 @@
   <div class="wrapperUser">
     <form [formGroup]="userProfileEditForm" class="sections">
       <div class="header">
+        <a class="return-button" matTooltip="{{'UserPage.Return to profile' | translate}}">
+          <button mat-raised-button type="button" routerLink="{{returnLink}}" color="accent">
+            {{'UserPage.Return' | translate}}
+          </button>
+        </a>
         <span *ngIf="0" class="avatar-circle">
             <img class="avatar-image" alt="avatar" src="assets/icons/no-image.svg">
         </span>
@@ -49,7 +54,6 @@
         </div>
         <span>
             <mat-form-field class="about-me-field" appearance="outline">
-                <!-- czy na pewno tu ma być 'imię' czy to po prostu placeholder na jirze -->
                 <mat-label>Tell us about yourself</mat-label>
                 <textarea matInput
                     #aboutMe

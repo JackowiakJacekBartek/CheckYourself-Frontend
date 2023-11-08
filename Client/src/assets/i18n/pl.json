@@ -63,7 +63,10 @@
     "Skills": "Umiejętności",
     "Experience": "Doświadczenie",
     "Education": "Wykształcenie",
-    "Courses and certificates": "Kursy i certyfikaty"
+    "Courses and certificates": "Kursy i certyfikaty",
+    "Edit profile": "Edytuj profil",
+    "Return": "Wróć",
+    "Return to profile": "Wróć do profilu"
   },
   "Quiz": {
     "What will be the output": "Jaki będzie output w poniższym przykładzie",

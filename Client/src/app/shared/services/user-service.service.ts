@@ -11,8 +11,6 @@ import { ReturnedResponse } from '../models/returned-response';
 })
 export class AccountService {
     baseUrl = localUrl;
-    private currentUserSource = new ReplaySubject<User | null>(1);
-    currentUser$ = this.currentUserSource.asObservable();
 
     constructor(private http: HttpClient) {}
 
@@ -32,22 +30,11 @@ export class AccountService {
             map((response: any) => {
             const user = response;
             if (user) {
-                this.setCurrentUser(user);
+                this.setCurrentUser(user.methodResult);
             }
             return response;
             })
         );
-    }
-
-    public guardCheck() {
-        console.log("he he")
-        this.currentUser$.subscribe(res => {
-            if (res) {
-                console.log(true)
-            } else {
-                console.log(false)
-            }
-        })
     }
 
     public register(model: any) {
@@ -56,23 +43,17 @@ export class AccountService {
             `${localUrl}/${this.controller}/register`,
             model
         )
-        .pipe(
-            map((user: any) => {
-            if (user) {
-                this.setCurrentUser(user);
-            }
-            return user;
-            })
-        );
     }
 
-    public setCurrentUser(user: User) {
-        localStorage.setItem('user', JSON.stringify(user));
-        this.currentUserSource.next(user);
+    public setCurrentUser(user: AccountLoginSuccess) {
+        localStorage.setItem('userID', `${user.id}`);
+        localStorage.setItem('accessToken', `${user.accessToken}`);
+        localStorage.setItem('refreshToken', `${user.refreshtoken}`);
     }
 
     public logout() {
-        localStorage.removeItem('user');
-        this.currentUserSource.next(null);
+        localStorage.removeItem('userID')
+        localStorage.removeItem('accessToken')
+        localStorage.removeItem('refreshToken')
     }
 }

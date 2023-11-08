@@ -1,14 +1,15 @@
-import { AfterViewInit, ChangeDetectorRef, Component, OnChanges, SimpleChanges } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditUserProfileService } from '../edit-user-profile.service';
 import { UserProfile } from 'src/app/shared/models/accounts';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-user-profile',
   templateUrl: './edit-user-profile.component.html',
   styleUrls: ['./edit-user-profile.component.scss'],
 })
-export class EditUserProfileComponent implements OnChanges, AfterViewInit {
+export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnInit {
   rangeExp = new FormGroup({
     start: new FormControl<Date | null>(null),
     end: new FormControl<Date | null>(null),
@@ -147,17 +148,24 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit {
     site: ['', [Validators.required]],
   });
 
+  public currentUserID: number = +this.route.snapshot.params['id'];
+  public returnLink: string = `/userpage/${this.currentUserID}`
 
   constructor(
     private ref: ChangeDetectorRef,
     private editUserProfileService: EditUserProfileService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
+  ngOnInit(): void {
+    !(this.currentUserID === +localStorage.getItem('userID')!) && this.router.navigate([`/userpage/${localStorage.getItem('userID')}`]); //if user tries to change ID in url
+  }
 
   ngAfterViewInit(): void {
     this.ref.detectChanges();
-    this.editUserProfileService.getUserById(1).subscribe(res => {
+    this.editUserProfileService.getUserById(this.currentUserID).subscribe(res => {
       this.data = res.methodResult;
       console.log(this.data)
       if(!this.data) return;

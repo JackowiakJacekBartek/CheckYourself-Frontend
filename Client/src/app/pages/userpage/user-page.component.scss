@@ -72,6 +72,14 @@ $margin: 50px;
   }
 }
 
+.edit-button {
+  display: flex;
+  margin-left: 100%;
+  margin-top: -5%;
+  margin-bottom: 5%;
+  cursor: pointer;
+}  
+
 .sectionHeader {
   margin-bottom: 10px;
   display: flex;

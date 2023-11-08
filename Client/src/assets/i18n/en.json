@@ -63,7 +63,10 @@
     "Skills": "Skills",
     "Experience": "Experience",
     "Education": "Education",
-    "Courses and certificates": "Courses and certificates"
+    "Courses and certificates": "Courses and certificates",
+    "Edit profile": "Edit profile",
+    "Return": "Return",
+    "Return to profile": "Return to profile"
   },
   "Quiz": {
     "What will be the output": "What will be the output",

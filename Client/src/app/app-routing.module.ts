@@ -21,10 +21,10 @@ const routes: Routes = [
     path: 'homepage', component: HomepageComponent, canActivate:[AuthGuard]
   },
   {
-    path: 'userpage', component: UserPageComponent, canActivate:[AuthGuard]
+    path: 'userpage/:id', component: UserPageComponent, canActivate:[AuthGuard]
   },
   {
-    path: 'edit-userpage', component: EditUserProfileComponent, canActivate:[AuthGuard]
+    path: 'userpage/:id/edit', component: EditUserProfileComponent, canActivate:[AuthGuard]
   },
   {
     path: 'companypage', component: CompanyPageComponent, canActivate:[AuthGuard]

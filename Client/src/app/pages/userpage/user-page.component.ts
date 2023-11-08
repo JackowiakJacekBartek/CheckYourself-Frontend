@@ -1,11 +1,12 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-userpage',
   templateUrl: './user-page.component.html',
   styleUrls: ['./user-page.component.scss']
 })
-export class UserPageComponent {
+export class UserPageComponent implements OnInit {
 
   person = {
     "name": "Mariusz Nowakowski",
@@ -94,11 +95,20 @@ export class UserPageComponent {
     }
   ];
 
-  keepOrder = (a: any, b: any) => {
+  public currentUserID: string = this.route.snapshot.params['id'];
+  public editLink: string = `/userpage/${this.currentUserID}/edit`;
+  public showEditButton: boolean = (+this.currentUserID === +localStorage.getItem('userID')!);
+
+  constructor(private route: ActivatedRoute) { }
+
+  ngOnInit(): void {
+  }
+  
+  public keepOrder = (a: any, b: any) => {
     return a;
   }
 
-  updateColor(progress: any) {
+  public updateColor(progress: any) {
     if (progress < 50) {
       return 'warn';
     } else if (progress < 80) {

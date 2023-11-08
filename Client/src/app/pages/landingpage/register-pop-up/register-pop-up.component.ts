@@ -98,6 +98,7 @@ export class RegisterPopUpComponent implements OnDestroy {
           this.toastrService.success(this.translate.instant('Login.Registered successfully'))
         }
       });
+      this.popUp.closeAll();
     }
     else {
       console.log('Invalid na formularzu');
