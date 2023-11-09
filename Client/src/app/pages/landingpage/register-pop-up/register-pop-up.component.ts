@@ -15,6 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 import { SHA256 } from 'crypto-js';
 import { Router } from '@angular/router';
+import { AccountService } from 'src/app/shared/services/user-service.service';
 
 @Component({
   selector: 'app-register-pop-up',
@@ -32,7 +33,7 @@ export class RegisterPopUpComponent implements OnDestroy {
     private _formBuilder: FormBuilder,
     private _snackBar: MatSnackBar,
     private popUp: MatDialog,
-    private loginRegisterService: LoginRegisterService,
+    private accountService: AccountService,
     private toastrService: ToastrService,
     private translate: TranslateService,
     private route: Router
@@ -92,8 +93,9 @@ export class RegisterPopUpComponent implements OnDestroy {
         password: SHA256(this.fUser['password'].value).toString()
       };
 
-      this.loginRegisterService.Register(model).subscribe(res => {
+      this.accountService.register(model).subscribe(res => {
         console.log(res.errorMessage)
+        console.log(res)
         if(res.isSuccess) {
           this.toastrService.success(this.translate.instant('Login.Registered successfully'))
         }

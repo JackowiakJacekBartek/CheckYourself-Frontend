@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AccountService } from 'src/app/shared/services/user-service.service';
 
 @Component({
@@ -9,9 +9,11 @@ import { AccountService } from 'src/app/shared/services/user-service.service';
 export class NavigationMenuComponent {
 
   @Input() navMenuToggle;
+  @Input() userID;
+
+  @Output() navMenuToggleChange = new EventEmitter<boolean>();
 
   public isQuizDropdownActive: boolean = false;
-  public returnLink: string = `/userpage/${localStorage.getItem('userID')}`
 
   constructor(private accountService: AccountService) { }
 
@@ -24,5 +26,10 @@ export class NavigationMenuComponent {
 
   public logout() {
     this.accountService.logout();
+    this.closeMenu();
+  }
+
+  public closeMenu() {
+    this.navMenuToggleChange.emit(false)
   }
 }
