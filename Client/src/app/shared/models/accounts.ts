@@ -5,6 +5,13 @@ export interface AccountRegister {
     password: string;
 }
 
+export interface CompanyRegister {
+  nip: string;
+  name: string;
+  email: string;
+  password: string;
+}
+
 export interface AccountLogin {
     email: string,
     password: string,

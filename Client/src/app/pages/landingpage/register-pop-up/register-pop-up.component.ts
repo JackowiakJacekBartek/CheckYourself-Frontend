@@ -10,7 +10,7 @@ import { INVALID, PASSWORD_LENGHT, VALID } from 'src/app/shared/constants/forms'
 import {LoginPopUpComponent} from "../login-pop-up/login-pop-up.component";
 import {MatDialog} from "@angular/material/dialog";
 import { LoginRegisterService } from '../account.service';
-import { AccountRegister } from 'src/app/shared/models/accounts';
+import {AccountRegister, CompanyRegister} from 'src/app/shared/models/accounts';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 import { SHA256 } from 'crypto-js';
@@ -29,8 +29,8 @@ export class RegisterPopUpComponent implements OnDestroy {
   registerCompanyFormGroup: FormGroup;
 
   constructor(
-    private _formBuilder: FormBuilder, 
-    private _snackBar: MatSnackBar, 
+    private _formBuilder: FormBuilder,
+    private _snackBar: MatSnackBar,
     private popUp: MatDialog,
     private loginRegisterService: LoginRegisterService,
     private toastrService: ToastrService,
@@ -103,11 +103,32 @@ export class RegisterPopUpComponent implements OnDestroy {
     else {
       console.log('Invalid na formularzu');
     }
+  }
 
-    if(formGroup.value.nip === '' || formGroup.value.nip) {
+  registerButtonCompany(formGroup: FormGroup) {
+    if (formGroup.get('privacyCheckbox')?.status == INVALID) {
+      console.log('Polityka niezaznaczona');
+      this.openSnackBar('Uwaga! W celu rejestracji należy zaakceptować regulamin wraz z polityką ochrony danych osobowych.');
+    } else if (formGroup.status === VALID) {
+
+      let companyModel: CompanyRegister = {
+        nip: this.fCompany['nip'].value,
+        name: this.fCompany['nameCompany'].value,
+        email: this.fCompany['email'].value,
+        password: SHA256(this.fCompany['password'].value).toString()
+      };
+
+      this.loginRegisterService.CompanyRegister(companyModel).subscribe(response => {
+        console.log(response)
+        if(response.isSuccess) {
+          this.toastrService.success(this.translate.instant('Login.Registered successfully'))
+        }
+      });
       this.popUp.closeAll();
-      this.route.navigateByUrl('company-page')
-    }   
+    }
+    else {
+      console.log('Invalid na formularzu');
+    }
   }
 
   success() {
