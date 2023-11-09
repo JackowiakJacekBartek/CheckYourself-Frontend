@@ -1,9 +1,9 @@
-<mat-sidenav-container class="container"  [hasBackdrop]="false">
+<mat-sidenav-container class="container" [hasBackdrop]="false">
 
   <mat-sidenav class="sidenav" #sidenav id="sidenav" mode="over" opened="{{navMenuToggle}}" position="end">
     <mat-nav-list class="sidenav-list">
 
-      <mat-list-item class="sidenav-list-item" routerLink="{{returnLink}}">
+      <mat-list-item class="sidenav-list-item" routerLink="/userpage/{{userID}}" (click)="closeMenu()">
         <span class="sidenav-item">
           <span class="icon"><mat-icon class="material-icons-outlined">account_circle</mat-icon></span>
           <span class="text">
@@ -12,7 +12,7 @@
         </span>
       </mat-list-item>
 
-      <mat-list-item class="sidenav-list-item" routerLink="/joboffers">
+      <mat-list-item class="sidenav-list-item" routerLink="/joboffers" (click)="closeMenu()">
         <span class="sidenav-item">
           <span class="icon"><mat-icon class="material-icons-outlined">work_outline</mat-icon></span>
           <span class="text">
@@ -25,17 +25,17 @@
         <span class="sidenav-item-quiz">
           <div class="icon" (click)="activateDropdown()"><mat-icon class="material-icons-outlined" >{{getArrow()}}</mat-icon></div>
           <span>
-            <span class="text" routerLink="/quiz">
+            <span class="text" routerLink="/quiz" (click)="closeMenu()">
               {{'NavigationMenu.Quizzes' | translate}}
             </span>
             <div *ngIf="isQuizDropdownActive">
-              <div class="quiz-options">
+              <div class="quiz-options" (click)="closeMenu()">
                 {{'NavigationMenu.Add quizz' | translate}}
               </div>
-              <div class="quiz-options">
+              <div class="quiz-options" (click)="closeMenu()">
                 {{'NavigationMenu.Manage quizzes' | translate}}
               </div>
-              <div class="quiz-options">
+              <div class="quiz-options" (click)="closeMenu()">
                 {{'NavigationMenu.Purchase quizz' | translate}}
               </div>
             </div>
@@ -43,8 +43,7 @@
         </span>
       </mat-list-item>
 
-      <mat-list-item [class.sidenav-list-item-quiz-closed]="!isQuizDropdownActive" routerLink=""
-        >
+      <mat-list-item [class.sidenav-list-item-quiz-closed]="!isQuizDropdownActive" routerLink="" (click)="closeMenu()">
         <span class="sidenav-end-item">
           <span class="text-bottom">
             {{'NavigationMenu.Check grading scale' | translate}}

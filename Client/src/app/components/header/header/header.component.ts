@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { LoginPopUpComponent } from 'src/app/pages/landingpage/login-pop-up/login-pop-up.component';
@@ -13,9 +13,12 @@ import { icons } from 'src/app/shared/constants/constants';
 })
 export class HeaderComponent {
 
+  @Input() public userID;
+
   @Output() public emitAction: EventEmitter<any> = new  EventEmitter<any>()
 
   navImg: string = `${icons}/nav-menu.svg`
+  localStorage = localStorage;
 
   constructor(
     private popUp: MatDialog,

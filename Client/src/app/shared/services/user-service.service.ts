@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject, Subject, empty } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { localUrl } from '../constants/constants';
-import { AccountLogin, AccountLoginSuccess, User } from '../models/accounts';
+import { AccountLogin, AccountLoginSuccess, AccountRegister, User } from '../models/accounts';
 import { ReturnedResponse } from '../models/returned-response';
 import { Router } from '@angular/router';
 
@@ -38,18 +38,18 @@ export class AccountService {
         );
     }
 
-    public register(model: any) {
+    public register(model: AccountRegister) {
         return this.http
-        .post<ReturnedResponse<AccountLogin>>(
+        .post<ReturnedResponse<AccountRegister>>(
             `${localUrl}/${this.controller}/register`,
             model
         )
     }
 
     public setCurrentUser(user: AccountLoginSuccess) {
-        localStorage.setItem('userID', `${user.id}`);
-        localStorage.setItem('accessToken', `${user.accessToken}`);
-        localStorage.setItem('refreshToken', `${user.refreshtoken}`);
+        localStorage.setItem('userID', `${user?.id}`);
+        localStorage.setItem('accessToken', `${user?.accessToken}`);
+        localStorage.setItem('refreshToken', `${user?.refreshtoken}`);
     }
 
     public logout() {

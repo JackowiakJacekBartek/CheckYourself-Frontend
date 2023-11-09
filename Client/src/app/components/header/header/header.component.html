@@ -13,7 +13,7 @@
             <input type="image" src="../../../assets/icons/avatar.svg" class="filter-avatar" alt="avatar" />
         </div>
         <div>
-            <input id="navMenuId" type="image" src="{{navImg}}" class="nav-menu" alt="nav-menu" (click)="navMenuToggle()"/>
+            <input *ngIf="localStorage.getItem('userID')" id="navMenuId" type="image" src="{{navImg}}" class="nav-menu" alt="nav-menu" (click)="navMenuToggle()"/>
         </div>
     </div>
 </mat-toolbar>
