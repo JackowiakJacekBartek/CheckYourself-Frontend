@@ -9,7 +9,6 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { INVALID, PASSWORD_LENGHT, VALID } from 'src/app/shared/constants/forms';
 import {LoginPopUpComponent} from "../login-pop-up/login-pop-up.component";
 import {MatDialog} from "@angular/material/dialog";
-import { LoginRegisterService } from '../account.service';
 import {AccountRegister, CompanyRegister} from 'src/app/shared/models/accounts';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
@@ -80,6 +79,23 @@ export class RegisterPopUpComponent implements OnDestroy {
     }
   }
 
+  registerMessages(res : any) {
+    if (res.errorMessage === "Potwierdź proszę rejestrację swojego konta Check Yourself.") {
+      this.toastrService.warning(this.translate.instant('Login.E-mail is not verified'));
+    }
+    if (res.errorMessage === "Konto istnieje.") {
+      this.toastrService.warning(this.translate.instant('Login.Account exists'));
+    }
+    if(res.errorCode == 1) {
+      this.toastrService.success(this.translate.instant('Login.Registered successfully'))
+    }
+    if(res.errorCode == 3) {
+      this.toastrService.success(this.translate.instant('Login.Successfully logged in'))
+      this.popUp.closeAll();
+    }
+
+  }
+
   registerButton(formGroup: FormGroup) {
     if (formGroup.get('privacyCheckbox')?.status == INVALID) {
       console.log('Polityka niezaznaczona');
@@ -96,11 +112,8 @@ export class RegisterPopUpComponent implements OnDestroy {
       this.accountService.register(model).subscribe(res => {
         console.log(res.errorMessage)
         console.log(res)
-        if(res.isSuccess) {
-          this.toastrService.success(this.translate.instant('Login.Registered successfully'))
-        }
+        this.registerMessages(res);
       });
-      this.popUp.closeAll();
     }
     else {
       console.log('Invalid na formularzu');
@@ -120,13 +133,10 @@ export class RegisterPopUpComponent implements OnDestroy {
         password: SHA256(this.fCompany['password'].value).toString()
       };
 
-      this.loginRegisterService.CompanyRegister(companyModel).subscribe(response => {
-        console.log(response)
-        if(response.isSuccess) {
-          this.toastrService.success(this.translate.instant('Login.Registered successfully'))
-        }
+      this.accountService.CompanyRegister(companyModel).subscribe(res => {
+        console.log(res)
+        this.registerMessages(res);
       });
-      this.popUp.closeAll();
     }
     else {
       console.log('Invalid na formularzu');

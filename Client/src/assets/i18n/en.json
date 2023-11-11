@@ -33,6 +33,7 @@
     "User": "User",
     "Company": "Company",
     "Name": "Name",
+    "Email": "Email",
     "Surname": "Surname",
     "Name of Company": "Name of Company",
     "TIN": "TIN",
@@ -54,9 +55,12 @@
     "Wrong email": "Wrong email",
     "Space not allowed": "Space not allowed" ,
     "I accept protection policy": "I accept the regulation along with the personal data protection policy",
-    "Registered successfully": "Registered successfully",
+    "Registered successfully": "Registered successfully. Confirm Email",
     "E-mail is not verified": "E-mail is not confirmed",
-    "No such account": "No such account"
+    "No such account": "No such account",
+    "Account exists": "Account exists, wrong password",
+    "Successfully logged in": "Successfully logged in",
+    "Wrong password": "Wrong password"
   },
   "UserPage": {
     "About me": "About me",

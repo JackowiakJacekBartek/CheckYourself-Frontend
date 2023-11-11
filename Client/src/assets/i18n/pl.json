@@ -33,6 +33,7 @@
     "User": "Użytkownik",
     "Company": "Firma",
     "Name": "Imię",
+    "Email": "Email",
     "Surname": "Nazwisko",
     "Name of Company": "Nazwa firmy",
     "TIN": "NIP",
@@ -54,9 +55,12 @@
     "Wrong email": "Nieprawidłowy email",
     "Space not allowed": "Spacja niedozwolona" ,
     "I accept protection policy": "Akceptuje regulamin wraz z polityką ochrony danych osobowych",
-    "Registered successfully": "Zarejestrowano pomyślnie",
+    "Registered successfully": "Zarejestrowano pomyślnie. Potwierdź meila",
     "E-mail is not verified": "E-mail nie jest zweryfikowany",
-    "No such account": "Konto nie istnieje"
+    "No such account": "Konto nie istnieje",
+    "Account exists": "Konto istnieje. Złe hasło",
+    "Successfully logged in": "Zalogowano pomyślnie",
+    "Wrong password": "Złe hasło"
   },
   "UserPage": {
     "About me": "O mnie",

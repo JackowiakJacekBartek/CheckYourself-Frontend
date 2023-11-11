@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject, Subject, empty } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { localUrl } from '../constants/constants';
-import { AccountLogin, AccountLoginSuccess, AccountRegister, User } from '../models/accounts';
+import { AccountLogin, AccountLoginSuccess, AccountRegister, CompanyRegister } from '../models/accounts';
 import { ReturnedResponse } from '../models/returned-response';
 import { Router } from '@angular/router';
 
@@ -44,6 +44,19 @@ export class AccountService {
             `${localUrl}/${this.controller}/register`,
             model
         )
+          .pipe(
+            map((response: any) => {
+              const user = response;
+              if (user) {
+                this.setCurrentUser(user.methodResult);
+              }
+              return response;
+            })
+          );
+    }
+
+    public CompanyRegister(model: CompanyRegister): Observable<ReturnedResponse<CompanyRegister>> {
+      return this.http.post<ReturnedResponse<CompanyRegister>>(`${localUrl}/${this.controller}/register-company`, model);
     }
 
     public setCurrentUser(user: AccountLoginSuccess) {
