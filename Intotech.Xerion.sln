@@ -108,7 +108,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.Bll.Manager
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.Bll.Manager.Interfaces", "Backend\Intotech.Xerion.Dictionaries\Intotech.Xerion.Bll.Manager.Interfaces\Intotech.Xerion.Bll.Manager.Interfaces.csproj", "{08D614E0-3551-4335-BE16-01E9D37DEED5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intotech.Xerion.Dictionaries.Database", "Backend\Intotech.Xerion.Dictionaries\Intotech.Xerion.Dictionaries.Database\Intotech.Xerion.Dictionaries.Database.csproj", "{905975EA-93D0-40E4-B6C5-70EC443034C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.Dictionaries.Database", "Backend\Intotech.Xerion.Dictionaries\Intotech.Xerion.Dictionaries.Database\Intotech.Xerion.Dictionaries.Database.csproj", "{905975EA-93D0-40E4-B6C5-70EC443034C8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.Companies.Bll.Interfaces", "Backend\Intotech.Xerion.Companies\Intotech.Xerion.Companies.Bll.Interfaces\Intotech.Xerion.Companies.Bll.Interfaces.csproj", "{CD425DFF-5B96-43FC-9113-F3483FA48B76}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.Companies.Bll", "Backend\Intotech.Xerion.Companies\Intotech.Xerion.Companies.Bll\Intotech.Xerion.Companies.Bll.csproj", "{52D961F7-F022-45A1-9BED-E297D0BCB836}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.Companies.Bll.Persistence.Interfaces", "Backend\Intotech.Xerion.Companies\Intotech.Xerion.Companies.Bll.Persistence.Interfaces\Intotech.Xerion.Companies.Bll.Persistence.Interfaces.csproj", "{EC05495E-6D2E-43F8-8A0B-F7AAFE368199}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.Companies.Bll.Persistence", "Backend\Intotech.Xerion.Companies\Intotech.Xerion.Companies.Bll.Persistence\Intotech.Xerion.Companies.Bll.Persistence.csproj", "{98781D83-570B-412D-A0E6-B87C5270AEBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intotech.Xerion.Companies.Database", "Backend\Intotech.Xerion.Companies\Intotech.Xerion.Companies.Database\Intotech.Xerion.Companies.Database.csproj", "{1CC19111-F2D1-429E-A685-DBE8B14228EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -296,6 +306,26 @@ Global
 		{905975EA-93D0-40E4-B6C5-70EC443034C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{905975EA-93D0-40E4-B6C5-70EC443034C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{905975EA-93D0-40E4-B6C5-70EC443034C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD425DFF-5B96-43FC-9113-F3483FA48B76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD425DFF-5B96-43FC-9113-F3483FA48B76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD425DFF-5B96-43FC-9113-F3483FA48B76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD425DFF-5B96-43FC-9113-F3483FA48B76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52D961F7-F022-45A1-9BED-E297D0BCB836}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52D961F7-F022-45A1-9BED-E297D0BCB836}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52D961F7-F022-45A1-9BED-E297D0BCB836}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52D961F7-F022-45A1-9BED-E297D0BCB836}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC05495E-6D2E-43F8-8A0B-F7AAFE368199}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC05495E-6D2E-43F8-8A0B-F7AAFE368199}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC05495E-6D2E-43F8-8A0B-F7AAFE368199}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC05495E-6D2E-43F8-8A0B-F7AAFE368199}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98781D83-570B-412D-A0E6-B87C5270AEBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98781D83-570B-412D-A0E6-B87C5270AEBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98781D83-570B-412D-A0E6-B87C5270AEBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98781D83-570B-412D-A0E6-B87C5270AEBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CC19111-F2D1-429E-A685-DBE8B14228EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CC19111-F2D1-429E-A685-DBE8B14228EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CC19111-F2D1-429E-A685-DBE8B14228EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CC19111-F2D1-429E-A685-DBE8B14228EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -334,6 +364,11 @@ Global
 		{9E3B048F-ED58-4815-84D9-A89179B183B3} = {1F3F906D-6777-4170-BB05-130379C0FD51}
 		{08D614E0-3551-4335-BE16-01E9D37DEED5} = {1F3F906D-6777-4170-BB05-130379C0FD51}
 		{905975EA-93D0-40E4-B6C5-70EC443034C8} = {1F3F906D-6777-4170-BB05-130379C0FD51}
+		{CD425DFF-5B96-43FC-9113-F3483FA48B76} = {837E60F0-2611-4068-9B41-EE508E668B2E}
+		{52D961F7-F022-45A1-9BED-E297D0BCB836} = {837E60F0-2611-4068-9B41-EE508E668B2E}
+		{EC05495E-6D2E-43F8-8A0B-F7AAFE368199} = {837E60F0-2611-4068-9B41-EE508E668B2E}
+		{98781D83-570B-412D-A0E6-B87C5270AEBF} = {837E60F0-2611-4068-9B41-EE508E668B2E}
+		{1CC19111-F2D1-429E-A685-DBE8B14228EE} = {837E60F0-2611-4068-9B41-EE508E668B2E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {37EB9609-5A62-4A1B-87D3-AE6ABEF4301C}
