@@ -8,6 +8,7 @@
           <button mat-raised-button type="button" routerLink="{{returnLink}}" color="accent">
             {{'UserPage.Return' | translate}}
           </button>
+          <button  mat-raised-button type="button" (click)="save()" color="warn">Save</button>
         </a>
         <span *ngIf="0" class="avatar-circle">
             <img class="avatar-image" alt="avatar" src="assets/icons/no-image.svg">
@@ -76,18 +77,18 @@
             <div *ngFor="let lang of languages">
               <mat-form-field appearance="outline" class="masonryHolder-language">
                 <mat-label>Wybierz język</mat-label>
-                <mat-select [(value)]="lang.language">
+                <mat-select formControlName="languages">
                     <mat-option></mat-option>
-                    <mat-option [value]="lang.language">{{lang.language}}</mat-option>
-                    <mat-option value="two">Second option</mat-option>
+                    <mat-option *ngFor="let adress of languages" [value]="adress.language">{{adress.language}}</mat-option>
+                    <!-- <mat-option value="Polish">Polski</mat-option> -->
                   </mat-select>
               </mat-form-field>
               <mat-form-field appearance="outline" class="masonryHolder-level">
                 <mat-label>Wybierz poziom</mat-label>
-                <mat-select [(value)]="lang.skill">
+                <mat-select formControlName="languages">
                     <mat-option></mat-option>
-                    <mat-option [value]="lang.skill">{{getSkillLevel(lang.skill)}}</mat-option>
-                    <mat-option value="two">Second option</mat-option>
+                    <mat-option value="100">100</mat-option>
+                    <mat-option value="80">80</mat-option>
                   </mat-select>
               </mat-form-field>
             </div>

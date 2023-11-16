@@ -12,7 +12,20 @@ export class EditUserProfileGridComponent implements OnInit, OnChanges, AfterVie
 @Input() form!: FormGroup;
 @Input() data!: UserProfile;
 
-adressOptions: string[] = ['Option 1', 'Option 2', 'Option 3'];
+public adressOptions: string[] = ['Option 1', 'Option 2', 'Option 3'];
+
+languages = [
+  {
+    id: 1,
+    language: 'Polski',
+    skill: 100
+  },
+  {
+    id: 2,
+    language: 'Angielski',
+    skill: 80
+  },
+];
 
 constructor(private ref: ChangeDetectorRef) { }
 
@@ -25,15 +38,15 @@ constructor(private ref: ChangeDetectorRef) { }
     if(!this.data) return;
     this.form.setValue({
       email: this.data?.account.email ? this.data.account.email : 'no email',
-      adress: 'Borowo 21',
-      phone: this.data?.account.phoneNumber ? this.data?.account.phoneNumber : '000-000-000',
+      adress: '',
+      phone: this.data?.account.phonenumber ? this.data?.account.phonenumber : '',
       salarymin: this.data?.account.salarymin,
       salarymax: this.data?.account.salarymax,
       dateOfBirth: this.data?.account.birthdate ? new Date(this.data.account.birthdate) : new Date('03-10-1999'),
-      workingTime: 'Full time',
-      gitHub: 'git',
-      linkedIn: 'linked',
-      site: 'strona',
+      workingTime: '',
+      gitHub: '',
+      linkedIn: '',
+      site: '',
     })
 
   }

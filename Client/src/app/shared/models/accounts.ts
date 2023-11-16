@@ -36,7 +36,7 @@ export interface UserProfile {
     account: Account,
     accountCoursesCertificate: AccountCoursesCertificate,
     accountSoftSkill: AccountSoftSkill,
-    accountWorkExpiriance: AccountWorkExpiriance
+    accountWorkExperience: AccountWorkExperience
 }
 
 export interface Account {
@@ -51,7 +51,7 @@ export interface Account {
     image: string,
     name: string,
     password: string,
-    phoneNumber?: string,
+    phonenumber?: string,
     refreshToken: string,
     refreshTokenValid: Date,
     salarymax: number,
@@ -79,7 +79,7 @@ export interface AccountSoftSkill {
     name: string
 }
 
-export interface AccountWorkExpiriance {
+export interface AccountWorkExperience {
     createDate: Date,
     dateEnd: Date,
     DateStart: Date,
