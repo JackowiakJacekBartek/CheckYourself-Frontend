@@ -46,7 +46,6 @@ create table Accounts -- pracodawca/pracownik, poziom znanych języków
 	password text not null,
 	verificationCode int,
 	verificationCodeValid timestamp,
-	isCompany bool default false,
 	idRole int references Roles(id) default 1,
 	emailConfirmed bool default false,
 	allowsNotifications bool default false,
