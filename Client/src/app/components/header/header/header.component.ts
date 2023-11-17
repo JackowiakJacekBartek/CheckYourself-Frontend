@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { LoginPopUpComponent } from 'src/app/pages/landingpage/login-pop-up/login-pop-up.component';
@@ -28,7 +28,12 @@ export class HeaderComponent {
     ) { }
 
   openLogin() {
-    this.popUp.open(LoginPopUpComponent);
+    if(localStorage.getItem('userID')) {
+      this.router.navigate(['/userpage/'+localStorage.getItem('userID')]);
+    }
+    else {
+      this.popUp.open(LoginPopUpComponent);
+    }
   }
 
   goBack () {

@@ -12,10 +12,11 @@
     </div>
       <div class="three">
         <form [formGroup]="loginUserFormGroup" (ngSubmit)="loginButton(loginUserFormGroup)">
-          <!--Imie-->
+          <!--Email-->
           <mat-form-field appearance="fill">
-            <input matInput placeholder="{{'Login.Name' | translate}}" formControlName="name">
-            <mat-error *ngIf="loginUserFormGroup.get('name')?.getError('required')">{{'Login.You must enter your name' | translate}}</mat-error>
+            <input matInput placeholder="{{'Login.Email' | translate}}" formControlName="email">
+            <mat-error *ngIf="loginUserFormGroup.get('email')?.getError('required')">{{'Login.You must enter your Email' | translate}}</mat-error>
+            <mat-error *ngIf="loginUserFormGroup.get('email')?.getError('email')">{{'Login.Wrong email' | translate}}</mat-error>
           </mat-form-field>
           <!--Hasło-->
           <mat-form-field appearance="fill">

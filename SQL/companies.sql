@@ -1,3 +1,4 @@
+drop view if exists AccountCompaniesView;
 drop table if exists EmployeeReviews;
 drop table if exists EmployerReviews;
 drop table if exists JobAdvertisementsDetails;
@@ -6,14 +7,25 @@ drop table if exists JobAdvertisementsParameters;
 drop table if exists JobAdvertisements;
 drop table if exists NamespaceParameters;
 drop table if exists ParametersTypesNames;
+drop table if exists CompanyOffices;
 drop table if exists Companies;
+
 
 create table Companies
 (
 	id serial primary key,
+	nip text not null,
 	name text not null,
-	description text not null
-	-- accountId..
+	headquarterAddress text,
+	idAccount int not null
+);
+
+create table CompanyOffices
+(
+	id serial primary key,
+	location text,
+	iframeUrl text,
+	idCompany int references Companies(id) not null
 );
 
 create table ParametersTypesNames
@@ -70,7 +82,7 @@ create table JobAdvertisementsDetails
 	jobAdvertisementsId int references JobAdvertisements(id)
 );
 
--- create table EmployerReviews
+-- create tabxle EmployerReviews
 -- (
 -- 	id serial primary key,
 -- 	name text not null,
@@ -78,3 +90,21 @@ create table JobAdvertisementsDetails
 -- 	companyId int references Companies(id),
 -- 	accountId int not null
 -- );
+
+-- CREATE OR REPLACE VIEW AccountCompaniesView AS
+-- SELECT
+--     acc.id AS id,
+--     acc.email,
+--     acc.phoneNumber,
+--     acc.description,
+--     acc.birthDate,
+--     acc.isCompany,
+--     acc.image,
+--     com.id AS companyId,
+--     com.nip,
+--     com.name AS companyName,
+-- 	com.location
+-- FROM
+--     Accounts acc
+-- JOIN
+--     Companies com ON acc.id = com.idAccount;

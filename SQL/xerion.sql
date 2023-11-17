@@ -11,7 +11,6 @@ drop table if exists AccountCoursesCertificates;
 drop table if exists AccountSoftSkills;
 drop table if exists AccountSoftSkillsTitles;
 drop table if exists AccountTags;
-drop table if exists Companies;
 drop table if exists Accounts;
 drop table if exists Roles;
 drop table if exists EmailsRegister;
@@ -47,7 +46,6 @@ create table Accounts -- pracodawca/pracownik, poziom znanych języków
 	password text not null,
 	verificationCode int,
 	verificationCodeValid timestamp,
-	isCompany bool default false,
 	idRole int references Roles(id) default 1,
 	emailConfirmed bool default false,
 	allowsNotifications bool default false,
@@ -58,14 +56,6 @@ create table Accounts -- pracodawca/pracownik, poziom znanych języków
 	lastModificationDate timestamp default now(), -- stworzyc archiwalna tabele
 	salaryMin double precision,
 	salaryMax double precision
-);
-
-create table Companies
-(
-	id serial primary key,
-	nip text not null,
-	name text not null,	
-	idAccount int references Accounts(id) not null
 );
 
 create table AccountTags
