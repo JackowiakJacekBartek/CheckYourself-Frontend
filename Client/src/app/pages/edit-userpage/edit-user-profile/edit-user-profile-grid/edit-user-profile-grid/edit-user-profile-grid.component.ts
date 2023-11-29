@@ -14,18 +14,6 @@ export class EditUserProfileGridComponent implements OnInit, OnChanges, AfterVie
 
 public adressOptions: string[] = ['Option 1', 'Option 2', 'Option 3'];
 
-languages = [
-  {
-    id: 1,
-    language: 'Polski',
-    skill: 100
-  },
-  {
-    id: 2,
-    language: 'Angielski',
-    skill: 80
-  },
-];
 
 constructor(private ref: ChangeDetectorRef) { }
 
@@ -34,7 +22,6 @@ constructor(private ref: ChangeDetectorRef) { }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.data?.account.birthdate)
     if(!this.data) return;
     this.form.setValue({
       email: this.data?.account.email ? this.data.account.email : 'no email',

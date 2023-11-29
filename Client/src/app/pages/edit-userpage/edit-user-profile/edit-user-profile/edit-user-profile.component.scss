@@ -100,8 +100,16 @@ $margin: 50px;
 
 .return-button {
   display: flex;
-  margin-left: 100%;
+  align-self: flex-start;
   margin-top: -6%;
+  margin-bottom: 5%;
+  cursor: pointer;
+} 
+
+.save-button {
+  display: flex;
+  align-self: flex-end;
+  margin-top: -8%;
   margin-bottom: 5%;
   cursor: pointer;
 } 
@@ -274,6 +282,12 @@ p {
   min-height: 350px;
   margin-top: 15px;
 
+  .delete {
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+  }
+
   &-input {
     width: 85%;
     margin-left: 15px;
@@ -343,7 +357,7 @@ p {
   margin-left: 134px;
 }
 
-.add-button {
+.add-button, .delete-soft-skill {
   cursor: pointer;
 }
 
