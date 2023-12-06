@@ -56,7 +56,7 @@ export class AccountService {
     }
 
     public CompanyRegister(model: CompanyRegister): Observable<ReturnedResponse<CompanyRegister>> {
-      return this.http.post<ReturnedResponse<CompanyRegister>>(`${localUrl}/${this.controller}/register-company`, model);
+      return this.http.post<ReturnedResponse<CompanyRegister>>(`${localUrl}/api/Company/register`, model);
     }
 
     public setCurrentUser(user: AccountLoginSuccess) {

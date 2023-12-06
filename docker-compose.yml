@@ -25,6 +25,13 @@ services:
       context: .
       dockerfile: Backend/Intotech.Xerion.Dictionaries/Intotech.Xerion.Dictionaries.Api/Dockerfile
 
+  intotech.xerion.companies.api:
+    container_name: "xerion_companies_api"
+    image: ${DOCKER_REGISTRY-}intotechxerioncompaniesapi
+    build:
+      context: .
+      dockerfile: Backend/Intotech.Xerion.Companies/Intotech.Xerion.Companies.Api/Dockerfile
+
 volumes:
   db:
     driver: local
