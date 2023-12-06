@@ -58,7 +58,7 @@
     "Registered successfully": "Registered successfully. Confirm Email",
     "E-mail is not verified": "E-mail is not confirmed",
     "No such account": "No such account",
-    "Account exists": "Account exists, wrong password",
+    "Account exists": "Account exists",
     "Successfully logged in": "Successfully logged in",
     "Wrong password": "Wrong password"
   },

@@ -42,15 +42,15 @@ export interface User {
 export interface UserProfile {
     account: Account,
     accountCoursesCertificate: AccountCoursesCertificate,
-    accountSoftSkill: AccountSoftSkill,
-    accountWorkExperience: AccountWorkExperience
+    accountSoftSkill: AccountSoftSkill [],
+    accountWorkExpiriance: AccountWorkExpiriance
 }
 
 export interface Account {
     allowsNotifications: boolean,
     birthdate: Date,
     createDate: Date,
-    description?: string,
+    description: string,
     email: string,
     emailConfirmed: boolean,
     id: number,
@@ -58,7 +58,7 @@ export interface Account {
     image: string,
     name: string,
     password: string,
-    phonenumber?: string,
+    phoneNumber: string,
     refreshToken: string,
     refreshTokenValid: Date,
     salarymax: number,
@@ -83,10 +83,11 @@ export interface AccountSoftSkill {
     createDate: Date,
     id: number,
     idAccount: number,
+    idaccountsoftskillstitle : number;
     name: string
 }
 
-export interface AccountWorkExperience {
+export interface AccountWorkExpiriance {
     createDate: Date,
     dateEnd: Date,
     DateStart: Date,

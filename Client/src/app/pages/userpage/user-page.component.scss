@@ -19,6 +19,7 @@ $margin: 50px;
     & .avatar {
       width: 135px;
       height: 135px;
+      border-radius: 50%;
     }
   }
 
@@ -78,7 +79,7 @@ $margin: 50px;
   margin-top: -5%;
   margin-bottom: 5%;
   cursor: pointer;
-}  
+}
 
 .sectionHeader {
   margin-bottom: 10px;
