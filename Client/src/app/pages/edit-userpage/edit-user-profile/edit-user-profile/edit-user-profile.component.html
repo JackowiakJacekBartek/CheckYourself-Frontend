@@ -9,6 +9,9 @@
             {{'UserPage.Return' | translate}}
           </button>
         </a>
+        <a class="save-button">
+          <button  mat-raised-button type="button" (click)="save()" color="warn">Save</button>
+        </a>
         <span *ngIf="0" class="avatar-circle">
             <img class="avatar-image" alt="avatar" src="assets/icons/no-image.svg">
         </span>
@@ -76,18 +79,18 @@
             <div *ngFor="let lang of languages">
               <mat-form-field appearance="outline" class="masonryHolder-language">
                 <mat-label>Wybierz język</mat-label>
-                <mat-select [(value)]="lang.language">
+                <mat-select formControlName="languages">
                     <mat-option></mat-option>
-                    <mat-option [value]="lang.language">{{lang.language}}</mat-option>
-                    <mat-option value="two">Second option</mat-option>
+                    <mat-option *ngFor="let adress of languages" [value]="adress.language">{{adress.language}}</mat-option>
+                    <!-- <mat-option value="Polish">Polski</mat-option> -->
                   </mat-select>
               </mat-form-field>
               <mat-form-field appearance="outline" class="masonryHolder-level">
                 <mat-label>Wybierz poziom</mat-label>
-                <mat-select [(value)]="lang.skill">
+                <mat-select formControlName="languages">
                     <mat-option></mat-option>
-                    <mat-option [value]="lang.skill">{{getSkillLevel(lang.skill)}}</mat-option>
-                    <mat-option value="two">Second option</mat-option>
+                    <mat-option value="100">100</mat-option>
+                    <mat-option value="80">80</mat-option>
                   </mat-select>
               </mat-form-field>
             </div>
@@ -102,8 +105,11 @@
             <mat-icon class="material-icons-outlined">work_outline</mat-icon>
             <span>{{'UserPage.Experience' | translate}}:</span>
           </div>
-          <mat-card class="card" *ngFor="let item of experience">
-            <mat-card-content>
+          <mat-card class="card" *ngFor="let item of userProfileEditForm.value.experience">
+            <mat-card-content> <!-- Doświadczenie -->
+              <div class="delete">
+                <mat-icon class="material-icons-outlined" (click)="deletePositionByID(item, userProfileEditForm.value.experience)">delete_outline</mat-icon>
+              </div>
               <div class="card-input-div" style="font-size: 12px;">
                 <mat-form-field class="card-input" id="formField">
                   <mat-label for="my-input">Nazwa stanowiska</mat-label>
@@ -111,7 +117,7 @@
                     id="my-input"
                     class="card-input-field"
                     placeholder="Nazwa stanowiska"
-                    [value]="item.name"
+                    [value]="item.workcompany"
                   >
                 </mat-form-field>
               </div>
@@ -119,8 +125,8 @@
                 <mat-form-field>
                   <mat-label>Data od - do</mat-label>
                   <mat-date-range-input [formGroup]="rangeExp" [rangePicker]="pickerExp">
-                    <input matStartDate formControlName="start" placeholder="Start date" [value]="toDate(item.startTime)">
-                    <input matEndDate formControlName="end" placeholder="End date" [value]="toDate(item.endTime)">
+                    <input matStartDate formControlName="start" placeholder="Start date" [value]="toDate(item.datestart)">
+                    <input matEndDate formControlName="end" placeholder="End date" [value]="toDate(item.dateend)">
                   </mat-date-range-input>
                   <mat-datepicker-toggle matIconSuffix [for]="pickerExp"></mat-datepicker-toggle>
                   <mat-date-range-picker #pickerExp></mat-date-range-picker>
@@ -164,7 +170,7 @@
             <span>{{'UserPage.Education' | translate}}:</span>
           </div>
           <mat-card class="card" *ngFor="let edu of education">
-            <mat-card-content>
+            <mat-card-content> <!-- Wykształcenie -->
               <div>
                 <mat-form-field class="card-input">
                   <mat-label>Nazwa kierunku</mat-label>
@@ -220,15 +226,18 @@
             <mat-icon class="material-icons-outlined">approval</mat-icon>
             <span>{{'UserPage.Courses and certificates' | translate}}:</span>
           </div>
-          <mat-card class="card" *ngFor="let certificate of certificates">
-            <mat-card-content>
+          <mat-card class="card" *ngFor="let certificate of userProfileEditForm.value.certificates">
+            <mat-card-content> <!-- Kursy i Certyfikaty -->
+              <div class="delete">
+                <mat-icon class="material-icons-outlined" (click)="deletePositionByID(certificate, userProfileEditForm.value.certificates)">delete_outline</mat-icon>
+              </div>
               <div>
                 <mat-form-field class="card-input">
                   <mat-label>Nazwa certyfikatu</mat-label>
                   <input matInput
                     class="card-input-field"
                     placeholder="Nazwa certyfikatu"
-                    [value]="certificate.name"
+                    [value]="certificate.certificatename"
                   >
                 </mat-form-field>
               </div>
@@ -238,7 +247,7 @@
                   <input matInput
                     class="card-input-field"
                     placeholder="Numer certyfikatu"
-                    [value]="certificate.cert"
+                    [value]="certificate.certificatenumber"
                   >
                 </mat-form-field>
               </div>
@@ -248,14 +257,14 @@
                   <input matInput
                     class="card-input-field"
                     placeholder="Organizacja wydająca"
-                    [value]="certificate.org"
+                    [value]="certificate.organizationissuingcertificate"
                   >
                 </mat-form-field>
               </div>
               <div>
                 <mat-form-field appearance="outline" class="card-input">
                   <mat-label>Data wydania</mat-label>
-                  <input matInput id="pickerHandDate" [matDatepicker]="pickerHandDate" [value]="toDate(certificate.date)">
+                  <input matInput id="pickerHandDate" [matDatepicker]="pickerHandDate" [value]="toDate(certificate.certificateissuedate)">
                   <mat-datepicker-toggle matIconSuffix [for]="pickerHandDate"></mat-datepicker-toggle>
                   <mat-datepicker #pickerHandDate></mat-datepicker>
                 </mat-form-field>
@@ -275,20 +284,23 @@
           </div>
           <div class="other-wraper">
             <ul class="other-block">
-              <li *ngFor="let org of organizations">
-                <p>&#x2022;
+              <li *ngFor="let org of userProfileEditForm.value.organizationsAndSkills">
+                <p *ngIf="org.idaccountsoftskillstitle === 1">&#x2022;
                   <mat-form-field>
                     <mat-label>Organizacja</mat-label>
                     <input matInput
                       class="card-input-field"
                       placeholder="Organizacja"
-                      [value]="org"
+                      [value]="org.name"
                     >
                   </mat-form-field>
+                  <span class="delete-soft-skill">
+                    <mat-icon class="material-icons-outlined" (click)="deletePositionByID(org, userProfileEditForm.value.organizationsAndSkills)">delete_outline</mat-icon>
+                  </span>
                 </p>
               </li>
               <li class="other-add">
-                <mat-icon class="material-icons-outlined add-button" (click)="addNew('organizations')">add_circle_outline</mat-icon>
+                <mat-icon class="material-icons-outlined add-button" (click)="addNew(1)">add_circle_outline</mat-icon>
               </li>
             </ul>
           </div>
@@ -300,20 +312,23 @@
           </div>
           <div class="other-wraper">
             <ul class="other-block">
-              <li *ngFor="let skill of skills">
-                <p>&#x2022;
+              <li *ngFor="let skill of userProfileEditForm.value.organizationsAndSkills">
+                <p *ngIf="skill.idaccountsoftskillstitle === 2">&#x2022;
                   <mat-form-field>
                     <mat-label>Umiejętność</mat-label>
                     <input matInput
                       class="card-input-field"
                       placeholder="Umiejętność"
-                      [value]="skill"
+                      [value]="skill.name"
                     >
                   </mat-form-field>
+                  <span class="delete-soft-skill">
+                    <mat-icon class="material-icons-outlined" (click)="deletePositionByID(skill, userProfileEditForm.value.organizationsAndSkills)">delete_outline</mat-icon>
+                  </span>
                 </p>
               </li>
               <li class="other-add">
-                <mat-icon class="material-icons-outlined add-button" (click)="addNew('skills')">add_circle_outline</mat-icon>
+                <mat-icon class="material-icons-outlined add-button" (click)="addNew(2)">add_circle_outline</mat-icon>
               </li>
             </ul>
           </div>
@@ -325,20 +340,23 @@
           </div>
           <div class="other-wraper">
             <ul class="other-block">
-              <li *ngFor="let item of hobby">
-                <p>&#x2022;
+              <li *ngFor="let hobby of userProfileEditForm.value.organizationsAndSkills">
+                <p *ngIf="hobby.idaccountsoftskillstitle === 3">&#x2022;
                   <mat-form-field>
                     <mat-label>Hobby</mat-label>
                     <input matInput
                       class="card-input-field"
                       placeholder="Hobby"
-                      [value]="item"
+                      [value]="hobby.name"
                     >
                   </mat-form-field>
+                  <span class="delete-soft-skill">
+                    <mat-icon class="material-icons-outlined" (click)="deletePositionByID(hobby, userProfileEditForm.value.organizationsAndSkills)">delete_outline</mat-icon>
+                  </span>
                 </p>
               </li>
               <li class="other-add">
-                <mat-icon class="material-icons-outlined add-button" (click)="addNew('hobby')">add_circle_outline</mat-icon>
+                <mat-icon class="material-icons-outlined add-button" (click)="addNew(3)">add_circle_outline</mat-icon>
               </li>
             </ul>
           </div>

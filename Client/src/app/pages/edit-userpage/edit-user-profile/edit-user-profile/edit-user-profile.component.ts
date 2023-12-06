@@ -26,99 +26,47 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
   selectedLangLvL2 = 'one';
   selectedTitle = 'one';
 
-  person = {
-    name: 'Mariusz',
-    surname: 'Nowakowski',
-    title: 'Junior Fullstack Developer',
-    about:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    image: '../../../assets/images/mariusz-nowakowski-avatar.png',
-  };
-  informations = {
-    place: 'Warszawa, Mazowieckie / Zdalnie',
-    phone: '784 784 965',
-    salary: 'do negocjacji',
-    email: 'mariusz.nowakowski@gmail.com',
-    dateOfBirth: '03-10-1999',
-    workTime: 'pełen etat',
-    git: 'github.com/janek21',
-    linkedIn: 'linkedin.com/mariusz.nowakowski',
-    site: 'janekdev.com',
-  };
-
   languages = [
     {
+      id: 1,
       language: 'Polski',
-      skill: 100,
+      skill: 100
     },
     {
+      id: 2,
       language: 'Angielski',
-      skill: 80,
+      skill: 80
     },
   ];
 
-  experience = [
-    {
-      name: 'Tester Manualny',
-      startTime: '01-11-2021',
-      endTime: '12-01-2022',
-      tasks: [
-        'Testowanie aplikacji i tworzenie nowych zgłoszeń',
-        'Pisanie dokumentacji',
-        'Analizowanie działania aplikacji',
-      ],
-    },
-    {
-      name: 'Doradca Finansowy',
-      startTime: '06-01-2021',
-      endTime: '10-01-2021',
-      tasks: [
-        'Obsługa programów finansowych',
-        'Rozmowa z klientami',
-        'Analizowanie wniosków finansowych',
-      ],
-    },
-  ];
-
+  // education = [
+  //   {
+  //     name: 'Informatyka',
+  //     startTime: '01-01-2019',
+  //     endTime: '01-01-2024',
+  //     school: 'Uniwersytet im. Adama Mickiewicza',
+  //     degree: 'Inżynier'
+  //   },
+  //   {
+  //     name: 'Technik informatyk',
+  //     startTime: '01-01-2015',
+  //     endTime: '01-01-2019',
+  //     school: 'Uniwersytet im. Adama Mickiewicza',
+  //     degree: 'Technik'
+  //   },
+  // ];
   education = [
     {
-      name: 'Informatyka',
-      startTime: '01-01-2019',
-      endTime: '01-01-2024',
-      school: 'Uniwersytet im. Adama Mickiewicza',
-      degree: 'Inżynier'
-    },
-    {
-      name: 'Technik informatyk',
-      startTime: '01-01-2015',
-      endTime: '01-01-2019',
-      school: 'Uniwersytet im. Adama Mickiewicza',
-      degree: 'Technik'
-    },
+        name: '',
+        startTime: '',
+        endTime: '',
+        school: '',
+        degree: ''
+      }
   ];
-
-  certificates = [
-    {
-      name: 'Murarz, tynkarz, akrobata',
-      org: 'Udemy Sp. z o. o.',
-      cert: 'eqw543ge46',
-      date: '06-18-2023'
-    },
-    {
-      name: 'UX/UI Designer',
-      org: '18-6-2023, Udemy Sp. z o. o.',
-      cert: 'eqw543ge46',
-      date: '06-18-2023'
-    },
-  ];
-
-  organizations = ['starosta roku', 'wolontariusz w schronisku dla zwierząt'];
-
-  skills = ['praca w zespole', 'samodzielność', 'sumienność', 'dokładność'];
-
-  hobby = ['siłownia', 'malowanie', 'tynkowanie'];
 
   data!: UserProfile;
+  private phonePattern = /^\d{3}-\d{3}-\d{3}$|^\d{3}\d{3}\d{3}$/; // accepts either 000-000-000 or 000000000 patterns
 
 
   public userProfileEditForm: FormGroup = this.formBuilder.group({
@@ -126,20 +74,18 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
     surname: ['', [Validators.required]],
     position: ['', [Validators.required]],
     aboutMe: ['', []],
-    languages: ['', [Validators.required]],
-    expirience: ['', [Validators.required]],
-    education: ['', [Validators.required]],
-    certificatesCourses: ['', [Validators.required]],
-    organizations: ['', [Validators.required]],
-    softSkills: ['', [Validators.required]],
-    hobby: ['', [Validators.required]],
+    languages: [[], []],
+    education: [[], []],
+    experience: [[], []],
+    certificates: [[], []],
+    organizationsAndSkills: [[], []],
   });
 
   public userProfileEditGridForm: FormGroup = this.formBuilder.group({
     adress: ['', [Validators.required]],
-    phone: ['', [Validators.required]],
+    phone: ['', [Validators.pattern(this.phonePattern)]],
     salarymin: [0, [Validators.required]],
-    salarymax: [0, [Validators.required]],
+    salarymax: [7000, [Validators.required]],
     email: ['', [Validators.required]],
     dateOfBirth: ['', [Validators.required]],
     workingTime: ['', [Validators.required]],
@@ -169,14 +115,20 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
       this.data = res.methodResult;
       console.log(this.data)
       if(!this.data) return;
-      this.userProfileEditForm.patchValue({
+      this.userProfileEditForm.setValue({
         name: this.data.account.name,
         surname: this.data.account.surname,
-        position: 'Backend',
-        aboutMe: this.data.account.description
+        position: '',
+        aboutMe: this.data.account.description,
+        languages: this.languages,
+        education: [],
+        experience: this.data.accountWorkExperience,
+        certificates: this.data.accountCoursesCertificate,
+        organizationsAndSkills: this.data.accountSoftSkill
       });
     })
     this.ref.detectChanges();
+    
   }
 
   ngOnChanges(changes: SimpleChanges): void { }
@@ -221,6 +173,7 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
 
   addLang() {
     this.languages.push({
+      id: 999,
       language: '',
       skill: 0,
     });
@@ -231,10 +184,11 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
   }
 
   addExp() {
-    this.experience.push({
-      name: '',
-      startTime: '', //jak na razie data dzisiaj żeby nie wywalało Ng0100
-      endTime: '',
+    this.userProfileEditForm.value.experience.push({
+      id: this.userProfileEditForm.value.experience.length + 1,
+      workcompany: '',
+      datestart: '', //jak na razie data dzisiaj żeby nie wywalało Ng0100
+      dateend: '',
       tasks: [''],
     });
     this.ref.detectChanges();
@@ -253,27 +207,61 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
   }
 
   addCert() {
-    this.certificates.push(
+    this.userProfileEditForm.value.certificates.push(
       {
-        name: '',
-        org: '',
-        cert: '',
-        date: ''
+        id: this.userProfileEditForm.value.certificates.length + 1,
+        certificatename: '',
+        organizationissuingcertificate: '',
+        certificatenumber: '',
+        certificateissuedate: ''
       }
     )
   }
 
-  addNew(other: string) {
-    switch (other) {
-      case 'hobby':
-        this.hobby.push('');
+  addNew(softSkillType: number) {
+    switch (softSkillType) {
+      case 1:
+        this.userProfileEditForm.value.organizationsAndSkills
         break;
-      case 'skills':
-        this.skills.push('');
+      case 2:
+        this.userProfileEditForm.value.organizationsAndSkills
         break;
-      case 'organizations':
-        this.organizations.push('');
+      case 3:
+        this.userProfileEditForm.value.organizationsAndSkills.push({
+
+        })
         break;
     }
+  }
+
+  public deletePositionByID(index: object, arrayType: object[]): void {
+    arrayType.splice(arrayType.indexOf(index), 1);
+  }
+
+
+  private accountDetails() {
+    return (
+      this.data.account.name = this.userProfileEditForm.value.name,
+      this.data.account.surname = this.userProfileEditForm.value.surname,
+      this.data.account.description = this.userProfileEditForm.value.aboutMe,
+      this.data.account.image = 'XD',
+      this.data.account.birthdate = this.userProfileEditGridForm.value.dateOfBirth,
+      this.data.account.email = this.userProfileEditGridForm.value.email,
+      this.data.account.phonenumber = this.userProfileEditGridForm.value.phone,
+      this.data.account.salarymax = this.userProfileEditGridForm.value.max,
+      this.data.account.salarymin = this.userProfileEditGridForm.value.min
+    )
+  }
+
+  public save() {
+    this.accountDetails();
+    this.data.accountCoursesCertificate = this.userProfileEditForm.value.certificates;
+    this.data.accountWorkExperience = this.userProfileEditForm.value.experience;
+    this.data.accountSoftSkill = this.userProfileEditForm.value.organizationsAndSkills;
+    // console.log(this.userProfileEditForm.valid)
+    console.log(this.userProfileEditForm.value)
+    // console.log(this.userProfileEditGridForm.valid)
+    console.log(this.userProfileEditGridForm.value)
+    this.editUserProfileService.updateUserById(this.data.account.id, this.data).subscribe()
   }
 }

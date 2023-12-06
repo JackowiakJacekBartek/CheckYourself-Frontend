@@ -22,12 +22,12 @@
               <input matInput 
                   placeholder="Numer Telefonu" 
                   formControlName="phone"
-                  type="number"
-
+                  matTooltip="Pattern: 123-456-789 or 123456789"
               >
               <!-- pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"
               minlength="9"
               maxlength="14" -->
+              <mat-error *ngIf="form.get('phone')?.getError('pattern')">Invalid Phone Number Pattern</mat-error>
             </mat-form-field>
       </div>
     </mat-grid-tile>

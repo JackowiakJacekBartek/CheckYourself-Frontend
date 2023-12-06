@@ -14,8 +14,13 @@ export class EditUserProfileService {
         return "api/Account"
     }
 
-    getUserById(id: number): Observable<ReturnedResponse<UserProfile>> {
+    public getUserById(id: number): Observable<ReturnedResponse<UserProfile>> {
         return this.http.get<ReturnedResponse<UserProfile>>(`${localUrl}/${this.controller}/get-account-by-id?id=${id}`);
+    }
+
+    public updateUserById(id: number, model: UserProfile): Observable<ReturnedResponse<UserProfile>> {
+        console.log(id)
+        return this.http.patch<ReturnedResponse<UserProfile>>(`${localUrl}/${this.controller}/update-account-by-id?id=${id}`, model);
     }
 
 }
