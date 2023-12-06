@@ -11,6 +11,7 @@ drop table if exists AccountCoursesCertificates;
 drop table if exists AccountSoftSkills;
 drop table if exists AccountSoftSkillsTitles;
 drop table if exists AccountTags;
+drop table if exists AccountTechnicalSkills;
 drop table if exists Accounts;
 drop table if exists Roles;
 drop table if exists EmailsRegister;
@@ -36,6 +37,7 @@ create table Accounts -- pracodawca/pracownik, poziom znanych języków
 (
 	id serial primary key not null,
 	email text not null unique,
+	title text,
 	name text,
 	surname text,
 	phoneNumber text,
@@ -57,6 +59,19 @@ create table Accounts -- pracodawca/pracownik, poziom znanych języków
 	salaryMin double precision,
 	salaryMax double precision
 );
+
+create table AccountTechnicalSkills
+(
+	id serial primary key,
+	name text not null, --HTML, CSS, C#
+	progress double precision default 0.00, -- %
+	idAccount int references Accounts(id) not null
+);
+
+-- create table AccountTechnicalSkillTypes -- front/back/tools
+-- (
+-- 	id serial primary key,
+-- );
 
 create table AccountTags
 (
