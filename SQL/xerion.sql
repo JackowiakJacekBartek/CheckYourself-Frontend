@@ -12,6 +12,7 @@ drop table if exists AccountSoftSkills;
 drop table if exists AccountSoftSkillsTitles;
 drop table if exists AccountTags;
 drop table if exists AccountTechnicalSkills;
+drop table if exists AccountSocialMediaLinks;
 drop table if exists Accounts;
 drop table if exists Roles;
 drop table if exists EmailsRegister;
@@ -33,7 +34,7 @@ create table Roles
 	name text
 );
 
-create table Accounts -- pracodawca/pracownik, poziom znanych języków
+create table Accounts
 (
 	id serial primary key not null,
 	email text not null unique,
@@ -57,7 +58,19 @@ create table Accounts -- pracodawca/pracownik, poziom znanych języków
 	createdAt timestamp default now(),
 	lastModificationDate timestamp default now(), -- stworzyc archiwalna tabele
 	salaryMin double precision,
-	salaryMax double precision
+	salaryMax double precision,
+	location text,
+	employmentMethod int,
+	employmentType int
+);
+
+create table AccountSocialMediaLinks
+(
+	id serial primary key,
+	idSocialMediaLink int not null,
+	name text not null not null, -- Ig/Fb/GitHub
+	link text not null, -- pelen link
+	idAccount int references Accounts(id) not null
 );
 
 create table AccountTechnicalSkills
