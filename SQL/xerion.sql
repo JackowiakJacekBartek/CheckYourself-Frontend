@@ -146,6 +146,7 @@ create table AccountWorkExperiences
 	dateStart timestamp not null,
 	dateEnd timestamp,
 	workCompany text not null, -- dirty
+	profession text,
 	createdAt timestamp default now()
 );
 
