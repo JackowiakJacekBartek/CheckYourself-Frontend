@@ -122,13 +122,13 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
         aboutMe: this.data.account.description,
         languages: this.languages,
         education: [],
-        experience: this.data.accountWorkExperience,
-        certificates: this.data.accountCoursesCertificate,
-        organizationsAndSkills: this.data.accountSoftSkill
+        experience: this.data.accountWorkExpiriance,
+        certificates: this.data.accountCoursesCertificates,
+        organizationsAndSkills: this.data.accountSoftSkills
       });
     })
     this.ref.detectChanges();
-    
+
   }
 
   ngOnChanges(changes: SimpleChanges): void { }
@@ -255,9 +255,9 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
 
   public save() {
     this.accountDetails();
-    this.data.accountCoursesCertificate = this.userProfileEditForm.value.certificates;
-    this.data.accountWorkExperience = this.userProfileEditForm.value.experience;
-    this.data.accountSoftSkill = this.userProfileEditForm.value.organizationsAndSkills;
+    this.data.accountCoursesCertificates = this.userProfileEditForm.value.certificates;
+    this.data.accountWorkExpiriance = this.userProfileEditForm.value.experience;
+    this.data.accountSoftSkills = this.userProfileEditForm.value.organizationsAndSkills;
     // console.log(this.userProfileEditForm.valid)
     console.log(this.userProfileEditForm.value)
     // console.log(this.userProfileEditGridForm.valid)

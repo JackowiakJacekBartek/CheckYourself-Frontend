@@ -1,9 +1,22 @@
 import {Component, OnInit} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {EditUserProfileService} from "../edit-userpage/edit-user-profile/edit-user-profile.service";
 import {UserProfileService} from "./user-profile.service";
-import {AccountSoftSkill, UserProfile} from "../../shared/models/accounts";
-import { format } from 'date-fns';
+import {
+  AccountCoursesCertificate, accountEducationModelDto,
+  AccountSocialMediaLinksModelDto,
+  AccountSoftSkills,
+  AccountTags, accountWorkExperiences,
+  UserProfile
+} from "../../shared/models/accounts";
+import {format} from 'date-fns';
+
+enum EmploymentMethodsEnum {
+  FullTime = 1,
+  PartTime = 2,
+  Freelance = 3,
+  FixedTermContract = 4
+}
 
 @Component({
   selector: 'app-userpage',
@@ -25,14 +38,11 @@ export class UserPageComponent implements OnInit {
     {text: 'mariusz.nowakowski@gmail.com', icon: "mail"},
     {text: '10 marca 1999', icon: "cake"},
     {text: 'pełen etat', icon: "hourglass_top"},
-    {text: 'github.com/janek21', icon: "link"},
-    {text: 'linkedin.com/mariusz.nowakowski', icon: "link"},
-    {text: 'janekdev.com', icon: "web"},
   ];
 
   tags = [
-    {text: 'Java Lover'},
-    {text: 'JS Newbie'}
+    {info: 'Java Lover'},
+    {info: 'JS Newbie'}
   ];
 
   skills = {
@@ -77,15 +87,15 @@ export class UserPageComponent implements OnInit {
     {
       "name": "UX/UI Designer",
       "time": "18 czerwca 2023, Udemy Sp. z o. o.",
-      "school": "numer certyfikatu: eqw543ge46"
+      "cert": "numer certyfikatu: eqw543ge46"
     }
   ];
 
-  other  = [
+  other = [
     {
       "name": "Organizacje i stowarzyszenia",
       "icon": "corporate_fare",
-      "duties": ["starosta roku", "wolontariusz w schronisku dla zwierząt"]
+      "duties": [""]
     },
     {
       "name": "Umiejętności miękkie",
@@ -105,41 +115,96 @@ export class UserPageComponent implements OnInit {
   public editLink: string = `/userpage/${this.currentUserID}/edit`;
   public showEditButton: boolean = (+this.currentUserID === +localStorage.getItem('userID')!);
 
-  constructor(private route: ActivatedRoute, private UserProfileService: UserProfileService) { }
+  constructor(private route: ActivatedRoute, private UserProfileService: UserProfileService) {
+  }
 
   ngOnInit(): void {
+  }
+
+  getEmploymentMethodText(number: number): string {
+    switch (number) {
+      case EmploymentMethodsEnum.FullTime:
+        return 'Praca na pełen etat';
+      case EmploymentMethodsEnum.PartTime:
+        return 'Praca na niepełny etat';
+      case EmploymentMethodsEnum.Freelance:
+        return 'Praca jako freelancer (umowa zlecenie)';
+      case EmploymentMethodsEnum.FixedTermContract:
+        return 'Umowa o pracę na czas określony';
+      default:
+        return 'Praca na pełen etat';
+    }
+  }
+
+  getSalary(number: number): string {
+    if (number !== null || number > 0) {
+      return number + 'zł'
+    } else {
+      return 'do negocjacji'
+    }
   }
 
   ngAfterViewInit(): void {
     this.UserProfileService.getUserById(this.currentUserID).subscribe(res => {
       this.data = res.methodResult;
       console.log(this.data)
-      if(!this.data) return;
+      if (!this.data) return;
       this.person = ({
         name: this.data.account.name + " " + this.data.account.surname,
-        title: "Junior Fullstack Developer",
+        title: this.data.account.title,
         about: this.data.account.description,
         image: this.data.account.image ?? "../../../assets/images/logoEmpty.png"
       });
-      this.informations[0].text = 'Warszawa, Mazowieckie / Zdalnie';
-      this.informations[1].text = this.data.account.phoneNumber;
-      this.informations[2].text = 'do negocjacji';
+      this.informations[0].text = this.data.account.location;
+      this.informations[1].text = this.data.account.phonenumber;
+      this.informations[2].text = this.getSalary(this.data.account.salarymin);
       this.informations[3].text = this.data.account.email;
       this.informations[4].text = format(new Date(this.data.account.birthdate), 'dd/MM/yyyy');
-      this.informations[5].text = 'pełen etat';
-      this.informations[6].text = 'github.com/janek21';
-      this.informations[7].text = 'linkedin.com/mariusz.nowakowski';
-      this.informations[8].text = 'janekdev.com';
+      this.informations[5].text = this.getEmploymentMethodText(this.data.account.employmentmethod);
 
-      const accountSoftSkill: AccountSoftSkill[] = this.data.accountSoftSkill; // Przypisanie danych z serwera
+      const socials: AccountSocialMediaLinksModelDto[] = this.data.accountSocialMediaLinksModelDto;
+      socials.forEach(a => this.informations.push({icon: 'link', text: a.link}))
 
+      const cert: AccountCoursesCertificate[] = this.data.accountCoursesCertificates;
+      this.certificates = [];
+      cert.forEach(a => this.certificates.push({
+        name: a.certificatename,
+        cert: 'numer certyfikatu: ' + a.certificatenumber,
+        time: format(new Date(a.createdat), 'dd.MM.yyyy') + ', ' + a.organizationissuingcertificate
+      }))
+
+      const educ: accountEducationModelDto[] = this.data.accountEducationModelDto;
+      this.education = [];
+      educ.forEach(a => this.education.push({
+        name: a.professionname + ' - ' + a.professionaltitle,
+        time: a.dateend ? format(new Date(a.datestart), 'yyyy') + ' - ' + format(new Date(a.dateend), 'MM.yyyy') : format(new Date(a.datestart), 'yyyy') + ' - teraz',
+        school: a.universityname,
+      }))
+
+      const exp: accountWorkExperiences[] = this.data.accountWorkExperiences;
+      this.experience = []
+      exp.forEach(a => {
+        const tasksArray: string[] = a.accountworkresponsibilities.map(responsibility => responsibility.name);
+
+        this.experience.push({
+          name: a.profession ? a.workcompany + ' - ' + a.profession : a.workcompany,
+          time: a.dateend ? format(new Date(a.datestart), 'MM.yyyy') + ' - ' + format(new Date(a.dateend), 'MM.yyyy') : format(new Date(a.datestart), 'MM.yyyy') + ' - teraz',
+          tasks: tasksArray
+        });
+      });
+
+      const accountSoftSkills: AccountSoftSkills[] = this.data.accountSoftSkills;
       this.other.forEach(a => a.duties = [])
-      accountSoftSkill.forEach(skill => {
+      accountSoftSkills.forEach(skill => {
         const index = skill.idaccountsoftskillstitle - 1; // Indeks w tablicy 'other'
         if (index >= 0 && index < this.other.length) {
           this.other[index].duties.push(skill.name);
         }
       })
+
+      const tags: AccountTags[] = this.data.accountTags;
+      this.tags = tags;
+
     })
   }
 
