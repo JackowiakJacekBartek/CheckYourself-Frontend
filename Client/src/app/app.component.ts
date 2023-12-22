@@ -60,7 +60,7 @@ export class AppComponent {
   }
 
   public sidenavClicked() {
-    this.userID = localStorage.getItem('userID');
+    this.userID = localStorage.getItem('userID') === "undefined" ? localStorage.getItem('userID'): null;
     this.navMenuToggle = !this.navMenuToggle;
   }
 

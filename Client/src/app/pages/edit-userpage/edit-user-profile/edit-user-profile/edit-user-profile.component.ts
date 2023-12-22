@@ -1,5 +1,5 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditUserProfileService } from '../edit-user-profile.service';
 import { UserProfile } from 'src/app/shared/models/accounts';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -68,18 +68,15 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
   data!: UserProfile;
   private phonePattern = /^\d{3}-\d{3}-\d{3}$|^\d{3}\d{3}\d{3}$/; // accepts either 000-000-000 or 000000000 patterns
 
-
-  public userProfileEditForm: FormGroup = this.formBuilder.group({
-    name: ['', [Validators.required]],
-    surname: ['', [Validators.required]],
-    position: ['', [Validators.required]],
-    aboutMe: ['', []],
-    languages: [[], []],
-    education: [[], []],
-    experience: [[], []],
-    certificates: [[], []],
-    organizationsAndSkills: [[], []],
+  public certificate: FormGroup = this.formBuilder.group({
+    id: '',
+    certificatename: '',
+    organizationissuingcertificate: '',
+    certificatenumber: '',
+    certificateissuedate: ''
   });
+
+  public userProfileEditForm!: FormGroup;
 
   public userProfileEditGridForm: FormGroup = this.formBuilder.group({
     adress: ['', [Validators.required]],
@@ -107,22 +104,37 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
 
   ngOnInit(): void {
     !(this.currentUserID === +localStorage.getItem('userID')!) && this.router.navigate([`/userpage/${localStorage.getItem('userID')}`]); //if user tries to change ID in url
+    
+    this.userProfileEditForm = this.formBuilder.group({
+      name: ['', [Validators.required]],
+      surname: ['', [Validators.required]],
+      position: ['', [Validators.required]],
+      aboutMe: ['', []],
+      languages: [[], []],
+      education: [[], []],
+      experience: this.formBuilder.array([]),
+      tasks2: this.formBuilder.array([]),
+      certificates: this.formBuilder.array([]),//this.formBuilder.array([this.certificate]),
+      organizationsAndSkills: [[], []],
+    });
+    // console.log(this.userProfileEditForm.value)
   }
 
   ngAfterViewInit(): void {
     this.ref.detectChanges();
     this.editUserProfileService.getUserById(this.currentUserID).subscribe(res => {
       this.data = res.methodResult;
-      console.log(this.data)
+      // console.log(this.data)
       if(!this.data) return;
       this.userProfileEditForm.setValue({
         name: this.data.account.name,
         surname: this.data.account.surname,
-        position: '',
+        position: this.data.account.position ? this.data.account.position : '',
         aboutMe: this.data.account.description,
         languages: this.languages,
         education: [],
-        experience: this.data.accountWorkExpiriance,
+        experience: this.data.accountWorkExpiriance ? this.data.accountWorkExpiriance : [],
+        tasks2: [],
         certificates: this.data.accountCoursesCertificates,
         organizationsAndSkills: this.data.accountSoftSkills
       });
@@ -167,8 +179,13 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
     return 'Error';
   }
 
-  toDate(date: string) {
-    return new Date(date);
+  public removeAtIndex(formControl: string, index: number) {
+    switch (formControl) {
+      case 'experience':
+        return this.experience.removeAt(index);
+      case 'certificates':
+        return this.certificates.removeAt(index)
+    }
   }
 
   addLang() {
@@ -179,19 +196,51 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
     });
   }
 
-  addTask(card: any) {
-    card.tasks.push('');
+  public createTask(): FormGroup {
+    return this.formBuilder.group({
+      taskName: ['', Validators.required]
+    });
   }
 
-  addExp() {
-    this.userProfileEditForm.value.experience.push({
-      id: this.userProfileEditForm.value.experience.length + 1,
-      workcompany: '',
-      datestart: '', //jak na razie data dzisiaj żeby nie wywalało Ng0100
-      dateend: '',
-      tasks: [''],
-    });
+  getTasks(item: AbstractControl): FormArray {
+    return item.get('tasks') as FormArray;
+  }
+
+  addTask(item: any) {
+    // console.log(item.value)
+    // console.log(item.value.tasks)
+    // item.tasks.push(this.formBuilder.group({
+    //   taskName: ['', []]
+    // }))
+    // item.value.tasks.push('')
+    // console.log(item.value.tasks)
+  }
+
+  public get experience() {
+    return this.userProfileEditForm.get('experience') as FormArray;
+  }
+
+  public addExp() {
+    this.experience.push(this.formBuilder.group({
+      id: [this.userProfileEditForm.value.experience.length + 1, []],
+      workcompany: ['', []],
+      datestart: new FormControl<Date | null>(null), //jak na razie data dzisiaj żeby nie wywalało Ng0100
+      dateend: new FormControl<Date | null>(null),
+      tasks: ['', []]//this.formBuilder.array([])
+    }));
+    // console.log(this.experience.value[this.userProfileEditForm.value.experience.length - 1].tasks)
+    // this.experience.value[this.userProfileEditForm.value.experience.length - 1].tasks.push(this.formBuilder.group({
+    //   taskName: ['', []]
+    // }))
+    // console.log(this.experience.value[this.userProfileEditForm.value.experience.length - 1].tasks[0].value)
+    // this.experience.value[this.userProfileEditForm.value.experience.length - 1].tasks.push('')
+    // console.log(this.tasks2)
+    // console.log(this.experience.value[this.userProfileEditForm.value.experience.length - 1]?.tasks)
     this.ref.detectChanges();
+  }
+
+  public get tasks2() {
+    return this.userProfileEditForm.get('tasks2') as FormArray;
   }
 
   addEdu() {
@@ -206,16 +255,27 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
     )
   }
 
+  public get certificates() {
+    return this.userProfileEditForm.get('certificates') as FormArray;
+  }
+
   addCert() {
-    this.userProfileEditForm.value.certificates.push(
-      {
-        id: this.userProfileEditForm.value.certificates.length + 1,
-        certificatename: '',
-        organizationissuingcertificate: '',
-        certificatenumber: '',
-        certificateissuedate: ''
-      }
-    )
+    this.certificates.push(this.formBuilder.group({
+      id: this.userProfileEditForm.value.certificates.length + 1,
+        certificatename: ['', []],
+        organizationissuingcertificate: ['', []],
+        certificatenumber: ['', []],
+        certificateissuedate: ['', []]
+    }));
+    // this.userProfileEditForm.value.certificates.push(
+    //   {
+    //     id: this.userProfileEditForm.value.certificates.length + 1,
+    //     certificatename: '',
+    //     organizationissuingcertificate: '',
+    //     certificatenumber: '',
+    //     certificateissuedate: ''
+    //   }
+    // )
   }
 
   addNew(softSkillType: number) {
@@ -260,8 +320,10 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
     this.data.accountSoftSkills = this.userProfileEditForm.value.organizationsAndSkills;
     // console.log(this.userProfileEditForm.valid)
     console.log(this.userProfileEditForm.value)
+    console.log(this.userProfileEditForm.value.certificates)
     // console.log(this.userProfileEditGridForm.valid)
     console.log(this.userProfileEditGridForm.value)
+    console.log(this.certificate.value)
     this.editUserProfileService.updateUserById(this.data.account.id, this.data).subscribe()
   }
 }

@@ -92,7 +92,8 @@ export interface Account {
   verificationCodeValid: Date,
   title: string,
   location: string,
-  employmentmethod: number
+  employmentmethod: number,
+  position: string
 }
 
 export interface AccountCoursesCertificate {

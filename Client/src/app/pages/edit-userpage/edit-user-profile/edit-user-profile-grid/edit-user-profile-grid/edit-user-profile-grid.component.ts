@@ -29,7 +29,7 @@ constructor(private ref: ChangeDetectorRef) { }
       phone: this.data?.account.phonenumber ? this.data?.account.phonenumber : '',
       salarymin: this.data?.account.salarymin,
       salarymax: this.data?.account.salarymax,
-      dateOfBirth: this.data?.account.birthdate ? new Date(this.data.account.birthdate) : new Date('03-10-1999'),
+      dateOfBirth: this.data?.account.birthdate ? new Date(this.data.account.birthdate) : Date.now(),
       workingTime: '',
       gitHub: '',
       linkedIn: '',
