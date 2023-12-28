@@ -46,7 +46,8 @@ export interface UserProfile {
   accountTags: AccountTags [],
   accountSocialMediaLinksModelDto : AccountSocialMediaLinksModelDto [],
   accountEducationModelDto : accountEducationModelDto [],
-  accountWorkExperiences : accountWorkExperiences[]
+  accountWorkExperiences : accountWorkExperiences[],
+  accountWorkResponsibilities: AccountWorkResponsibilities[]
 }
 
 export interface accountWorkExperiences {

@@ -188,9 +188,7 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
       workcompany: ['', []],
       datestart: new FormControl<Date | null>(null),
       dateend: new FormControl<Date | null>(null),
-      accountworkresponsibilities: this.formBuilder.group({
-          name: ['', []]
-        })
+      accountworkresponsibilities: [[], []]
     }));
     this.ref.detectChanges();
   }
@@ -275,6 +273,7 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
     this.data.accountWorkExperiences = this.userProfileEditForm.value.experience;
     this.data.accountEducationModelDto = this.userProfileEditForm.value.education;
     this.data.accountSoftSkills = this.userProfileEditForm.value.organizationsAndSkills;
+    this.data.accountWorkResponsibilities = [];
     // console.log(this.userProfileEditForm.value)
     // console.log(this.userProfileEditForm.value.certificates)
     // console.log(this.userProfileEditGridForm.value)
