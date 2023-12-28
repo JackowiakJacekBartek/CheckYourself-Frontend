@@ -8,7 +8,7 @@ import {
   addtool,
   androidstudio,
   angularjs,
-  ansic, arduino, cplus, csharp,
+  ansic, arduino, cplus, csharp, css,
   css3, discordjs,
   fbIcon, giticon,
   html,
@@ -33,7 +33,7 @@ export class AppComponent {
   constructor(private translate: TranslateService, private dateAdapter: DateAdapter<any>, public iconComponent: IconComponent) {
 
     this.icons = [
-      fbIcon, twitter, instagram, linkedin, pin, user, html, css3, angularjs, ansic, csharp, cplus, java, python, jsicon, discordjs, androidstudio, react, unrealengine, arduino, addtool, typescripticon, jenkins, giticon, jira, windows, linuxicon
+      fbIcon, twitter, instagram, linkedin, pin, user, html, css, css3, angularjs, ansic, csharp, cplus, java, python, jsicon, discordjs, androidstudio, react, unrealengine, arduino, addtool, typescripticon, jenkins, giticon, jira, windows, linuxicon
     ];
 
     this.icons.map(icon => iconComponent.putIcon(icon.name, icon.path));
