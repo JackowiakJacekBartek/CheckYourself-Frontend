@@ -8,6 +8,7 @@ export const pin: IconDto = new IconDto('pin', '../assets/icons/Pin_fill.svg');
 export const user: IconDto = new IconDto('user', '../assets/icons/User_alt_fill.svg');
 export const html: IconDto = new IconDto('html', '../assets/icons/html.svg');
 export const css3: IconDto = new IconDto('css3', '../assets/icons/CSS3.svg');
+export const css: IconDto = new IconDto('css', '../assets/icons/CSS3.svg');
 export const angularjs: IconDto = new IconDto('angularjs', '../assets/icons/Angularjs.svg');
 export const ansic: IconDto = new IconDto('ansic', '../assets/icons/C.svg');
 export const csharp: IconDto = new IconDto('csharp', '../assets/icons/Csharp.svg');
