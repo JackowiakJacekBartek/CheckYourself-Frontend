@@ -1,16 +1,21 @@
 .quiz-main {
     background-color: #313843;
     padding: 40px 70px;
+    // height: 50vmax;
+    height: auto;
 }
 
 .card {
     min-width: 200px;
-    width: 60%;;
+    width: 60%;
 }
 
 .card-content {
     display: flex;
-    background-image: url('/assets/images/Background_logo_LG.png');
+    // background-image: url('/assets/icons/logo_svg_blue.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
     min-height: 50px;
     text-align: center;
     justify-content: center;

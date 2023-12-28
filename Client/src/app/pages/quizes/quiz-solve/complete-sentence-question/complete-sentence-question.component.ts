@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { QuizModel } from 'src/app/shared/models/quiz';
 
 @Component({
   selector: 'app-complete-sentence-question',
@@ -8,6 +9,7 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, View
 export class CompleteSentenceQuestionComponent implements AfterViewInit {
 
   @Input() questionNumber: boolean = true;
+  @Input() quiz!: QuizModel;
 
   @Output() questionChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 

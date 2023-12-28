@@ -70,7 +70,8 @@
             </mat-form-field>
         </span>
       </div>
-      <div class="skills">
+      <!-- Disabled languages. Currently not handled. -->
+      <!-- <div class="skills">
         <div class="sectionHeader">
           <mat-icon class="material-icons-outlined">translate</mat-icon>
           <span>Języki obce:</span>
@@ -82,7 +83,6 @@
                 <mat-select formControlName="languages">
                     <mat-option></mat-option>
                     <mat-option *ngFor="let adress of languages" [value]="adress.language">{{adress.language}}</mat-option>
-                    <!-- <mat-option value="Polish">Polski</mat-option> -->
                   </mat-select>
               </mat-form-field>
               <mat-form-field appearance="outline" class="masonryHolder-level">
@@ -98,7 +98,7 @@
               <mat-icon class="material-icons-outlined add-button" (click)="addLang()">add_circle_outline</mat-icon>
             </div>
           </div>
-      </div>
+      </div> -->
       <div class="experience">
         <div class="section">
           <div class="sectionHeader">
@@ -106,13 +106,13 @@
             <span>{{'UserPage.Experience' | translate}}:</span>
           </div>
           <span>
-          <mat-card formArrayName="experience" class="card" *ngFor="let item of experience.controls; let i = index">
+          <mat-card formArrayName="experience" class="card" *ngFor="let item of experience.controls | keyvalue; let i = index">
             <mat-card-content [formGroupName]="i"> <!-- Doświadczenie -->
               <div class="delete">
                 <mat-icon class="material-icons-outlined" (click)="removeAtIndex('experience', i)">delete_outline</mat-icon>
               </div>
               <div class="card-input-div" style="font-size: 12px;">
-                <mat-form-field class="card-input" id="formField">
+                <mat-form-field class="card-input">
                   <mat-label for="my-input">Nazwa stanowiska</mat-label>
                   <input matInput
                     id="my-input"
@@ -132,33 +132,32 @@
                   <mat-datepicker-toggle matIconSuffix [for]="pickerExp"></mat-datepicker-toggle>
                   <mat-date-range-picker #pickerExp></mat-date-range-picker>
 
-                  <mat-error *ngIf="rangeExp.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
-                  <mat-error *ngIf="rangeExp.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+                  <mat-error *ngIf="rangeExp.controls.datestart.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+                  <mat-error *ngIf="rangeExp.controls.dateend.hasError('matEndDateInvalid')">Invalid end date</mat-error>
                 </mat-form-field>
               </div>
-              <div class="masonryHolder">
-                <!-- *ngFor="let skillCategory of skills | keyvalue: keepOrder" -->
-                <ul class="masonryBlocks" formArrayName="tasks">
-                  <li *ngFor="let task of item.value.tasks; let ii = index">
-                    <p>&#x2022;
-                        <mat-form-field [formGroupName]="ii" class="card-input">
+              <!-- Temporary disabled work responsibility -->
+              <!-- <div class="masonryHolder">
+                <ul class="masonryBlocks" >
+                  <li formArrayName="accountworkresponsibilities" *ngFor="let responsibility of item.value.accountworkresponsibilities; let ii = index">
+                    <p [formGroupName]="ii">&#x2022;
+                        <mat-form-field class="card-input">
                           <mat-label>Obowiązek</mat-label>
                           <input matInput
                             #inputField
                             class="card-input-field"
                             [matTooltip]="inputField.value"
                             placeholder="Obowiązek"
-                            formControlName="taskName"
+                            formControlName="name"
                           >
                         </mat-form-field>
                     </p>
                   </li>
-                  <!-- ngFor w li -->
                   <li class="masonryBlocks-add">
                     <mat-icon class="material-icons-outlined add-button" (click)="addTask(item)">add_circle_outline</mat-icon>
                   </li>
                 </ul>
-              </div>
+              </div> -->
             </mat-card-content>
           </mat-card>
         </span>
@@ -171,16 +170,20 @@
             <mat-icon class="material-icons-outlined">school</mat-icon>
             <span>{{'UserPage.Education' | translate}}:</span>
           </div>
-          <mat-card class="card" *ngFor="let edu of education">
-            <mat-card-content> <!-- Wykształcenie -->
+          <mat-card formArrayName="education" class="card" *ngFor="let edu of education.controls | keyvalue; let i = index">
+            <mat-card-content [formGroupName]="i"> <!-- Wykształcenie -->
+              <div class="delete">
+                <mat-icon class="material-icons-outlined" (click)="removeAtIndex('education', i)">delete_outline</mat-icon>
+              </div>
               <div>
                 <mat-form-field class="card-input">
                   <mat-label>Nazwa kierunku</mat-label>
                   <input matInput
                     class="card-input-field"
                     placeholder="Nazwa kierunku"
-                    [value]="edu.name"
+                    formControlName="professionname"
                   >
+                  <!-- [value]="edu.name" -->
                 </mat-form-field>
               </div>
               <div>
@@ -189,32 +192,34 @@
                   <input matInput
                     class="card-input-field"
                     placeholder="Nazwa uczelni"
-                    [value]="edu.school"
+                    formControlName="universityname"
                   >
+                  <!-- [value]="edu.school" -->
                 </mat-form-field>
               </div>
               <div>
-                <mat-form-field appearance="outline" class="card-input">
+                <mat-form-field class="card-input">
                   <mat-label>Tytuł</mat-label>
-                  <mat-select [(value)]="edu.degree">
-                      <mat-option></mat-option>
-                      <mat-option [value]="edu.degree">{{edu.degree}}</mat-option>
-                      <mat-option value="two">Second option</mat-option>
-                    </mat-select>
+                  <!-- [(value)]="edu.degree" -->
+                  <input matInput
+                    class="card-input-field"
+                    placeholder="Tytuł"
+                    formControlName="universityname"
+                  >
                 </mat-form-field>
               </div>
               <div>
                 <mat-form-field>
                   <mat-label>Data od - do</mat-label>
-                  <mat-date-range-input [formGroup]="rangeEdu" [rangePicker]="pickerEdu">
-                    <input matStartDate formControlName="start" placeholder="Start date" [value]="edu.startTime">
-                    <input matEndDate formControlName="end" placeholder="End date" [value]="edu.endTime">
+                  <mat-date-range-input [rangePicker]="pickerEdu">
+                    <input matStartDate formControlName="datestart" placeholder="Start date" >
+                    <input matEndDate formControlName="dateend" placeholder="End date" >
                   </mat-date-range-input>
                   <mat-datepicker-toggle matIconSuffix [for]="pickerEdu"></mat-datepicker-toggle>
                   <mat-date-range-picker #pickerEdu></mat-date-range-picker>
 
-                  <mat-error *ngIf="rangeEdu.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
-                  <mat-error *ngIf="rangeEdu.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+                  <mat-error *ngIf="rangeExp.controls.datestart.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+                  <mat-error *ngIf="rangeExp.controls.dateend.hasError('matEndDateInvalid')">Invalid end date</mat-error>
                 </mat-form-field>
               </div>
             </mat-card-content>
@@ -228,7 +233,7 @@
             <mat-icon class="material-icons-outlined">approval</mat-icon>
             <span>{{'UserPage.Courses and certificates' | translate}}:</span>
           </div>
-          <mat-card formArrayName="certificates" class="card" *ngFor="let certificate of certificates.controls; let i = index">
+          <mat-card formArrayName="certificates" class="card" *ngFor="let certificate of certificates.controls | keyvalue; let i = index">
             <mat-card-content [formGroupName]="i"> <!-- Kursy i Certyfikaty -->
               <div class="delete">
                 <mat-icon class="material-icons-outlined" (click)="removeAtIndex('certificates', i)">delete_outline</mat-icon>
@@ -278,7 +283,7 @@
           </div>
         </div>
       </div>
-      <div class="other">
+      <div formArrayName="organizationsAndSkills" class="other">
         <div class="organizations">
           <div class="sectionHeader">
             <mat-icon class="material-icons-outlined">home</mat-icon>
@@ -286,15 +291,16 @@
           </div>
           <div class="other-wraper">
             <ul class="other-block">
-              <li *ngFor="let org of userProfileEditForm.value.organizationsAndSkills">
-                <p *ngIf="org.idaccountsoftskillstitle === 1">&#x2022;
+              <li *ngFor="let org of organizationsAndSkills.controls; let i = index">
+                <p *ngIf="org.value.idaccountsoftskillstitle === 1" [formGroupName]="i">&#x2022;
                   <mat-form-field>
                     <mat-label>Organizacja</mat-label>
                     <input matInput
                       class="card-input-field"
                       placeholder="Organizacja"
-                      [value]="org.name"
+                      formControlName="name"
                     >
+                    <!-- [value]="org.name" -->
                   </mat-form-field>
                   <span class="delete-soft-skill">
                     <mat-icon class="material-icons-outlined" (click)="deletePositionByID(org, userProfileEditForm.value.organizationsAndSkills)">delete_outline</mat-icon>
@@ -314,15 +320,16 @@
           </div>
           <div class="other-wraper">
             <ul class="other-block">
-              <li *ngFor="let skill of userProfileEditForm.value.organizationsAndSkills">
-                <p *ngIf="skill.idaccountsoftskillstitle === 2">&#x2022;
+              <li *ngFor="let skill of organizationsAndSkills.controls; let i = index">
+                <p *ngIf="skill.value.idaccountsoftskillstitle === 2" [formGroupName]="i">&#x2022;
                   <mat-form-field>
                     <mat-label>Umiejętność</mat-label>
                     <input matInput
                       class="card-input-field"
                       placeholder="Umiejętność"
-                      [value]="skill.name"
+                      formControlName="name"
                     >
+                    <!-- [value]="skill.name" -->
                   </mat-form-field>
                   <span class="delete-soft-skill">
                     <mat-icon class="material-icons-outlined" (click)="deletePositionByID(skill, userProfileEditForm.value.organizationsAndSkills)">delete_outline</mat-icon>
@@ -342,15 +349,16 @@
           </div>
           <div class="other-wraper">
             <ul class="other-block">
-              <li *ngFor="let hobby of userProfileEditForm.value.organizationsAndSkills">
-                <p *ngIf="hobby.idaccountsoftskillstitle === 3">&#x2022;
+              <li *ngFor="let hobby of organizationsAndSkills.controls; let i = index">
+                <p *ngIf="hobby.value.idaccountsoftskillstitle === 3" [formGroupName]="i">&#x2022;
                   <mat-form-field>
                     <mat-label>Hobby</mat-label>
                     <input matInput
                       class="card-input-field"
                       placeholder="Hobby"
-                      [value]="hobby.name"
+                      formControlName="name"
                     >
+                    <!-- [value]="hobby.name" -->
                   </mat-form-field>
                   <span class="delete-soft-skill">
                     <mat-icon class="material-icons-outlined" (click)="deletePositionByID(hobby, userProfileEditForm.value.organizationsAndSkills)">delete_outline</mat-icon>
