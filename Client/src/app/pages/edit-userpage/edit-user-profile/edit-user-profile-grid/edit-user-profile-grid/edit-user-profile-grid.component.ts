@@ -22,6 +22,7 @@ constructor(private ref: ChangeDetectorRef) { }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    console.log(this.form.value?.dateOfBirth)
     if(!this.data) return;
     this.form.setValue({
       email: this.data?.account.email ? this.data.account.email : 'no email',
@@ -29,13 +30,13 @@ constructor(private ref: ChangeDetectorRef) { }
       phone: this.data?.account.phonenumber ? this.data?.account.phonenumber : '',
       salarymin: this.data?.account.salarymin,
       salarymax: this.data?.account.salarymax,
-      dateOfBirth: this.data?.account.birthdate ? new Date(this.data.account.birthdate) : Date.now(),
+      dateOfBirth: this.data?.account.birthdate ? new Date(this.data.account.birthdate) : new Date(Date.now()),
       workingTime: '',
       gitHub: '',
       linkedIn: '',
       site: '',
     })
-
+    console.log(this.form.value?.dateOfBirth)
   }
 
   ngOnInit(): void {
