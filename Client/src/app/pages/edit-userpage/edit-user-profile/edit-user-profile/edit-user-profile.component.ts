@@ -1,5 +1,5 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditUserProfileService } from '../edit-user-profile.service';
 import { UserProfile } from 'src/app/shared/models/accounts';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,13 +11,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnInit {
   rangeExp = new FormGroup({
-    start: new FormControl<Date | null>(null),
-    end: new FormControl<Date | null>(null),
+    datestart: new FormControl<Date | null>(null),
+    dateend: new FormControl<Date | null>(null),
   });
 
   rangeEdu = new FormGroup({
-    start: new FormControl<Date | null>(null),
-    end: new FormControl<Date | null>(null),
+    datestart: new FormControl<Date | null>(null),
+    dateend: new FormControl<Date | null>(null),
   });
 
   selectedLang1 = 'one';
@@ -39,53 +39,16 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
     },
   ];
 
-  // education = [
-  //   {
-  //     name: 'Informatyka',
-  //     startTime: '01-01-2019',
-  //     endTime: '01-01-2024',
-  //     school: 'Uniwersytet im. Adama Mickiewicza',
-  //     degree: 'Inżynier'
-  //   },
-  //   {
-  //     name: 'Technik informatyk',
-  //     startTime: '01-01-2015',
-  //     endTime: '01-01-2019',
-  //     school: 'Uniwersytet im. Adama Mickiewicza',
-  //     degree: 'Technik'
-  //   },
-  // ];
-  education = [
-    {
-        name: '',
-        startTime: '',
-        endTime: '',
-        school: '',
-        degree: ''
-      }
-  ];
-
   data!: UserProfile;
   private phonePattern = /^\d{3}-\d{3}-\d{3}$|^\d{3}\d{3}\d{3}$/; // accepts either 000-000-000 or 000000000 patterns
 
-
-  public userProfileEditForm: FormGroup = this.formBuilder.group({
-    name: ['', [Validators.required]],
-    surname: ['', [Validators.required]],
-    position: ['', [Validators.required]],
-    aboutMe: ['', []],
-    languages: [[], []],
-    education: [[], []],
-    experience: [[], []],
-    certificates: [[], []],
-    organizationsAndSkills: [[], []],
-  });
+  public userProfileEditForm!: FormGroup;
 
   public userProfileEditGridForm: FormGroup = this.formBuilder.group({
     adress: ['', [Validators.required]],
     phone: ['', [Validators.pattern(this.phonePattern)]],
-    salarymin: [0, [Validators.required]],
-    salarymax: [7000, [Validators.required]],
+    salarymin: [3000, [Validators.required]],
+    salarymax: [15000, [Validators.required]],
     email: ['', [Validators.required]],
     dateOfBirth: ['', [Validators.required]],
     workingTime: ['', [Validators.required]],
@@ -107,28 +70,40 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
 
   ngOnInit(): void {
     !(this.currentUserID === +localStorage.getItem('userID')!) && this.router.navigate([`/userpage/${localStorage.getItem('userID')}`]); //if user tries to change ID in url
+    
+    this.userProfileEditForm = this.formBuilder.group({
+      name: ['', [Validators.required]],
+      surname: ['', [Validators.required]],
+      position: ['', [Validators.required]],
+      aboutMe: ['', []],
+      languages: [[], []],
+      education: this.formBuilder.array([]),
+      experience: this.formBuilder.array([]),
+      certificates: this.formBuilder.array([]),
+      organizationsAndSkills: this.formBuilder.array([]),
+    });
   }
 
   ngAfterViewInit(): void {
     this.ref.detectChanges();
     this.editUserProfileService.getUserById(this.currentUserID).subscribe(res => {
       this.data = res.methodResult;
-      console.log(this.data)
+      // console.log(this.data)
       if(!this.data) return;
       this.userProfileEditForm.setValue({
         name: this.data.account.name,
         surname: this.data.account.surname,
-        position: '',
+        position: this.data.account.position ? this.data.account.position : '',
         aboutMe: this.data.account.description,
         languages: this.languages,
-        education: [],
-        experience: this.data.accountWorkExperience,
-        certificates: this.data.accountCoursesCertificate,
-        organizationsAndSkills: this.data.accountSoftSkill
+        education: this.data.accountEducationModelDto,
+        experience: this.data.accountWorkExperiences,
+        certificates: this.data.accountCoursesCertificates,
+        organizationsAndSkills: this.data.accountSoftSkills ? this.data.accountSoftSkills : []
       });
     })
     this.ref.detectChanges();
-    
+
   }
 
   ngOnChanges(changes: SimpleChanges): void { }
@@ -167,8 +142,15 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
     return 'Error';
   }
 
-  toDate(date: string) {
-    return new Date(date);
+  public removeAtIndex(formControl: string, index: number) {
+    switch (formControl) { 
+      case 'experience':
+        return this.experience.removeAt(index);
+      case 'certificates':
+        return this.certificates.removeAt(index);
+      case 'education':
+        return this.education.removeAt(index)
+    }
   }
 
   addLang() {
@@ -179,57 +161,89 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
     });
   }
 
-  addTask(card: any) {
-    card.tasks.push('');
+  public createTask(): FormGroup {
+    return this.formBuilder.group({
+      taskName: ['', Validators.required]
+    });
   }
 
-  addExp() {
-    this.userProfileEditForm.value.experience.push({
-      id: this.userProfileEditForm.value.experience.length + 1,
-      workcompany: '',
-      datestart: '', //jak na razie data dzisiaj żeby nie wywalało Ng0100
-      dateend: '',
-      tasks: [''],
-    });
+  getTasks(item: AbstractControl): FormArray {
+    return item.get('tasks') as FormArray;
+  }
+
+  addTask(item) {
+    // console.log(item.getRawValue().accountworkresponsibilities)
+    // item.controls.accountworkresponsibilities.controls.push(this.formBuilder.group({
+    //   name: ['', []]
+    // }))
+    console.log("Temporary disabled")
+  }
+
+  public get experience() {
+    return this.userProfileEditForm.get('experience') as FormArray;
+  }
+
+  public addExp() {
+    this.experience.push(this.formBuilder.group({
+      workcompany: ['', []],
+      datestart: new FormControl<Date | null>(null),
+      dateend: new FormControl<Date | null>(null),
+      accountworkresponsibilities: [[], []]
+    }));
     this.ref.detectChanges();
   }
 
+  public get education() {
+    return this.userProfileEditForm.get('education') as FormArray;
+  }
+
   addEdu() {
-    this.education.push(
-      {
-        name: '',
-        startTime: '',
-        endTime: '',
-        school: '',
-        degree: ''
-      },
-    )
+    this.education.push(this.formBuilder.group({
+      professionname: ['', []],
+      universityname: ['', []],
+      professionaltitle: ['', []],
+      datestart: new FormControl<Date | null>(null),
+      dateend: new FormControl<Date | null>(null),
+    }));
+    this.ref.detectChanges();
+  }
+
+  public get certificates() {
+    return this.userProfileEditForm.get('certificates') as FormArray;
   }
 
   addCert() {
-    this.userProfileEditForm.value.certificates.push(
-      {
-        id: this.userProfileEditForm.value.certificates.length + 1,
-        certificatename: '',
-        organizationissuingcertificate: '',
-        certificatenumber: '',
-        certificateissuedate: ''
-      }
-    )
+    this.certificates.push(this.formBuilder.group({
+        certificatename: ['', []],
+        organizationissuingcertificate: ['', []],
+        certificatenumber: ['', []],
+        certificateissuedate: ['', []]
+    }));
+  }
+
+  public get organizationsAndSkills() {
+    return this.userProfileEditForm.get('organizationsAndSkills') as FormArray;
   }
 
   addNew(softSkillType: number) {
     switch (softSkillType) {
       case 1:
-        this.userProfileEditForm.value.organizationsAndSkills
+        this.organizationsAndSkills.push(this.formBuilder.group({
+          idaccountsoftskillstitle: [1, []],
+          name: ['',[]]
+        }));
         break;
       case 2:
-        this.userProfileEditForm.value.organizationsAndSkills
+        this.organizationsAndSkills.push(this.formBuilder.group({
+          idaccountsoftskillstitle: [2, []],
+          name: ['',[]]
+        }));
         break;
       case 3:
-        this.userProfileEditForm.value.organizationsAndSkills.push({
-
-        })
+        this.organizationsAndSkills.push(this.formBuilder.group({
+          idaccountsoftskillstitle: [3, []],
+          name: ['',[]]
+        }));
         break;
     }
   }
@@ -244,24 +258,28 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
       this.data.account.name = this.userProfileEditForm.value.name,
       this.data.account.surname = this.userProfileEditForm.value.surname,
       this.data.account.description = this.userProfileEditForm.value.aboutMe,
-      this.data.account.image = 'XD',
+      this.data.account.image = '',
       this.data.account.birthdate = this.userProfileEditGridForm.value.dateOfBirth,
       this.data.account.email = this.userProfileEditGridForm.value.email,
       this.data.account.phonenumber = this.userProfileEditGridForm.value.phone,
-      this.data.account.salarymax = this.userProfileEditGridForm.value.max,
-      this.data.account.salarymin = this.userProfileEditGridForm.value.min
+      this.data.account.salarymax = this.userProfileEditGridForm.value.salarymax,
+      this.data.account.salarymin = this.userProfileEditGridForm.value.salarymin
     )
   }
 
   public save() {
     this.accountDetails();
-    this.data.accountCoursesCertificate = this.userProfileEditForm.value.certificates;
-    this.data.accountWorkExperience = this.userProfileEditForm.value.experience;
-    this.data.accountSoftSkill = this.userProfileEditForm.value.organizationsAndSkills;
-    // console.log(this.userProfileEditForm.valid)
-    console.log(this.userProfileEditForm.value)
-    // console.log(this.userProfileEditGridForm.valid)
-    console.log(this.userProfileEditGridForm.value)
-    this.editUserProfileService.updateUserById(this.data.account.id, this.data).subscribe()
+    this.data.accountCoursesCertificates = this.userProfileEditForm.value.certificates;
+    this.data.accountWorkExperiences = this.userProfileEditForm.value.experience;
+    this.data.accountEducationModelDto = this.userProfileEditForm.value.education;
+    this.data.accountSoftSkills = this.userProfileEditForm.value.organizationsAndSkills;
+    this.data.accountWorkResponsibilities = [];
+    // console.log(this.userProfileEditForm.value)
+    // console.log(this.userProfileEditForm.value.certificates)
+    // console.log(this.userProfileEditGridForm.value)
+    // console.log(this.data.accountWorkExperiences)
+    // console.log(this.data)
+    // console.log(JSON.stringify(this.data))
+    this.editUserProfileService.updateUserById(this.data.account.id, this.data).subscribe();
   }
 }

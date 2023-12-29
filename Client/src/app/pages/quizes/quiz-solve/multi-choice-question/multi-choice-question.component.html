@@ -1,27 +1,31 @@
-<main class="quiz-main">
+<div class="quiz-main">
     <form>
-        <mat-card class="main-card">
-            <div class="question-text">
-                {{'Quiz.What will be the output' | translate}}?
-            </div>
-            <mat-card-content class="question-content">
-                <img src="{{imgPlaceholder}}" alt="questionMockUp01">
-            </mat-card-content>
-            <mat-card-content>
-                <mat-grid-list cols="4" rowHeight="200px" class="list">
-                    <mat-grid-tile *ngFor="let choice of mulitChoice; let i = index" class="grid-tile">
-                        <mat-card class="card">
-                            <mat-card-content class="card-content" [style.background-color]="colors[i % colors.length]">
-                                {{choice.answere}}
-                            </mat-card-content>
-                        </mat-card>
-                    </mat-grid-tile>
-                </mat-grid-list>
-                <div class="next-question" #scrollTo>
-                    <button type="button" class="next-question-button" (click)="nextQuestion()">{{'Quiz.Next Question' | translate}}</button>
+        <div *ngFor="let question of quiz.questions; let i = index" class="xd">
+            <mat-card *ngIf="question.type === 'multiple choice' && i === questionNumber" class="main-card">
+                <div class="question-text">
+                    <!-- {{'Quiz.What will be the output' | translate}}? -->
+                    {{question.question}}
                 </div>
-            </mat-card-content>
-        </mat-card>
+                    <mat-card-content class="question-content">
+                        <!-- <img src="{{imgPlaceholder}}" alt="questionMockUp01"> -->
+                        {{question?.code}} {{question?.picture}} {{question?.film}}
+                    </mat-card-content>
+                    <mat-card-content>
+                        <mat-grid-list cols="4" rowHeight="200px" class="list">
+                            <mat-grid-tile *ngFor="let choice of mulitChoice; let i = index" class="grid-tile">
+                                <mat-card class="card">
+                                    <mat-card-content class="card-content" [style.background-color]="colors[i % colors.length]" [style.background-image]="backgroundImages[i % colors.length]">
+                                        {{choice.answere}}
+                                    </mat-card-content>
+                                </mat-card>
+                            </mat-grid-tile>
+                        </mat-grid-list>
+                        <div class="next-question" #scrollTo>
+                            <button type="button" class="next-question-button" (click)="nextQuestion()">{{'Quiz.Next Question' | translate}}</button>
+                        </div>
+                    </mat-card-content>
+            </mat-card>
+        </div>
     </form>
-</main>
+</div>
 

@@ -23,6 +23,7 @@
                   placeholder="Numer Telefonu" 
                   formControlName="phone"
                   matTooltip="Pattern: 123-456-789 or 123456789"
+                  [textMask]="{mask: phoneMask}"
               >
               <!-- pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"
               minlength="9"
@@ -38,7 +39,7 @@
             <!-- <mat-form-field> -->
                 <mat-label>Widełki</mat-label>
                 <div class="slider">
-                  <mat-slider min="0" max="7000" discrete>
+                  <mat-slider min="0" max="50000" step="250" discrete>
                     <input matSliderStartThumb formControlName="salarymin">
                     <input matSliderEndThumb formControlName="salarymax">
                   </mat-slider>

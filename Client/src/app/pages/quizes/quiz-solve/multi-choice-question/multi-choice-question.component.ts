@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { images } from 'src/app/shared/constants/constants';
+import { QuizModel } from 'src/app/shared/models/quiz';
 
 @Component({
   selector: 'app-multi-choice-question',
@@ -9,9 +10,11 @@ import { images } from 'src/app/shared/constants/constants';
 export class MultiChoiceQuestionComponent implements OnInit, AfterViewInit {
 
   @Input() colors!: string[];
+  @Input() backgroundImages!: string[];
+  @Input() quiz!: QuizModel;
+  @Input() questionNumber!: number;
   @Input() mulitChoice: any;
   @Input() questionImage: string = `${images}/mockQuestion.png`;
-  @Input() questionNumber: boolean = true;
   imgPlaceholder: string = `${images}/mockQuestion.png`;
 
   @Output() questionChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -29,8 +32,7 @@ export class MultiChoiceQuestionComponent implements OnInit, AfterViewInit {
 
 
   nextQuestion() {
-    this.questionNumber = !this.questionNumber;
-    this.questionChanged.emit(this.questionNumber);
+    this.questionChanged.emit();
   }
 
 }

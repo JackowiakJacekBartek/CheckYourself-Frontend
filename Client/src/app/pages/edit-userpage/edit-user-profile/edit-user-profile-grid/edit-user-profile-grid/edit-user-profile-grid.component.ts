@@ -13,7 +13,7 @@ export class EditUserProfileGridComponent implements OnInit, OnChanges, AfterVie
 @Input() data!: UserProfile;
 
 public adressOptions: string[] = ['Option 1', 'Option 2', 'Option 3'];
-
+public phoneMask = [/[1-9]/, /[1-9]/, /[1-9]/, '-', /[1-9]/, /[1-9]/, /[1-9]/, '-', /[1-9]/, /[1-9]/, /[1-9]/];
 
 constructor(private ref: ChangeDetectorRef) { }
 
@@ -29,7 +29,7 @@ constructor(private ref: ChangeDetectorRef) { }
       phone: this.data?.account.phonenumber ? this.data?.account.phonenumber : '',
       salarymin: this.data?.account.salarymin,
       salarymax: this.data?.account.salarymax,
-      dateOfBirth: this.data?.account.birthdate ? new Date(this.data.account.birthdate) : new Date('03-10-1999'),
+      dateOfBirth: this.data?.account.birthdate ? new Date(this.data.account.birthdate) : Date.now(),
       workingTime: '',
       gitHub: '',
       linkedIn: '',

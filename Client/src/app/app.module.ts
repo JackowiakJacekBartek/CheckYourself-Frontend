@@ -53,6 +53,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { ListjoboffersComponent } from './pages/listjoboffers/listjoboffers.component';
 import { AreYouSurePopUpComponent } from './components/are-you-sure-pop-up/are-you-sure-pop-up.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { TextMaskModule } from 'angular2-text-mask';
 
 @NgModule({
   exports: [
@@ -103,6 +104,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatInputModule,
     MatCheckboxModule,
     MatTooltipModule,
+    TextMaskModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
