@@ -54,6 +54,8 @@ import { ListjoboffersComponent } from './pages/listjoboffers/listjoboffers.comp
 import { AreYouSurePopUpComponent } from './components/are-you-sure-pop-up/are-you-sure-pop-up.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { TextMaskModule } from 'angular2-text-mask';
+import { CompaniesPageComponent } from './pages/companiespage/companies-page.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   exports: [
@@ -82,9 +84,11 @@ import { TextMaskModule } from 'angular2-text-mask';
     EditJoboffersComponent,
     NavigationMenuComponent,
     ListjoboffersComponent,
-    AreYouSurePopUpComponent
+    AreYouSurePopUpComponent,
+    CompaniesPageComponent
   ],
   imports: [
+    MatTableModule,
     MatGridListModule,
     MatIconModule,
     MatSlideToggleModule,

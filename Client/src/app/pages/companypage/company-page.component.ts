@@ -11,6 +11,8 @@ import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
 })
 export class CompanyPageComponent {
 
+  public currentCompanyID: number = +this.route.snapshot.params['id'];
+
   company = {
     "longName": "T-Mobile Polska S.A.",
     "name": "T-Mobile",
@@ -55,7 +57,7 @@ export class CompanyPageComponent {
   data!: CompanyProfile;
 
   ngAfterViewInit(): void {
-    this.companyProfileService.getCompanyById(1).subscribe(res => {
+    this.companyProfileService.getCompanyById(this.currentCompanyID).subscribe(res => {
       this.data = res.methodResult;
       this.company.name = this.data.company.name;
       this.company.employeecount = this.data.company.employeecount;

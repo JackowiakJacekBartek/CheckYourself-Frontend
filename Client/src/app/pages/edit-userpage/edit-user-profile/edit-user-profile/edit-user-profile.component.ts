@@ -58,7 +58,7 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
   });
 
   public currentUserID: number = +this.route.snapshot.params['id'];
-  public returnLink: string = `/userpage/${this.currentUserID}`
+  public returnLink: string = `/user/${this.currentUserID}`
 
   constructor(
     private ref: ChangeDetectorRef,
@@ -69,7 +69,7 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
   ) { }
 
   ngOnInit(): void {
-    !(this.currentUserID === +localStorage.getItem('userID')!) && this.router.navigate([`/userpage/${localStorage.getItem('userID')}`]); //if user tries to change ID in url
+    !(this.currentUserID === +localStorage.getItem('userID')!) && this.router.navigate([`/user/${localStorage.getItem('userID')}`]); //if user tries to change ID in url
     
     this.userProfileEditForm = this.formBuilder.group({
       name: ['', [Validators.required]],

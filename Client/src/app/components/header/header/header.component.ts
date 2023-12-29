@@ -29,7 +29,7 @@ export class HeaderComponent {
 
   openLogin() {
     if(localStorage.getItem('userID') && localStorage.getItem('userID') !== "undefined") {
-      this.router.navigate(['/userpage/'+localStorage.getItem('userID')]);
+      this.router.navigate(['/user/'+localStorage.getItem('userID')]);
     }
     else {
       this.popUp.open(LoginPopUpComponent);
