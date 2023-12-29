@@ -26,7 +26,6 @@ export class CompaniesPageComponent {
     this.companyProfileService.getCompaniesById().subscribe(res => {
       this.data = res.methodResult;
       this.companies = res.methodResult;
-      console.log(res.methodResult)
     })
   }
 
