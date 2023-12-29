@@ -49,7 +49,7 @@ export class AppComponent {
 
       translate.setDefaultLang(defaultLanguage ? defaultLanguage : langLocale);
       translate.use(defaultLanguage ? defaultLanguage : langLocale);
-      dateAdapter.setLocale(localStorage.getItem('selectedLanguage'));
+      dateAdapter.setLocale(defaultLanguage ? defaultLanguage : langLocale);
     }
 
     let language = LANGUAGES.find(isLangSupported)

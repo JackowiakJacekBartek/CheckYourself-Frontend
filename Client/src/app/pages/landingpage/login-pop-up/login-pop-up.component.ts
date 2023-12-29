@@ -47,10 +47,6 @@ export class LoginPopUpComponent {
       };
 
       this.accountService.login(model).subscribe(res => {
-        console.log(res.errorMessage)
-        console.log(res.methodResult)
-        console.log(res.methodResult?.accessToken)
-        console.log(res.methodResult?.refreshtoken)
         if (res.errorMessage === "E-mail jest niepotwierdzony.") {
           this.toastrService.warning(this.translate.instant('Login.E-mail is not verified'));
         }

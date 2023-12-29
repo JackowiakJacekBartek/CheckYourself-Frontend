@@ -44,18 +44,7 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
 
   public userProfileEditForm!: FormGroup;
 
-  public userProfileEditGridForm: FormGroup = this.formBuilder.group({
-    adress: ['', [Validators.required]],
-    phone: ['', [Validators.pattern(this.phonePattern)]],
-    salarymin: [3000, [Validators.required]],
-    salarymax: [15000, [Validators.required]],
-    email: ['', [Validators.required]],
-    dateOfBirth: ['', [Validators.required]],
-    workingTime: ['', [Validators.required]],
-    gitHub: ['', [Validators.required]],
-    linkedIn: ['', [Validators.required]],
-    site: ['', [Validators.required]],
-  });
+  public userProfileEditGridForm: FormGroup;
 
   public currentUserID: number = +this.route.snapshot.params['id'];
   public returnLink: string = `/user/${this.currentUserID}`
@@ -66,11 +55,21 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {
 
-  ngOnInit(): void {
-    !(this.currentUserID === +localStorage.getItem('userID')!) && this.router.navigate([`/user/${localStorage.getItem('userID')}`]); //if user tries to change ID in url
-    
+    this.userProfileEditGridForm = this.formBuilder.group({
+      adress: ['', [Validators.required]],
+      phone: ['', [Validators.pattern(this.phonePattern)]],
+      salarymin: [3000, [Validators.required]],
+      salarymax: [15000, [Validators.required]],
+      email: ['', [Validators.required]],
+      dateOfBirth: ['', [Validators.required]],
+      workingTime: ['', [Validators.required]],
+      gitHub: ['', [Validators.required]],
+      linkedIn: ['', [Validators.required]],
+      site: ['', [Validators.required]],
+    });
+
     this.userProfileEditForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       surname: ['', [Validators.required]],
@@ -82,6 +81,11 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
       certificates: this.formBuilder.array([]),
       organizationsAndSkills: this.formBuilder.array([]),
     });
+   }
+
+  ngOnInit(): void {
+    !(this.currentUserID === +localStorage.getItem('userID')!) && this.router.navigate([`/user/${localStorage.getItem('userID')}`]); //if user tries to change ID in url
+    
   }
 
   ngAfterViewInit(): void {

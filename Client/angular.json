@@ -45,7 +45,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "5mb",
-                  "maximumError": "5mb"
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -70,7 +70,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
 	  "options": {
             "port": 4200
-          }
+          },
           "configurations": {
             "production": {
               "browserTarget": "Client:build:production"
