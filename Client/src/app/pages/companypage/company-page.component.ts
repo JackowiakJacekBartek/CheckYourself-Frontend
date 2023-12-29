@@ -56,6 +56,10 @@ export class CompanyPageComponent {
 
   data!: CompanyProfile;
 
+  public currentUserID: number = +this.route.snapshot.params['id'];
+  public editLink: string = `/company/${this.currentUserID}/edit`;
+  //public showEditButton: boolean = (+this.currentUserID === +localStorage.getItem('userID')!);
+
   ngAfterViewInit(): void {
     this.companyProfileService.getCompanyById(this.currentCompanyID).subscribe(res => {
       this.data = res.methodResult;

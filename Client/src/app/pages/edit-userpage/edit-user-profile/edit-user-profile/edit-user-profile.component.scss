@@ -104,7 +104,7 @@ $margin: 50px;
   margin-top: -6%;
   margin-bottom: 5%;
   cursor: pointer;
-} 
+}
 
 .save-button {
   display: flex;
@@ -112,7 +112,7 @@ $margin: 50px;
   margin-top: -8%;
   margin-bottom: 5%;
   cursor: pointer;
-} 
+}
 
 .sectionHeader {
   margin-bottom: 10px;
@@ -363,4 +363,33 @@ p {
 
 #dateFromExp, #dateToExp, #dateToEdu, #dateFromEdu {
   font-size: x-small;
+}
+
+.custom-file-upload:hover {
+  cursor: pointer;
+}
+
+.custom-file-upload {
+  width: 100%;
+  border-radius: 5px;
+
+  span {
+    color: white;
+    letter-spacing: 0.05rem;
+  }
+
+  cursor: pointer;
+  padding: 15px;
+}
+
+.avatar {
+  width: 135px;
+  height: 135px;
+  border-radius: 10%;
+}
+
+.logo {
+  input[type="file"] {
+    display: none;
+  }
 }
