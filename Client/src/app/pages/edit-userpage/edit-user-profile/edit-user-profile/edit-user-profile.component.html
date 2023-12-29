@@ -10,25 +10,27 @@
           </button>
         </a>
         <a class="save-button">
-          <button  mat-raised-button type="button" (click)="save()" color="warn">Save</button>
+          <button mat-raised-button type="button" (click)="save()" color="warn">Save</button>
         </a>
-        <span *ngIf="0" class="avatar-circle">
-            <img class="avatar-image" alt="avatar" src="assets/icons/no-image.svg">
-        </span>
-            <img *ngIf="1" class="avatar-circle" alt="avatar" src="assets/images/mariusz-nowakowski-avatar.png">
+        <div class="logo">
+          <label class="custom-file-upload">
+            <input type="file" (change)="selectAvatar($event)"/>
+            <img class="avatar" alt="avatar" src="{{image}}">
+          </label>
+        </div>
         <span>
             <mat-form-field class="name-surname">
                 <mat-label>Imię</mat-label>
                 <input matInput
-                    placeholder="Imię"
-                    formControlName="name"
+                       placeholder="Imię"
+                       formControlName="name"
                 >
             </mat-form-field>
             <mat-form-field class="name-surname">
                 <mat-label>Nazwisko</mat-label>
                 <input matInput
-                    placeholder="Nazwisko" 
-                    formControlName="surname"
+                       placeholder="Nazwisko"
+                       formControlName="surname"
                 >
             </mat-form-field>
         </span>
@@ -41,10 +43,10 @@
             <mat-option value="Frontend">Frontend</mat-option>
             <mat-option value="Backend">Backend</mat-option>
           </mat-select>
-      </mat-form-field>
+        </mat-form-field>
       </div>
       <div class="info">
-        <app-edit-user-profile-grid 
+        <app-edit-user-profile-grid
           [data]="data"
           [form]="userProfileEditGridForm"
         >
@@ -59,12 +61,12 @@
             <mat-form-field class="about-me-field" appearance="outline">
                 <mat-label>Tell us about yourself</mat-label>
                 <textarea matInput
-                    #aboutMe
-                    maxlength="2000"
-                    type="text"
-                    placeholder="Tell us about yourself"
-                    formControlName="aboutMe"
-                    cdkTextareaAutosize
+                          #aboutMe
+                          maxlength="2000"
+                          type="text"
+                          placeholder="Tell us about yourself"
+                          formControlName="aboutMe"
+                          cdkTextareaAutosize
                 ></textarea>
                 <mat-hint align="end">{{aboutMe.value.length}}/2000</mat-hint>
             </mat-form-field>
@@ -106,19 +108,21 @@
             <span>{{'UserPage.Experience' | translate}}:</span>
           </div>
           <span>
-          <mat-card formArrayName="experience" class="card" *ngFor="let item of experience.controls | keyvalue; let i = index">
+          <mat-card formArrayName="experience" class="card"
+                    *ngFor="let item of experience.controls | keyvalue; let i = index">
             <mat-card-content [formGroupName]="i"> <!-- Doświadczenie -->
               <div class="delete">
-                <mat-icon class="material-icons-outlined" (click)="removeAtIndex('experience', i)">delete_outline</mat-icon>
+                <mat-icon class="material-icons-outlined"
+                          (click)="removeAtIndex('experience', i)">delete_outline</mat-icon>
               </div>
               <div class="card-input-div" style="font-size: 12px;">
                 <mat-form-field class="card-input">
                   <mat-label for="my-input">Nazwa stanowiska</mat-label>
                   <input matInput
-                    id="my-input"
-                    class="card-input-field"
-                    placeholder="Nazwa stanowiska"
-                    formControlName="workcompany"
+                         id="my-input"
+                         class="card-input-field"
+                         placeholder="Nazwa stanowiska"
+                         formControlName="workcompany"
                   >
                 </mat-form-field>
               </div>
@@ -126,14 +130,16 @@
                 <mat-form-field>
                   <mat-label>Data od - do</mat-label>
                   <mat-date-range-input [rangePicker]="pickerExp">
-                    <input matStartDate formControlName="datestart" placeholder="Start date" >
-                    <input matEndDate formControlName="dateend" placeholder="End date" >
+                    <input matStartDate formControlName="datestart" placeholder="Start date">
+                    <input matEndDate formControlName="dateend" placeholder="End date">
                   </mat-date-range-input>
                   <mat-datepicker-toggle matIconSuffix [for]="pickerExp"></mat-datepicker-toggle>
                   <mat-date-range-picker #pickerExp></mat-date-range-picker>
 
-                  <mat-error *ngIf="rangeExp.controls.datestart.hasError('matStartDateInvalid')">Invalid start date</mat-error>
-                  <mat-error *ngIf="rangeExp.controls.dateend.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+                  <mat-error
+                    *ngIf="rangeExp.controls.datestart.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+                  <mat-error
+                    *ngIf="rangeExp.controls.dateend.hasError('matEndDateInvalid')">Invalid end date</mat-error>
                 </mat-form-field>
               </div>
               <!-- Temporary disabled work responsibility -->
@@ -170,18 +176,20 @@
             <mat-icon class="material-icons-outlined">school</mat-icon>
             <span>{{'UserPage.Education' | translate}}:</span>
           </div>
-          <mat-card formArrayName="education" class="card" *ngFor="let edu of education.controls | keyvalue; let i = index">
+          <mat-card formArrayName="education" class="card"
+                    *ngFor="let edu of education.controls | keyvalue; let i = index">
             <mat-card-content [formGroupName]="i"> <!-- Wykształcenie -->
               <div class="delete">
-                <mat-icon class="material-icons-outlined" (click)="removeAtIndex('education', i)">delete_outline</mat-icon>
+                <mat-icon class="material-icons-outlined" (click)="removeAtIndex('education', i)">delete_outline
+                </mat-icon>
               </div>
               <div>
                 <mat-form-field class="card-input">
                   <mat-label>Nazwa kierunku</mat-label>
                   <input matInput
-                    class="card-input-field"
-                    placeholder="Nazwa kierunku"
-                    formControlName="professionname"
+                         class="card-input-field"
+                         placeholder="Nazwa kierunku"
+                         formControlName="professionname"
                   >
                   <!-- [value]="edu.name" -->
                 </mat-form-field>
@@ -190,9 +198,9 @@
                 <mat-form-field class="card-input">
                   <mat-label>Nazwa uczelni</mat-label>
                   <input matInput
-                    class="card-input-field"
-                    placeholder="Nazwa uczelni"
-                    formControlName="universityname"
+                         class="card-input-field"
+                         placeholder="Nazwa uczelni"
+                         formControlName="universityname"
                   >
                   <!-- [value]="edu.school" -->
                 </mat-form-field>
@@ -202,9 +210,9 @@
                   <mat-label>Tytuł</mat-label>
                   <!-- [(value)]="edu.degree" -->
                   <input matInput
-                    class="card-input-field"
-                    placeholder="Tytuł"
-                    formControlName="universityname"
+                         class="card-input-field"
+                         placeholder="Tytuł"
+                         formControlName="universityname"
                   >
                 </mat-form-field>
               </div>
@@ -212,14 +220,16 @@
                 <mat-form-field>
                   <mat-label>Data od - do</mat-label>
                   <mat-date-range-input [rangePicker]="pickerEdu">
-                    <input matStartDate formControlName="datestart" placeholder="Start date" >
-                    <input matEndDate formControlName="dateend" placeholder="End date" >
+                    <input matStartDate formControlName="datestart" placeholder="Start date">
+                    <input matEndDate formControlName="dateend" placeholder="End date">
                   </mat-date-range-input>
                   <mat-datepicker-toggle matIconSuffix [for]="pickerEdu"></mat-datepicker-toggle>
                   <mat-date-range-picker #pickerEdu></mat-date-range-picker>
 
-                  <mat-error *ngIf="rangeExp.controls.datestart.hasError('matStartDateInvalid')">Invalid start date</mat-error>
-                  <mat-error *ngIf="rangeExp.controls.dateend.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+                  <mat-error *ngIf="rangeExp.controls.datestart.hasError('matStartDateInvalid')">Invalid start date
+                  </mat-error>
+                  <mat-error *ngIf="rangeExp.controls.dateend.hasError('matEndDateInvalid')">Invalid end date
+                  </mat-error>
                 </mat-form-field>
               </div>
             </mat-card-content>
@@ -233,18 +243,20 @@
             <mat-icon class="material-icons-outlined">approval</mat-icon>
             <span>{{'UserPage.Courses and certificates' | translate}}:</span>
           </div>
-          <mat-card formArrayName="certificates" class="card" *ngFor="let certificate of certificates.controls | keyvalue; let i = index">
+          <mat-card formArrayName="certificates" class="card"
+                    *ngFor="let certificate of certificates.controls | keyvalue; let i = index">
             <mat-card-content [formGroupName]="i"> <!-- Kursy i Certyfikaty -->
               <div class="delete">
-                <mat-icon class="material-icons-outlined" (click)="removeAtIndex('certificates', i)">delete_outline</mat-icon>
+                <mat-icon class="material-icons-outlined" (click)="removeAtIndex('certificates', i)">delete_outline
+                </mat-icon>
               </div>
               <div>
                 <mat-form-field class="card-input">
                   <mat-label>Nazwa certyfikatu</mat-label>
                   <input matInput
-                    class="card-input-field"
-                    placeholder="Nazwa certyfikatu"
-                    formControlName="certificatename"
+                         class="card-input-field"
+                         placeholder="Nazwa certyfikatu"
+                         formControlName="certificatename"
                   >
                 </mat-form-field>
               </div>
@@ -252,9 +264,9 @@
                 <mat-form-field class="card-input">
                   <mat-label>Numer certyfikatu</mat-label>
                   <input matInput
-                    class="card-input-field"
-                    placeholder="Numer certyfikatu"
-                    formControlName="certificatenumber"
+                         class="card-input-field"
+                         placeholder="Numer certyfikatu"
+                         formControlName="certificatenumber"
                   >
                 </mat-form-field>
               </div>
@@ -262,16 +274,17 @@
                 <mat-form-field class="card-input">
                   <mat-label>Organizacja wydająca</mat-label>
                   <input matInput
-                    class="card-input-field"
-                    placeholder="Organizacja wydająca"
-                    formControlName="organizationissuingcertificate"
+                         class="card-input-field"
+                         placeholder="Organizacja wydająca"
+                         formControlName="organizationissuingcertificate"
                   >
                 </mat-form-field>
               </div>
               <div>
                 <mat-form-field appearance="outline" class="card-input">
                   <mat-label>Data wydania</mat-label>
-                  <input matInput id="pickerHandDate" [matDatepicker]="pickerHandDate" formControlName="certificateissuedate">
+                  <input matInput id="pickerHandDate" [matDatepicker]="pickerHandDate"
+                         formControlName="certificateissuedate">
                   <mat-datepicker-toggle matIconSuffix [for]="pickerHandDate"></mat-datepicker-toggle>
                   <mat-datepicker #pickerHandDate></mat-datepicker>
                 </mat-form-field>
@@ -296,14 +309,15 @@
                   <mat-form-field>
                     <mat-label>Organizacja</mat-label>
                     <input matInput
-                      class="card-input-field"
-                      placeholder="Organizacja"
-                      formControlName="name"
+                           class="card-input-field"
+                           placeholder="Organizacja"
+                           formControlName="name"
                     >
                     <!-- [value]="org.name" -->
                   </mat-form-field>
                   <span class="delete-soft-skill">
-                    <mat-icon class="material-icons-outlined" (click)="deletePositionByID(org, userProfileEditForm.value.organizationsAndSkills)">delete_outline</mat-icon>
+                    <mat-icon class="material-icons-outlined"
+                              (click)="deletePositionByID(org, userProfileEditForm.value.organizationsAndSkills)">delete_outline</mat-icon>
                   </span>
                 </p>
               </li>
@@ -325,14 +339,15 @@
                   <mat-form-field>
                     <mat-label>Umiejętność</mat-label>
                     <input matInput
-                      class="card-input-field"
-                      placeholder="Umiejętność"
-                      formControlName="name"
+                           class="card-input-field"
+                           placeholder="Umiejętność"
+                           formControlName="name"
                     >
                     <!-- [value]="skill.name" -->
                   </mat-form-field>
                   <span class="delete-soft-skill">
-                    <mat-icon class="material-icons-outlined" (click)="deletePositionByID(skill, userProfileEditForm.value.organizationsAndSkills)">delete_outline</mat-icon>
+                    <mat-icon class="material-icons-outlined"
+                              (click)="deletePositionByID(skill, userProfileEditForm.value.organizationsAndSkills)">delete_outline</mat-icon>
                   </span>
                 </p>
               </li>
@@ -354,14 +369,15 @@
                   <mat-form-field>
                     <mat-label>Hobby</mat-label>
                     <input matInput
-                      class="card-input-field"
-                      placeholder="Hobby"
-                      formControlName="name"
+                           class="card-input-field"
+                           placeholder="Hobby"
+                           formControlName="name"
                     >
                     <!-- [value]="hobby.name" -->
                   </mat-form-field>
                   <span class="delete-soft-skill">
-                    <mat-icon class="material-icons-outlined" (click)="deletePositionByID(hobby, userProfileEditForm.value.organizationsAndSkills)">delete_outline</mat-icon>
+                    <mat-icon class="material-icons-outlined"
+                              (click)="deletePositionByID(hobby, userProfileEditForm.value.organizationsAndSkills)">delete_outline</mat-icon>
                   </span>
                 </p>
               </li>

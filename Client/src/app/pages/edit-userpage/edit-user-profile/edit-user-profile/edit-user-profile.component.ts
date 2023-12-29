@@ -1,8 +1,10 @@
-import { AfterViewInit, ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { EditUserProfileService } from '../edit-user-profile.service';
-import { UserProfile } from 'src/app/shared/models/accounts';
-import { ActivatedRoute, Router } from '@angular/router';
+import {AfterViewInit, ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {EditUserProfileService} from '../edit-user-profile.service';
+import {UserProfile} from 'src/app/shared/models/accounts';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ToastrService} from "ngx-toastr";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-edit-user-profile',
@@ -25,6 +27,8 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
   selectedLang2 = 'one';
   selectedLangLvL2 = 'one';
   selectedTitle = 'one';
+
+  image = "../../../assets/images/logoEmpty.png";
 
   languages = [
     {
@@ -65,12 +69,16 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
     private editUserProfileService: EditUserProfileService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router
-  ) { }
+    private router: Router,
+    private toastrService: ToastrService,
+    private translate: TranslateService
+  ) {
+  }
+
 
   ngOnInit(): void {
     !(this.currentUserID === +localStorage.getItem('userID')!) && this.router.navigate([`/user/${localStorage.getItem('userID')}`]); //if user tries to change ID in url
-    
+
     this.userProfileEditForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       surname: ['', [Validators.required]],
@@ -89,7 +97,7 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
     this.editUserProfileService.getUserById(this.currentUserID).subscribe(res => {
       this.data = res.methodResult;
       // console.log(this.data)
-      if(!this.data) return;
+      if (!this.data) return;
       this.userProfileEditForm.setValue({
         name: this.data.account.name,
         surname: this.data.account.surname,
@@ -106,7 +114,8 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
 
   }
 
-  ngOnChanges(changes: SimpleChanges): void { }
+  ngOnChanges(changes: SimpleChanges): void {
+  }
 
   keepOrder = (a: any, b: any) => {
     return a;
@@ -143,7 +152,7 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
   }
 
   public removeAtIndex(formControl: string, index: number) {
-    switch (formControl) { 
+    switch (formControl) {
       case 'experience':
         return this.experience.removeAt(index);
       case 'certificates':
@@ -214,10 +223,10 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
 
   addCert() {
     this.certificates.push(this.formBuilder.group({
-        certificatename: ['', []],
-        organizationissuingcertificate: ['', []],
-        certificatenumber: ['', []],
-        certificateissuedate: ['', []]
+      certificatename: ['', []],
+      organizationissuingcertificate: ['', []],
+      certificatenumber: ['', []],
+      certificateissuedate: ['', []]
     }));
   }
 
@@ -230,21 +239,32 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
       case 1:
         this.organizationsAndSkills.push(this.formBuilder.group({
           idaccountsoftskillstitle: [1, []],
-          name: ['',[]]
+          name: ['', []]
         }));
         break;
       case 2:
         this.organizationsAndSkills.push(this.formBuilder.group({
           idaccountsoftskillstitle: [2, []],
-          name: ['',[]]
+          name: ['', []]
         }));
         break;
       case 3:
         this.organizationsAndSkills.push(this.formBuilder.group({
           idaccountsoftskillstitle: [3, []],
-          name: ['',[]]
+          name: ['', []]
         }));
         break;
+    }
+  }
+
+  selectAvatar(event) {
+    if (event.target.files) {
+      let reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (event: any) => {
+        this.toastrService.warning(this.translate.instant('EditUserpage.Image uploaded'));
+        this.image = event.target.result;
+      }
     }
   }
 
@@ -256,14 +276,17 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
   private accountDetails() {
     return (
       this.data.account.name = this.userProfileEditForm.value.name,
-      this.data.account.surname = this.userProfileEditForm.value.surname,
-      this.data.account.description = this.userProfileEditForm.value.aboutMe,
-      this.data.account.image = '',
-      this.data.account.birthdate = this.userProfileEditGridForm.value.dateOfBirth,
-      this.data.account.email = this.userProfileEditGridForm.value.email,
-      this.data.account.phonenumber = this.userProfileEditGridForm.value.phone,
-      this.data.account.salarymax = this.userProfileEditGridForm.value.salarymax,
-      this.data.account.salarymin = this.userProfileEditGridForm.value.salarymin
+        this.data.account.surname = this.userProfileEditForm.value.surname,
+        this.data.account.description = this.userProfileEditForm.value.aboutMe,
+        this.data.account.image = '',
+        this.data.account.birthdate = this.userProfileEditGridForm.value.dateOfBirth,
+        this.data.account.email = this.userProfileEditGridForm.value.email,
+        this.data.account.phonenumber = this.userProfileEditGridForm.value.phone,
+        this.data.account.salarymax = this.userProfileEditGridForm.value.salarymax,
+        this.data.account.salarymin = this.userProfileEditGridForm.value.salarymin,
+        this.data.account.employmentmethod = this.userProfileEditGridForm.value.workingTime
+
+
     )
   }
 
@@ -276,10 +299,10 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
     this.data.accountWorkResponsibilities = [];
     // console.log(this.userProfileEditForm.value)
     // console.log(this.userProfileEditForm.value.certificates)
-    // console.log(this.userProfileEditGridForm.value)
+    console.log(this.userProfileEditGridForm.value)
     // console.log(this.data.accountWorkExperiences)
-    // console.log(this.data)
+    console.log(this.data)
     // console.log(JSON.stringify(this.data))
-    this.editUserProfileService.updateUserById(this.data.account.id, this.data).subscribe();
+    //this.editUserProfileService.updateUserById(this.data.account.id, this.data).subscribe();
   }
 }
