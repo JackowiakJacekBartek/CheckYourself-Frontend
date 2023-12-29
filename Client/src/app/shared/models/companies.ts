@@ -8,6 +8,7 @@ export interface CompanyProfile {
 
 export interface Company {
   name: string,
+  nip: string,
   employeecount: number,
   headquarteraddress: string,
   description: string,
