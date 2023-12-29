@@ -64,28 +64,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.Bll.Persist
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.Tests", "Backend\Intotech.Xerion.Tests\Intotech.Xerion.Tests.csproj", "{7FA432AF-2074-4CE9-9F3D-6BE48A4DC75A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Intotech.Xerion.Chat", "Intotech.Xerion.Chat", "{A43D89E9-98B8-44EE-8D4D-502F203C6F61}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.Chat.Api", "Backend\Intotech.Xerion.Chat\Intotech.Xerion.Chat.Api\Intotech.Xerion.Chat.Api.csproj", "{3EB4C730-8F73-4887-BB5C-5E7900DA7439}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.Chat.Database.Persistence", "Backend\Intotech.Xerion.Chat\Intotech.Xerion.Chat.Database.Persistence\Intotech.Xerion.Chat.Database.Persistence.csproj", "{41D90402-125F-43F0-94B2-39C484535960}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.Chat.Bll.Persistence", "Backend\Intotech.Xerion.Chat\Intotech.Xerion.Chat.Bll.Persistence\Intotech.Xerion.Chat.Bll.Persistence.csproj", "{3C9EA402-45EE-4A6E-9D2C-5E87AAF214EC}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.Chat.Bll.Persistence.Interfaces", "Backend\Intotech.Xerion.Chat\Intotech.Xerion.Chat.Bll.Persistence.Interfaces\Intotech.Xerion.Chat.Bll.Persistence.Interfaces.csproj", "{C24EC2E6-4B2B-4F09-B674-4A9A57FD9F2C}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.Chat", "Backend\Intotech.Xerion.Chat\Intotech.Xerion.Chat\Intotech.Xerion.Chat.csproj", "{F9F96CB1-CE02-4C2C-AA11-10923A7000E6}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.Chat.Interfaces", "Backend\Intotech.Xerion.Chat\Intotech.Xerion.Chat.Interfaces\Intotech.Xerion.Chat.Interfaces.csproj", "{CB6AAFF3-2795-4BC2-826E-1418EF80618D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.Chat.Models", "Backend\Intotech.Xerion.Chat\Intotech.Xerion.Chat.Models\Intotech.Xerion.Chat.Models.csproj", "{E455CE32-B6C4-442F-840D-74158D8A3D5A}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.Chat.Messaging", "Backend\Intotech.Xerion.Chat\Intotech.Xerion.Chat.Messaging\Intotech.Xerion.Chat.Messaging.csproj", "{D6B0EF46-5931-446C-8559-F89EB2BF7FDD}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.Chat.Tests", "Backend\Intotech.Xerion.Chat\Intotech.Xerion.Chat.Tests\Intotech.Xerion.Chat.Tests.csproj", "{97303181-7432-4085-B23A-BC8303B074BA}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.Chat.Messaging.Interfaces", "Backend\Intotech.Xerion.Chat\Intotech.Xerion.Chat.Messaging.Interfaces\Intotech.Xerion.Chat.Messaging.Interfaces.csproj", "{024308B7-0E99-4259-B211-7E57113C3E06}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Intotech.Xerion.ImageService", "Intotech.Xerion.ImageService", "{4A7DF023-26E3-4284-B577-6CF6CA3D9403}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.ImageService.Bll", "Backend\Intotech.Xerion.ImageService\Intotech.Xerion.ImageService.Bll\Intotech.Xerion.ImageService.Bll.csproj", "{89497A36-155E-4F3D-8DCE-85F942B02E0B}"
@@ -222,46 +200,6 @@ Global
 		{7FA432AF-2074-4CE9-9F3D-6BE48A4DC75A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FA432AF-2074-4CE9-9F3D-6BE48A4DC75A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FA432AF-2074-4CE9-9F3D-6BE48A4DC75A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3EB4C730-8F73-4887-BB5C-5E7900DA7439}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3EB4C730-8F73-4887-BB5C-5E7900DA7439}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3EB4C730-8F73-4887-BB5C-5E7900DA7439}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3EB4C730-8F73-4887-BB5C-5E7900DA7439}.Release|Any CPU.Build.0 = Release|Any CPU
-		{41D90402-125F-43F0-94B2-39C484535960}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{41D90402-125F-43F0-94B2-39C484535960}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{41D90402-125F-43F0-94B2-39C484535960}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{41D90402-125F-43F0-94B2-39C484535960}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3C9EA402-45EE-4A6E-9D2C-5E87AAF214EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3C9EA402-45EE-4A6E-9D2C-5E87AAF214EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3C9EA402-45EE-4A6E-9D2C-5E87AAF214EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3C9EA402-45EE-4A6E-9D2C-5E87AAF214EC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C24EC2E6-4B2B-4F09-B674-4A9A57FD9F2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C24EC2E6-4B2B-4F09-B674-4A9A57FD9F2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C24EC2E6-4B2B-4F09-B674-4A9A57FD9F2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C24EC2E6-4B2B-4F09-B674-4A9A57FD9F2C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F9F96CB1-CE02-4C2C-AA11-10923A7000E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F9F96CB1-CE02-4C2C-AA11-10923A7000E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F9F96CB1-CE02-4C2C-AA11-10923A7000E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F9F96CB1-CE02-4C2C-AA11-10923A7000E6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CB6AAFF3-2795-4BC2-826E-1418EF80618D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CB6AAFF3-2795-4BC2-826E-1418EF80618D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CB6AAFF3-2795-4BC2-826E-1418EF80618D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CB6AAFF3-2795-4BC2-826E-1418EF80618D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E455CE32-B6C4-442F-840D-74158D8A3D5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E455CE32-B6C4-442F-840D-74158D8A3D5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E455CE32-B6C4-442F-840D-74158D8A3D5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E455CE32-B6C4-442F-840D-74158D8A3D5A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D6B0EF46-5931-446C-8559-F89EB2BF7FDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D6B0EF46-5931-446C-8559-F89EB2BF7FDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D6B0EF46-5931-446C-8559-F89EB2BF7FDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D6B0EF46-5931-446C-8559-F89EB2BF7FDD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{97303181-7432-4085-B23A-BC8303B074BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{97303181-7432-4085-B23A-BC8303B074BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{97303181-7432-4085-B23A-BC8303B074BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{97303181-7432-4085-B23A-BC8303B074BA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{024308B7-0E99-4259-B211-7E57113C3E06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{024308B7-0E99-4259-B211-7E57113C3E06}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{024308B7-0E99-4259-B211-7E57113C3E06}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{024308B7-0E99-4259-B211-7E57113C3E06}.Release|Any CPU.Build.0 = Release|Any CPU
 		{89497A36-155E-4F3D-8DCE-85F942B02E0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{89497A36-155E-4F3D-8DCE-85F942B02E0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89497A36-155E-4F3D-8DCE-85F942B02E0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -345,16 +283,6 @@ Global
 		{EB24C52A-20DB-41EE-B0B3-B84C4F980619} = {1F3F906D-6777-4170-BB05-130379C0FD51}
 		{7985D176-2969-4EDD-AAE2-7EB133749374} = {837E60F0-2611-4068-9B41-EE508E668B2E}
 		{A1F5C1CD-BCEB-450E-B770-EB47C97633FD} = {1F3F906D-6777-4170-BB05-130379C0FD51}
-		{3EB4C730-8F73-4887-BB5C-5E7900DA7439} = {A43D89E9-98B8-44EE-8D4D-502F203C6F61}
-		{41D90402-125F-43F0-94B2-39C484535960} = {A43D89E9-98B8-44EE-8D4D-502F203C6F61}
-		{3C9EA402-45EE-4A6E-9D2C-5E87AAF214EC} = {A43D89E9-98B8-44EE-8D4D-502F203C6F61}
-		{C24EC2E6-4B2B-4F09-B674-4A9A57FD9F2C} = {A43D89E9-98B8-44EE-8D4D-502F203C6F61}
-		{F9F96CB1-CE02-4C2C-AA11-10923A7000E6} = {A43D89E9-98B8-44EE-8D4D-502F203C6F61}
-		{CB6AAFF3-2795-4BC2-826E-1418EF80618D} = {A43D89E9-98B8-44EE-8D4D-502F203C6F61}
-		{E455CE32-B6C4-442F-840D-74158D8A3D5A} = {A43D89E9-98B8-44EE-8D4D-502F203C6F61}
-		{D6B0EF46-5931-446C-8559-F89EB2BF7FDD} = {A43D89E9-98B8-44EE-8D4D-502F203C6F61}
-		{97303181-7432-4085-B23A-BC8303B074BA} = {A43D89E9-98B8-44EE-8D4D-502F203C6F61}
-		{024308B7-0E99-4259-B211-7E57113C3E06} = {A43D89E9-98B8-44EE-8D4D-502F203C6F61}
 		{89497A36-155E-4F3D-8DCE-85F942B02E0B} = {4A7DF023-26E3-4284-B577-6CF6CA3D9403}
 		{376E2991-1BB9-491F-B929-F92976988AEB} = {1F3F906D-6777-4170-BB05-130379C0FD51}
 		{43DF3936-ABBE-4F67-9237-ECD3F475DC47} = {1F3F906D-6777-4170-BB05-130379C0FD51}
