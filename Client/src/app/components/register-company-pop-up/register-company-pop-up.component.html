@@ -1,0 +1,15 @@
+<div class="popup">
+  <div class="wrapper">
+    <div class="one">
+      <span>Check </span>
+      <img src="../../../../assets/icons/logo.svg" class="filter-logo" alt="logo"/>
+      <span> Yourself</span>
+    </div>
+    <ng-template #registerCompany>
+      <div class="three">
+        <form [formGroup]="registerCompanyFormGroup" (ngSubmit)="registerButtonCompany(registerCompanyFormGroup)">
+        </form>
+      </div>
+    </ng-template>
+  </div>
+</div>

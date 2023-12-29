@@ -5,16 +5,7 @@
       <img src="../../../../assets/icons/logo.svg" class="filter-logo" alt="logo"/>
       <span> Yourself</span>
     </div>
-    <div class="two">
-      <div class="register">
-        <span>{{'Login.Sign up as' | translate}}</span>
-        <mat-radio-group [(ngModel)]="labelPosition" class="radio-group">
-          <mat-radio-button value="user">{{'Login.User' | translate}}</mat-radio-button>
-          <mat-radio-button value="company">{{'Login.Company' | translate}}</mat-radio-button>
-        </mat-radio-group>
-      </div>
-    </div>
-    <ng-container *ngIf="labelPosition === 'user'; else registerCompany">
+    <ng-container *ngIf="labelPosition === 'user';">
       <div class="three">
         <form [formGroup]="registerUserFormGroup" (ngSubmit)="registerButton(registerUserFormGroup)">
           <!--Imie-->
@@ -54,46 +45,6 @@
         </form>
       </div>
     </ng-container>
-    <ng-template #registerCompany>
-      <div class="three">
-        <form [formGroup]="registerCompanyFormGroup" (ngSubmit)="registerButtonCompany(registerCompanyFormGroup)">
-          <!--Nazwa firmy-->
-          <mat-form-field appearance="fill">
-            <input matInput placeholder="{{'Login.Company' | translate}}" formControlName="nameCompany">
-            <mat-error *ngIf="registerCompanyFormGroup.get('nameCompany')?.getError('required')">{{'Login.Youmust enter name of your company' | translate}}</mat-error>
-            <mat-error *ngIf="registerCompanyFormGroup.get('nameCompany')?.getError('noSpaceAllowed')">{{'Login.Space not allowed' | translate}}</mat-error>
-          </mat-form-field>
-          <!--NIP-->
-          <mat-form-field appearance="fill">
-            <input matInput placeholder="{{'Login.TIN' | translate}}" formControlName="nip">
-            <mat-error *ngIf="registerCompanyFormGroup.get('nip')?.getError('required')">{{'Login.You must enter your tax identification number' | translate}}</mat-error>
-            <mat-error *ngIf="registerCompanyFormGroup.get('nip')?.getError('invalidNumber')">{{'Login.Only numbers' | translate}}</mat-error>
-          </mat-form-field>
-          <!--Email-->
-          <mat-form-field appearance="fill">
-            <input matInput placeholder="Email" formControlName="email" >
-            <mat-error *ngIf="registerCompanyFormGroup.get('email')?.getError('required')">{{'Login.You must enter your email' | translate}}</mat-error>
-            <mat-error *ngIf="registerCompanyFormGroup.get('email')?.getError('email')">{{'Login.Wrong email' | translate}}l</mat-error>
-          </mat-form-field>
-          <!--Hasło-->
-          <mat-form-field appearance="fill">
-            <input #input matInput placeholder="{{'Login.Password min 8 characters' | translate}}" formControlName="password" type="password">
-            <mat-error *ngIf="registerCompanyFormGroup.get('password')?.getError('required')">{{'Login.You must enter your password' | translate}}</mat-error>
-            <mat-error *ngIf="registerCompanyFormGroup.get('password')?.invalid">{{getErrorPassword(input.value.length)}}</mat-error>
-          </mat-form-field>
-          <!--Potwierdź Hasło-->
-          <mat-form-field appearance="fill">
-            <input matInput placeholder="{{'Login.Confirm password' | translate}}" formControlName="confirmPassword" type="password">
-            <mat-error *ngIf="registerCompanyFormGroup.get('confirmPassword')?.getError('required')">{{'Login.Confirm password' | translate}}</mat-error>
-            <mat-error *ngIf="registerCompanyFormGroup.get('confirmPassword')?.getError('mustMatch')">{{'Login.Password does not match' | translate}}</mat-error>
-          </mat-form-field>
-          <!--Button submit-->
-          <button mat-button class="registerButton"><span>{{'Login.Sign up' | translate}}</span></button>
-          <!--Checkbox-->
-          <mat-checkbox (click)="closeSnackBar()" formControlName="privacyCheckbox"><p>{{'Login.I accept protection policy' | translate}}</p></mat-checkbox>
-        </form>
-      </div>
-    </ng-template>
     <div class="five">{{'Login.You already have an accout' | translate}} <button class="buttonRegisterLogin" (click)="openLogin()">{{'Login.Log in' | translate}} </button></div>
   </div>
 </div>
