@@ -15,7 +15,7 @@ import {ListjoboffersComponent} from "./pages/listjoboffers/listjoboffers.compon
 
 const routes: Routes = [
   {
-    path: '', component: LandingPageComponent,
+    path: '', component: HomepageComponent,
   },
   {
     path: 'homepage', component: HomepageComponent, canActivate:[AuthGuard]
