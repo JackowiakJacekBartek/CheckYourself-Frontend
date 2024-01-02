@@ -57,6 +57,7 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { CompaniesPageComponent } from './pages/companiespage/companies-page.component';
 import { MatTableModule } from '@angular/material/table';
 import { RegisterCompanyPopUpComponent } from './components/register-company-pop-up/register-company-pop-up.component';
+import { SafePipe } from './pages/companypage/safe.pipe';
 
 @NgModule({
   exports: [
@@ -87,7 +88,11 @@ import { RegisterCompanyPopUpComponent } from './components/register-company-pop
     ListjoboffersComponent,
     AreYouSurePopUpComponent,
     CompaniesPageComponent,
-    RegisterCompanyPopUpComponent
+    RegisterCompanyPopUpComponent,
+    SafePipe,
+    SafePipe,
+    SafePipe,
+    SafePipe,
   ],
   imports: [
     MatTableModule,

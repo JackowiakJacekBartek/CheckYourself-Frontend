@@ -16,7 +16,7 @@ import { CompaniesPageComponent } from './pages/companiespage/companies-page.com
 
 const routes: Routes = [
   {
-    path: '', component: LandingPageComponent,
+    path: '', component: HomepageComponent,
   },
   {
     path: 'homepage', component: HomepageComponent, canActivate:[AuthGuard]

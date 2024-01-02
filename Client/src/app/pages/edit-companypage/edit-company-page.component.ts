@@ -3,6 +3,7 @@ import {FormControl} from "@angular/forms";
 import {ToastrService} from "ngx-toastr";
 import {TranslateService} from "@ngx-translate/core";
 import {ActivatedRoute} from "@angular/router";
+import {CompanyProfile} from "../../shared/models/companies";
 
 @Component({
   selector: 'app-edit-companypage',
@@ -13,6 +14,8 @@ export class EditCompanyPageComponent {
 
   public currentUserID: number = +this.route.snapshot.params['id'];
   public returnLink: string = `/company/${this.currentUserID}`
+
+  data!: CompanyProfile;
 
   constructor(private toastrService: ToastrService, private translate: TranslateService, private route: ActivatedRoute,) {
   }
@@ -75,5 +78,9 @@ export class EditCompanyPageComponent {
 
   trackById(index: number) {
     return index
+  }
+
+  public save() {
+
   }
 }

@@ -18,10 +18,18 @@
               <span>{{company.name}}</span>
             </div>
             <div class="icons">
-              <a href="{{links[0]}}"><mat-icon class="add" svgIcon="fb"></mat-icon></a>
-              <a href="{{links[1]}}"><mat-icon class="add" svgIcon="twitter"></mat-icon></a>
-              <a href="{{links[3]}}"><mat-icon class="add" svgIcon="instagram"></mat-icon></a>
-              <a href="{{links[2]}}"><mat-icon class="add" svgIcon="linkedin"></mat-icon></a>
+              <a href="{{links[0]}}">
+                <mat-icon class="add" svgIcon="fb"></mat-icon>
+              </a>
+              <a href="{{links[1]}}">
+                <mat-icon class="add" svgIcon="twitter"></mat-icon>
+              </a>
+              <a href="{{links[3]}}">
+                <mat-icon class="add" svgIcon="instagram"></mat-icon>
+              </a>
+              <a href="{{links[2]}}">
+                <mat-icon class="add" svgIcon="linkedin"></mat-icon>
+              </a>
             </div>
           </div>
         </div>
@@ -78,45 +86,44 @@
             </div>
 
             <div class="container" style="grid-column: span 2; grid-row: span 1;">
-              <img src="{{images[1] || '../../../assets/images/logoEmpty.png'}}" style="width: 100%; height: 100%; object-fit: cover;"/>
+              <img src="{{images[1] || '../../../assets/images/logoEmpty.png'}}"
+                   style="width: 100%; height: 100%; object-fit: cover;"/>
             </div>
 
             <div class="container" style="grid-column: span 2; grid-row: span 1;">
-              <img src="{{images[2] || '../../../assets/images/logoEmpty.png'}}" style="width: 100%; height: 100%; object-fit: cover;"/>
+              <img src="{{images[2] || '../../../assets/images/logoEmpty.png'}}"
+                   style="width: 100%; height: 100%; object-fit: cover;"/>
             </div>
             <div class="container" style="grid-column: span 2; grid-row: span 1;">
-              <img src="{{images[3] || '../../../assets/images/logoEmpty.png'}}" style="width: 100%; height: 100%; object-fit: cover;"/>
+              <img src="{{images[3] || '../../../assets/images/logoEmpty.png'}}"
+                   style="width: 100%; height: 100%; object-fit: cover;"/>
             </div>
 
             <div class="container" style="grid-column: span 2; grid-row: span 1;">
-              <img src="{{images[4] || '../../../assets/images/logoEmpty.png'}}" style="width: 100%; height: 100%; object-fit: cover;"/>
+              <img src="{{images[4] || '../../../assets/images/logoEmpty.png'}}"
+                   style="width: 100%; height: 100%; object-fit: cover;"/>
             </div>
 
             <div class="container" style="grid-column: span 3; grid-row: span 1;">
-              <img src="{{images[6] || '../../../assets/images/logoEmpty.png'}}" style="width: 100%; height: 100%; object-fit: cover;"/>
+              <img src="{{images[6] || '../../../assets/images/logoEmpty.png'}}"
+                   style="width: 100%; height: 100%; object-fit: cover;"/>
             </div>
             <div class="container" style="grid-column: span 3; grid-row: span 1;">
-              <img src="{{images[7] || '../../../assets/images/logoEmpty.png'}}" style="width: 100%; height: 100%; object-fit: cover;"/>
+              <img src="{{images[7] || '../../../assets/images/logoEmpty.png'}}"
+                   style="width: 100%; height: 100%; object-fit: cover;"/>
             </div>
             <div class="container" style="grid-column: span 2; grid-row: span 1;">
-              <img src="{{images[8] || '../../../assets/images/logoEmpty.png'}}" style="width: 100%; height: 100%; object-fit: cover;"/>
+              <img src="{{images[8] || '../../../assets/images/logoEmpty.png'}}"
+                   style="width: 100%; height: 100%; object-fit: cover;"/>
             </div>
           </div>
         </div>
       </div>
       <div class="map">
         <p>Nasze biura:</p>
-        <div style="overflow:hidden;max-width:100%;width:100%;height:400px;">
-          <div id="my-map-canvas" style="height:100%; width:100%;max-width:100%;">
-            <iframe style="height:100%;width:100%;border:0;" frameborder="0"
-                    src="https://www.google.com/maps/embed/v1/place?q=Młynarska+120,+Warszawa,+Poland&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe>
-          </div>
-          <style>#my-map-canvas img {
-            max-width: none !important;
-            background: none !important;
-            font-size: inherit;
-            font-weight: inherit;
-          }</style>
+        <div *ngFor="let office of extractedLinksOffices">
+          <iframe [src]="office | sanitizeUrl" width=100% height="400" frameborder="0"
+                  style="border:0" allowfullscreen></iframe>
         </div>
       </div>
       <div class="jobOffers">

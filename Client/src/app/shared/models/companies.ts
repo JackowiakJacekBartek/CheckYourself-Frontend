@@ -3,7 +3,7 @@ export interface CompanyProfile {
   companyImages: CompanyImages [],
   companyTechnologies : CompanyTechnologies [],
   companySocialMediaLinks : CompanySocialMediaLinks [],
-  CompanyOffices : CompanyOffices []
+  companyOffices : CompanyOffices []
 }
 
 export interface Company {
