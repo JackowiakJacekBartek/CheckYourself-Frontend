@@ -1,25 +1,31 @@
 .quiz-main {
     background-color: #313843;
     padding: 40px 70px;
-    // height: 50vmax;
     height: auto;
+    min-height: 100vh;
 }
 
 .card {
     min-width: 200px;
     width: 60%;
+    background-color: #313843;
+    cursor: pointer;
+}
+
+.card-selected {
+    border: 5px solid #524949;
+    border-radius: 10px;
 }
 
 .card-content {
     display: flex;
-    // background-image: url('/assets/icons/logo_svg_blue.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    min-height: 50px;
+    min-height: 60px;
     text-align: center;
     justify-content: center;
-    padding-top: 40px !important;
+    padding-top: 50px !important;
     border-radius: 5px;
     color: white;
 }

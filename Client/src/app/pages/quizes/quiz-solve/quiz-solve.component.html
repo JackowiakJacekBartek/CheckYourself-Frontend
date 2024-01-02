@@ -10,16 +10,16 @@
             [quiz]="quiz"
             [questionNumber]="questionNumber"
             [backgroundImages]="backgroundImages"
-            [mulitChoice]="mulitChoiceQuestions"
             [questionImage]="questionImage"
-            (questionChanged)="onQuestionChanged()"
+            (questionChanged)="onQuestionChanged($event)"
         ></app-multi-choice-question>
     </div> 
     <div *ngIf="quiz.questions[questionNumber].type === 'finish sentence'">
         <!-- [questionNumber]="nextQuestion" -->
         <app-complete-sentence-question
             [quiz]="quiz"
-            (questionChanged)="onQuestionChanged()"
+            [questionNumber]="questionNumber"
+            (questionChanged)="onQuestionChanged($event)"
         ></app-complete-sentence-question>
     </div>
 <!-- </div> -->

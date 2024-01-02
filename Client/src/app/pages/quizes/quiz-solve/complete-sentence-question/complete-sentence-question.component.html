@@ -1,12 +1,28 @@
-<main class="quiz-main">
+<main class="quiz-main" #scrollTo>
     <form>
-        <mat-card class="main-card">
-            <div class="question-text">
-                {{'Quiz.Complete Sentence' | translate}}
-            </div>
-            <mat-card-content class="question-content">
+        <div *ngFor="let question of quiz.questions; let i = index">
+            <mat-card *ngIf="question.type === 'finish sentence' && i === questionNumber" class="main-card">
+                <div class="question-text">
+                    {{'Quiz.Complete Sentence' | translate}}
+                </div>
+                <mat-card-content class="question-content">
+                        <span class="question-content-text">
+                            Java jest językiem programowania, który jest
+                        </span>
+                        <span>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Odpowiedź</mat-label>
+                                <mat-select>
+                                    <mat-option></mat-option>
+                                    <mat-option value="one">First option</mat-option>
+                                    <mat-option value="two">Second option</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </span>
+                </mat-card-content>
+                <mat-card-content class="question-content">
                     <span class="question-content-text">
-                        Java jest językiem programowania, który jest
+                        Klasa w Javie to
                     </span>
                     <span>
                         <mat-form-field appearance="outline">
@@ -15,74 +31,60 @@
                                 <mat-option></mat-option>
                                 <mat-option value="one">First option</mat-option>
                                 <mat-option value="two">Second option</mat-option>
-                              </mat-select>
-                          </mat-form-field>
+                            </mat-select>
+                        </mat-form-field>
                     </span>
-            </mat-card-content>
-            <mat-card-content class="question-content">
-                <span class="question-content-text">
-                    Klasa w Javie to
-                </span>
-                <span>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Odpowiedź</mat-label>
-                        <mat-select>
-                            <mat-option></mat-option>
-                            <mat-option value="one">First option</mat-option>
-                            <mat-option value="two">Second option</mat-option>
-                          </mat-select>
-                      </mat-form-field>
-                </span>
-            </mat-card-content>
-            <mat-card-content class="question-content">
-                <span class="question-content-text">
-                    Interfejs w Javie definiuje
-                </span>
-                <span>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Odpowiedź</mat-label>
-                        <mat-select>
-                            <mat-option></mat-option>
-                            <mat-option value="one">First option</mat-option>
-                            <mat-option value="two">Second option</mat-option>
-                          </mat-select>
-                      </mat-form-field>
-                </span>
-            </mat-card-content>
-            <mat-card-content class="question-content">
-                <span class="question-content-text">
-                    Słowo kluczowe "static" w Javie oznacza, że
-                </span>
-                <span>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Odpowiedź</mat-label>
-                        <mat-select>
-                            <mat-option></mat-option>
-                            <mat-option value="one">First option</mat-option>
-                            <mat-option value="two">Second option</mat-option>
-                          </mat-select>
-                      </mat-form-field>
-                </span>
-            </mat-card-content>
-            <mat-card-content class="question-content">
-                <span class="question-content-text">
-                    Wyjątki w Javie służą do
-                </span>
-                <span>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Odpowiedź</mat-label>
-                        <mat-select>
-                            <mat-option></mat-option>
-                            <mat-option value="one">First option</mat-option>
-                            <mat-option value="two">Second option</mat-option>
-                          </mat-select>
-                      </mat-form-field>
-                </span>
-            </mat-card-content>
-            <div class="next-question" #scrollTo>
-                <button type="button" class="next-question-button" (click)="nextQuestion()">{{'Quiz.Next Question' | translate}}</button>
-            </div>
-        </mat-card>
+                </mat-card-content>
+                <mat-card-content class="question-content">
+                    <span class="question-content-text">
+                        Interfejs w Javie definiuje
+                    </span>
+                    <span>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Odpowiedź</mat-label>
+                            <mat-select>
+                                <mat-option></mat-option>
+                                <mat-option value="one">First option</mat-option>
+                                <mat-option value="two">Second option</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </span>
+                </mat-card-content>
+                <mat-card-content class="question-content">
+                    <span class="question-content-text">
+                        Słowo kluczowe "static" w Javie oznacza, że
+                    </span>
+                    <span>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Odpowiedź</mat-label>
+                            <mat-select>
+                                <mat-option></mat-option>
+                                <mat-option value="one">First option</mat-option>
+                                <mat-option value="two">Second option</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </span>
+                </mat-card-content>
+                <mat-card-content class="question-content">
+                    <span class="question-content-text">
+                        Wyjątki w Javie służą do
+                    </span>
+                    <span>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Odpowiedź</mat-label>
+                            <mat-select>
+                                <mat-option></mat-option>
+                                <mat-option value="one">First option</mat-option>
+                                <mat-option value="two">Second option</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </span>
+                </mat-card-content>
+                <div class="next-question">
+                    <button type="button" class="next-question-button" (click)="nextQuestion()">{{'Quiz.Next Question' | translate}}</button>
+                </div>
+            </mat-card>
+        </div>
     </form>
 </main>
 

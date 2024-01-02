@@ -106,7 +106,7 @@ export interface AccountCoursesCertificate {
   createdat: Date,
   expirationDate: Date,
   id: number,
-  idAccount: number,
+  idaccount: number,
   idCertificate: number,
   idOrganizationIssuingCertificate: number,
   certificatename: string,
@@ -114,9 +114,9 @@ export interface AccountCoursesCertificate {
 }
 
 export interface AccountSoftSkills {
-  createDate: Date,
-  id: number,
-  idAccount: number,
+  createDate?: Date,
+  id?: number,
+  idaccount: number,
   idaccountsoftskillstitle: number;
   name: string
 }
@@ -135,7 +135,7 @@ export interface AccountWorkExpiriance {
   dateEnd: Date,
   DateStart: Date,
   id: number,
-  idAccount: number,
+  idaccount: number,
   idProfession: number,
   idWorkCompany: number
 }

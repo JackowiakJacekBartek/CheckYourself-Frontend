@@ -9,6 +9,8 @@ import { QuizModel } from 'src/app/shared/models/quiz';
 })
 export class QuizSolveComponent {
 
+  private areCorrectQuestions: boolean[] = [];
+
   alpha: number = 0.7
   alphaStrong: number = 0.5
   colors: string[] = [
@@ -16,39 +18,23 @@ export class QuizSolveComponent {
     `rgba(151, 71, 255, ${this.alpha})`, //purple
     `rgba(191, 42, 72, ${this.alpha})`, //red
     `rgba(251, 188, 5, ${this.alphaStrong})`, //yellow
-    'wheat', 'teal', 'aqua', 'bisque'
+    'wheat', 
+    'teal', 
+    'aqua', 
+    'bisque'
   ];
   backgroundImages: string[] = [
     "url('/assets/icons/logo_svg_blue.svg')",
     "url('/assets/icons/logo_svg_purple.svg')",
     "url('/assets/icons/logo_svg_red.svg')",
     "url('/assets/icons/logo_svg_yellow.svg')",
+    "url('/assets/icons/logo_svg_default.svg')",
+    "url('/assets/icons/logo_svg_default.svg')",
+    "url('/assets/icons/logo_svg_default.svg')",
+    "url('/assets/icons/logo_svg_default.svg')",
   ]
 
   questionImage: string = `${images}/mock-question01.png`
-
-  mulitChoiceQuestions = [
-    {
-      "id": 1,
-      "answere": 'true, true, true, true',
-      "isCorrect": true
-    },
-    {
-      "id": 2,
-      "answere": 'true, true, true, false',
-      "isCorrect": false
-    },
-    {
-      "id": 3,
-      "answere": 'false, false, false, false',
-      "isCorrect": false
-    },
-    {
-      "id": 4,
-      "answere": 'true, false, true, false',
-      "isCorrect": true
-    }
-  ];
 
   questionNumber: number = 0;
   startTime: Date;
@@ -163,9 +149,12 @@ export class QuizSolveComponent {
     return `${mins}:${secs}`;
   }
 
-  onQuestionChanged() {
+  onQuestionChanged(incorrectQuestion: boolean) {
     console.log(this.quiz.questions.length)
     console.log(this.questionNumber)
+    console.log(incorrectQuestion)
+    this.areCorrectQuestions.push(incorrectQuestion)
+    console.log(this.areCorrectQuestions)
     if (this.quiz.questions.length > this.questionNumber + 1) this.questionNumber += 1;
   }
 

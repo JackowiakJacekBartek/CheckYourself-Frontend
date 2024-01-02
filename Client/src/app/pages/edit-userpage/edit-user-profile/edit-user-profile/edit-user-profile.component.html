@@ -317,7 +317,7 @@
                   </mat-form-field>
                   <span class="delete-soft-skill">
                     <mat-icon class="material-icons-outlined"
-                              (click)="deletePositionByID(org, userProfileEditForm.value.organizationsAndSkills)">delete_outline</mat-icon>
+                              (click)="deleteTasks(org)">delete_outline</mat-icon>
                   </span>
                 </p>
               </li>
@@ -347,7 +347,7 @@
                   </mat-form-field>
                   <span class="delete-soft-skill">
                     <mat-icon class="material-icons-outlined"
-                              (click)="deletePositionByID(skill, userProfileEditForm.value.organizationsAndSkills)">delete_outline</mat-icon>
+                              (click)="deleteTasks(skill)">delete_outline</mat-icon>
                   </span>
                 </p>
               </li>
@@ -377,7 +377,7 @@
                   </mat-form-field>
                   <span class="delete-soft-skill">
                     <mat-icon class="material-icons-outlined"
-                              (click)="deletePositionByID(hobby, userProfileEditForm.value.organizationsAndSkills)">delete_outline</mat-icon>
+                              (click)="deleteTasks(hobby)">delete_outline</mat-icon>
                   </span>
                 </p>
               </li>

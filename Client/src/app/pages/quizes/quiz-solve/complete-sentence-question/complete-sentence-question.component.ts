@@ -8,7 +8,7 @@ import { QuizModel } from 'src/app/shared/models/quiz';
 })
 export class CompleteSentenceQuestionComponent implements AfterViewInit {
 
-  @Input() questionNumber: boolean = true;
+  @Input() questionNumber!: number;
   @Input() quiz!: QuizModel;
 
   @Output() questionChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -24,7 +24,6 @@ export class CompleteSentenceQuestionComponent implements AfterViewInit {
 
   
   nextQuestion() {
-    this.questionNumber = !this.questionNumber;
-    this.questionChanged.emit(this.questionNumber);
+    this.questionChanged.emit();
   }
 }
