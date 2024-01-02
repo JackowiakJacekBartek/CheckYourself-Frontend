@@ -323,6 +323,7 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
       this.organizationsAndSkills.clear();
       this.data.accountSoftSkills.forEach(data => {
         const x = this.formBuilder.group({
+          id: data.id,
           idaccount: [this.currentUserID],
           idaccountsoftskillstitle: [data.idaccountsoftskillstitle],
           name: [data.name]
