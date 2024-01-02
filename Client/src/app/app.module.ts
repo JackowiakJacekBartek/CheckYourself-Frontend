@@ -53,6 +53,11 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { ListjoboffersComponent } from './pages/listjoboffers/listjoboffers.component';
 import { AreYouSurePopUpComponent } from './components/are-you-sure-pop-up/are-you-sure-pop-up.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { TextMaskModule } from 'angular2-text-mask';
+import { CompaniesPageComponent } from './pages/companiespage/companies-page.component';
+import { MatTableModule } from '@angular/material/table';
+import { RegisterCompanyPopUpComponent } from './components/register-company-pop-up/register-company-pop-up.component';
+import { SafePipe } from './pages/companypage/safe.pipe';
 
 @NgModule({
   exports: [
@@ -81,9 +86,16 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     EditJoboffersComponent,
     NavigationMenuComponent,
     ListjoboffersComponent,
-    AreYouSurePopUpComponent
+    AreYouSurePopUpComponent,
+    CompaniesPageComponent,
+    RegisterCompanyPopUpComponent,
+    SafePipe,
+    SafePipe,
+    SafePipe,
+    SafePipe,
   ],
   imports: [
+    MatTableModule,
     MatGridListModule,
     MatIconModule,
     MatSlideToggleModule,
@@ -103,6 +115,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatInputModule,
     MatCheckboxModule,
     MatTooltipModule,
+    TextMaskModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,

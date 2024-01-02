@@ -112,7 +112,7 @@ export class UserPageComponent implements OnInit {
   data!: UserProfile;
 
   public currentUserID: number = +this.route.snapshot.params['id'];
-  public editLink: string = `/userpage/${this.currentUserID}/edit`;
+  public editLink: string = `/user/${this.currentUserID}/edit`;
   public showEditButton: boolean = (+this.currentUserID === +localStorage.getItem('userID')!);
 
   constructor(private route: ActivatedRoute, private UserProfileService: UserProfileService) {

@@ -43,11 +43,11 @@ export interface UserProfile {
   account: Account,
   accountCoursesCertificates: AccountCoursesCertificate [],
   accountSoftSkills: AccountSoftSkills [],
-  accountWorkExpiriance: AccountWorkExpiriance,
   accountTags: AccountTags [],
   accountSocialMediaLinksModelDto : AccountSocialMediaLinksModelDto [],
   accountEducationModelDto : accountEducationModelDto [],
-  accountWorkExperiences : accountWorkExperiences[]
+  accountWorkExperiences : accountWorkExperiences[],
+  accountWorkResponsibilities: AccountWorkResponsibilities[]
 }
 
 export interface accountWorkExperiences {
@@ -55,11 +55,15 @@ export interface accountWorkExperiences {
   workcompany: string,
   datestart: Date,
   dateend: Date,
-  accountworkresponsibilities : accountworkresponsibilities[]
+  accountworkresponsibilities : AccountWorkResponsibilities[]
 }
 
-export interface accountworkresponsibilities {
+export interface AccountWorkResponsibilities {
+  // id: number,
   name: string,
+  // idaccount: number,
+  // idaccountworkexperience: number,
+  // createdat: Date
 }
 
 export interface accountEducationModelDto {

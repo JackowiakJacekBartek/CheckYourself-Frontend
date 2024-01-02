@@ -12,6 +12,7 @@ import {EditCompanyPageComponent} from "./pages/edit-companypage/edit-company-pa
 import {JoboffersComponent} from "./pages/joboffers/joboffers.component";
 import {EditJoboffersComponent} from "./pages/edit-joboffers/edit-joboffers.component";
 import {ListjoboffersComponent} from "./pages/listjoboffers/listjoboffers.component";
+import { CompaniesPageComponent } from './pages/companiespage/companies-page.component';
 
 const routes: Routes = [
   {
@@ -21,16 +22,19 @@ const routes: Routes = [
     path: 'homepage', component: HomepageComponent, canActivate:[AuthGuard]
   },
   {
-    path: 'userpage/:id', component: UserPageComponent, canActivate:[AuthGuard]
+    path: 'user/:id', component: UserPageComponent, canActivate:[AuthGuard]
   },
   {
-    path: 'userpage/:id/edit', component: EditUserProfileComponent, canActivate:[AuthGuard]
+    path: 'user/:id/edit', component: EditUserProfileComponent, canActivate:[AuthGuard]
   },
   {
-    path: 'companypage', component: CompanyPageComponent, canActivate:[AuthGuard]
+    path: 'company', component: CompaniesPageComponent, canActivate:[AuthGuard]
   },
   {
-    path: 'edit-companypage', component: EditCompanyPageComponent, canActivate:[AuthGuard]
+    path: 'company/:id', component: CompanyPageComponent, canActivate:[AuthGuard]
+  },
+  {
+    path: 'company/:id/edit', component: EditCompanyPageComponent, canActivate:[AuthGuard]
   },
   {
     path: 'email-verification/:email/:code', component: EmailVerificationComponent, canActivate:[AuthGuard]

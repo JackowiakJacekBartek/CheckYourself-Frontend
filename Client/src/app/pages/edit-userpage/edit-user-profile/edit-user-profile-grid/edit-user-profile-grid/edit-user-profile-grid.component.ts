@@ -12,8 +12,7 @@ export class EditUserProfileGridComponent implements OnInit, OnChanges, AfterVie
 @Input() form!: FormGroup;
 @Input() data!: UserProfile;
 
-public adressOptions: string[] = ['Option 1', 'Option 2', 'Option 3'];
-
+public phoneMask = [/[1-9]/, /[1-9]/, /[1-9]/, '-', /[1-9]/, /[1-9]/, /[1-9]/, '-', /[1-9]/, /[1-9]/, /[1-9]/];
 
 constructor(private ref: ChangeDetectorRef) { }
 
@@ -27,15 +26,14 @@ constructor(private ref: ChangeDetectorRef) { }
       email: this.data?.account.email ? this.data.account.email : 'no email',
       adress: '',
       phone: this.data?.account.phonenumber ? this.data?.account.phonenumber : '',
-      salarymin: this.data?.account.salarymin,
-      salarymax: this.data?.account.salarymax,
-      dateOfBirth: this.data?.account.birthdate ? new Date(this.data.account.birthdate) : Date.now(),
+      salarymin: this.data?.account.salarymin ? this.data?.account.salarymin : 3000,
+      salarymax: this.data?.account.salarymax ? this.data?.account.salarymax : 15000,
+      dateOfBirth: this.data?.account.birthdate ? new Date(this.data.account.birthdate) : '',
       workingTime: '',
       gitHub: '',
       linkedIn: '',
       site: '',
     })
-
   }
 
   ngOnInit(): void {

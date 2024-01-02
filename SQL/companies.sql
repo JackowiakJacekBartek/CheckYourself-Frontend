@@ -22,7 +22,8 @@ create table Companies
 	headquarterAddress text,
 	description text,
 	employeeCount int,
-	idAccount int not null
+	idAccount int not null,
+	companyEstablishment timestamp
 );
 
 create table CompanyTechnologies

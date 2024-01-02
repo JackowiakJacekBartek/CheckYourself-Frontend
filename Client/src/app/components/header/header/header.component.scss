@@ -46,6 +46,13 @@ mat-toolbar .changeLanguageButton button:hover {
     filter: invert(55%) sepia(98%) saturate(4756%) hue-rotate(148deg) brightness(100%);
 }
 
+mat-toolbar .headerIcon {
+    color: white;
+    text-decoration: none;
+    margin-right: 25px;
+    font-weight: 400;
+}
+
 .filter-avatar {
     filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(84deg) brightness(103%);
     zoom: 0.9;

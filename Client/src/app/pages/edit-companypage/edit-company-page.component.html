@@ -3,6 +3,16 @@
 <main class="page">
   <div class="wrapperUser">
     <div class="sections">
+      <div class="upheader">
+        <a class="return-button" matTooltip="{{'UserPage.Return to profile' | translate}}">
+          <button mat-raised-button type="button" routerLink="{{returnLink}}" color="accent">
+            {{'UserPage.Return' | translate}}
+          </button>
+        </a>
+        <a class="save-button">
+          <button mat-raised-button type="button" (click)="save()" color="warn">Save</button>
+        </a>
+      </div>
       <div class="header">
         <div class="left">
           <div class="logo">

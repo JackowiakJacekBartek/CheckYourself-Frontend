@@ -22,7 +22,21 @@ $margin: 50px;
   }
 
   .map {
+    height: 100%;
     margin-bottom: $margin;
+  }
+
+  & .upheader {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .edit-button {
+      display: flex;
+      margin-left: 100%;
+      margin-bottom: 5%;
+      cursor: pointer;
+    }
   }
 
   & .header {
@@ -33,6 +47,7 @@ $margin: 50px;
       display: flex;
 
       .companyName {
+        min-width: 200px;
         padding-left: 50px;
         padding-right: 50px;
         display: flex;
