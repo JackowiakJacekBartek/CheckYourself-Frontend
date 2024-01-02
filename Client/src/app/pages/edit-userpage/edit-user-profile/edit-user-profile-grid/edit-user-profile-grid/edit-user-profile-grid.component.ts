@@ -12,7 +12,6 @@ export class EditUserProfileGridComponent implements OnInit, OnChanges, AfterVie
 @Input() form!: FormGroup;
 @Input() data!: UserProfile;
 
-public adressOptions: string[] = ['Option 1', 'Option 2', 'Option 3'];
 public phoneMask = [/[1-9]/, /[1-9]/, /[1-9]/, '-', /[1-9]/, /[1-9]/, /[1-9]/, '-', /[1-9]/, /[1-9]/, /[1-9]/];
 
 constructor(private ref: ChangeDetectorRef) { }

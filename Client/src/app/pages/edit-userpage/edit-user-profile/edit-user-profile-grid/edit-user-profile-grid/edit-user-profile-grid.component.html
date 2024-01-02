@@ -1,139 +1,138 @@
 <form [formGroup]="form">
-<mat-grid-list cols="3" rowHeight="85px"> <!-- 65-->
+  <mat-grid-list cols="3" rowHeight="85px"> <!-- 65-->
     <mat-grid-tile>
       <div>
-          <mat-icon class="material-icons-outlined">pin_drop</mat-icon>
-          <mat-form-field appearance="outline" class="selector">
-              <mat-label>Adres</mat-label>
-              <mat-select class="selector2" formControlName="adress">
-                <mat-option></mat-option>
-                <mat-option value="Borowo 21">Borowo 21</mat-option>
-                <mat-option *ngFor="let adress of adressOptions" [value]="adress">{{adress}}</mat-option>
-              </mat-select>
-          </mat-form-field>
+        <mat-icon class="material-icons-outlined">pin_drop</mat-icon>
+        <mat-form-field>
+          <mat-label>Adres</mat-label>
+          <input matInput
+                 placeholder="Adres"
+                 formControlName="adress"
+                 type="text">
+        </mat-form-field>
       </div>
     </mat-grid-tile>
 
     <mat-grid-tile>
       <div>
-          <mat-icon class="material-icons-outlined">call</mat-icon>
-          <mat-form-field>
-              <mat-label>Numer Telefonu</mat-label>
-              <input matInput
-                  placeholder="Numer Telefonu"
-                  formControlName="phone"
-                  matTooltip="Pattern: 123-456-789 or 123456789"
-                  [textMask]="{mask: phoneMask}"
-              >
-              <!-- pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"
-              minlength="9"
-              maxlength="14" -->
-              <mat-error *ngIf="form.get('phone')?.getError('pattern')">Invalid Phone Number Pattern</mat-error>
-            </mat-form-field>
+        <mat-icon class="material-icons-outlined">call</mat-icon>
+        <mat-form-field>
+          <mat-label>Numer Telefonu</mat-label>
+          <input matInput
+                 placeholder="Numer Telefonu"
+                 formControlName="phone"
+                 matTooltip="Pattern: 123-456-789 or 123456789"
+                 [textMask]="{mask: phoneMask}"
+          >
+          <!-- pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"
+          minlength="9"
+          maxlength="14" -->
+          <mat-error *ngIf="form.get('phone')?.getError('pattern')">Invalid Phone Number Pattern</mat-error>
+        </mat-form-field>
       </div>
     </mat-grid-tile>
 
     <mat-grid-tile>
-        <div>
-            <mat-icon class="material-icons-outlined">payments</mat-icon>
-            <!-- <mat-form-field> -->
-                <mat-label>Widełki</mat-label>
-                <div class="slider">
-                  <mat-slider min="0" max="50000" step="250" discrete>
-                    <input matSliderStartThumb formControlName="salarymin">
-                    <input matSliderEndThumb formControlName="salarymax">
-                  </mat-slider>
-                </div>
-
-            <!-- </mat-form-field> -->
+      <div>
+        <mat-icon class="material-icons-outlined">payments</mat-icon>
+        <!-- <mat-form-field> -->
+        <mat-label>Widełki</mat-label>
+        <div class="slider">
+          <mat-slider min="0" max="50000" step="250" discrete>
+            <input matSliderStartThumb formControlName="salarymin">
+            <input matSliderEndThumb formControlName="salarymax">
+          </mat-slider>
         </div>
-      </mat-grid-tile>
 
-      <mat-grid-tile>
-        <div>
-            <mat-icon class="material-icons-outlined">mail</mat-icon>
-            <mat-form-field>
-                <mat-label>Email</mat-label>
-                <input matInput
-                    #emailInput
-                    placeholder="Email"
-                    formControlName="email"
-                    type="email"
-                    [matTooltip]="emailInput.value"
-                >
-              </mat-form-field>
-        </div>
-      </mat-grid-tile>
+        <!-- </mat-form-field> -->
+      </div>
+    </mat-grid-tile>
 
-      <mat-grid-tile>
-        <div>
-            <mat-icon class="material-icons-outlined">cake</mat-icon>
-            <mat-form-field appearance="outline" class="date-picker">
-                <mat-label>Data Urodzenia</mat-label>
-                <input matInput [matDatepicker]="picker" formControlName="dateOfBirth">
-                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-        </div>
-      </mat-grid-tile>
+    <mat-grid-tile>
+      <div>
+        <mat-icon class="material-icons-outlined">mail</mat-icon>
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput
+                 #emailInput
+                 placeholder="Email"
+                 formControlName="email"
+                 type="email"
+                 [matTooltip]="emailInput.value"
+          >
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
 
-      <mat-grid-tile>
-        <div>
-            <mat-icon class="material-icons-outlined">hourglass_top</mat-icon>
-            <mat-form-field appearance="outline">
-                <mat-label>Etat</mat-label>
-                <mat-select formControlName="workingTime">
-                    <mat-option></mat-option>
-                    <mat-option value="1">Praca na pełen etat</mat-option>
-                    <mat-option value="2">Praca na niepełny etat</mat-option>
-                    <mat-option value="3">Praca jako freelancer (umowa zlecenie)</mat-option>
-                    <mat-option value="4">Umowa o pracę na czas określony</mat-option>
-                  </mat-select>
-              </mat-form-field>
-        </div>
-      </mat-grid-tile>
+    <mat-grid-tile>
+      <div>
+        <mat-icon class="material-icons-outlined">cake</mat-icon>
+        <mat-form-field appearance="outline" class="date-picker">
+          <mat-label>Data Urodzenia</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="dateOfBirth">
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
 
-      <mat-grid-tile>
-        <div>
-            <mat-icon class="material-icons-outlined">link</mat-icon>
-            <mat-form-field>
-                <mat-label>Github</mat-label>
-                <input matInput
-                    placeholder="Github"
-                    formControlName="gitHub"
-                    type="text"
-                >
-              </mat-form-field>
-        </div>
-      </mat-grid-tile>
+    <mat-grid-tile>
+      <div>
+        <mat-icon class="material-icons-outlined">hourglass_top</mat-icon>
+        <mat-form-field appearance="outline">
+          <mat-label>Etat</mat-label>
+          <mat-select formControlName="workingTime">
+            <mat-option></mat-option>
+            <mat-option value="1">Praca na pełen etat</mat-option>
+            <mat-option value="2">Praca na niepełny etat</mat-option>
+            <mat-option value="3">Praca jako freelancer (umowa zlecenie)</mat-option>
+            <mat-option value="4">Umowa o pracę na czas określony</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
 
-      <mat-grid-tile>
-        <div>
-            <mat-icon class="material-icons-outlined">link</mat-icon>
-            <mat-form-field>
-                <mat-label>LinkedIn</mat-label>
-                <input matInput
-                    placeholder="LinkedIn"
-                    formControlName="linkedIn"
-                    type="text"
-                >
-              </mat-form-field>
-        </div>
-      </mat-grid-tile>
+    <mat-grid-tile>
+      <div>
+        <mat-icon class="material-icons-outlined">link</mat-icon>
+        <mat-form-field>
+          <mat-label>Github</mat-label>
+          <input matInput
+                 placeholder="Github"
+                 formControlName="gitHub"
+                 type="text"
+          >
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
 
-      <mat-grid-tile>
-        <div>
-            <mat-icon class="material-icons-outlined">web</mat-icon>
-            <mat-form-field>
-                <mat-label>Strona</mat-label>
-                <input matInput
-                    placeholder="Strona"
-                    formControlName="site"
-                    type="text"
-                >
-              </mat-form-field>
-        </div>
-      </mat-grid-tile>
+    <mat-grid-tile>
+      <div>
+        <mat-icon class="material-icons-outlined">link</mat-icon>
+        <mat-form-field>
+          <mat-label>LinkedIn</mat-label>
+          <input matInput
+                 placeholder="LinkedIn"
+                 formControlName="linkedIn"
+                 type="text"
+          >
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div>
+        <mat-icon class="material-icons-outlined">web</mat-icon>
+        <mat-form-field>
+          <mat-label>Strona</mat-label>
+          <input matInput
+                 placeholder="Strona"
+                 formControlName="site"
+                 type="text"
+          >
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
 
   </mat-grid-list>
 </form>

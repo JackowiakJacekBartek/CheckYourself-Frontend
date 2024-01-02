@@ -91,7 +91,7 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
 
   ngOnInit(): void {
     !(this.currentUserID === +localStorage.getItem('userID')!) && this.router.navigate([`/user/${localStorage.getItem('userID')}`]); //if user tries to change ID in url
-    
+
   }
 
   ngAfterViewInit(): void {
@@ -100,6 +100,8 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
       this.data = res.methodResult;
       // console.log(this.data)
       if (!this.data) return;
+      console.log(this.data.account.image);
+      this.image = this.data.account.image;
       this.userProfileEditForm.setValue({
         name: this.data.account.name,
         surname: this.data.account.surname,
@@ -280,15 +282,13 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
       this.data.account.name = this.userProfileEditForm.value.name,
         this.data.account.surname = this.userProfileEditForm.value.surname,
         this.data.account.description = this.userProfileEditForm.value.aboutMe,
-        this.data.account.image = '',
+        this.data.account.image = this.image,
         this.data.account.birthdate = this.userProfileEditGridForm.value.dateOfBirth,
         this.data.account.email = this.userProfileEditGridForm.value.email,
         this.data.account.phonenumber = this.userProfileEditGridForm.value.phone,
         this.data.account.salarymax = this.userProfileEditGridForm.value.salarymax,
         this.data.account.salarymin = this.userProfileEditGridForm.value.salarymin,
         this.data.account.employmentmethod = this.userProfileEditGridForm.value.workingTime
-
-
     )
   }
 
