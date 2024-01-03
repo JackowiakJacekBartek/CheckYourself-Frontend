@@ -53,10 +53,21 @@ mat-toolbar .headerIcon {
     font-weight: 400;
 }
 
+.changeLanguageButton {
+    filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(84deg) brightness(103%);
+    zoom: 0.08;
+    margin-right: 250px;
+    margin-top: 180px;
+}
+
+.changeLanguageButton:hover {
+    filter: invert(0%) sepia(0%) saturate(100%) hue-rotate(0deg) brightness(100%);
+}
+
 .filter-avatar {
     filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(84deg) brightness(103%);
-    zoom: 0.9;
-    margin-right: 20px;
+    zoom: 0.6;
+    margin-right: 25px;
     margin-top: 10px;
 }
 
@@ -66,6 +77,28 @@ mat-toolbar .headerIcon {
 
 .filter-logo {
     filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(84deg) brightness(103%);
+}
+
+.filter-company {
+    filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(84deg) brightness(103%);
+    zoom: 0.9;
+    margin-right: 25px;
+    margin-top: 10px;
+}
+
+.filter-company:hover {
+    filter: invert(55%) sepia(98%) saturate(4756%) hue-rotate(148deg) brightness(100%);
+}
+
+.filter-menu {
+    filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(84deg) brightness(103%);
+    zoom: 0.9;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+.filter-menu:hover {
+    filter: invert(55%) sepia(98%) saturate(4756%) hue-rotate(148deg) brightness(100%);
 }
 
 mat-toolbar {
