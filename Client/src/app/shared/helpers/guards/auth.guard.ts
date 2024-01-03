@@ -8,7 +8,7 @@ export class AuthGuard {
     constructor(private router: Router, private accountService: AccountService) {}
 
     canActivate() {
-      if (localStorage.getItem('accessToken')) {
+      if (localStorage.getItem('accessToken') || localStorage.getItem('accessToken') != "undefined") {
         return true;
       }
 

@@ -19,9 +19,38 @@
         margin: 0 10% 0 0;
         float: right;
     }
+
+    &-result {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        margin: 0 0 0 10%;
+        color: #059E8B
+    }
 }
 
 .hourglass {
     vertical-align: middle;
     margin-bottom: 5px;
+}
+
+.result-main {
+    background-color: #313843;
+    padding: 40px 70px;
+    height: auto;
+    min-height: 100vh;
+}
+
+.result-content-1 {
+    margin: 40px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.result-content-2 {
+    margin: 40px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
 }

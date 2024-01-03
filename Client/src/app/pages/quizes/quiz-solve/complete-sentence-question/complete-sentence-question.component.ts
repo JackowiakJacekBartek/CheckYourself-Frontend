@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { QuizModel } from 'src/app/shared/models/quiz';
 
@@ -7,7 +7,7 @@ import { QuizModel } from 'src/app/shared/models/quiz';
   templateUrl: './complete-sentence-question.component.html',
   styleUrls: ['./complete-sentence-question.component.scss']
 })
-export class CompleteSentenceQuestionComponent implements AfterViewInit {
+export class CompleteSentenceQuestionComponent implements AfterViewInit, OnChanges {
 
   @Input() questionNumber!: number;
   @Input() quiz!: QuizModel;
@@ -19,6 +19,12 @@ export class CompleteSentenceQuestionComponent implements AfterViewInit {
   private answerModel: {id: number, answer: string}[] = [];
   private madeError: boolean = false;
   constructor () { }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    setTimeout(() => {
+      this.scrollTo.nativeElement.scrollIntoView({ behavior: 'smooth' });
+    }, 200);
+  }
 
   ngAfterViewInit(): void {
     this.scrollTo.nativeElement.scrollIntoView({ behavior: 'smooth' });
@@ -41,6 +47,7 @@ export class CompleteSentenceQuestionComponent implements AfterViewInit {
   }
   
   nextQuestion(option: any) {
+    this.scrollTo.nativeElement.scrollIntoView({ behavior: 'smooth' });
     this.answerModel.forEach(answer => {
       if (option.sentences[answer.id].answers.incorrect.some(r => r === answer.answer)) this.madeError = true;
     });

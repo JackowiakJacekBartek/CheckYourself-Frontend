@@ -41,6 +41,7 @@ export class QuizSolveComponent {
   public ellapsedTime = '00:00';
   private timer: any = null;
   public quiz!: QuizModel;
+  public showResultScreen: boolean = false;
 
   constructor() { 
 
@@ -187,7 +188,10 @@ export class QuizSolveComponent {
 
   onQuestionChanged(incorrectQuestion: boolean) {
     this.areCorrectQuestions.push(incorrectQuestion)
-    if (this.quiz.questions.length > this.questionNumber + 1) this.questionNumber += 1;
+    this.quiz.questions.length === this.questionNumber + 1 ? this.showResultScreen = true : this.questionNumber += 1
+    console.log(this.areCorrectQuestions) 
+    
+      
   }
 
 }
