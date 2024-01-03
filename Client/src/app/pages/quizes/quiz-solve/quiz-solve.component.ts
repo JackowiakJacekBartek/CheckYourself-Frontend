@@ -108,14 +108,50 @@ export class QuizSolveComponent {
                   question: "Tutaj typo kończy pytanie...",
                   answers: {
                       correct: [
-                          "dziabu",
-                          "dabix",
-                          "dziop"
+                          "dziabu2",
+                          "dabix3",
+                          "dziop4"
                       ],
                       incorrect: [
-                          "smuteg",
-                          "żal",
-                          "niedowierzanie"
+                          "smuteg5",
+                          "żal6",
+                          "niedowierzanie7"
+                      ]
+                  }
+              }
+          ]
+        },
+        {
+          type: "finish sentence",
+          code: "tutaj kod albop nullv2",
+          picture: "tutaj obrazek albo nullv2",
+          film: "tutaj film albo nullv2",
+          sentences: [
+              {
+                  question: "Tutaj pytanie tego typa1?v2",
+                  answers: {
+                      correct: [
+                          "dziabuv2",
+                          "dabixv2",
+                          "dziopv2"
+                      ],
+                      incorrect: [
+                          "smutegv2"
+                      ]
+                  }
+              },
+              {
+                  question: "Tutaj typo kończy pytanie...v2",
+                  answers: {
+                      correct: [
+                          "dziabu2v2",
+                          "dabix3v2",
+                          "dziop4v2"
+                      ],
+                      incorrect: [
+                          "smuteg5v2",
+                          "żal6v2",
+                          "niedowierzanie7v2"
                       ]
                   }
               }
@@ -150,11 +186,7 @@ export class QuizSolveComponent {
   }
 
   onQuestionChanged(incorrectQuestion: boolean) {
-    console.log(this.quiz.questions.length)
-    console.log(this.questionNumber)
-    console.log(incorrectQuestion)
     this.areCorrectQuestions.push(incorrectQuestion)
-    console.log(this.areCorrectQuestions)
     if (this.quiz.questions.length > this.questionNumber + 1) this.questionNumber += 1;
   }
 

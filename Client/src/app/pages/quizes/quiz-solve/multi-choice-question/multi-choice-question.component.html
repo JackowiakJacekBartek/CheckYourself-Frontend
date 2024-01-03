@@ -3,11 +3,20 @@
         <div *ngFor="let question of quiz.questions; let i = index">
             <mat-card *ngIf="question.type === 'multiple choice' && i === questionNumber" class="main-card">
                 <div class="question-text"  >
-                    {{question.question}}
+                    {{'Quiz.Question' | translate}}
                 </div>
                     <mat-card-content class="question-content">
+                            <h2>{{question.question}}</h2>
                         <!-- <img src="{{imgPlaceholder}}" alt="questionMockUp01"> -->
-                        {{question?.code}} {{question?.picture}} {{question?.film}}
+                        <div>
+                            {{question?.code}}
+                        </div>
+                        <div>
+                            {{question?.picture}}
+                        </div>
+                        <div>
+                            {{question?.film}}
+                        </div>
                     </mat-card-content>
                     <mat-card-content>
                         <mat-grid-list cols="4" rowHeight="200px" class="list">

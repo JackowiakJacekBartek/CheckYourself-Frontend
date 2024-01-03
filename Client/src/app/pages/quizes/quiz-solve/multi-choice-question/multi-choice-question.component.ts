@@ -49,6 +49,7 @@ export class MultiChoiceQuestionComponent implements OnInit, AfterViewInit {
 
   nextQuestion(option: any) {
     this.questionChanged.emit(option.answers.incorrect.some(r => this.pickedOptions.includes(r)));
+    this.pickedOptions = [];
   }
 
 }

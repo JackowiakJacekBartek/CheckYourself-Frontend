@@ -40,9 +40,9 @@
 
 .question-content {
     margin-top: 40px;
-    // background-color: aqua;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .list {
