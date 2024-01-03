@@ -51,8 +51,12 @@ export interface UserProfile {
 }
 
 export interface accountWorkExperiences {
+  id: number
   profession: string,
   workcompany: string,
+  idprofession: number,
+  // profession: number,
+  idworkcompany: number,
   datestart: Date,
   dateend: Date,
   accountworkresponsibilities : AccountWorkResponsibilities[]
@@ -67,6 +71,7 @@ export interface AccountWorkResponsibilities {
 }
 
 export interface accountEducationModelDto {
+  id: number
   professionname: string,
   universityname: string,
   professionaltitle: string,
@@ -101,12 +106,12 @@ export interface Account {
 }
 
 export interface AccountCoursesCertificate {
-  certificateIssueDate: Date,
+  certificateissuedate: Date,
   certificatenumber: string,
   createdat: Date,
   expirationDate: Date,
   id: number,
-  idAccount: number,
+  idaccount: number,
   idCertificate: number,
   idOrganizationIssuingCertificate: number,
   certificatename: string,
@@ -114,9 +119,9 @@ export interface AccountCoursesCertificate {
 }
 
 export interface AccountSoftSkills {
-  createDate: Date,
-  id: number,
-  idAccount: number,
+  createDate?: Date,
+  id?: number,
+  idaccount: number,
   idaccountsoftskillstitle: number;
   name: string
 }
@@ -128,14 +133,4 @@ export interface AccountTags {
 export interface AccountSocialMediaLinksModelDto {
   name: string,
   link: string
-}
-
-export interface AccountWorkExpiriance {
-  createDate: Date,
-  dateEnd: Date,
-  DateStart: Date,
-  id: number,
-  idAccount: number,
-  idProfession: number,
-  idWorkCompany: number
 }

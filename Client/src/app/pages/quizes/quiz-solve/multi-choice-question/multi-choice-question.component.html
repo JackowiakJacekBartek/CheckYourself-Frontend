@@ -1,27 +1,35 @@
-<div class="quiz-main">
+<div class="quiz-main" #scrollTo>
     <form>
-        <div *ngFor="let question of quiz.questions; let i = index" class="xd">
+        <div *ngFor="let question of quiz.questions; let i = index">
             <mat-card *ngIf="question.type === 'multiple choice' && i === questionNumber" class="main-card">
-                <div class="question-text">
-                    <!-- {{'Quiz.What will be the output' | translate}}? -->
-                    {{question.question}}
+                <div class="question-text"  >
+                    {{'Quiz.Question' | translate}}
                 </div>
                     <mat-card-content class="question-content">
+                            <h2>{{question.question}}</h2>
                         <!-- <img src="{{imgPlaceholder}}" alt="questionMockUp01"> -->
-                        {{question?.code}} {{question?.picture}} {{question?.film}}
+                        <div>
+                            {{question?.code}}
+                        </div>
+                        <div>
+                            {{question?.picture}}
+                        </div>
+                        <div>
+                            {{question?.film}}
+                        </div>
                     </mat-card-content>
                     <mat-card-content>
                         <mat-grid-list cols="4" rowHeight="200px" class="list">
-                            <mat-grid-tile *ngFor="let choice of mulitChoice; let i = index" class="grid-tile">
-                                <mat-card class="card">
-                                    <mat-card-content class="card-content" [style.background-color]="colors[i % colors.length]" [style.background-image]="backgroundImages[i % colors.length]">
-                                        {{choice.answere}}
+                            <mat-grid-tile *ngFor="let choice of options(question); let ii = index" class="grid-tile">
+                                <mat-card class="card" (click)="toggleChoice(choice)" [class.card-selected]="isSelected(choice)">
+                                    <mat-card-content class="card-content" [style.background-color]="colors[ii % colors.length]" [style.background-image]="backgroundImages[(ii % colors.length) % 8]">
+                                        {{choice}}
                                     </mat-card-content>
                                 </mat-card>
                             </mat-grid-tile>
                         </mat-grid-list>
-                        <div class="next-question" #scrollTo>
-                            <button type="button" class="next-question-button" (click)="nextQuestion()">{{'Quiz.Next Question' | translate}}</button>
+                        <div class="next-question">
+                            <button type="button" class="next-question-button" (click)="nextQuestion(question)">{{'Quiz.Next Question' | translate}}</button>
                         </div>
                     </mat-card-content>
             </mat-card>

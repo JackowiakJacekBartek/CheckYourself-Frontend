@@ -95,13 +95,73 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
   }
 
   ngAfterViewInit(): void {
+    this.getData();
     this.ref.detectChanges();
+
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+  }
+
+  private getData() {
     this.editUserProfileService.getUserById(this.currentUserID).subscribe(res => {
       this.data = res.methodResult;
-      // console.log(this.data)
+
+      this.organizationsAndSkills.clear();
+      this.data.accountSoftSkills.forEach(data => {
+        const x = this.formBuilder.group({
+          id: [data.id],
+          idaccount: [this.currentUserID],
+          idaccountsoftskillstitle: [data.idaccountsoftskillstitle],
+          name: [data.name]
+        });
+        this.organizationsAndSkills.push(x)
+      })
+
+      this.certificates.clear();
+      this.data.accountCoursesCertificates.forEach(data => {
+        const x = this.formBuilder.group({
+          id: [data.id],
+          idaccount: [this.currentUserID],
+          certificatename: [data.certificatename],
+          organizationissuingcertificate: [data.organizationissuingcertificate],
+          certificatenumber: [data.certificatenumber],
+          certificateissuedate: [data.certificateissuedate]
+        });
+        this.certificates.push(x)
+      })
+
+      this.experience.clear();
+      this.data.accountWorkExperiences.forEach(data => {
+        const x = this.formBuilder.group({
+          id: [data.id],
+          idprofession: [data.idprofession],
+          idworkcompany: [data.idworkcompany],
+          idaccount: [this.currentUserID],
+          workcompany: [data.workcompany],
+          datestart: [data.datestart],
+          dateend: [data.dateend],
+          accountworkresponsibilities: [[], []]
+        });
+        this.experience.push(x)
+      })
+
+      this.education.clear();
+      this.data.accountEducationModelDto.forEach(data => {
+        const x = this.formBuilder.group({
+          id: [data.id],
+          idaccount: [this.currentUserID],
+          professionname: [data.professionname],
+          universityname: [data.universityname],
+          professionaltitle: [data.professionaltitle],
+          datestart: [data.datestart],
+          dateend: [data.dateend],
+        });
+        this.education.push(x)
+      })
       if (!this.data) return;
-      console.log(this.data.account.image);
-      this.image = this.data.account.image;
+      
+      this.image = this.data.account.image === '' ? this.image : this.data.account.image;
       this.userProfileEditForm.setValue({
         name: this.data.account.name,
         surname: this.data.account.surname,
@@ -114,11 +174,6 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
         organizationsAndSkills: this.data.accountSoftSkills ? this.data.accountSoftSkills : []
       });
     })
-    this.ref.detectChanges();
-
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
   }
 
   keepOrder = (a: any, b: any) => {
@@ -166,6 +221,10 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
     }
   }
 
+  public deleteTasks(index: AbstractControl): void {
+    this.organizationsAndSkills.removeAt(this.organizationsAndSkills.value.indexOf(index.value))
+  }
+
   addLang() {
     this.languages.push({
       id: 999,
@@ -198,6 +257,9 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
 
   public addExp() {
     this.experience.push(this.formBuilder.group({
+      idaccount: [this.currentUserID, []],
+      idprofession: [0],
+      idworkcompany: [0],
       workcompany: ['', []],
       datestart: new FormControl<Date | null>(null),
       dateend: new FormControl<Date | null>(null),
@@ -212,6 +274,7 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
 
   addEdu() {
     this.education.push(this.formBuilder.group({
+      idaccount: [this.currentUserID, []],
       professionname: ['', []],
       universityname: ['', []],
       professionaltitle: ['', []],
@@ -227,6 +290,7 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
 
   addCert() {
     this.certificates.push(this.formBuilder.group({
+      idaccount: [this.currentUserID, []],
       certificatename: ['', []],
       organizationissuingcertificate: ['', []],
       certificatenumber: ['', []],
@@ -242,18 +306,21 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
     switch (softSkillType) {
       case 1:
         this.organizationsAndSkills.push(this.formBuilder.group({
+          idaccount: [this.currentUserID, []],
           idaccountsoftskillstitle: [1, []],
           name: ['', []]
         }));
         break;
       case 2:
         this.organizationsAndSkills.push(this.formBuilder.group({
+          idaccount: [this.currentUserID, []],
           idaccountsoftskillstitle: [2, []],
           name: ['', []]
         }));
         break;
       case 3:
         this.organizationsAndSkills.push(this.formBuilder.group({
+          idaccount: [this.currentUserID, []],
           idaccountsoftskillstitle: [3, []],
           name: ['', []]
         }));
@@ -272,11 +339,6 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
     }
   }
 
-  public deletePositionByID(index: object, arrayType: object[]): void {
-    arrayType.splice(arrayType.indexOf(index), 1);
-  }
-
-
   private accountDetails() {
     return (
       this.data.account.name = this.userProfileEditForm.value.name,
@@ -294,17 +356,16 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
 
   public save() {
     this.accountDetails();
+    console.log(this.organizationsAndSkills)
     this.data.accountCoursesCertificates = this.userProfileEditForm.value.certificates;
     this.data.accountWorkExperiences = this.userProfileEditForm.value.experience;
     this.data.accountEducationModelDto = this.userProfileEditForm.value.education;
     this.data.accountSoftSkills = this.userProfileEditForm.value.organizationsAndSkills;
     this.data.accountWorkResponsibilities = [];
-    // console.log(this.userProfileEditForm.value)
-    // console.log(this.userProfileEditForm.value.certificates)
-    console.log(this.userProfileEditGridForm.value)
-    // console.log(this.data.accountWorkExperiences)
-    console.log(this.data)
-    // console.log(JSON.stringify(this.data))
-    //this.editUserProfileService.updateUserById(this.data.account.id, this.data).subscribe();
+    this.editUserProfileService.updateUserById(this.data.account.id, this.data).subscribe(res => {
+      if (res.isSuccess) {
+        this.router.navigate([this.returnLink])
+      }
+    });
   }
 }

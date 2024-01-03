@@ -37,7 +37,7 @@ export class HeaderComponent {
   }
 
   goBack () {
-    this.router.navigate(['']);
+    this.router.navigate(['/']);
   }
 
   public changeLanguage() {

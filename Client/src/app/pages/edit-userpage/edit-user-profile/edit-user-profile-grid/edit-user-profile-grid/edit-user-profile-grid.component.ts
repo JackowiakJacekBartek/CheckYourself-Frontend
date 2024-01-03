@@ -29,7 +29,7 @@ constructor(private ref: ChangeDetectorRef) { }
       salarymin: this.data?.account.salarymin ? this.data?.account.salarymin : 3000,
       salarymax: this.data?.account.salarymax ? this.data?.account.salarymax : 15000,
       dateOfBirth: this.data?.account.birthdate ? new Date(this.data.account.birthdate) : '',
-      workingTime: '',
+      workingTime: this.data?.account.employmentmethod.toString(),
       gitHub: '',
       linkedIn: '',
       site: '',

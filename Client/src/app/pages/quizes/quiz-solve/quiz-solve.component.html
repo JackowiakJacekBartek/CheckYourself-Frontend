@@ -1,25 +1,42 @@
-<div class="header">
-    <span class="header-question">{{'Quiz.Question' | translate}} {{questionNumber + 1}}/{{quiz.questions.length}}</span>
-    <span class="header-time"><mat-icon class="material-icons-outlined hourglass">hourglass_top</mat-icon>{{ellapsedTime}} / 5:00</span>
-</div>
-<!-- *ngIf="nextQuestion" -->
-<!-- <div *ngFor="let question of quiz.questions; let i = index"> -->
+<div *ngIf="!showResultScreen else resultScreen">
+    <div class="header">
+        <span class="header-question">{{'Quiz.Question' | translate}} {{questionNumber + 1}}/{{quiz.questions.length}}</span>
+        <span class="header-time"><mat-icon class="material-icons-outlined hourglass">hourglass_top</mat-icon>{{ellapsedTime}} / 5:00</span>
+    </div>
     <div *ngIf="quiz.questions[questionNumber].type === 'multiple choice'">
         <app-multi-choice-question
             [colors]="colors"
             [quiz]="quiz"
             [questionNumber]="questionNumber"
             [backgroundImages]="backgroundImages"
-            [mulitChoice]="mulitChoiceQuestions"
             [questionImage]="questionImage"
-            (questionChanged)="onQuestionChanged()"
+            (questionChanged)="onQuestionChanged($event)"
         ></app-multi-choice-question>
     </div> 
     <div *ngIf="quiz.questions[questionNumber].type === 'finish sentence'">
-        <!-- [questionNumber]="nextQuestion" -->
         <app-complete-sentence-question
             [quiz]="quiz"
-            (questionChanged)="onQuestionChanged()"
+            [questionNumber]="questionNumber"
+            (questionChanged)="onQuestionChanged($event)"
         ></app-complete-sentence-question>
     </div>
-<!-- </div> -->
+</div>
+<ng-template #resultScreen>
+    <div class="header">
+        <span class="header-result"> {{'Quiz.Result of Quiz' | translate}}: {{quiz.title}}</span>
+    </div>
+    <div class="result-main">
+        <mat-card class="main-card">
+            <mat-card-content class="result-content-1">
+                <div>
+                    1
+                </div>
+            </mat-card-content>
+            <mat-card-content class="result-content-2">
+                <div>
+                    2
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</ng-template>
