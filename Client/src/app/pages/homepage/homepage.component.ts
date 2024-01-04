@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { HomepageService } from './homepage.service';
+import { Job } from 'src/app/shared/models/job';
 
 @Component({
   selector: 'app-homepage',
@@ -11,6 +13,19 @@ export class HomepageComponent {
     email:`test@example.com`
   }
 
-  constructor () { }
+  jobs!: Job[];
 
+  constructor (private homepageService: HomepageService) { }
+  
+  ngAfterViewInit(): void {
+    this.homepageService.getJobs().subscribe(res => {
+      console.log('dane homepage', res);
+      this.jobs = res.methodResult;
+      
+      // res.methodResult.forEach(job => 
+      //   this.jobs.push(job))
+
+      console.log('jobssss', this.jobs[0])
+    })
+  }
 }
