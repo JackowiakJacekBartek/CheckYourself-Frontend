@@ -1,192 +1,172 @@
-.jobofferts {
+  .jobofferts,
+  .search,
+  .companyprofile,
+  .userprofile {
     width: 100%;
-    height: 40%;
     background-color: #F6F7EB;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
 
-}
-
-.search {
-    width: 100%;
-    height: 40%;
-    background: url("../../../assets/images/background_search.jpg") no-repeat;
-    background-size: cover;
-    background-position: bottom;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.companyprofile {
-    width: 100%;
-    height: 40%;
-    background-color: #F6F7EB;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.userprofile {
-    width: 100%;
-    height: 40%;
-    background-color: #F6F7EB;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.name {
+  .name,
+  .name2,
+  .description,
+  .name3 {
     color: var(--bg-dark, #1E232B);
     text-align: center;
-    font-feature-settings: 'clig' off, 'liga' off;
-    font-family: Inter;
-    font-size: 28px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    padding-top: 2%;
-}
+    font-family: 'Inter', sans-serif;
+  }
 
-.name2 {
-    color: var(--bg-dark, #1E232B);
-    font-feature-settings: 'clig' off, 'liga' off;
-    font-family: Inter;
-    font-size: 28px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    padding-top: 5%;
-    padding-left: 4%;
-}
-
-.description {
-color: #000;
-text-align: center;
-font-feature-settings: 'clig' off, 'liga' off;
-font-family: Roboto;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-padding-top: 1%;
-}
-
-.jobber {
+  .jobber {
     width: 300px;
     height: 150px;
     flex-shrink: 0;
     border-radius: 8px;
     background: #FFF;
     box-shadow: 5px 3px 15.3px 0px rgba(0, 0, 0, 0.25);
-    margin-top: 4%;
-    margin-left: 4%;
+    margin: 4% 4% 0 4%;
+    box-sizing: border-box;
+  }
 
-    }
-
-.jobs {
-     display: flex;
-        
-}
-
-.finder {
+  .jobs {
     display: flex;
-       
-}
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
 
-.finddev {
-    display: inline-flex;
+  .finder,
+  .finddev,
+  .locatedev {
+    display: flex;
     height: 55px;
-    width: 400px;
-    padding: 18px 296px 19px 19px;
+    width: calc(50% - 24px);
+    padding: 18px;
     align-items: flex-start;
     gap: 15px;
     flex-shrink: 0;
-
     border-radius: 8px;
     background: rgba(1, 133, 116, 0.72);
-
     box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.25);
-    margin-top: 4%;
-    margin-left: 4%;      
-}
+    margin: 4% 4%;
+    box-sizing: border-box;
+  }
 
-.locatedev {
-    display: inline-flex;
-    height: 55px;
-    width: 400px;
-    padding: 18px 296px 19px 19px;
-    align-items: flex-start;
-    gap: 15px;
-    flex-shrink: 0;
-
-    border-radius: 8px;
-    background: rgba(1, 133, 116, 0.72);
-
-    box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.25);
-    margin-top: 4%;
-    margin-left: 10%;      
-}
-
-.name3 {
-    color: #FFF;
-
-    text-align: center;
-    font-feature-settings: 'clig' off, 'liga' off;
-
-    font-family: Lato;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-    padding-top: 15px ;
-}
-
-.logo{
+  .logo {
     width: 70px;
     height: 68px;
     flex-shrink: 0;
-    background: url("../../../assets/images/LogoTmobile.png");
-    background-size: 100%;
-    margin-top: 20px ;
-    margin-left: 20px ;
-}
+    background: url("../../../assets/images/LogoTmobile.png") no-repeat center center / contain;
+    margin: 20px;
+  }
 
-.content{
+  .content {
     display: flex;
-}
+    box-sizing: border-box;
+  }
 
-.info{
-    margin-top: 20px ;
-    margin-left: 20px ;
-}
+  .info {
+    margin: 20px;
+    box-sizing: border-box;
+  }
 
-.jobname{
+  .jobname {
     color: #C00A68;
-
-    font-feature-settings: 'clig' off, 'liga' off;
-    font-family: Roboto;
+    font-family: 'Roboto', sans-serif;
     font-size: 16px;
-    font-style: normal;
     font-weight: 700;
-    line-height: normal;
     margin-bottom: 5px;
-}
+  }
 
-.company{
+  .company,
+  .location {
     color: #000;
-    font-feature-settings: 'clig' off, 'liga' off;
-    font-family: Roboto;
+    font-family: 'Roboto', sans-serif;
     font-size: 12px;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
     margin-bottom: 5px;
-}
+  }
 
-.location{
-    color: #000;
-    font-feature-settings: 'clig' off, 'liga' off;
-    font-family: Roboto;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
+  @media (max-width: 768px) {
+    .finder,
+    .finddev,
+    .locatedev {
+      width: 100%;
+      margin: 4% 0;
+    }
+  }
+  .custom-section {
+    position: relative;
+    width: 100%;
+    height: 300px; /* Set the desired height */
+    overflow: hidden;
+  
+    .background-image {
+      width: 100%;
+      height: 100%;
+    //   background: url('../../../assets/images/LogoTmobile.png') center/cover no-repeat;
+      position: absolute;
+      z-index: -1;
+    }
+  
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 1;
+      color: #fff; /* Set the text color */
+    display: block;
+      h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+      }
+  
+      .inputs {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+  
+        input {
+          width: 200px; /* Adjust the width as needed */
+          padding: 10px;
+          margin: 0 10px;
+          font-size: 1em;
+        }
+      }
+    }
+  }
+  
+
+  .info-section {
+    width: 100%;
+    text-align: center;
+    padding: 20px; /* Adjust the padding as needed */
+    box-sizing: border-box;
+  
+    .title, .subtitle {
+      margin-bottom: 10px;
+    }
+  
+    .cards {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+  
+    .card {
+      width: 200px; /* Adjust the width as needed */
+      height: 150px; /* Adjust the height as needed */
+      border: 1px solid #ccc;
+      margin: 10px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  
+      p {
+        font-size: 1em;
+      }
+    }
+  }
+  
