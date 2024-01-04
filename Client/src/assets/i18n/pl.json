@@ -49,7 +49,7 @@
     "You must enter your name": "Należy podać imię",
     "You must enter your surname": "Należy podać nazwisko",
     "You must enter your password": "Należy podać hasło",
-    "You must enter name of your company": "Należy odać nazwę firmy",
+    "You must enter name of your company": "Należy wpisać nazwę firmy",
     "Passwords does not match": "Hasła nie pasują",
     "You must enter your Email": "Należy podać email",
     "Wrong email": "Nieprawidłowy email",
@@ -60,7 +60,9 @@
     "No such account": "Konto nie istnieje",
     "Account exists": "Konto istnieje",
     "Successfully logged in": "Zalogowano pomyślnie",
-    "Wrong password": "Złe hasło"
+    "Wrong password": "Złe hasło",
+    "You must enter name headquoter location": "Musisz wpisać lokalizacje firmy",
+    "Headquarter address": "Adres siedziby"
   },
   "UserPage": {
     "About me": "O mnie",

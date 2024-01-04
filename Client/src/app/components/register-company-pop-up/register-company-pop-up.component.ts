@@ -13,7 +13,7 @@ import {AccountRegister, CompanyRegister} from 'src/app/shared/models/accounts';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 import { SHA256 } from 'crypto-js';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { AccountService } from 'src/app/shared/services/user-service.service';
 
 @Component({
@@ -32,6 +32,7 @@ export class RegisterCompanyPopUpComponent implements OnDestroy {
     private _formBuilder: FormBuilder,
     private _snackBar: MatSnackBar,
     private popUp: MatDialog,
+    private route2: ActivatedRoute,
     private accountService: AccountService,
     private toastrService: ToastrService,
     private translate: TranslateService,
@@ -49,11 +50,11 @@ export class RegisterCompanyPopUpComponent implements OnDestroy {
     this.registerCompanyFormGroup = this._formBuilder.group({
       nameCompany: ['', [Validators.required, this.noSpaceAllowed]],
       nip: ['', [Validators.required, this.numeric]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
-      confirmPassword: ['', Validators.required],
+      headquarterAddress: ['', [Validators.required]],
+      //password: ['', [Validators.required, Validators.minLength(8)]],
+      //confirmPassword: ['', Validators.required],
       privacyCheckbox: ['', Validators.requiredTrue],
-    }, {validators: this.mustMatch('password', 'confirmPassword')});
+    });
   }
 
   ngOnDestroy(): void {
@@ -129,12 +130,13 @@ export class RegisterCompanyPopUpComponent implements OnDestroy {
       let companyModel: CompanyRegister = {
         nip: this.fCompany['nip'].value,
         name: this.fCompany['nameCompany'].value,
-        email: this.fCompany['email'].value,
-        password: SHA256(this.fCompany['password'].value).toString()
+        headquarterAddress: this.fCompany['headquarterAddress'].value,
+        idAccount: Number(localStorage.getItem('userID'))
       };
 
       this.accountService.CompanyRegister(companyModel).subscribe(res => {
-        console.log(res)
+        console.log('warto', res)
+        console.log('warto', companyModel)
         this.registerMessages(res);
       });
     }

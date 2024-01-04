@@ -18,7 +18,7 @@ export class CompanyPageService {
   }
 
   getCompaniesById(): Observable<ReturnedResponse<Company[]>> { // TODO idaccount provide
-    return this.http.get<ReturnedResponse<Company[]>>(comapniesUrl + `/api/Company/get-companies-by-idAccount?id=1`);
+    return this.http.get<ReturnedResponse<Company[]>>(comapniesUrl + `/api/Company/get-companies-by-idAccount?id=`+localStorage.getItem('userID'));
   }
 
 }

@@ -6,10 +6,10 @@ export interface AccountRegister {
 }
 
 export interface CompanyRegister {
-  nip: string;
+  idAccount: number;
   name: string;
-  email: string;
-  password: string;
+  nip: string;
+  headquarterAddress: string;
 }
 
 export interface AccountLogin {

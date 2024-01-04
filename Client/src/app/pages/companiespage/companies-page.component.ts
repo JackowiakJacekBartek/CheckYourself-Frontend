@@ -5,6 +5,7 @@ import {ActivatedRoute} from "@angular/router";
 import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
 import { MatDialog } from '@angular/material/dialog';
 import { RegisterCompanyPopUpComponent } from 'src/app/components/register-company-pop-up/register-company-pop-up.component';
+import {AreYouSurePopUpComponent} from "../../components/are-you-sure-pop-up/are-you-sure-pop-up.component";
 // import { RegisterCompanyPopUpComponent } from 'src/app/components/register-company-pop-up/register-company-pop-up.component';
 
 @Component({
@@ -15,7 +16,7 @@ import { RegisterCompanyPopUpComponent } from 'src/app/components/register-compa
 export class CompaniesPageComponent {
 
   displayedColumns: string[] = ['companyName'];
-  companies!: Company[];;
+  companies!: Company[];
 
   constructor(public popUp: MatDialog, private companyProfileService: CompanyPageService, private route: ActivatedRoute) {
   }
@@ -31,5 +32,15 @@ export class CompaniesPageComponent {
 
   openRegister() {
     this.popUp.open(RegisterCompanyPopUpComponent);
+  }
+
+  areYouSure(element: string) {
+    const dialogRef = this.popUp.open(AreYouSurePopUpComponent);
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result == 'tak') {
+        console.log(element);
+        //Usunąć firme po indeksie/nazwie. Nie ma endpointa
+      }
+    });
   }
 }

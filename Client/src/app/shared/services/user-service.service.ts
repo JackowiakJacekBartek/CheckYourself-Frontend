@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject, Subject, empty } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { localUrl } from '../constants/constants';
+import {comapniesUrl, localUrl} from '../constants/constants';
 import { AccountLogin, AccountLoginSuccess, AccountRegister, CompanyRegister } from '../models/accounts';
 import { ReturnedResponse } from '../models/returned-response';
 import { Router } from '@angular/router';
@@ -56,7 +56,7 @@ export class AccountService {
     }
 
     public CompanyRegister(model: CompanyRegister): Observable<ReturnedResponse<CompanyRegister>> {
-      return this.http.post<ReturnedResponse<CompanyRegister>>(`${localUrl}/api/Company/register`, model);
+      return this.http.post<ReturnedResponse<CompanyRegister>>(`${comapniesUrl}/api/Company/create`, model);
     }
 
     public setCurrentUser(user: AccountLoginSuccess) {

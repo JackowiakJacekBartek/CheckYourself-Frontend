@@ -10,7 +10,10 @@
     <ng-container matColumnDef="companyName">
       <th mat-header-cell *matHeaderCellDef>Nazwa Firmy</th>
       <td mat-cell *matCellDef="let element">
-        <a href="company/{{element.id}}">{{ element.name }}</a>
+        <div class="offer">
+          <a href="company/{{element.id}}">{{ element.name }}</a>
+          <button (click)="areYouSure(element)" mat-button class="deleteButton"><span>Usuń</span></button>
+        </div>
       </td>
     </ng-container>
 
@@ -18,5 +21,6 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
   </table>
 </div>

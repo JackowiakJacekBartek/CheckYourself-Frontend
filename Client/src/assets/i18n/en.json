@@ -60,7 +60,9 @@
     "No such account": "No such account",
     "Account exists": "Account exists",
     "Successfully logged in": "Successfully logged in",
-    "Wrong password": "Wrong password"
+    "Wrong password": "Wrong password",
+    "You must enter name headquoter location": "You must enter name headquoter location",
+    "Headquarter address": "Headquarter address"
   },
   "UserPage": {
     "About me": "About me",
