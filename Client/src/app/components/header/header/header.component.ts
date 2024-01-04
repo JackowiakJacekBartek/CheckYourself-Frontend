@@ -36,6 +36,10 @@ export class HeaderComponent {
     }
   }
 
+  openCompany() {
+    this.router.navigate(['/company/']);
+  }
+
   goBack () {
     this.router.navigate(['/']);
   }
