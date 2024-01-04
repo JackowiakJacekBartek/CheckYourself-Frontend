@@ -15,7 +15,7 @@
         <div class="changeLanguageButton" (click)="changeLanguage();" *ngIf="localStorage.getItem('selectedLanguage') !== 'pl'">
             <input type="image" src="../../../assets/icons/GB.svg"  alt="GB"/>
         </div>        
-        <div class="avatar" (click)="openCompany();">
+        <div class="avatar" *ngIf="localStorage.getItem('userID') && localStorage.getItem('userID') != 'undefined'" (click)="openCompany();">
             <!-- <a href="company" class="headerIcon"> -->
                 <input type="image" src="../../../assets/icons/Company.svg" class="filter-company" alt="avatar" />
             <!-- </a> -->
