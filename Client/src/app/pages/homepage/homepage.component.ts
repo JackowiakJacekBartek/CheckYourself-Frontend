@@ -13,7 +13,7 @@ export class HomepageComponent {
     email:`test@example.com`
   }
 
-  jobs!: Job[];
+  jobs?: Job[];
 
   constructor (private homepageService: HomepageService) { }
   
@@ -23,9 +23,9 @@ export class HomepageComponent {
       this.jobs = res.methodResult;
       
       // res.methodResult.forEach(job => 
-      //   this.jobs.push(job))
+      //   this.jobs?.push(job))
 
-      console.log('jobssss', this.jobs[0])
+        // this.jobs && console.log('jobssss', this.jobs[0])
     })
   }
 }
