@@ -105,7 +105,11 @@
     "Manage quizzes": "Manage quizzes",
     "Purchase quizz": "Purchase quizz",
     "Check grading scale": "Check grading scale",
-    "Logout": "Logout"
+    "Logout": "Logout",
+    "Add/delete company": "Add/delete company"
+  },
+  "RegisterCompany": {
+    "Company added successfully": "Company added successfully"
   }
 }
 

@@ -8,13 +8,13 @@
         <span class="down">Bell the cat</span>
     </div>
     <div class="toolbarIcons">
-        
-        <div class="changeLanguageButton" (click)="changeLanguage();" *ngIf="localStorage.getItem('selectedLanguage') === 'pl'">
+
+        <div class="changeLanguageButton" (click)="changeLanguage();" *ngIf="localStorage.getItem('selectedLanguage') !== 'pl'">
             <input type="image" src="../../../assets/icons/PL.svg"  alt="PL"/>
         </div>
-        <div class="changeLanguageButton" (click)="changeLanguage();" *ngIf="localStorage.getItem('selectedLanguage') !== 'pl'">
+        <div class="changeLanguageButton" (click)="changeLanguage();" *ngIf="localStorage.getItem('selectedLanguage') === 'pl'">
             <input type="image" src="../../../assets/icons/GB.svg"  alt="GB"/>
-        </div>        
+        </div>
         <div class="avatar" *ngIf="localStorage.getItem('userID') && localStorage.getItem('userID') != 'undefined'" (click)="openCompany();">
             <!-- <a href="company" class="headerIcon"> -->
                 <input type="image" src="../../../assets/icons/Company.svg" class="filter-company" alt="avatar" />

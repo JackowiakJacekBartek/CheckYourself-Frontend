@@ -21,4 +21,9 @@ export class CompanyPageService {
     return this.http.get<ReturnedResponse<Company[]>>(comapniesUrl + `/api/Company/get-companies-by-idAccount?id=`+localStorage.getItem('userID'));
   }
 
+  deleteCompanyById(idCompany: number): Observable<ReturnedResponse<Company[]>> {
+    let objectFotPatch = {}
+    return this.http.patch<ReturnedResponse<Company[]>>(comapniesUrl + `/api/Company/delete-company-by-id?id=`+idCompany, objectFotPatch);
+  }
+
 }

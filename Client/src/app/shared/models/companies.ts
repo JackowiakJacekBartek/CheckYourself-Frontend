@@ -12,7 +12,8 @@ export interface Company {
   employeecount: number,
   headquarteraddress: string,
   description: string,
-  logo: string
+  logo: string,
+  id: number,
 }
 
 export interface CompanyImages {

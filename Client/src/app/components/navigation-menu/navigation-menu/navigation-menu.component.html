@@ -3,11 +3,20 @@
   <mat-sidenav class="sidenav" #sidenav id="sidenav" mode="over" opened="{{navMenuToggle}}" position="end">
     <mat-nav-list class="sidenav-list">
 
-      <mat-list-item class="sidenav-list-item" routerLink="/user/{{userID}}" (click)="closeMenu()">
+      <mat-list-item class="sidenav-list-item" (click)="openLogin()">
         <span class="sidenav-item">
           <span class="icon"><mat-icon class="material-icons-outlined">account_circle</mat-icon></span>
           <span class="text">
             {{'NavigationMenu.My profile' | translate}}
+          </span>
+        </span>
+      </mat-list-item>
+
+      <mat-list-item class="sidenav-list-item" routerLink="/company" (click)="closeMenu()">
+        <span class="sidenav-item">
+          <span class="icon"><mat-icon class="material-icons-outlined">apartment</mat-icon></span>
+          <span class="text">
+            {{'NavigationMenu.Add/delete company' | translate}}
           </span>
         </span>
       </mat-list-item>

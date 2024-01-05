@@ -32,7 +32,7 @@
           <p>{{'LandingPage.Develop yourself' | translate}}</p>
         </mat-card-content>
         <mat-card-actions>
-          <button *ngIf="showCompanyButton" mat-button class="registerButton" (click)="openRegister()">
+          <button *ngIf="!(localStorage.getItem('userID') && localStorage.getItem('userID') != 'undefined')" mat-button class="registerButton" (click)="openRegister()">
             <span>{{'LandingPage.Sign up' | translate}}</span></button>
         </mat-card-actions>
       </mat-card>

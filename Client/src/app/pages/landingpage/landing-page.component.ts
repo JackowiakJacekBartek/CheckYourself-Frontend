@@ -13,9 +13,7 @@ import {ActivatedRoute} from "@angular/router";
 export class LandingPageComponent {
   constructor(public popUp: MatDialog, private translate: TranslateService, private route: ActivatedRoute) {
   }
-
-  public currentUserID: number = +this.route.snapshot.params['id'];
-  public showCompanyButton: boolean = (+this.currentUserID === +localStorage.getItem('userID')!);
+  localStorage = localStorage;
 
   openRegister() {
     this.popUp.open(RegisterPopUpComponent);

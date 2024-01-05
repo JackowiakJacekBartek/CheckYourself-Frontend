@@ -160,7 +160,7 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
         this.education.push(x)
       })
       if (!this.data) return;
-      
+
       this.image = this.data.account.image === '' ? this.image : this.data.account.image;
       this.userProfileEditForm.setValue({
         name: this.data.account.name,
@@ -344,6 +344,7 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
       this.data.account.name = this.userProfileEditForm.value.name,
         this.data.account.surname = this.userProfileEditForm.value.surname,
         this.data.account.description = this.userProfileEditForm.value.aboutMe,
+        this.data.account.location = this.userProfileEditGridForm.value.adress,
         this.data.account.image = this.image,
         this.data.account.birthdate = this.userProfileEditGridForm.value.dateOfBirth,
         this.data.account.email = this.userProfileEditGridForm.value.email,

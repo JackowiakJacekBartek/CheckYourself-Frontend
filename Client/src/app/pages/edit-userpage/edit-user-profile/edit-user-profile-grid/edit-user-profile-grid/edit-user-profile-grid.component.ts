@@ -24,7 +24,7 @@ constructor(private ref: ChangeDetectorRef) { }
     if(!this.data) return;
     this.form.setValue({
       email: this.data?.account.email ? this.data.account.email : 'no email',
-      adress: '',
+      adress: this.data?.account.location ? this.data.account.location : 'no adress',
       phone: this.data?.account.phonenumber ? this.data?.account.phonenumber : '',
       salarymin: this.data?.account.salarymin ? this.data?.account.salarymin : 3000,
       salarymax: this.data?.account.salarymax ? this.data?.account.salarymax : 15000,
@@ -40,5 +40,4 @@ constructor(private ref: ChangeDetectorRef) { }
     // this.gridData = this.data;
 
   }
-
 }

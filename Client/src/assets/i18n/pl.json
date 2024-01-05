@@ -105,6 +105,10 @@
     "Manage quizzes": "Zarządzaj quizzami",
     "Purchase quizz": "Zakup quizzy",
     "Check grading scale": "Zobacz skalę oceniającą",
-    "Logout": "Wyloguj się"
+    "Logout": "Wyloguj się",
+    "Add/delete company": "Dodaj/usuń firme"
+  },
+  "RegisterCompany": {
+    "Company added successfully": "Dodano firme"
   }
 }
