@@ -14,6 +14,7 @@ export interface Company {
   description: string,
   logo: string,
   id: number,
+  idaccount: number
 }
 
 export interface CompanyImages {

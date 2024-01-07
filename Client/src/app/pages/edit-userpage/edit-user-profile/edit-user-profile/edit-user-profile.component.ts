@@ -161,7 +161,7 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
       })
       if (!this.data) return;
 
-      this.image = this.data.account.image === '' ? this.image : this.data.account.image;
+      this.image = this.data.account.image === null ? this.image : this.data.account.image;
       this.userProfileEditForm.setValue({
         name: this.data.account.name,
         surname: this.data.account.surname,

@@ -88,6 +88,8 @@ export class RegisterPopUpComponent implements OnDestroy {
     }
     if(res.errorCode == 1) {
       this.toastrService.success(this.translate.instant('Login.Registered successfully'))
+      //zamknąć popupa register
+      this.popUp.closeAll();
     }
     if(res.errorCode == 3) {
       this.toastrService.success(this.translate.instant('Login.Successfully logged in'))

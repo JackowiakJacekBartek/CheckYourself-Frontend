@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {EditUserProfileService} from "../edit-userpage/edit-user-profile/edit-user-profile.service";
 import {UserProfileService} from "./user-profile.service";
@@ -23,7 +23,7 @@ enum EmploymentMethodsEnum {
   templateUrl: './user-page.component.html',
   styleUrls: ['./user-page.component.scss']
 })
-export class UserPageComponent implements OnInit {
+export class UserPageComponent implements AfterViewInit{
 
   person = {
     "name": "Mariusz Nowakowski",
@@ -147,7 +147,7 @@ export class UserPageComponent implements OnInit {
   ngAfterViewInit(): void {
     this.UserProfileService.getUserById(this.currentUserID).subscribe(res => {
       this.data = res.methodResult;
-      console.log(this.data)
+      console.log('to tu:', this.data)
       if (!this.data) return;
       this.person = ({
         name: this.data.account.name + " " + this.data.account.surname,
@@ -159,8 +159,14 @@ export class UserPageComponent implements OnInit {
       this.informations[1].text = this.data.account.phonenumber;
       this.informations[2].text = this.getSalary(this.data.account.salarymin);
       this.informations[3].text = this.data.account.email;
-      this.informations[4].text = format(new Date(this.data.account.birthdate), 'dd/MM/yyyy');
       this.informations[5].text = this.getEmploymentMethodText(this.data.account.employmentmethod);
+
+      if (this.data.account.birthdate == null) {
+        this.informations[4].text = ''
+      }
+      else {
+        this.informations[4].text = format(new Date(this.data.account.birthdate), 'dd/MM/yyyy');
+      }
 
       const socials: AccountSocialMediaLinksModelDto[] = this.data.accountSocialMediaLinksModelDto;
       socials.forEach(a => this.informations.push({icon: 'link', text: a.link}))

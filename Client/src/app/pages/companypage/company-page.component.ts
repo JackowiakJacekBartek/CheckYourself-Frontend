@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CompanyPageService} from "./company-page.service";
 import {CompanyImages, CompanyOffices, CompanyProfile} from "../../shared/models/companies";
 import {ActivatedRoute} from "@angular/router";
@@ -9,9 +9,13 @@ import {DomSanitizer, SafeResourceUrl, SafeUrl} from "@angular/platform-browser"
   templateUrl: './company-page.component.html',
   styleUrls: ['./company-page.component.scss']
 })
-export class CompanyPageComponent {
+export class CompanyPageComponent implements OnInit {
 
   public currentCompanyID: number = +this.route.snapshot.params['id'];
+  public editCompanyLink: string = `/company/${this.currentCompanyID}/edit`;
+  public companyIdAccount: number = 0;
+  public currentUserID2: string = localStorage.getItem('userID')!
+  public showEditButton: boolean = false;
 
   company = {
     "longName": "T-Mobile Polska S.A.",
@@ -54,12 +58,18 @@ export class CompanyPageComponent {
   constructor(private companyProfileService: CompanyPageService, private route: ActivatedRoute, private sanitizer: DomSanitizer) {
   }
 
+  ngOnInit(): void {
+    this.companyProfileService.getCompanyById(this.currentCompanyID).subscribe(res => {
+      this.data = res.methodResult;
+      this.companyIdAccount = this.data.company.idaccount;
+      this.showEditButton = (+this.currentUserID2 === +this.companyIdAccount);
+    })
+  }
+
   data!: CompanyProfile;
 
   public currentUserID: number = +this.route.snapshot.params['id'];
   public editLink: string = `/company/${this.currentUserID}/edit`;
-
-  //public showEditButton: boolean = (+this.currentUserID === +localStorage.getItem('userID')!);
 
   companyOffices: CompanyOffices[] = [];
   extractedLinksOffices = [''];
@@ -78,6 +88,7 @@ export class CompanyPageComponent {
   ngAfterViewInit(): void {
     this.companyProfileService.getCompanyById(this.currentCompanyID).subscribe(res => {
       this.data = res.methodResult;
+
       this.company.name = this.data.company.name;
       this.company.employeecount = this.data.company.employeecount;
       this.company.location = this.data.company.headquarteraddress;
@@ -89,7 +100,6 @@ export class CompanyPageComponent {
       this.companyOffices.forEach(a => {
         this.extractedLinksOffices.push(this.extractFirstLink(a.iframeurl))
       })
-
 
       this.images = [];
       this.data.companyImages.forEach(a => {

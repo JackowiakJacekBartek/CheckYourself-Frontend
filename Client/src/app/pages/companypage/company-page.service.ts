@@ -21,4 +21,8 @@ export class CompanyPageService {
     return this.http.get<ReturnedResponse<CompanyProfile>>(comapniesUrl + `/api/Company/get-company-by-id?id=`+companyId);
   }
 
+  getCompaniesByIdAccount(idAccount: number): Observable<ReturnedResponse<CompanyProfile>> {
+    return this.http.get<ReturnedResponse<CompanyProfile>>(comapniesUrl + `/api/Company/get-companies-by-idAccount?id=`+idAccount);
+  }
+
 }

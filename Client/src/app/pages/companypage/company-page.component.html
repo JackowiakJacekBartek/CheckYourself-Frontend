@@ -4,8 +4,8 @@
   <div class="wrapperUser">
     <div class="sections">
       <div class="upheader">
-        <a class="edit-button" matTooltip="{{'UserPage.Edit profile' | translate}}">
-          <mat-icon class="material-symbols-outlined" routerLink="{{editLink}}">edit</mat-icon>
+        <a *ngIf="showEditButton" class="edit-button" matTooltip="{{'UserPage.Edit profile' | translate}}">
+          <mat-icon class="material-symbols-outlined" routerLink="{{editCompanyLink}}">edit</mat-icon>
         </a>
       </div>
       <div class="header">

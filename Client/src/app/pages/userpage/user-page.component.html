@@ -4,7 +4,7 @@
   <div class="wrapperUser">
     <div class="sections">
       <div class="header">
-        <a class="edit-button" matTooltip="{{'UserPage.Edit profile' | translate}}">
+        <a *ngIf="showEditButton" class="edit-button" matTooltip="{{'UserPage.Edit profile' | translate}}">
           <mat-icon class="material-symbols-outlined" routerLink="{{editLink}}">edit</mat-icon>
         </a>
         <img class="avatar" alt="avatar" src="{{person.image}}">
@@ -16,12 +16,14 @@
       </div>
       <div class="info">
         <mat-grid-list cols="3" rowHeight="50px">
-          <mat-grid-tile *ngFor="let info of informations">
-            <div class="text-inside-grid">
-              <mat-icon class="material-symbols-outlined">{{ info.icon }}</mat-icon>
-              {{ info.text }}
-            </div>
-          </mat-grid-tile>
+          <div *ngFor="let info of informations">
+            <mat-grid-tile *ngIf="info.text !== null && info.text.length > 0">
+              <div class="text-inside-grid">
+                <mat-icon class="material-symbols-outlined">{{ info.icon }}</mat-icon>
+                {{ info.text }}
+              </div>
+            </mat-grid-tile>
+          </div>
         </mat-grid-list>
       </div>
       <div class="about">
