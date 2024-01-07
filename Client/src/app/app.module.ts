@@ -35,7 +35,7 @@ import { EditUserProfileComponent } from './pages/edit-userpage/edit-user-profil
 import { MatSelectModule } from '@angular/material/select';
 import { EditUserProfileGridComponent } from './pages/edit-userpage/edit-user-profile/edit-user-profile-grid/edit-user-profile-grid/edit-user-profile-grid.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 import { MatSliderModule } from '@angular/material/slider';
 import { QuizCreatComponent } from './pages/quizes/quiz-creat/quiz-creat.component';
 import { QuizSolveComponent } from './pages/quizes/quiz-solve/quiz-solve.component';
@@ -58,6 +58,8 @@ import { CompaniesPageComponent } from './pages/companiespage/companies-page.com
 import { MatTableModule } from '@angular/material/table';
 import { RegisterCompanyPopUpComponent } from './components/register-company-pop-up/register-company-pop-up.component';
 import { SafePipe } from './pages/companypage/safe.pipe';
+import {MomentUtcDateAdapter} from "./shared/services/MomentUtcDateAdapter";
+import {MAT_MOMENT_DATE_FORMATS} from "@angular/material-moment-adapter";
 
 @NgModule({
   exports: [
@@ -135,6 +137,9 @@ import { SafePipe } from './pages/companypage/safe.pipe';
     MatExpansionModule,
   ],
   providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+    { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
+    { provide: DateAdapter, useClass: MomentUtcDateAdapter },
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}, CompaniesPageComponent
   ],
   bootstrap: [AppComponent],

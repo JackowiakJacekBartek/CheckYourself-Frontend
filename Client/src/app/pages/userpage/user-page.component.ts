@@ -170,14 +170,14 @@ export class UserPageComponent implements OnInit {
       cert.forEach(a => this.certificates.push({
         name: a.certificatename,
         cert: 'numer certyfikatu: ' + a.certificatenumber,
-        time: format(new Date(a.createdat), 'dd.MM.yyyy') + ', ' + a.organizationissuingcertificate
+        time: format(new Date(a.certificateissuedate), 'dd.MM.yyyy') + ', ' + a.organizationissuingcertificate
       }))
 
       const educ: accountEducationModelDto[] = this.data.accountEducationModelDto;
       this.education = [];
       educ.forEach(a => this.education.push({
         name: a.professionname + ' - ' + a.professionaltitle,
-        time: a.dateend ? format(new Date(a.datestart), 'yyyy') + ' - ' + format(new Date(a.dateend), 'MM.yyyy') : format(new Date(a.datestart), 'yyyy') + ' - teraz',
+        time: a.dateend ? format(new Date(a.datestart), 'MM.yyyy') + ' - ' + format(new Date(a.dateend), 'MM.yyyy') : format(new Date(a.datestart), 'yyyy') + ' - teraz',
         school: a.universityname,
       }))
 
