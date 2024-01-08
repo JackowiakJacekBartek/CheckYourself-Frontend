@@ -22,8 +22,7 @@ export class CompanyPageService {
   }
 
   deleteCompanyById(idCompany: number): Observable<ReturnedResponse<Company[]>> {
-    let objectFotPatch = {}
-    return this.http.patch<ReturnedResponse<Company[]>>(comapniesUrl + `/api/Company/delete-company-by-id?id=`+idCompany, objectFotPatch);
+    return this.http.delete<ReturnedResponse<Company[]>>(comapniesUrl + `/api/Company/delete-company-by-id?id=`+idCompany);
   }
 
 }

@@ -4,7 +4,7 @@ import {Observable} from "rxjs";
 import {ReturnedResponse} from "../../shared/models/returned-response";
 import {UserProfile} from "../../shared/models/accounts";
 import {CompanyProfile} from "../../shared/models/companies";
-import { comapniesUrl } from 'src/app/shared/constants/constants';
+import {comapniesUrl, localUrl} from 'src/app/shared/constants/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +23,10 @@ export class CompanyPageService {
 
   getCompaniesByIdAccount(idAccount: number): Observable<ReturnedResponse<CompanyProfile>> {
     return this.http.get<ReturnedResponse<CompanyProfile>>(comapniesUrl + `/api/Company/get-companies-by-idAccount?id=`+idAccount);
+  }
+
+  public updateCompanyById(id: number, model: CompanyProfile): Observable<ReturnedResponse<CompanyProfile>> {
+    return this.http.patch<ReturnedResponse<CompanyProfile>>(`${comapniesUrl}/${this.controller}/update-company-by-id?id=${id}`, model);
   }
 
 }

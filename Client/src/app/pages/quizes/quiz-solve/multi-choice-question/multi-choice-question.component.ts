@@ -28,7 +28,7 @@ export class MultiChoiceQuestionComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.scrollTo.nativeElement.scrollIntoView({ behavior: 'smooth' });
+    //this.scrollTo.nativeElement.scrollIntoView({ behavior: 'smooth' });
   }
 
   public options(option: any): any[] {

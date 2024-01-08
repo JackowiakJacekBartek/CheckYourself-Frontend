@@ -97,7 +97,6 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
   ngAfterViewInit(): void {
     this.getData();
     this.ref.detectChanges();
-
   }
 
   ngOnChanges(changes: SimpleChanges): void {

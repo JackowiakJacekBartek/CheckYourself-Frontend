@@ -23,19 +23,25 @@
           </div>
           <div class="companyName">
             <div class="title">
-              <span>{{company.longName}}</span>
+              <mat-form-field>
+                <mat-label>Nazwa firmy</mat-label>
+                <input matInput
+                       placeholder="Nazwa firmy"
+                       [formControl]="companyName"
+                       type="text">
+              </mat-form-field>
             </div>
             <div class="icons">
             </div>
           </div>
         </div>
         <div class="right">
-          <mat-form-field appearance="outline" class="selector">
-            <mat-label>{{'EditUserpage.Place' | translate}}</mat-label>
-            <mat-select [formControl]="companyPlace">
-              <mat-option value="one">Poznań</mat-option>
-              <mat-option value="two">Warszawa</mat-option>
-            </mat-select>
+          <mat-form-field>
+            <mat-label>Miejscowość</mat-label>
+            <input matInput
+                   placeholder="Location"
+                   [formControl]="location"
+                   type="text">
           </mat-form-field>
           <mat-form-field appearance="outline" class="selector">
             <mat-label>{{'EditUserpage.Company Size' | translate}}</mat-label>

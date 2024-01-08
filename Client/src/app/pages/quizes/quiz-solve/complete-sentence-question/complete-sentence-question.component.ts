@@ -27,7 +27,7 @@ export class CompleteSentenceQuestionComponent implements AfterViewInit, OnChang
   }
 
   ngAfterViewInit(): void {
-    this.scrollTo.nativeElement.scrollIntoView({ behavior: 'smooth' });
+    //this.scrollTo.nativeElement.scrollIntoView({ behavior: 'smooth' });
   }
 
   public options(option: any): any[] {
@@ -45,7 +45,7 @@ export class CompleteSentenceQuestionComponent implements AfterViewInit, OnChang
       answer: option
     });
   }
-  
+
   nextQuestion(option: any) {
     this.scrollTo.nativeElement.scrollIntoView({ behavior: 'smooth' });
     this.answerModel.forEach(answer => {

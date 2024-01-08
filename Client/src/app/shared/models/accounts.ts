@@ -90,7 +90,7 @@ export interface Account {
   idRole: number,
   image: string,
   name: string,
-  password: string,
+  //password?: string,
   phonenumber: string,
   refreshToken: string,
   refreshTokenValid: Date,

@@ -48,12 +48,12 @@ $margin: 20px;
 
     .right {
       display: flex;
+      align-items: center;
+      height: 50%;
 
       mat-form-field {
-        height: 10px;
-        margin-left: 15px;
+        margin-right: 10px;
       }
-
     }
 
     & .avatar {

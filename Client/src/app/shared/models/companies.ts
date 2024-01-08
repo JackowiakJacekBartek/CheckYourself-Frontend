@@ -33,5 +33,5 @@ export interface CompanySocialMediaLinks {
 
 export interface CompanyOffices {
   location: string,
-  iframeurl: string
+  iframeurl: string,
 }
