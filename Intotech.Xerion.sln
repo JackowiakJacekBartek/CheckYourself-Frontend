@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{E187FDB1-9FB
 	ProjectSection(SolutionItems) = preProject
 		SQL\companies.sql = SQL\companies.sql
 		SQL\dictionaries.sql = SQL\dictionaries.sql
+		SQL\quizzes.sql = SQL\quizzes.sql
 		SQL\xerion.sql = SQL\xerion.sql
 	EndProjectSection
 EndProject
@@ -97,6 +98,22 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Xerion.Companies.Database", "Backend\Intotech.Xerion.Companies\Intotech.Xerion.Companies.Database\Intotech.Xerion.Companies.Database.csproj", "{1CC19111-F2D1-429E-A685-DBE8B14228EE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intotech.Common.Database", "..\intotech.common\Intotech.Common.Database\Intotech.Common.Database.csproj", "{B2E14044-F173-4351-BFF5-0F4796629DEF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Intotech.Xerion.Quizzes", "Intotech.Xerion.Quizzes", "{B37D52C2-5C72-4B86-882A-6C51C527611E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intotech.Xerion.Quizzes.Database.Persistence", "Backend\Intotech.Xerion.Quizzes\Intotech.Xerion.Quizzes.Database.Persistence\Intotech.Xerion.Quizzes.Database.Persistence.csproj", "{244B331C-A2A7-4508-B5BA-4318C0763260}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intotech.Xerion.Quizzes.Database", "Backend\Intotech.Xerion.Quizzes\Intotech.Xerion.Quizzes.Database\Intotech.Xerion.Quizzes.Database.csproj", "{D0A1DED3-5B95-4554-A07E-0DA3A6717D09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intotech.Xerion.Quizzes.Bll.Persistence", "Backend\Intotech.Xerion.Quizzes\Intotech.Xerion.Quizzes.Bll.Persistence\Intotech.Xerion.Quizzes.Bll.Persistence.csproj", "{1014BD64-5D27-479E-8077-C71255FAA183}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intotech.Xerion.Quizzes.Bll.Persistence.Interfaces", "Backend\Intotech.Xerion.Quizzes\Intotech.Xerion.Quizzes.Bll.Persistence.Interfaces\Intotech.Xerion.Quizzes.Bll.Persistence.Interfaces.csproj", "{0DA35F18-7685-4682-B58B-2A32C692DFE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intotech.Xerion.Quizzes.Bll", "Backend\Intotech.Xerion.Quizzes\Intotech.Xerion.Bll.Manager\Intotech.Xerion.Quizzes.Bll.csproj", "{655961B9-945E-455D-9C99-B048789B7390}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intotech.Xerion.Quizzes.Api", "Backend\Intotech.Xerion.Quizzes\Intotech.Xerion.Quizzes.Api\Intotech.Xerion.Quizzes.Api.csproj", "{30AE711D-8696-4587-864B-1F3563E375B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intotech.Xerion.Quizzes.Bll.Interfaces", "Backend\Intotech.Xerion.Quizzes\Intotech.Xerion.Quizzes.Bll.Interfaces\Intotech.Xerion.Quizzes.Bll.Interfaces.csproj", "{B87096FE-90D6-426B-9B42-4DE023596330}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -264,6 +281,34 @@ Global
 		{B2E14044-F173-4351-BFF5-0F4796629DEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2E14044-F173-4351-BFF5-0F4796629DEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2E14044-F173-4351-BFF5-0F4796629DEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{244B331C-A2A7-4508-B5BA-4318C0763260}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{244B331C-A2A7-4508-B5BA-4318C0763260}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{244B331C-A2A7-4508-B5BA-4318C0763260}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{244B331C-A2A7-4508-B5BA-4318C0763260}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0A1DED3-5B95-4554-A07E-0DA3A6717D09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0A1DED3-5B95-4554-A07E-0DA3A6717D09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0A1DED3-5B95-4554-A07E-0DA3A6717D09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0A1DED3-5B95-4554-A07E-0DA3A6717D09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1014BD64-5D27-479E-8077-C71255FAA183}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1014BD64-5D27-479E-8077-C71255FAA183}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1014BD64-5D27-479E-8077-C71255FAA183}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1014BD64-5D27-479E-8077-C71255FAA183}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DA35F18-7685-4682-B58B-2A32C692DFE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DA35F18-7685-4682-B58B-2A32C692DFE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DA35F18-7685-4682-B58B-2A32C692DFE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DA35F18-7685-4682-B58B-2A32C692DFE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{655961B9-945E-455D-9C99-B048789B7390}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{655961B9-945E-455D-9C99-B048789B7390}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{655961B9-945E-455D-9C99-B048789B7390}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{655961B9-945E-455D-9C99-B048789B7390}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30AE711D-8696-4587-864B-1F3563E375B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30AE711D-8696-4587-864B-1F3563E375B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30AE711D-8696-4587-864B-1F3563E375B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30AE711D-8696-4587-864B-1F3563E375B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B87096FE-90D6-426B-9B42-4DE023596330}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B87096FE-90D6-426B-9B42-4DE023596330}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B87096FE-90D6-426B-9B42-4DE023596330}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B87096FE-90D6-426B-9B42-4DE023596330}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -297,6 +342,13 @@ Global
 		{98781D83-570B-412D-A0E6-B87C5270AEBF} = {837E60F0-2611-4068-9B41-EE508E668B2E}
 		{1CC19111-F2D1-429E-A685-DBE8B14228EE} = {837E60F0-2611-4068-9B41-EE508E668B2E}
 		{B2E14044-F173-4351-BFF5-0F4796629DEF} = {851E6B87-BB63-4020-BDFE-5D3700053BA8}
+		{244B331C-A2A7-4508-B5BA-4318C0763260} = {B37D52C2-5C72-4B86-882A-6C51C527611E}
+		{D0A1DED3-5B95-4554-A07E-0DA3A6717D09} = {B37D52C2-5C72-4B86-882A-6C51C527611E}
+		{1014BD64-5D27-479E-8077-C71255FAA183} = {B37D52C2-5C72-4B86-882A-6C51C527611E}
+		{0DA35F18-7685-4682-B58B-2A32C692DFE1} = {B37D52C2-5C72-4B86-882A-6C51C527611E}
+		{655961B9-945E-455D-9C99-B048789B7390} = {B37D52C2-5C72-4B86-882A-6C51C527611E}
+		{30AE711D-8696-4587-864B-1F3563E375B7} = {B37D52C2-5C72-4B86-882A-6C51C527611E}
+		{B87096FE-90D6-426B-9B42-4DE023596330} = {B37D52C2-5C72-4B86-882A-6C51C527611E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {37EB9609-5A62-4A1B-87D3-AE6ABEF4301C}
