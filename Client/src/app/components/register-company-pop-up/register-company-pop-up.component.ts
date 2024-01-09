@@ -86,6 +86,7 @@ export class RegisterCompanyPopUpComponent implements OnDestroy {
                 idAccount: Number(localStorage.getItem('userID'))
             };
 
+            console.log('companyModel', companyModel);
             this.accountService.CompanyRegister(companyModel).subscribe(res => {
                 this.registerMessages(res);
 

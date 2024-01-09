@@ -18,20 +18,24 @@ export interface Company {
 }
 
 export interface CompanyImages {
-  image: string
+  image: string,
+  idcompany: number
 }
 
 export interface CompanyTechnologies {
   name: string,
-  idtechnology: number
+  idtechnology: number,
+  idcompany: number
 }
 
 export interface CompanySocialMediaLinks {
   name: string,
-  link: string
+  link: string,
+  idcompany: number
 }
 
 export interface CompanyOffices {
   location: string,
   iframeurl: string,
+  idcompany: number
 }

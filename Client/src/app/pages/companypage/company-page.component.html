@@ -18,17 +18,8 @@
               <span>{{company.name}}</span>
             </div>
             <div class="icons">
-              <a href="{{links[0]}}">
-                <mat-icon class="add" svgIcon="fb"></mat-icon>
-              </a>
-              <a href="{{links[1]}}">
-                <mat-icon class="add" svgIcon="twitter"></mat-icon>
-              </a>
-              <a href="{{links[3]}}">
-                <mat-icon class="add" svgIcon="instagram"></mat-icon>
-              </a>
-              <a href="{{links[2]}}">
-                <mat-icon class="add" svgIcon="linkedin"></mat-icon>
+              <a *ngFor="let s of socials" href="https://www.{{s.link}}">
+                <mat-icon class="add" svgIcon="{{s.name}}"></mat-icon>
               </a>
             </div>
           </div>
@@ -37,11 +28,11 @@
           <mat-icon svgIcon="pin"></mat-icon>
           <span>{{company.location}}</span>
           <mat-icon svgIcon="user"></mat-icon>
-          <span>{{company.employeecount}}</span>
+          <span>{{CompanySize[company.employeecount]}}</span>
         </div>
       </div>
       <div class="about">
-        <p>Cześć tu {{company.name}}!</p>
+        <p>O mnie:</p>
         <p>{{company.about}}</p>
       </div>
       <div class="technology">

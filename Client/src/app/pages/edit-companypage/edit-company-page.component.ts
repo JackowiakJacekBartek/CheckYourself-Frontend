@@ -2,9 +2,10 @@ import {AfterViewInit, Component} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {ToastrService} from "ngx-toastr";
 import {TranslateService} from "@ngx-translate/core";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {CompanyProfile} from "../../shared/models/companies";
 import {CompanyPageService} from "../companypage/company-page.service";
+import {CompanySize} from "../../shared/constants/constants";
 
 @Component({
     selector: 'app-edit-companypage',
@@ -13,16 +14,20 @@ import {CompanyPageService} from "../companypage/company-page.service";
 })
 export class EditCompanyPageComponent implements AfterViewInit {
 
-    public currentUserID: number = +this.route.snapshot.params['id'];
-    public returnLink: string = `/company/${this.currentUserID}`
-
     data!: CompanyProfile;
 
+    CompanySize = CompanySize;
+
     public companyProfileEditForm: FormGroup;
+
+    public currentUserID: number = +this.route.snapshot.params['id'];
+    public currentCompanyID: number = +this.route.snapshot.params['id'];
+    public returnLink: string = `/company/${this.currentUserID}`
 
     constructor(private toastrService: ToastrService,
                 private translate: TranslateService,
                 private route: ActivatedRoute,
+                private router: Router,
                 private formBuilder: FormBuilder,
                 private companyProfileService: CompanyPageService
     ) {
@@ -41,12 +46,26 @@ export class EditCompanyPageComponent implements AfterViewInit {
         this.getData();
     }
 
+  getCompanySizeKeys(): string[] {
+    return Object.keys(CompanySize).filter(key => isNaN(Number(CompanySize[key])));
+  }
     private getData() {
-        this.companyProfileService.getCompanyById(121).subscribe(res => {
+        this.companyProfileService.getCompanyById(this.currentCompanyID).subscribe(res => {
             this.data = res.methodResult;
-            //this.companyIdAccount = this.data.company.idaccount;
-            //this.showEditButton = (+this.currentUserID2 === +this.companyIdAccount);
+            console.log(this.data)
             this.companyName.setValue(this.data.company.name)
+            this.location.setValue(this.data.company.headquarteraddress)
+            this.companySize.setValue(this.data.company.employeecount ? this.data.company.employeecount.toString() : '1')
+            this.company.about = this.data.company.description ? this.data.company.description : '';
+            this.company.image = this.data.company.logo === null ? "../../../assets/images/logoEmpty.png" : this.data.company.logo;
+            this.socials = [];
+            this.data.companySocialMediaLinks.forEach(a => {
+              this.socials.push( {
+                placeholder : a.name+' link',
+                icon : a.name,
+                value: a.link
+              })
+            })
         })
     }
 
@@ -113,15 +132,33 @@ export class EditCompanyPageComponent implements AfterViewInit {
     }
 
     public save() {
-        this.data.company.name = "u56u";
-        this.data.company.idaccount = 62;
+        this.data.company.id = this.currentCompanyID
+        this.data.company.name = this.companyName.value || '';
+        this.data.company.headquarteraddress = this.location.value || '';
+        this.data.company.employeecount = this.companySize.value ? +this.companySize.value : 1;
+        this.data.company.description = this.company.about;
+        this.data.company.logo = this.company.image;
+
+      this.data.companySocialMediaLinks = [];
+        this.socials.forEach(a => {
+          this.data.companySocialMediaLinks.push( {
+            idcompany: this.currentCompanyID,
+            link: a.value,
+            name: a.icon
+          })
+        })
+        //this.data.companyOffices = [];
+        //this.data.companyTechnologies = [];
+        //this.data.companyImages = [];
+        //this.data.companySocialMediaLinks = [];
 
         console.log(this.data)
-        this.companyProfileService.updateCompanyById(121, this.data).subscribe(res => {
+        this.companyProfileService.updateCompanyById(this.currentCompanyID, this.data).subscribe(res => {
             if (res.isSuccess) {
-                //this.router.navigate([this.returnLink])
+                this.router.navigate([this.returnLink])
             }
         })
-        console.log(this.data.company)
     }
+
+  protected readonly Object = Object;
 }

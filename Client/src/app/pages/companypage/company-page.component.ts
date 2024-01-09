@@ -1,15 +1,19 @@
 import {Component, OnInit} from '@angular/core';
 import {CompanyPageService} from "./company-page.service";
-import {CompanyImages, CompanyOffices, CompanyProfile} from "../../shared/models/companies";
+import {CompanyImages, CompanyOffices, CompanyProfile, CompanySocialMediaLinks} from "../../shared/models/companies";
 import {ActivatedRoute} from "@angular/router";
 import {DomSanitizer, SafeResourceUrl, SafeUrl} from "@angular/platform-browser";
+import {CompanySize} from "../../shared/constants/constants";
 
 @Component({
   selector: 'app-companypage',
   templateUrl: './company-page.component.html',
   styleUrls: ['./company-page.component.scss']
 })
+
 export class CompanyPageComponent implements OnInit {
+
+  socials: CompanySocialMediaLinks[] = []
 
   public currentCompanyID: number = +this.route.snapshot.params['id'];
   public editCompanyLink: string = `/company/${this.currentCompanyID}/edit`;
@@ -59,11 +63,6 @@ export class CompanyPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.companyProfileService.getCompanyById(this.currentCompanyID).subscribe(res => {
-      this.data = res.methodResult;
-      this.companyIdAccount = this.data.company.idaccount;
-      this.showEditButton = (+this.currentUserID2 === +this.companyIdAccount);
-    })
   }
 
   data!: CompanyProfile;
@@ -88,6 +87,9 @@ export class CompanyPageComponent implements OnInit {
   ngAfterViewInit(): void {
     this.companyProfileService.getCompanyById(this.currentCompanyID).subscribe(res => {
       this.data = res.methodResult;
+      console.log(this.data)
+      this.companyIdAccount = this.data.company.idaccount;
+      this.showEditButton = (+this.currentUserID2 === +this.companyIdAccount);
 
       this.company.name = this.data.company.name;
       this.company.employeecount = this.data.company.employeecount;
@@ -131,8 +133,10 @@ export class CompanyPageComponent implements OnInit {
       this.data.companySocialMediaLinks.forEach(a => {
         this.links.push(a.link)
       })
+
+      this.socials = this.data.companySocialMediaLinks;
     })
   }
 
-
+  protected readonly CompanySize = CompanySize;
 }
