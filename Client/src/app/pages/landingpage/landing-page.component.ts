@@ -2,10 +2,8 @@ import {Component} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {RegisterPopUpComponent} from "./register-pop-up/register-pop-up.component";
 import {TranslateService} from "@ngx-translate/core";
-import {LoginPopUpComponent} from "./login-pop-up/login-pop-up.component";
 import {ActivatedRoute} from "@angular/router";
-import { EmailVerificationService } from './landing-page.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { EmailVerification, LandingPageService } from './landing-page.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -20,7 +18,7 @@ export class LandingPageComponent {
     code: 0
   }
 
-  constructor(private toastrService: ToastrService, private route: ActivatedRoute, private emailVerificationService: EmailVerificationService, 
+  constructor(private toastrService: ToastrService, private route: ActivatedRoute, private emailVerificationService: LandingPageService, 
     public popUp: MatDialog, private translate: TranslateService) {}
 
   ngOnInit(): void {
@@ -50,9 +48,4 @@ export class LandingPageComponent {
   openRegister() {
     this.popUp.open(RegisterPopUpComponent);
   }
-}
-
-export interface EmailVerification {
-  email: string,
-  code: number
 }

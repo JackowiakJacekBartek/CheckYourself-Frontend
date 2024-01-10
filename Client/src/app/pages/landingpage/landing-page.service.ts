@@ -3,10 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ReturnedResponse } from 'src/app/shared/models/returned-response';
 import { localUrl } from 'src/app/shared/constants/constants';
-import { EmailVerification } from './landing-page.component';
 
 @Injectable({ providedIn: 'root' })
-export class EmailVerificationService {
+export class LandingPageService {
     
     constructor(private http: HttpClient) { }
 
@@ -19,3 +18,8 @@ export class EmailVerificationService {
         return this.http.post<ReturnedResponse<EmailVerification>>(`${localUrl}/${this.controller}/confirm-email`, model);
     }
 }
+
+export interface EmailVerification {
+    email: string,
+    code: number
+  }
