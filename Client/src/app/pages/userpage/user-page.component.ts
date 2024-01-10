@@ -46,10 +46,10 @@ export class UserPageComponent implements AfterViewInit {
     ];
 
     skills = {
-        "Technologie frontend": {"HTML": 70, "CSS": 98, "JavaScript": 45},
-        "Technologie backend": {"Java": 85, "Spring": 70, "Python": 45},
-        "Narzędzia": {"Git": 45, "Jira": 98},
-        "Języki obce": {"Polski": 100, "Angielski": 80}
+        "Technologie frontend": {"HTML": 0, "CSS": 0, "JavaScript": 0},
+        "Technologie backend": {"Java": 0, "Spring": 0, "Python": 0},
+        "Narzędzia": {"Git": 0, "Jira": 0},
+        "Języki obce": {"Polski": 0, "Angielski": 0}
     };
 
     experience = [
