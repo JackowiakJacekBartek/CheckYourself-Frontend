@@ -102,6 +102,14 @@ export class EditCompanyPageComponent implements AfterViewInit {
       this.tech.patchValue(techSelectedValues);
       this.tools.patchValue(toolsSelectedValues);
       this.platforms.patchValue(platformsSelectedValues);
+
+      console.log(this.data.companyImages)
+
+      this.imagesUrl = [];
+      this.data.companyImages.forEach(a => {
+        this.imagesUrl.push(a.image)
+      })
+
     })
   }
 
@@ -174,7 +182,13 @@ export class EditCompanyPageComponent implements AfterViewInit {
       idcompany: this.currentCompanyID
     }))
 
-
+    this.data.companyImages = [];
+    this.imagesUrl.forEach(a => {
+      this.data.companyImages.push( {
+        image: a,
+        idcompany: this.currentCompanyID
+      })
+    })
 
     this.companyProfileService.updateCompanyById(this.currentCompanyID, this.data).subscribe(res => {
       if (res.isSuccess) {
