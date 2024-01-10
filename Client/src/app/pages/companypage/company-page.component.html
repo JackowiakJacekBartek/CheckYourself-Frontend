@@ -19,7 +19,7 @@
             </div>
             <div class="icons">
               <ng-container *ngFor="let s of socials">
-                <a *ngIf="s.link.length > 0" href="https://www.{{s.link}}">
+                <a *ngIf="s.link.length > 0 && checkPlatforms(s.name)" href="https://www.{{s.link}}">
                   <mat-icon class="add" svgIcon="{{s.name}}"></mat-icon>
                 </a>
               </ng-container>

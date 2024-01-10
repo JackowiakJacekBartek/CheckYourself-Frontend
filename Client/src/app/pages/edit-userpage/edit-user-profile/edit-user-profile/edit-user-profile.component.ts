@@ -72,7 +72,6 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
 
   ngOnInit(): void {
     !(this.currentUserID === +localStorage.getItem('userID')!) && this.router.navigate([`/user/${localStorage.getItem('userID')}`]); //if user tries to change ID in url
-
   }
 
   ngAfterViewInit(): void {
@@ -93,6 +92,9 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
           id: [data.id],
           idaccount: [this.currentUserID],
           idaccountsoftskillstitle: [data.idaccountsoftskillstitle],
+          createdat: null,
+          idaccountNavigation: null,
+          idaccountsoftskillstitleNavigation: null,
           name: [data.name]
         });
         this.organizationsAndSkills.push(x)
@@ -102,6 +104,11 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
       this.data.accountCoursesCertificates.forEach(data => {
         const x = this.formBuilder.group({
           id: [data.id],
+          idcertificate: null,
+          idorganizationissuingcertificate: null,
+          expirationdate: null,
+          createdat: null,
+          idaccountNavigation: null,
           idaccount: [this.currentUserID],
           certificatename: [data.certificatename],
           organizationissuingcertificate: [data.organizationissuingcertificate],
@@ -115,14 +122,17 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
       this.data.accountWorkExperiences.forEach(data => {
         const x = this.formBuilder.group({
           id: [data.id],
-          // idprofession: [data.idprofession],
+          idprofession: null,
+          profession: null,
+          createdat: null,
+          idaccountNavigation: null,
           idworkcompany: [data.idworkcompany],
           idaccount: [this.currentUserID],
           workcompany: [data.workcompany],
           datestart: [data.datestart],
           dateend: [data.dateend],
           accountworkresponsibilities: [[], []],
-          
+
         });
         this.experience.push(x)
       })
@@ -131,6 +141,11 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
       this.data.accountEducationModelDto && this.data.accountEducationModelDto.forEach(data => {
         const x = this.formBuilder.group({
           id: [data.id],
+          idprofession: null,
+          createdat: null,
+          iduniversityname: null,
+          idprofessionaltitle: null,
+          idaccountNavigation: null,
           idaccount: [this.currentUserID],
           professionname: [data.professionname],
           universityname: [data.universityname],
