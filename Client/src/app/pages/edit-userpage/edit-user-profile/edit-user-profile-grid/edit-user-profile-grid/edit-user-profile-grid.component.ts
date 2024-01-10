@@ -24,7 +24,7 @@ constructor(private ref: ChangeDetectorRef) { }
 
     if(!this.data) return;
     this.form.setValue({
-      email: this.data?.account.email ?? '',
+      // email: this.data?.account.email ?? '',
       adress: this.data?.account.location ?? '',
       phone: this.data?.account.phonenumber ?? '',
       salarymin: this.data?.account.salarymin ? this.data?.account.salarymin : 3000,

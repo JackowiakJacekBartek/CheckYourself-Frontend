@@ -54,7 +54,7 @@ export interface accountWorkExperiences {
   id: number
   profession: string,
   workcompany: string,
-  idprofession: number,
+  // idprofession?: number,
   // profession: number,
   idworkcompany: number,
   datestart: Date,

@@ -8,11 +8,17 @@ export class AuthGuard {
     constructor(private router: Router, private accountService: AccountService) {}
 
     canActivate() {
-      if (localStorage.getItem('accessToken') || localStorage.getItem('accessToken') != "undefined") {
+      const accessToken = localStorage.getItem('accessToken');
+      if (accessToken 
+        && accessToken !== "undefined"
+        && accessToken !== undefined
+        && accessToken !== null
+        ) {
         return true;
       }
-
+    
       this.router.navigate(['/']);
       return false;
     }
+    
 }

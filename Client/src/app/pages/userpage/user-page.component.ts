@@ -26,23 +26,23 @@ enum EmploymentMethodsEnum {
 export class UserPageComponent implements AfterViewInit{
 
   person = {
-    "name": "Mariusz Nowakowski",
-    "title": "Junior Fullstack Developer",
-    "about": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    "image": "../../../assets/images/logoEmpty.png"
+    "name": "",
+    "title": "",
+    "about": "",
+    "image": ""
   }
+
   informations = [
-    {text: 'Warszawa, Mazowieckie / Zdalnie', icon: "pin_drop"},
-    {text: '784 784 965', icon: "call"},
-    {text: 'do negocjacji', icon: "payments"},
-    {text: 'mariusz.nowakowski@gmail.com', icon: "mail"},
-    {text: '10 marca 1999', icon: "cake"},
-    {text: 'pełen etat', icon: "hourglass_top"},
+    {text: '', icon: "pin_drop"},
+    {text: '', icon: "call"},
+    {text: '', icon: "payments"},
+    {text: '', icon: "mail"},
+    {text: '', icon: "cake"},
+    {text: '', icon: "hourglass_top"},
   ];
 
   tags = [
-    {info: 'Java Lover'},
-    {info: 'JS Newbie'}
+    {info: ''}
   ];
 
   skills = {
@@ -54,58 +54,33 @@ export class UserPageComponent implements AfterViewInit{
 
   experience = [
     {
-      "name": "Tester Manualny",
-      "time": "listopad 2021 - grudzień 2022",
-      "tasks": ["Testowanie aplikacji i tworzenie nowych zgłoszeń", "Pisanie dokumentacji", "Analizowanie działania aplikacji"]
-    },
-    {
-      "name": "Doradca Finansowy",
-      "time": "czerwiec 2021 - październik 2021",
-      "tasks": ["Obsługa programów finansowych", "Rozmowa z klientami", "Analizowanie wniosków finansowych"],
+      "name": "",
+      "time": "",
+      "tasks": [""]
     }
   ];
 
   education = [
     {
-      "name": "Informatyka - inż.",
-      "time": "2019 - 2024",
-      "school": "Uniwersytet im. Adama Mickiewicza"
-    },
-    {
-      "name": "Technik informatyk",
-      "time": "2015 - 2019",
-      "school": "Uniwersytet im. Adama Mickiewicza"
+      "name": "",
+      "time": "",
+      "school": ""
     }
   ];
 
   certificates = [
     {
-      "name": "Murarz, tynkarz, akrobata",
-      "time": "18 czerwca 2023, Udemy Sp. z o. o.",
-      "cert": "numer certyfikatu: eqw543ge46"
+      "name": "",
+      "time": "",
+      "cert": ""
     },
-    {
-      "name": "UX/UI Designer",
-      "time": "18 czerwca 2023, Udemy Sp. z o. o.",
-      "cert": "numer certyfikatu: eqw543ge46"
-    }
   ];
 
   other = [
     {
-      "name": "Organizacje i stowarzyszenia",
+      "name": "",
       "icon": "corporate_fare",
       "duties": [""]
-    },
-    {
-      "name": "Umiejętności miękkie",
-      "icon": "mood",
-      "duties": ["praca w zespole", "samodzielność", "sumienność", "dokładność"]
-    },
-    {
-      "name": "Hobby",
-      "icon": "fitness_center",
-      "duties": ["siłownia", "malowanie", "tynkowanie"]
     }
   ];
 
@@ -169,7 +144,7 @@ export class UserPageComponent implements AfterViewInit{
       }
 
       const socials: AccountSocialMediaLinksModelDto[] = this.data.accountSocialMediaLinksModelDto;
-      socials.forEach(a => this.informations.push({icon: 'link', text: a.link}))
+      socials && socials.forEach(a => this.informations.push({icon: 'link', text: a.link}))
 
       const cert: AccountCoursesCertificate[] = this.data.accountCoursesCertificates;
       this.certificates = [];
@@ -181,7 +156,7 @@ export class UserPageComponent implements AfterViewInit{
 
       const educ: accountEducationModelDto[] = this.data.accountEducationModelDto;
       this.education = [];
-      educ.forEach(a => this.education.push({
+      educ && educ.forEach(a => this.education.push({
         name: a.professionname + ' - ' + a.professionaltitle,
         time: a.dateend ? format(new Date(a.datestart), 'MM.yyyy') + ' - ' + format(new Date(a.dateend), 'MM.yyyy') : format(new Date(a.datestart), 'yyyy') + ' - teraz',
         school: a.universityname,
@@ -189,7 +164,7 @@ export class UserPageComponent implements AfterViewInit{
 
       const exp: accountWorkExperiences[] = this.data.accountWorkExperiences;
       this.experience = []
-      exp.forEach(a => {
+      exp && exp.forEach(a => {
         const tasksArray: string[] = a.accountworkresponsibilities.map(responsibility => responsibility.name);
 
         this.experience.push({
@@ -201,7 +176,7 @@ export class UserPageComponent implements AfterViewInit{
 
       const accountSoftSkills: AccountSoftSkills[] = this.data.accountSoftSkills;
       this.other.forEach(a => a.duties = [])
-      accountSoftSkills.forEach(skill => {
+      accountSoftSkills && accountSoftSkills.forEach(skill => {
         const index = skill.idaccountsoftskillstitle - 1; // Indeks w tablicy 'other'
         if (index >= 0 && index < this.other.length) {
           this.other[index].duties.push(skill.name);

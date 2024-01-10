@@ -22,26 +22,7 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
     dateend: new FormControl<Date | null>(null),
   });
 
-  selectedLang1 = 'one';
-  selectedLangLvL1 = 'one';
-  selectedLang2 = 'one';
-  selectedLangLvL2 = 'one';
-  selectedTitle = 'one';
-
   image = "../../../assets/images/logoEmpty.png";
-
-  languages = [
-    {
-      id: 1,
-      language: 'Polski',
-      skill: 100
-    },
-    {
-      id: 2,
-      language: 'Angielski',
-      skill: 80
-    },
-  ];
 
   data!: UserProfile;
   private phonePattern = /^\d{3}-\d{3}-\d{3}$|^\d{3}\d{3}\d{3}$/; // accepts either 000-000-000 or 000000000 patterns
@@ -68,7 +49,7 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
       phone: ['', [Validators.pattern(this.phonePattern)]],
       salarymin: [3000, [Validators.required]],
       salarymax: [15000, [Validators.required]],
-      email: ['', [Validators.required]],
+      // email: ['', [Validators.required]],
       dateOfBirth: ['', [Validators.required]],
       workingTime: ['', [Validators.required]],
       gitHub: ['', [Validators.required]],
@@ -81,7 +62,7 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
       surname: ['', [Validators.required]],
       position: ['', [Validators.required]],
       aboutMe: ['', []],
-      languages: [[], []],
+      // languages: [[], []],
       education: this.formBuilder.array([]),
       experience: this.formBuilder.array([]),
       certificates: this.formBuilder.array([]),
@@ -134,19 +115,20 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
       this.data.accountWorkExperiences.forEach(data => {
         const x = this.formBuilder.group({
           id: [data.id],
-          idprofession: [data.idprofession],
+          // idprofession: [data.idprofession],
           idworkcompany: [data.idworkcompany],
           idaccount: [this.currentUserID],
           workcompany: [data.workcompany],
           datestart: [data.datestart],
           dateend: [data.dateend],
-          accountworkresponsibilities: [[], []]
+          accountworkresponsibilities: [[], []],
+          
         });
         this.experience.push(x)
       })
 
       this.education.clear();
-      this.data.accountEducationModelDto.forEach(data => {
+      this.data.accountEducationModelDto && this.data.accountEducationModelDto.forEach(data => {
         const x = this.formBuilder.group({
           id: [data.id],
           idaccount: [this.currentUserID],
@@ -166,7 +148,6 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
         surname: this.data.account.surname,
         position: this.data.account.position ? this.data.account.position : '',
         aboutMe: this.data.account.description,
-        languages: this.languages,
         education: this.data.accountEducationModelDto,
         experience: this.data.accountWorkExperiences,
         certificates: this.data.accountCoursesCertificates,
@@ -224,14 +205,6 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
     this.organizationsAndSkills.removeAt(this.organizationsAndSkills.value.indexOf(index.value))
   }
 
-  addLang() {
-    this.languages.push({
-      id: 999,
-      language: '',
-      skill: 0,
-    });
-  }
-
   public createTask(): FormGroup {
     return this.formBuilder.group({
       taskName: ['', Validators.required]
@@ -257,7 +230,7 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
   public addExp() {
     this.experience.push(this.formBuilder.group({
       idaccount: [this.currentUserID, []],
-      idprofession: [0],
+      // idprofession: [0],
       idworkcompany: [0],
       workcompany: ['', []],
       datestart: new FormControl<Date | null>(null),
@@ -346,7 +319,7 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
         this.data.account.location = this.userProfileEditGridForm.value.adress,
         this.data.account.image = this.image,
         this.data.account.birthdate = this.userProfileEditGridForm.value.dateOfBirth,
-        this.data.account.email = this.userProfileEditGridForm.value.email,
+        // this.data.account.email = this.userProfileEditGridForm.value.email,
         this.data.account.phonenumber = this.userProfileEditGridForm.value.phone,
         this.data.account.salarymax = this.userProfileEditGridForm.value.salarymax,
         this.data.account.salarymin = this.userProfileEditGridForm.value.salarymin,
