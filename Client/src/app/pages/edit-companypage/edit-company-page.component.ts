@@ -47,7 +47,7 @@ export class EditCompanyPageComponent implements AfterViewInit {
   toolsList = ['jenkins', 'git', 'jira'];
   platformsList = ['windows', 'linux'];
   imagesUrl = ["assets/images/logoEmpty.png", "assets/images/background.png"];
-  offices = ['Warszawa, Piękna 7/3', 'Poznań, Piękna 7/3'];
+  offices = ['Poznań, Kolorowa 8'];
 
   constructor(private toastrService: ToastrService,
               private translate: TranslateService,
