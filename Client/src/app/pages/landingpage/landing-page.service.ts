@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ReturnedResponse } from 'src/app/shared/models/returned-response';
-import { EmailVerification } from './email-verification.component';
 import { localUrl } from 'src/app/shared/constants/constants';
+import { EmailVerification } from './landing-page.component';
 
 @Injectable({ providedIn: 'root' })
 export class EmailVerificationService {

@@ -7,7 +7,6 @@ import { UserPageComponent } from "./pages/userpage/user-page.component";
 import {CompanyPageComponent} from "./pages/companypage/company-page.component";
 import { EditUserProfileComponent } from './pages/edit-userpage/edit-user-profile/edit-user-profile/edit-user-profile.component';
 import { QuizSolveComponent } from './pages/quizes/quiz-solve/quiz-solve.component';
-import { EmailVerificationComponent } from './pages/email-verification/email-verification.component';
 import {EditCompanyPageComponent} from "./pages/edit-companypage/edit-company-page.component";
 import {JoboffersComponent} from "./pages/joboffers/joboffers.component";
 import {EditJoboffersComponent} from "./pages/edit-joboffers/edit-joboffers.component";
@@ -16,10 +15,7 @@ import { CompaniesPageComponent } from './pages/companiespage/companies-page.com
 
 const routes: Routes = [
   {
-    path: '', component: LandingPageComponent,
-  },
-  {
-    path: 'homepage', component: HomepageComponent, canActivate:[AuthGuard]
+    path: '', component: HomepageComponent,
   },
   {
     path: 'user/:id', component: UserPageComponent, canActivate:[AuthGuard]
@@ -37,7 +33,7 @@ const routes: Routes = [
     path: 'company/:id/edit', component: EditCompanyPageComponent, canActivate:[AuthGuard]
   },
   {
-    path: 'email-verification/:email/:code', component: EmailVerificationComponent, canActivate:[AuthGuard]
+    path: 'email-verification/:email/:code', component: LandingPageComponent, canActivate:[AuthGuard]
   },
   {
     path: 'quiz', component: QuizSolveComponent, canActivate:[AuthGuard]

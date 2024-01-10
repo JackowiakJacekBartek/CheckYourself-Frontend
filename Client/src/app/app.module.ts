@@ -41,7 +41,6 @@ import { QuizCreatComponent } from './pages/quizes/quiz-creat/quiz-creat.compone
 import { QuizSolveComponent } from './pages/quizes/quiz-solve/quiz-solve.component';
 import { MultiChoiceQuestionComponent } from './pages/quizes/quiz-solve/multi-choice-question/multi-choice-question.component';
 import { CompleteSentenceQuestionComponent } from './pages/quizes/quiz-solve/complete-sentence-question/complete-sentence-question.component';
-import { EmailVerificationComponent } from './pages/email-verification/email-verification.component';
 import { EditCompanyPageComponent } from './pages/edit-companypage/edit-company-page.component';
 import { JoboffersComponent } from './pages/joboffers/joboffers.component';
 import { EditJoboffersComponent } from './pages/edit-joboffers/edit-joboffers.component';
@@ -82,7 +81,6 @@ import {MAT_MOMENT_DATE_FORMATS} from "@angular/material-moment-adapter";
     QuizSolveComponent,
     MultiChoiceQuestionComponent,
     CompleteSentenceQuestionComponent,
-    EmailVerificationComponent,
     EditCompanyPageComponent,
     JoboffersComponent,
     EditJoboffersComponent,
