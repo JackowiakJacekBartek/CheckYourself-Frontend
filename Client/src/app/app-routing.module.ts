@@ -33,7 +33,7 @@ const routes: Routes = [
     path: 'company/:id/edit', component: EditCompanyPageComponent, canActivate:[AuthGuard]
   },
   {
-    path: 'email-verification/:email/:code', component: LandingPageComponent, canActivate:[AuthGuard]
+    path: 'email-verification/:email/:code', component: LandingPageComponent
   },
   {
     path: 'quiz', component: QuizSolveComponent, canActivate:[AuthGuard]
