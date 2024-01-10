@@ -32,31 +32,8 @@
 
       <mat-list-item class="sidenav-list-item">
         <span class="sidenav-item-quiz">
-          <div class="icon" (click)="activateDropdown()"><mat-icon class="material-icons-outlined" >{{getArrow()}}</mat-icon></div>
-          <span>
-            <span class="text" routerLink="/quiz" (click)="closeMenu()">
-              {{'NavigationMenu.Quizzes' | translate}}
-            </span>
-            <div *ngIf="isQuizDropdownActive">
-              <div class="quiz-options" (click)="closeMenu()">
-                {{'NavigationMenu.Add quizz' | translate}}
-              </div>
-              <div class="quiz-options" (click)="closeMenu()">
-                {{'NavigationMenu.Manage quizzes' | translate}}
-              </div>
-              <div class="quiz-options" (click)="closeMenu()">
-                {{'NavigationMenu.Purchase quizz' | translate}}
-              </div>
-            </div>
-          </span>
-        </span>
-      </mat-list-item>
-
-      <mat-list-item [class.sidenav-list-item-quiz-closed]="!isQuizDropdownActive" routerLink="" (click)="closeMenu()">
-        <span class="sidenav-end-item">
-          <span class="text-bottom">
-            {{'NavigationMenu.Check grading scale' | translate}}
-          </span>
+          <span class="icon"><mat-icon class="material-icons-outlined">quiz</mat-icon></span>
+          {{'NavigationMenu.Quizzes' | translate}}
         </span>
       </mat-list-item>
 
