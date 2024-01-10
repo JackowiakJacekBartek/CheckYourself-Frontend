@@ -6,6 +6,7 @@ import {comapniesUrl, localUrl} from '../constants/constants';
 import { AccountLogin, AccountLoginSuccess, AccountRegister, CompanyRegister } from '../models/accounts';
 import { ReturnedResponse } from '../models/returned-response';
 import { Router } from '@angular/router';
+import { RefreshToken } from '../helpers/interceptors/basic-interceptor.interceptor';
 
 @Injectable({
   providedIn: 'root',
@@ -53,6 +54,11 @@ export class AccountService {
               return response;
             })
           );
+    }
+
+    public refreshToken(accessToken: string): Observable<ReturnedResponse<RefreshToken>> {
+      // console.log('request', `${localUrl}/api/Account/refresh-token`, accessToken)
+      return this.http.post<ReturnedResponse<RefreshToken>>(`${localUrl}/api/Account/refresh-token`, {accessToken, refreshToken: ''})
     }
 
     public CompanyRegister(model: CompanyRegister): Observable<ReturnedResponse<CompanyRegister>> {

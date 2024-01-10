@@ -1,4 +1,4 @@
-﻿drop table if exists QuizzesParticipants;
+﻿drop table if exists QuizzesResults;
 drop table if exists QuizzesAnswers;
 drop table if exists QuizzesQuestions;
 drop table if exists Quizzes;
@@ -10,7 +10,8 @@ create table Quizzes
 	name text not null,
 	description text,
 	idCompany int not null,
-	type int not null --1 - jednokrotnego, 2 - wielokrotnego
+	technology text not null, -- .Net / Java / React / JS
+	type int not null -- 1 - jednokrotnego, 2 - wielokrotnego
 );
 
 create table QuizzesQuestions
@@ -24,7 +25,8 @@ create table QuizzesQuestions
 create table QuizzesAnswers
 (
 	id serial primary key,
-	answer text,
+	answer text not null,
+	isCorrect text,
 	image text,
 	idQuiz int references Quizzes(id) not null
 );
