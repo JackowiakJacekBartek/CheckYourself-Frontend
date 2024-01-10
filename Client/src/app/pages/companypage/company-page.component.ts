@@ -138,5 +138,10 @@ export class CompanyPageComponent implements OnInit {
     })
   }
 
+  checkPlatforms(a : string) {
+    const platforms = ["fb", "instagram", "twitter", "linkedin"];
+    return platforms.includes(a);
+  }
+
   protected readonly CompanySize = CompanySize;
 }

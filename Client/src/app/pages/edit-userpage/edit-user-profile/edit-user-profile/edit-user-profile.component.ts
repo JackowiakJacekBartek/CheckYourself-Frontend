@@ -72,7 +72,6 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
 
   ngOnInit(): void {
     !(this.currentUserID === +localStorage.getItem('userID')!) && this.router.navigate([`/user/${localStorage.getItem('userID')}`]); //if user tries to change ID in url
-
   }
 
   ngAfterViewInit(): void {
@@ -122,7 +121,7 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
           datestart: [data.datestart],
           dateend: [data.dateend],
           accountworkresponsibilities: [[], []],
-          
+
         });
         this.experience.push(x)
       })

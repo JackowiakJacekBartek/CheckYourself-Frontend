@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {ToastrService} from "ngx-toastr";
 import {TranslateService} from "@ngx-translate/core";
@@ -18,17 +18,16 @@ export class EditCompanyPageComponent implements AfterViewInit {
 
   CompanySize = CompanySize;
 
-  public currentUserID: number = +this.route.snapshot.params['id'];
   public currentCompanyID: number = +this.route.snapshot.params['id'];
-  public returnLink: string = `/company/${this.currentUserID}`
+  public returnLink: string = `/company/${this.currentCompanyID}`
 
   companyName = new FormControl('');
   location = new FormControl('');
   companyPlace = new FormControl('');
   companySize = new FormControl('');
   tech = new FormControl<string[]>([]);
-  tools = new FormControl('');
-  platforms = new FormControl('');
+  tools = new FormControl<string[]>([]);
+  platforms = new FormControl<string[]>([]);
 
   company = {
     "longName": "T-Mobile Polska S.A.",
@@ -58,6 +57,10 @@ export class EditCompanyPageComponent implements AfterViewInit {
   ) {}
 
   ngAfterViewInit(): void {
+    this.companyProfileService.getCompanyById(this.currentCompanyID).subscribe(res => {
+      this.data = res.methodResult;
+      !(this.data.company.idaccount === +localStorage.getItem('userID')!) && this.router.navigate([`/company`]); //if user tries to change ID in ur
+    })
     this.getData();
   }
 
@@ -85,11 +88,20 @@ export class EditCompanyPageComponent implements AfterViewInit {
         })
       })
 
-      const selectedValues : string[] = [];
-      this.data.companyTechnologies.forEach(a => {selectedValues.push(a.name)})
-      this.tech.patchValue(selectedValues);
-
-
+      let techSelectedValues : string[] = [];
+      let toolsSelectedValues : string[] = [];
+      let platformsSelectedValues : string[] = [];
+      this.data.companyTechnologies.forEach(a => {
+        if(a.idtechnology == 1)
+          techSelectedValues.push(a.name)
+        if(a.idtechnology == 2)
+          toolsSelectedValues.push(a.name)
+        if(a.idtechnology == 3)
+          platformsSelectedValues.push(a.name)
+      })
+      this.tech.patchValue(techSelectedValues);
+      this.tools.patchValue(toolsSelectedValues);
+      this.platforms.patchValue(platformsSelectedValues);
     })
   }
 
@@ -151,7 +163,18 @@ export class EditCompanyPageComponent implements AfterViewInit {
       idtechnology: 1,
       idcompany: this.currentCompanyID
     }))
-    console.log(this.tech.value);
+    this.tools.value?.forEach(a => this.data.companyTechnologies.push({
+      name: a,
+      idtechnology: 2,
+      idcompany: this.currentCompanyID
+    }))
+    this.platforms.value?.forEach(a => this.data.companyTechnologies.push({
+      name: a,
+      idtechnology: 3,
+      idcompany: this.currentCompanyID
+    }))
+
+
 
     this.companyProfileService.updateCompanyById(this.currentCompanyID, this.data).subscribe(res => {
       if (res.isSuccess) {
