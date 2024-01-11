@@ -19,7 +19,6 @@ export class HomepageComponent {
   
   ngAfterViewInit(): void {
     this.homepageService.getJobs().subscribe(res => {
-      console.log('dane homepage', res);
       this.jobs = res.methodResult;
       
       // res.methodResult.forEach(job => 

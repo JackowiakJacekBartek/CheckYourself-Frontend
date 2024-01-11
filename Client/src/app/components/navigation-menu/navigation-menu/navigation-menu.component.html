@@ -21,7 +21,7 @@
         </span>
       </mat-list-item>
 
-      <mat-list-item class="sidenav-list-item" routerLink="/joboffers" (click)="closeMenu()">
+      <mat-list-item class="sidenav-list-item" routerLink="/listjoboffers" (click)="closeMenu()">
         <span class="sidenav-item">
           <span class="icon"><mat-icon class="material-icons-outlined">work_outline</mat-icon></span>
           <span class="text">
@@ -30,12 +30,26 @@
         </span>
       </mat-list-item>
 
-      <mat-list-item class="sidenav-list-item">
+      <mat-list-item class="sidenav-list-item" routerLink="/quiz">
         <span class="sidenav-item-quiz">
           <span class="icon"><mat-icon class="material-icons-outlined">quiz</mat-icon></span>
           {{'NavigationMenu.Quizzes' | translate}}
         </span>
       </mat-list-item>
+
+      <!-- <mat-list-item class="sidenav-list-item" routerLink="/quiz">
+        <span class="sidenav-item-quiz">
+          <span class="icon">
+          <div class="changeLanguageButton" (click)="changeLanguage();" *ngIf="localStorage.getItem('selectedLanguage') !== 'pl'">
+            <input type="image" src="../../../assets/icons/PL.svg"  alt="PL"/>
+          </div>
+          <div class="changeLanguageButton" (click)="changeLanguage();" *ngIf="localStorage.getItem('selectedLanguage') === 'pl'">
+              <input type="image" src="../../../assets/icons/GB.svg"  alt="GB"/>
+          </div>
+        </span>
+          {{'NavigationMenu.Language' | translate}}
+        </span>
+      </mat-list-item> -->
 
       <mat-list-item [class.sidenav-list-item-quiz-closed]="!isQuizDropdownActive" (click)="logout()">
         <span class="sidenav-end-item">
