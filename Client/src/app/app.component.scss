@@ -161,6 +161,21 @@
     justify-content: space-between;
     margin-bottom: 30px;
 
+    button {
+      height: 50px;
+      background-color: #00A993;
+      border: none;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      margin: 4px 10px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 400
+    }
+
     .left {
       display: flex;
 
@@ -182,8 +197,8 @@
 
           a {
             text-decoration: none;
-            font-size: large;
-            color: #4f4f4f;
+            font-size: 40px;
+            color: dimgray;
           }
           a:hover {
             color: #2a2839;
@@ -219,22 +234,6 @@
       flex-direction: column;
       justify-content: space-around;
       margin-right: 20px;
-
-      button {
-        width: 136px;
-        height: 30px;
-        background-color: #C00A68B2;
-        border: none;
-        color: white;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        margin: 4px 2px;
-        cursor: pointer;
-        border-radius: 4px;
-        font-size: 12px;
-        font-weight: 400
-      }
 
       p {
         margin: 5px 0 0;

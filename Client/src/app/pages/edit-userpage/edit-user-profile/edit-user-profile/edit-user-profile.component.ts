@@ -344,7 +344,7 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
 
   public save() {
     this.accountDetails();
-    console.log(this.organizationsAndSkills)
+    console.log('data', this.data)
     this.data.accountCoursesCertificates = this.userProfileEditForm.value.certificates;
     this.data.accountWorkExperiences = this.userProfileEditForm.value.experience;
     this.data.accountEducationModelDto = this.userProfileEditForm.value.education;

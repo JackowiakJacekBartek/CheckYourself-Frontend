@@ -139,16 +139,26 @@ $margin: 20px;
 
     .images {
       margin-left: 15px;
-      display: flex;
+      display: grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap: 10px;
+
 
       .image {
-        display: flex;
-        flex-direction: column;
+        overflow: hidden;
         margin-right: 15px;
         align-items: center;
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
 
         img {
           object-fit: cover;
+        }
+
+        div {
+          display: flex;
+          justify-content: center;
         }
 
         .mat-icon {

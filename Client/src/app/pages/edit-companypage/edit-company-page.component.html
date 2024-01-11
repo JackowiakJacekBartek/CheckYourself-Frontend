@@ -115,7 +115,7 @@
         </div>
       </div>
       <div class="photos">
-        <span>{{'EditUserpage.Photos and movies' | translate}}:</span>
+        <span>{{'EditUserpage.Photos' | translate}}:</span>
         <div class="button">
           <label class="custom-file-upload">
             <input type="file" (change)="selectFile($event)"/>
@@ -125,7 +125,9 @@
         <div class="images">
           <div class="image" *ngFor="let imgUrl of imagesUrl; let i = index">
             <img [src]="imgUrl" width="200" height="200" alt="">
+            <div>
             <mat-icon (click)="deleteFile(i)">delete_outline</mat-icon>
+            </div>
           </div>
         </div>
       </div>

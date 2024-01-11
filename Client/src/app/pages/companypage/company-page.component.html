@@ -71,42 +71,11 @@
         </mat-grid-list>
       </div>
       <div class="gallery">
-        <p>Zdjęcia i filmy:</p>
+        <p>{{'EditUserpage.Photos' | translate}}:</p>
         <div>
           <div style="display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px;">
-            <div class="container" style="grid-column: span 4; grid-row: span 2;">
-              <img src="{{images[0]}}" style="width: 100%; height: 100%; object-fit: cover;"/>
-            </div>
-
-            <div class="container" style="grid-column: span 2; grid-row: span 1;">
-              <img src="{{images[1] || '../../../assets/images/logoEmpty.png'}}"
-                   style="width: 100%; height: 100%; object-fit: cover;"/>
-            </div>
-
-            <div class="container" style="grid-column: span 2; grid-row: span 1;">
-              <img src="{{images[2] || '../../../assets/images/logoEmpty.png'}}"
-                   style="width: 100%; height: 100%; object-fit: cover;"/>
-            </div>
-            <div class="container" style="grid-column: span 2; grid-row: span 1;">
-              <img src="{{images[3] || '../../../assets/images/logoEmpty.png'}}"
-                   style="width: 100%; height: 100%; object-fit: cover;"/>
-            </div>
-
-            <div class="container" style="grid-column: span 2; grid-row: span 1;">
-              <img src="{{images[4] || '../../../assets/images/logoEmpty.png'}}"
-                   style="width: 100%; height: 100%; object-fit: cover;"/>
-            </div>
-
-            <div class="container" style="grid-column: span 3; grid-row: span 1;">
-              <img src="{{images[6] || '../../../assets/images/logoEmpty.png'}}"
-                   style="width: 100%; height: 100%; object-fit: cover;"/>
-            </div>
-            <div class="container" style="grid-column: span 3; grid-row: span 1;">
-              <img src="{{images[7] || '../../../assets/images/logoEmpty.png'}}"
-                   style="width: 100%; height: 100%; object-fit: cover;"/>
-            </div>
-            <div class="container" style="grid-column: span 2; grid-row: span 1;">
-              <img src="{{images[8] || '../../../assets/images/logoEmpty.png'}}"
+            <div *ngFor="let a of images" class="container" style="grid-column: span 2; grid-row: span 1;">
+              <img src="{{a || '../../../assets/images/logoEmpty.png'}}"
                    style="width: 100%; height: 100%; object-fit: cover;"/>
             </div>
           </div>

@@ -47,7 +47,7 @@ export class EditCompanyPageComponent implements AfterViewInit {
   toolsList = ['jenkins', 'git', 'jira'];
   platformsList = ['windows', 'linux'];
   imagesUrl = ["assets/images/logoEmpty.png", "assets/images/background.png"];
-  offices = ['Warszawa, Piękna 7/3', 'Poznań, Piękna 7/3'];
+  offices = ['Poznań, Kolorowa 8'];
 
   constructor(private toastrService: ToastrService,
               private translate: TranslateService,
@@ -102,6 +102,14 @@ export class EditCompanyPageComponent implements AfterViewInit {
       this.tech.patchValue(techSelectedValues);
       this.tools.patchValue(toolsSelectedValues);
       this.platforms.patchValue(platformsSelectedValues);
+
+      console.log(this.data.companyImages)
+
+      this.imagesUrl = [];
+      this.data.companyImages.forEach(a => {
+        this.imagesUrl.push(a.image)
+      })
+
     })
   }
 
@@ -174,7 +182,13 @@ export class EditCompanyPageComponent implements AfterViewInit {
       idcompany: this.currentCompanyID
     }))
 
-
+    this.data.companyImages = [];
+    this.imagesUrl.forEach(a => {
+      this.data.companyImages.push( {
+        image: a,
+        idcompany: this.currentCompanyID
+      })
+    })
 
     this.companyProfileService.updateCompanyById(this.currentCompanyID, this.data).subscribe(res => {
       if (res.isSuccess) {
