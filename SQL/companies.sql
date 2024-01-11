@@ -1,12 +1,8 @@
-drop view if exists AccountCompaniesView;
-drop table if exists EmployerReviews;
-drop table if exists JobAdvertisementsDetails;
-drop table if exists JobAdvertisementsData;
-drop table if exists JobAdvertisementsParameters;
+drop table if exists JobApplications;
+drop table if exists JobDetails;
+drop table if exists JobTechnologies;
 drop table if exists JobAdvertisements;
-drop table if exists NamespaceParameters;
 drop table if exists CompanyOffices;
-drop table if exists ParametersTypesNames;
 drop table if exists CompanySocialMediaLinks;
 drop table if exists CompanyImages;
 drop table if exists CompanyTechnologies;
@@ -59,58 +55,45 @@ create table CompanyOffices
 	idCompany int references Companies(id) not null
 );
 
-create table ParametersTypesNames
-(
-	id serial primary key,
-	name text not null, -- rodzaj umowy, wymiar etatu itd.
-	type text not null -- text / datetime
-);
-
-create table NamespaceParameters
-(
-	id serial primary key,
-	parametersTypesNamesId int references ParametersTypesNames(id),
-	-- type text not null,
-	affiliation int not null -- 6/7/8.. elementów
-);
-
 create table JobAdvertisements
 (
 	id serial primary key,
 	name text not null,
-	-- type text not null,
 	publicId text,
-	affiliation text not null, -- 6/7/8.. elementów
-	companyId int references Companies(Id),
-	namespaceParametersId int references NamespaceParameters(id)
+	image text,
+	description text not null,
+	employmentMethod int not null,
+	employmentType int not null,
+	expirationDate timestamp,
+	salaryMin double precision,
+	salaryMax double precision,
+	companyId int references Companies(Id) not null
 );
 
-create table JobAdvertisementsParameters
+create table JobTechnologies
 (
 	id serial primary key,
-	namespaceParametersId int references NamespaceParameters(id),
-	jobAdvertisementsId int references JobAdvertisements(id),
-	content text not null -- UOP/Specjalista/Praca stacjonarna
+	idTechnology int not null, -- 1- technologies html css, 2 - tools jenkins, git, 3 - platforms windows, linux, 4 - języki
+	icon text not null,
+	description text,
+	idJobAdvertisements int references JobAdvertisements(id) not null
 );
 
-create table JobAdvertisementsData
+create table JobDetails
 (
 	id serial primary key,
-	namespaceParametersId int references NamespaceParameters(id),
-	jobAdvertisementsId int references JobAdvertisements(id),
-	jobAdvertisementsParametersId int references JobAdvertisementsParameters(id),
-	companiesId int references Companies(id),
-	content text not null -- more important than JobAdvertisementsParameters
+	idDetail int not null, -- 1 - Główne zadania, 2 - Co szczególnie cenimy w kandydacie, 3 - Organizacja pracy, 4 - benefity
+	name text not null, -- dla idDetail 1 programowanie, dla 2 krytyczne myslenie
+	idJobAdvertisements int references JobAdvertisements(id) not null
 );
 
-create table JobAdvertisementsDetails
+create table JobApplications
 (
 	id serial primary key,
-	entry text not null,
-	queue int not null,
-	metadata text,
-	affiliation int not null, -- 1zakres obowiązków, 2wymagania, 3benefity, 4Proces rekrutacyjny
-	jobAdvertisementsId int references JobAdvertisements(id)
+	idAccount int not null, -- 1 - Główne zadania, 2 - Co szczególnie cenimy w kandydacie, 3 - Organizacja pracy, 4 - benefity
+	name text,
+	cv text,
+	idJobAdvertisements int references JobAdvertisements(id) not null
 );
 
 -- create tabxle EmployerReviews
