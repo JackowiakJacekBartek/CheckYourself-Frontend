@@ -69,17 +69,16 @@ export class NavigationMenuComponent {
     this.dateAdapter.setLocale(localStorage.getItem('selectedLanguage'));
   }
 
-  // Sprawdzanie, czy kliknięcie wystąpiło wewnątrz komponentu NavigationMenuComponent
   private isInsideComponent(event: Event): boolean {
     const clickedElement = event.target as HTMLElement;
-    console.log('element', clickedElement)
     const navigationMenu = document.getElementById('navMenuId');
-    console.log('element2', navigationMenu)
+
     return navigationMenu !== null && this.isDescendant(clickedElement, navigationMenu);
   }
   
   private isDescendant(el: HTMLElement, parentId: HTMLElement): boolean {
-    return el.id === parentId.id || (parentId.contains(el) && parentId !== el) || el.id === 'sidenav';
+    return el.id === parentId.id || (parentId.contains(el) && parentId !== el) 
+    || el.tagName === 'MAT-NAV-LIST' || el.closest('mat-nav-list') !== null;
   }
   
 }
