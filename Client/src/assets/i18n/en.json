@@ -101,12 +101,13 @@
     "My profile": "My profile",
     "Job offers": "Job offers",
     "Quizzes": "Quizzes",
+    "Language": "Language",
     "Add quizz": "Add quizz",
     "Manage quizzes": "Manage quizzes",
     "Purchase quizz": "Purchase quizz",
     "Check grading scale": "Check grading scale",
     "Logout": "Logout",
-    "Add/delete company": "Add/delete company"
+    "Add/delete company": "My companies"
   },
   "RegisterCompany": {
     "Company added successfully": "Company added successfully"

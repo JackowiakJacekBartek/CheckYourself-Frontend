@@ -39,6 +39,7 @@ export class QuizSolveComponent {
   questionNumber: number = 0;
   startTime: Date;
   public ellapsedTime = '00:00';
+  public totalTime = '00:04';
   private timer: any = null;
   public quiz!: QuizModel;
   public showResultScreen: boolean = false;
@@ -171,11 +172,17 @@ export class QuizSolveComponent {
 
   private tick() {
     const now = new Date();
-    const diff = (now.getTime() - this.startTime.getTime()) / 1000;
-    // if (diff >= this.config.duration) {
-    //   // this.onSubmit();
-    // }
-    this.ellapsedTime = this.parseTime(diff);
+    const diffInSeconds = (now.getTime() - this.startTime.getTime()) / 1000;
+
+    this.ellapsedTime = this.parseTime(diffInSeconds);
+
+    const [minutes, seconds] = this.totalTime.split(':');
+    const totalTimeInSeconds = (+minutes * 60) + +seconds;
+
+    if (diffInSeconds >= totalTimeInSeconds) {
+      // this.onSubmit();
+      console.log('Czas upłynął! o ', -1* (totalTimeInSeconds - diffInSeconds), ' sekund');
+    }
   }
 
   private parseTime(totalSeconds: number) {

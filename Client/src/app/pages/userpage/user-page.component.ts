@@ -132,7 +132,7 @@ export class UserPageComponent implements AfterViewInit {
     ngAfterViewInit(): void {
         this.UserProfileService.getUserById(this.currentUserID).subscribe(res => {
             this.data = res.methodResult;
-            console.log('to tu:', this.data)
+
             if (!this.data) return;
             this.person = ({
                 name: this.data.account.name + " " + this.data.account.surname,

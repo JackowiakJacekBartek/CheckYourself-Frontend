@@ -2,6 +2,8 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {AccountService} from 'src/app/shared/services/user-service.service';
 import {LoginPopUpComponent} from "../../../pages/landingpage/login-pop-up/login-pop-up.component";
 import {Router} from "@angular/router";
+import { TranslateService } from '@ngx-translate/core';
+import { DateAdapter } from '@angular/material/core';
 
 @Component({
     selector: 'app-navigation-menu',
@@ -17,7 +19,10 @@ export class NavigationMenuComponent {
 
     public isQuizDropdownActive: boolean = false;
 
-    constructor(private accountService: AccountService, private router: Router,) {
+    localStorage = localStorage;
+
+    constructor(private accountService: AccountService, private router: Router,
+        private translate: TranslateService, private dateAdapter: DateAdapter<any>) {
     }
 
     openLogin() {
@@ -41,4 +46,15 @@ export class NavigationMenuComponent {
     public closeMenu() {
         this.navMenuToggleChange.emit(false)
     }
+
+    public changeLanguage() {
+        if (this.translate.currentLang == "pl") {
+          this.translate.use('en');
+          localStorage.setItem('selectedLanguage', 'en');
+        } else {
+          this.translate.use('pl');
+          localStorage.setItem('selectedLanguage', 'pl');
+        }
+        this.dateAdapter.setLocale(localStorage.getItem('selectedLanguage'));
+      }
 }

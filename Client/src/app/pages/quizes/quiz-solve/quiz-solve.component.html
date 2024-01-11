@@ -1,7 +1,7 @@
 <div *ngIf="!showResultScreen else resultScreen">
     <div class="header">
         <span class="header-question">{{'Quiz.Question' | translate}} {{questionNumber + 1}}/{{quiz.questions.length}}</span>
-        <span class="header-time"><mat-icon class="material-icons-outlined hourglass">hourglass_top</mat-icon>{{ellapsedTime}} / 5:00</span>
+        <span class="header-time"><mat-icon class="material-icons-outlined hourglass">hourglass_top</mat-icon>{{ellapsedTime}} / {{totalTime}}</span>
     </div>
     <div *ngIf="quiz.questions[questionNumber].type === 'multiple choice'">
         <app-multi-choice-question
