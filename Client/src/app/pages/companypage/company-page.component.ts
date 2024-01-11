@@ -71,18 +71,7 @@ export class CompanyPageComponent implements OnInit {
   public editLink: string = `/company/${this.currentUserID}/edit`;
 
   companyOffices: CompanyOffices[] = [];
-  extractedLinksOffices = [''];
-
-  extractFirstLink(inputString: string): string {
-    const regex = /(.*?)"/; // Wyrażenie regularne znajdujące tekst pomiędzy pierwszymi cudzysłowami
-    const match = inputString.match(regex);
-
-    if (match && match.length > 1) {
-      return match[1]; // Zwróć pierwsze dopasowanie, które jest linkiem
-    } else {
-      return 'null; // Jeśli nie znaleziono linku, zwróć null'
-    }
-  }
+  offices = [''];
 
   ngAfterViewInit(): void {
     this.companyProfileService.getCompanyById(this.currentCompanyID).subscribe(res => {
@@ -98,9 +87,9 @@ export class CompanyPageComponent implements OnInit {
       this.company.image = this.data.company.logo ?? "../../../assets/images/logoEmpty.png";
       this.companyOffices = this.data.companyOffices;
 
-      this.extractedLinksOffices = [];
+      this.offices = [];
       this.companyOffices.forEach(a => {
-        this.extractedLinksOffices.push(this.extractFirstLink(a.iframeurl))
+        this.offices.push(a.iframeurl)
       })
 
       this.images = [];

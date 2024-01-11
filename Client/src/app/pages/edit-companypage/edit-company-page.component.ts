@@ -47,7 +47,15 @@ export class EditCompanyPageComponent implements AfterViewInit {
   toolsList = ['jenkins', 'git', 'jira'];
   platformsList = ['windows', 'linux'];
   imagesUrl = ["assets/images/logoEmpty.png", "assets/images/background.png"];
-  offices = ['Poznań, Kolorowa 8'];
+  offices = [''];
+
+  extractedLink: string = '';
+  extractLinkFromText(text: string): string {
+    const urlRegex = /(https?:\/\/[^\s]+)/;
+    const match = urlRegex.exec(text);
+
+    return match ? match[0] : '';
+  }
 
   constructor(private toastrService: ToastrService,
               private translate: TranslateService,
@@ -87,6 +95,12 @@ export class EditCompanyPageComponent implements AfterViewInit {
           value: a.link
         })
       })
+
+      this.offices = []
+      this.data.companyOffices.forEach(a => {
+        this.offices.push(a.iframeurl)
+      })
+      this.offices.push('')
 
       let techSelectedValues : string[] = [];
       let toolsSelectedValues : string[] = [];
@@ -143,6 +157,10 @@ export class EditCompanyPageComponent implements AfterViewInit {
     this.offices.push(office);
   }
 
+  delOffice(i : number) {
+    this.offices.splice(i, 1);
+  }
+
   trackById(index: number) {
     return index
   }
@@ -188,6 +206,17 @@ export class EditCompanyPageComponent implements AfterViewInit {
         image: a,
         idcompany: this.currentCompanyID
       })
+    })
+
+    this.data.companyOffices = [];
+    this.offices.forEach(a => {
+      if(this.extractLinkFromText(a).length > 0) {
+        this.data.companyOffices.push({
+          location: '',
+          iframeurl: this.extractLinkFromText(a),
+          idcompany: this.currentCompanyID
+        })
+      }
     })
 
     this.companyProfileService.updateCompanyById(this.currentCompanyID, this.data).subscribe(res => {
