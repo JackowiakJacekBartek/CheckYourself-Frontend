@@ -29,7 +29,7 @@ export class UserPageComponent implements AfterViewInit {
         "name": "",
         "title": "",
         "about": "",
-        "image": ""
+        "image": "../../../assets/images/logoEmpty.png"
     }
 
     informations = [

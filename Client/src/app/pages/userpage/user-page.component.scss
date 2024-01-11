@@ -33,6 +33,7 @@ $margin: 50px;
     display: flex;
     flex-direction: column;
     line-height: 23px;
+    word-wrap: break-word;
   }
 
   & .skills {

@@ -12,7 +12,11 @@
         <span>{{person.title}}</span>
       </div>
       <div class="tags">
-        <div class="tag" *ngFor="let tag of tags">#{{tag.info}}</div>
+        <ng-container *ngFor="let tag of tags">
+          <div class="tag" *ngIf="tag.info.length >= 1">
+            #{{tag.info}}
+          </div>
+        </ng-container>
       </div>
       <div class="info">
         <mat-grid-list cols="3" rowHeight="50px">
@@ -64,7 +68,7 @@
             <li *ngFor="let exp of experience">
               <div class="name">{{exp.name}}</div>
               <div class="time">{{exp.time}}</div>
-<!--              <p *ngFor="let expTasks of exp.tasks">&#x2022; {{expTasks}}</p>-->
+              <!--              <p *ngFor="let expTasks of exp.tasks">&#x2022; {{expTasks}}</p>-->
             </li>
           </ul>
         </div>
