@@ -10,6 +10,7 @@ create table Quizzes
 	name text not null,
 	description text,
 	totalScore float,
+	totalTime text,
 	idCompany int not null,
 	technology text not null, -- .Net / Java / React / JS
 	type int not null -- 1 - jednokrotnego, 2 - wielokrotnego
@@ -22,6 +23,7 @@ create table QuizzesQuestions
 	additionalText text,
 	type int not null,
 	totalScore float not null,
+	totalTime text,
 	image text,
 	idQuiz int references Quizzes(id) not null
 );
