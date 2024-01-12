@@ -20,6 +20,7 @@ create table QuizzesQuestions
 	id serial primary key,
 	question text not null,
 	additionalText text,
+	type int not null,
 	totalScore float not null,
 	image text,
 	idQuiz int references Quizzes(id) not null
