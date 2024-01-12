@@ -1,7 +1,7 @@
 <div class="quiz-main" #scrollTo>
     <form>
         <div *ngFor="let question of quiz.questions; let i = index">
-            <mat-card *ngIf="question.type === 'multiple-choice' && i === questionNumber" class="main-card">
+            <mat-card *ngIf="question.type === 'single-choice' && i === questionNumber" class="main-card">
                 <div class="question-text"  >
                     {{'Quiz.Question' | translate}}
                 </div>
@@ -28,11 +28,13 @@
                                 </mat-card>
                             </mat-grid-tile>
                         </mat-grid-list>
-                        <div class="next-question">
-                            <button type="button" class="next-question-button" (click)="nextQuestion(question)">{{'Quiz.Prev Question' | translate}}</button>
-                        </div>
-                        <div class="next-question">
-                            <button type="button" class="next-question-button" (click)="nextQuestion(question)">{{'Quiz.Next Question' | translate}}</button>
+                        <div class="button-container">
+                            <div class="next-question">
+                                <button type="button" class="next-question-button" (click)="nextQuestion(question)">{{'Quiz.Prev Question' | translate}}</button>
+                            </div>
+                            <div class="next-question">
+                                <button type="button" class="next-question-button" (click)="nextQuestion(question)">{{'Quiz.Next Question' | translate}}</button>
+                            </div>
                         </div>
                     </mat-card-content>
             </mat-card>

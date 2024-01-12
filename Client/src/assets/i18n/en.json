@@ -77,6 +77,7 @@
   "Quiz": {
     "What will be the output": "What will be the output",
     "Next Question": "Next Question",
+    "Prev Question": "Previous Question",
     "Question": "Question",
     "Complete Sentence": "Complete Sentence",
     "Result of Quiz": "Result of Quiz"

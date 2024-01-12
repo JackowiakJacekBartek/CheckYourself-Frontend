@@ -52,7 +52,24 @@ export class QuizSolveComponent {
       title: "Tyteł",
       questions: [
         {
-          type: "multiple choice",
+          type: "single-choice",
+          question: "Tutaj pytanie tego typa?",
+          code: "tutaj kod albop null",
+          answers: {
+              correct: [
+                  "dziabu",
+              ],
+              incorrect: [
+                  "smuteg",
+                  "żal",
+                  "niedowierzanie",
+                  "dabix",
+                  "dziop"
+              ]
+          }
+        },
+        {
+          type: "multiple-choice",
           question: "Tutaj pytanie tego typa?",
           code: "tutaj kod albop null",
           answers: {
@@ -69,7 +86,7 @@ export class QuizSolveComponent {
           }
         },
         {
-          type: "multiple choice",
+          type: "multiple-choice",
           question: "Tutaj pytanie tego typa? awd",
           code: "tutaj kod albop null sda",
           picture: "tutaj obrazek albo null asd",
@@ -88,7 +105,7 @@ export class QuizSolveComponent {
           }
         },
         {
-          type: "finish sentence",
+          type: "multiple-select",
           code: "tutaj kod albop null",
           picture: "tutaj obrazek albo null",
           film: "tutaj film albo null",
@@ -124,7 +141,7 @@ export class QuizSolveComponent {
           ]
         },
         {
-          type: "finish sentence",
+          type: "multiple-select",
           code: "tutaj kod albop nullv2",
           picture: "tutaj obrazek albo nullv2",
           film: "tutaj film albo nullv2",
@@ -197,8 +214,12 @@ export class QuizSolveComponent {
     this.areCorrectQuestions.push(incorrectQuestion)
     this.quiz.questions.length === this.questionNumber + 1 ? this.showResultScreen = true : this.questionNumber += 1
     console.log(this.areCorrectQuestions) 
-    
-      
   }
 
+  // nextQuestion(option: any) {
+  //   console.log('hereee1', option.answers.incorrect)
+  //   console.log('hereee2', this.pickedOptions)
+  //   this.questionChanged.emit(option.answers.incorrect.some(r => this.pickedOptions.includes(r)));
+  //   this.pickedOptions = [];
+  // }
 }

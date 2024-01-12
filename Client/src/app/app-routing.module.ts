@@ -12,6 +12,7 @@ import {JoboffersComponent} from "./pages/joboffers/joboffers.component";
 import {EditJoboffersComponent} from "./pages/edit-joboffers/edit-joboffers.component";
 import {ListjoboffersComponent} from "./pages/listjoboffers/listjoboffers.component";
 import { CompaniesPageComponent } from './pages/companiespage/companies-page.component';
+import { QuizCreatComponent } from './pages/quizes/quiz-creat/quiz-creat.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,9 @@ const routes: Routes = [
   },
   {
     path: 'quiz', component: QuizSolveComponent, canActivate:[AuthGuard]
+  },
+  {
+    path: 'quiz/create', component: QuizCreatComponent, canActivate:[AuthGuard]
   },
   {
     path: 'joboffers', component: JoboffersComponent, canActivate:[AuthGuard]

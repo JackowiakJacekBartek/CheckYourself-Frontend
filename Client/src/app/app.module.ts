@@ -59,6 +59,7 @@ import { RegisterCompanyPopUpComponent } from './components/register-company-pop
 import { SafePipe } from './pages/companypage/safe.pipe';
 import {MomentUtcDateAdapter} from "./shared/services/MomentUtcDateAdapter";
 import {MAT_MOMENT_DATE_FORMATS} from "@angular/material-moment-adapter";
+import { SingleChoiceQuestionComponent } from './pages/quizes/quiz-solve/single-choice-question/single-choice-question.component';
 
 @NgModule({
   exports: [
@@ -93,6 +94,7 @@ import {MAT_MOMENT_DATE_FORMATS} from "@angular/material-moment-adapter";
     SafePipe,
     SafePipe,
     SafePipe,
+    SingleChoiceQuestionComponent,
   ],
   imports: [
     MatTableModule,
