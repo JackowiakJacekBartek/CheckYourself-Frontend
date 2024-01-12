@@ -1,49 +1,16 @@
-<!-- <div class="jobofferts">
-    <p class="name">Oferty pracy</p>
-    <p class="description">Znajdź oferty pracy dopasowane do twoich umiejętności! Zobacz jakich umiejętności wymagają pracodawcy na konkretne stanowiska.</p>
-        <div class="jobs">
-            <div class="jobber">
-                <div class="content">
-
-                <div class="logo">
-                </div>
-
-                <div class="info">
-                <p class="jobname">Junior Frontend Developer</p>
-                <p class="company">T-mobile Polska</p>
-                <p class="location">Poznań</p>
-                <p class="location"></p>
-                </div>
-
-                
-            </div>
-
-            </div>
-            <div class="jobber">
-            </div>
-            <div class="jobber">
-            </div>
-            <div class="jobber">
-            </div>
-            <div class="jobber">
-            </div>
-        </div>
-</div> -->
-
 <div class="custom-section">
     <div class="background-image"></div>
     <div class="content">
       <h1>Check Yourself! Znajdź pracę marzeń!</h1>
-      <div class="inputs">
-        <input type="text" placeholder="First Input" class="finddev"/>    
-        <input type="text" placeholder="Second Input" class="finddev"/>
+      <div class="inputs">   
+          <input type="text" placeholder="Junior Java Developer..." class="finddev"/>  
+          <input type="text" placeholder="Poznań" class="locatedev"/>
       </div>
     </div>
   </div>
 
-  zxc
-  {{jobs && jobs[0].name}}
-  
+
+
   <div class="info-section">
     <div class="title">
       <h1>Oferty pracy</h1>
@@ -51,86 +18,31 @@
     <div class="subtitle">
       <h2>Znajdź oferty pracy dopasowane do twoich umiejętności! Zobacz jakich umiejętności wymagają pracodawcy na konkretne stanowiska. </h2>
     </div>
-    <div class="cards">
-      <div class="card">
-        <p>Card 1 Content</p>
-      </div>
-      <div class="card">
-        <p>Card 2 Content</p>
-      </div>
-      <div class="card">
-        <p>Card 3 Content</p>
-      </div>
-      <div class="card">
-        <p>Card 4 Content</p>
-      </div>
-    </div>
   </div>
 
-  <!-- <div class="custom-section">
-    <div class="background-image"></div>
-    <div class="content">
-      <h1>Check Yourself! Znajdź pracę marzeń!</h1>
-      <div class="inputs">
-        <input type="text" placeholder="First Input" class="finddev"/>    
-        <input type="text" placeholder="Second Input" class="finddev"/>
+  
+  <div class="jobOffers" id="ofert">
+    <div class="offer" *ngFor="let offer of offers">
+      <div class="left">
+        <img class="avatar" alt="avatar" src="{{company.image}}">
+        <div class="companyName">
+          <div class="jobName">
+            <span>{{offer.jobName}}</span>
+          </div>
+          <div>
+            <span>{{company.longName}}</span>
+          </div>
+        </div>
       </div>
-    </div>
-  </div> -->
-
-
-  <div class="info-section">
-    <div class="title">
-      <h1>Profile firm</h1>
-    </div>
-    <div class="subtitle">
-      <h2>Każdy ma swoje preferencje dotyczące firm - jedni wolą mniejsze, rodzinne firmy, a inni korporacje. Wybierz firmę, która cię interesuje i zobacz stanowiska i technologie w jakich działa!</h2>
-    </div>
-    <div class="cards">
-      <div class="card">
-        <p>Card 1 Content</p>
+      <div class="center">
+        <div class="tags">
+          <div class="tag" *ngFor="let tag of offer.tags">{{tag}}</div>
+        </div>
       </div>
-      <div class="card">
-        <p>Card 2 Content</p>
-      </div>
-      <div class="card">
-        <p>Card 3 Content</p>
-      </div>
-      <div class="card">
-        <p>Card 4 Content</p>
+      <div class="right">
+        <p>Poznań</p>
+        <button mat-button class="applyButton"><span>Aplikuj</span></button>
       </div>
     </div>
   </div>
   
-<!-- <div class="companyprofile">
-    <p class="name">Profile firm</p>
-    <p class="description">Każdy ma swoje preferencje dotyczące firm - jedni wolą mniejsze, rodzinne firmy, a inni korporacje. Wybierz firmę, która cię interesuje i zobacz stanowiska i technologie w jakich działa!</p>
-        <div class="jobs">
-            <div class="jobber">
-            </div>
-            <div class="jobber">
-            </div>
-            <div class="jobber">
-            </div>
-            <div class="jobber">
-            </div>
-            <div class="jobber">
-            </div>
-        </div>
-</div> -->
-<!-- <div class="userprofile">
-    <p class="name">Profile osób</p>
-    <p class="description">Szukasz pracownika, który spełni Twoje oczekiwania? Może chcesz sprawdzić jak rozwijają się inni? Sprawdź to! </p>
-    <div class="jobs">
-        <div class="jobber">
-        </div>
-        <div class="jobber">
-        </div>
-        <div class="jobber">
-        </div>
-        <div class="jobber">
-        </div>
-        <div class="jobber">
-        </div>
-    </div>
-</div> -->
