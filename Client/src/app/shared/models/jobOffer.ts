@@ -1,3 +1,5 @@
+
+//POST
 export interface JobOffer {
   id?: number,
   job: Job,
@@ -39,4 +41,22 @@ export interface JobTechnologies {
   name: string,
   idjobadvertisements: number,
   id: number
+}
+
+//GET
+export interface JobOfferGet {
+  id?: number,
+  name: string,
+  publicid: string,
+  image: string,
+  description: string,
+  employmentmethod: number,
+  employmenttype: number
+  expirationdate: Date,
+  salarymin: number,
+  salarymax: number,
+  companyid: number,
+  jobapplications: JobApplications[],
+  jobDetails: JobDetails[],
+  jobTechnologies: JobTechnologies[]
 }

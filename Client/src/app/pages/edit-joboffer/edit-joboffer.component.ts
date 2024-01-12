@@ -12,6 +12,7 @@ export class EditJobofferComponent implements OnInit {
 
   data!: JobOffer;
   idCompany = 0
+  value: string = '';
 
   constructor(private route: ActivatedRoute, private EditJobofferService: EditJobofferService) {
   }
@@ -25,22 +26,17 @@ export class EditJobofferComponent implements OnInit {
       console.log('idCompany:', this.idCompany);
     });
 
-    this.EditJobofferService.getJobsByIdCompany(this.idCompany).subscribe(res => {
-      this.data = res.methodResult;
-      console.log(this.data)
-    })
 
     // this.EditJobofferService.getJobById(2).subscribe(res => {
     //   this.data = res.methodResult;
     //   console.log(this.data)
     // })
-
   }
 
   saveJob() {
     this.data ={
       job: {
-        name: 'qefeqf',
+        name: this.value,
         publicid: 'string',
         image: 'string',
         description: 'string',
@@ -49,13 +45,12 @@ export class EditJobofferComponent implements OnInit {
         expirationdate: new Date(),
         salarymin: 12,
         salarymax: 14,
-        companyid: 3,
+        companyid: this.idCompany,
       },
       jobDetails: [],
       jobapplications: [],
       jobTechnologies: []
     }
-
 
     this.EditJobofferService.createJob(this.data).subscribe(res => {
       this.data = res.methodResult;
