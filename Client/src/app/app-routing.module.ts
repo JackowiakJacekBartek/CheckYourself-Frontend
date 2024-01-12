@@ -13,6 +13,8 @@ import {EditJoboffersComponent} from "./pages/edit-joboffers/edit-joboffers.comp
 import {ListjoboffersComponent} from "./pages/listjoboffers/listjoboffers.component";
 import { CompaniesPageComponent } from './pages/companiespage/companies-page.component';
 import { QuizCreatComponent } from './pages/quizes/quiz-creat/quiz-creat.component';
+import { QuizzesComponent } from './pages/quizzes/quizzes.component';
+import { ResultComponent } from './pages/quizzes/result/result.component';
 
 const routes: Routes = [
   {
@@ -37,7 +39,13 @@ const routes: Routes = [
     path: 'email-verification/:email/:code', component: LandingPageComponent
   },
   {
-    path: 'quiz', component: QuizSolveComponent, canActivate:[AuthGuard]
+    path: 'quizzes', component: QuizzesComponent, canActivate:[AuthGuard]
+  },
+  {
+    path: 'quiz', component: QuizzesComponent, canActivate:[AuthGuard]
+  },
+  {
+    path: 'quiz/result/:id', component: ResultComponent, canActivate:[AuthGuard]
   },
   {
     path: 'quiz/create', component: QuizCreatComponent, canActivate:[AuthGuard]

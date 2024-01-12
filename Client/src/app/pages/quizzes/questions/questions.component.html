@@ -1,0 +1,21 @@
+<div *ngIf="quizQuestions != null" class="question-box">
+  <h3>Question {{ currentQuestionNumber + 1 }}/{{ totalQuestions }}</h3>
+  <h3>{{ quizQuestions[currentQuestionNumber].question.question }}</h3>
+  <div class="answer" *ngFor="let answer of quizQuestions[currentQuestionNumber].answers">
+    <label>
+      <input type="radio" name="answers" id="answer1" [value]="answer.id" 
+        [checked]="this.answers[this.currentQuestionNumber].answers && 
+                    this.answers[this.currentQuestionNumber].answers.length > 0 && 
+                    this.answers[this.currentQuestionNumber].answers[0].id == answer.id"
+        (change)="onSelecting($event)" />
+      {{ answer.answer }}
+      {{ quizQuestions.length }}
+      {{ currentQuestionNumber + 1 }}
+    </label>
+  </div>
+  
+  
+  <button class="prev" *ngIf="currentQuestionNumber > 0" (click)="onPrev()">prev</button>
+  <button class="next" *ngIf="quizQuestions.length > currentQuestionNumber+1" (click)="onNext($event)">next</button>
+  <button class="next" *ngIf="quizQuestions.length == currentQuestionNumber+1" (click)="submit()">FINISH</button>
+</div>

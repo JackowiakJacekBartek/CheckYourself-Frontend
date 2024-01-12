@@ -60,6 +60,10 @@ import { SafePipe } from './pages/companypage/safe.pipe';
 import {MomentUtcDateAdapter} from "./shared/services/MomentUtcDateAdapter";
 import {MAT_MOMENT_DATE_FORMATS} from "@angular/material-moment-adapter";
 import { SingleChoiceQuestionComponent } from './pages/quizes/quiz-solve/single-choice-question/single-choice-question.component';
+import { QuizzesComponent } from './pages/quizzes/quizzes.component';
+import { QuestionsComponent } from './pages/quizzes/questions/questions.component';
+import { TimerComponent } from './pages/quizzes/timer/timer.component';
+import { ResultComponent } from './pages/quizzes/result/result.component';
 
 @NgModule({
   exports: [
@@ -95,6 +99,10 @@ import { SingleChoiceQuestionComponent } from './pages/quizes/quiz-solve/single-
     SafePipe,
     SafePipe,
     SingleChoiceQuestionComponent,
+    QuizzesComponent,
+    QuestionsComponent,
+    TimerComponent,
+    ResultComponent,
   ],
   imports: [
     MatTableModule,
