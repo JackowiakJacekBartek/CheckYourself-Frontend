@@ -30,7 +30,7 @@
         </span>
       </mat-list-item>
 
-      <mat-list-item class="sidenav-list-item" routerLink="/quiz">
+      <mat-list-item class="sidenav-list-item" routerLink="/quiz" (click)="closeMenu()">
         <span class="sidenav-item-quiz">
           <span class="icon"><mat-icon class="material-icons-outlined">quiz</mat-icon></span>
           {{'NavigationMenu.Quizzes' | translate}}

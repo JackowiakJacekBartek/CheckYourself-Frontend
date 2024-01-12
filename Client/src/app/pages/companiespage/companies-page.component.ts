@@ -1,7 +1,7 @@
 import {AfterViewInit, ChangeDetectorRef, Component, Injectable, OnChanges, SimpleChanges} from '@angular/core';
 import {CompanyPageService} from "./companies-page.service";
 import {Company, CompanyImages, CompanyProfile} from "../../shared/models/companies";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {MatDialog} from '@angular/material/dialog';
 import {
     RegisterCompanyPopUpComponent
@@ -18,10 +18,17 @@ import {AreYouSurePopUpComponent} from "../../components/are-you-sure-pop-up/are
 
 export class CompaniesPageComponent implements AfterViewInit {
 
+    public currentCompanyID: number = +this.route.snapshot.params['id'];
+    public editCompanyLink: string = `/company/${this.currentCompanyID}/edit`;
+
     displayedColumns: string[] = ['companyName'];
     companies: Company[] = [];
 
-    constructor(public popUp: MatDialog, private companyProfileService: CompanyPageService, private route: ActivatedRoute) {
+    goToEdit(i: number){
+      this.router.navigate(['/company/'+i+'/edit'])
+    }
+
+    constructor(private router: Router, public popUp: MatDialog, private companyProfileService: CompanyPageService, private route: ActivatedRoute) {
     }
 
     ngAfterViewInit(): void {
