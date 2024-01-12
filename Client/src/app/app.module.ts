@@ -43,7 +43,6 @@ import { MultiChoiceQuestionComponent } from './pages/quizes/quiz-solve/multi-ch
 import { CompleteSentenceQuestionComponent } from './pages/quizes/quiz-solve/complete-sentence-question/complete-sentence-question.component';
 import { EditCompanyPageComponent } from './pages/edit-companypage/edit-company-page.component';
 import { JoboffersComponent } from './pages/joboffers/joboffers.component';
-import { EditJoboffersComponent } from './pages/edit-joboffers/edit-joboffers.component';
 import { NavigationMenuComponent } from './components/navigation-menu/navigation-menu/navigation-menu.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatMenuModule } from '@angular/material/menu';
@@ -59,6 +58,7 @@ import { RegisterCompanyPopUpComponent } from './components/register-company-pop
 import { SafePipe } from './pages/companypage/safe.pipe';
 import {MomentUtcDateAdapter} from "./shared/services/MomentUtcDateAdapter";
 import {MAT_MOMENT_DATE_FORMATS} from "@angular/material-moment-adapter";
+import { EditJobofferComponent } from './pages/edit-joboffer/edit-joboffer.component';
 
 @NgModule({
   exports: [
@@ -83,7 +83,6 @@ import {MAT_MOMENT_DATE_FORMATS} from "@angular/material-moment-adapter";
     CompleteSentenceQuestionComponent,
     EditCompanyPageComponent,
     JoboffersComponent,
-    EditJoboffersComponent,
     NavigationMenuComponent,
     ListjoboffersComponent,
     AreYouSurePopUpComponent,
@@ -93,6 +92,7 @@ import {MAT_MOMENT_DATE_FORMATS} from "@angular/material-moment-adapter";
     SafePipe,
     SafePipe,
     SafePipe,
+    EditJobofferComponent,
   ],
   imports: [
     MatTableModule,

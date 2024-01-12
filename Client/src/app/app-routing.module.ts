@@ -9,9 +9,9 @@ import { EditUserProfileComponent } from './pages/edit-userpage/edit-user-profil
 import { QuizSolveComponent } from './pages/quizes/quiz-solve/quiz-solve.component';
 import {EditCompanyPageComponent} from "./pages/edit-companypage/edit-company-page.component";
 import {JoboffersComponent} from "./pages/joboffers/joboffers.component";
-import {EditJoboffersComponent} from "./pages/edit-joboffers/edit-joboffers.component";
 import {ListjoboffersComponent} from "./pages/listjoboffers/listjoboffers.component";
 import { CompaniesPageComponent } from './pages/companiespage/companies-page.component';
+import {EditJobofferComponent} from "./pages/edit-joboffer/edit-joboffer.component";
 
 const routes: Routes = [
   {
@@ -42,7 +42,7 @@ const routes: Routes = [
     path: 'joboffers', component: JoboffersComponent, canActivate:[AuthGuard]
   },
   {
-    path: 'edit-joboffers', component: EditJoboffersComponent, canActivate:[AuthGuard]
+    path: 'edit-joboffer', component: EditJobofferComponent, canActivate:[AuthGuard]
   },
   {
     path: 'listjoboffers', component: ListjoboffersComponent, canActivate:[AuthGuard]
