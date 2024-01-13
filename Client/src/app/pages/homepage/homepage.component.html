@@ -24,7 +24,7 @@
     <div class="offer" *ngFor="let job of jobs">
       <div class="left">
         <a href="https://www.wp.pl" class="logocompany">
-          <img class="avatar" alt="avatar" src="{{job.company.logo}}">
+          <img class="avatar" alt="avatar" src="{{job.company.logo ?? '../../../assets/images/logoEmpty.png'}}">
         </a>
         <div class="companyName">
           <a href="https://www.wp.pl" class="jobname">
