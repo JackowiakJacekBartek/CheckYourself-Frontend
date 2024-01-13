@@ -1,0 +1,72 @@
+$margin: 20px;
+
+.sections {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+
+  & .upheader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+
+    .left {
+      display: flex;
+
+      .logo {
+        input[type="file"] {
+          display: none;
+        }
+      }
+
+      .custom-file-upload:hover {
+        cursor: pointer;
+      }
+
+      .companyName {
+        padding-left: 50px;
+        padding-right: 50px;
+        display: flex;
+        flex-direction: column;
+
+        span {
+          font-size: 24px;
+        }
+
+        .icons {
+          height: 44px;
+        }
+      }
+    }
+
+    .right {
+      display: flex;
+      flex-direction: column;
+      height: 50%;
+    }
+
+    & .avatar {
+      width: 135px;
+      height: 135px;
+      border-radius: 10%;
+    }
+  }
+
+  .about {
+    margin-top: $margin;
+    display: flex;
+    flex-direction: column;
+    line-height: 23px;
+
+    .about-me-field {
+      width: 100%;
+      min-height: 150px;
+    }
+  }
+}

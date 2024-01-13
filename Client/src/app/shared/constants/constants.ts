@@ -17,6 +17,13 @@ export enum CompanySize {
   '5000 >' = 7
 }
 
+export enum JobType {
+'Praca na pełen etat' = 1,
+'Praca na niepełny etat' = 2,
+'Praca jako freelancer (umowa zlecenie)' = 3,
+'Umowa o pracę na czas określony' = 4,
+}
+
 // export const localUrl = 'http://localhost:5010'
 export const localUrl = 'http://68.219.240.80:5010' //your local IP
 export const comapniesUrl = 'http://68.219.240.80:5013' //your local company IP
