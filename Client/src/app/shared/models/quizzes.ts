@@ -13,6 +13,7 @@ export interface QuizModelDto {
     type: number;
     totalscore?: number | null;
     totaltime?: string | null;
+    passingthreshold: number;
 }
 
 export interface QuizzesAnswerDto {
@@ -51,6 +52,7 @@ export interface QuizzesResultDto {
     id: number;
     idaccount: number;
     idquiz: number;
+    idquestion: number;
     answer: string;
     elapsedtime?: string | null;
     idquizzesanswer: number;

@@ -9,8 +9,7 @@
                     this.answers[this.currentQuestionNumber].answers[0].id == answer.id"
         (change)="onSelecting($event)" />
       {{ answer.answer }}
-      {{ quizQuestions.length }}
-      {{ currentQuestionNumber + 1 }}
+      {{ answer.id }}
     </label>
   </div>
   
@@ -18,5 +17,4 @@
   <button class="prev" *ngIf="currentQuestionNumber > 0" (click)="onPrev()">prev</button>
   <button class="next" *ngIf="quizQuestions.length > currentQuestionNumber+1" (click)="onNext($event)">next</button>
   <button class="next" *ngIf="quizQuestions.length == currentQuestionNumber+1" (click)="submit()">FINISH</button>
-  <button class="next" (click)="submit()">FINISH</button>
 </div>

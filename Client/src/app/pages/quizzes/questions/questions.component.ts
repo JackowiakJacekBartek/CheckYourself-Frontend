@@ -41,6 +41,10 @@ export class QuestionsComponent {
     this.quizQuestions.forEach(question => {
       this.answers.push({ answers: [], question: question.question });
     });
+
+    this.timerService.getElapsedTime().subscribe((elapsedTime) => {
+      this.elapsedTime = elapsedTime;
+    });
   }
 
   onSelecting(value: Event) {
@@ -59,7 +63,10 @@ export class QuestionsComponent {
       const answer = Number(target.value)
       this.answers[this.currentQuestionNumber].answers = [];
       // this.answers[this.currentQuestionNumber].answers.map(item => this.answers[this.currentQuestionNumber].answers.pop());
-      this.answers[this.currentQuestionNumber].answers.push({id: answer} as QuizzesAnswerDto)
+      this.answers[this.currentQuestionNumber].answers.push({
+        id: answer, 
+        idquestion: this.currentQuestion?.id
+      } as QuizzesAnswerDto)
       // console.log(this.answers);
       // console.log(this.answers[0].answers.map(x => console.log(x)));
       // console.warn('xxxx', this.quizQuestions)
@@ -81,8 +88,6 @@ export class QuestionsComponent {
   onNext(value: Event) {
     const countObjectsWithAnswers = this.answers.filter(item => item.answers.length > 0).length;
 
-    console.log(countObjectsWithAnswers);
-
     if(this.answers[this.currentQuestionNumber].answers.length == 0) return;
 
     ++this.currentQuestionNumber;
@@ -90,10 +95,6 @@ export class QuestionsComponent {
   }
 
   submit() {
-    this.timerService.getElapsedTime().subscribe((elapsedTime) => {
-      this.elapsedTime = elapsedTime;
-    });
-
     this.quizzesService.sendQuizResults(this.answers, this.elapsedTime).subscribe(res => {
       this.router.navigate(['quiz/result/'+res.methodResult]);
     })

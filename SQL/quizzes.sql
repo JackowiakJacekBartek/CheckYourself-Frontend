@@ -11,6 +11,7 @@ create table Quizzes
 	name text not null,
 	description text,
 	totalScore float,
+	passingThreshold float not null,
 	totalTime text, -- "05:00"
 	idCompany int not null,
 	technology text not null, -- .Net / Java / React / JS
@@ -65,6 +66,6 @@ create table QuizzesResults
 
 select * from Quizzes;
 select * from QuizzesQuestions;
-select * from QuizzesAnswers;
+select * from QuizzesAnswers where iscorrect=1;
 select * from QuizzesResults;
 select * from QuizzesAttempts;
