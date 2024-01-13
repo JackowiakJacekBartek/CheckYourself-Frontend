@@ -22,6 +22,8 @@ export interface QuizzesAnswerDto {
     idaccount: number;
     idquestion: number;
     idquiz: number;
+    elapsedtime?: string | null;
+    Idquizzesanswer: number;
 }
 
 export interface QuizzesQuestionDto {
@@ -31,7 +33,7 @@ export interface QuizzesQuestionDto {
     type: number;
     totalscore: number;
     image?: string | null;
-    idQuiz: number;
+    idquiz: number;
     totaltime?: string | null;
 }
 
@@ -43,4 +45,26 @@ export interface QuizQuestionDto {
 export interface QuizAnswerDto { 
     question: QuizzesQuestionDto; 
     answers: QuizzesAnswerDto[] 
+}
+
+export interface QuizzesResultDto {
+    id: number;
+    idaccount: number;
+    idquiz: number;
+    answer: string;
+    elapsedtime?: string | null;
+    idquizzesanswer: number;
+}
+
+export interface QuizAttemptDto {
+    id: number;
+    totalelapsedtime: string;
+    totalparticipantscore: number;
+    idaccount: number;
+    idquiz: number;
+}
+
+export interface QuizResultDto {
+    quiz: QuizModelDto;
+    quizAttempt: QuizAttemptDto;
 }

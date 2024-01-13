@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { TimerService } from './timer.service';
 
 @Component({
   selector: 'timer',
@@ -11,6 +12,14 @@ export class TimerComponent {
   seconds: any = 0;
   isTimeExceeded: boolean = false;
   @Input() totalTime: string | null | undefined;
+
+  constructor(private timerService: TimerService) {
+
+  }
+  
+  getElapsedTime() {
+    return this.minutes + ":" + this.seconds;
+  }
 
   ngOnInit() {
     this.minutes = "0" + this.minutes;
@@ -30,6 +39,9 @@ export class TimerComponent {
         
         const totalMinutes = parseInt(this.totalTime!.split(':')[0], 10);
         const totalSeconds = parseInt(this.totalTime!.split(':')[1], 10);
+
+        const elapsedTime = `${this.minutes}:${this.seconds}`;
+        this.timerService.setElapsedTime(elapsedTime);
 
         if (this.totalTime && this.minutes >= totalMinutes && this.seconds >= totalSeconds) {
           this.isTimeExceeded = true;

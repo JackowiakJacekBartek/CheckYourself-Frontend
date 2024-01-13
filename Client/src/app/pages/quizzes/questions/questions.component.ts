@@ -3,6 +3,8 @@ import { QuizAnswerDto, QuizDto, QuizQuestionDto, QuizzesAnswerDto, QuizzesQuest
 import { QuizMapper } from '../quiz-mapper';
 import { QuizzesService } from '../quizzes.service';
 import { Router } from '@angular/router';
+import { TimerComponent } from '../timer/timer.component';
+import { TimerService } from '../timer/timer.service';
 
 @Component({
   selector: 'questions',
@@ -13,13 +15,16 @@ export class QuestionsComponent {
 
   quizQuestions: QuizQuestionDto[] = [];
   quiz: QuizDto = {} as QuizDto;
-  
+  elapsedTime: string = '00:00';
+
   @Input() quizz: QuizDto = {} as QuizDto;
 
   answers: QuizAnswerDto[] = [];
 
   constructor(protected quizzesService: QuizzesService,
-    private router: Router) {
+    private router: Router,
+    private timerService: TimerService
+    ) {
     
   }
   currentQuestionNumber: number = 0;
@@ -85,11 +90,12 @@ export class QuestionsComponent {
   }
 
   submit() {
-    console.log('wyniki', this.answers);
-    this.quizzesService.sendQuizResults('x').subscribe(res => {
-      this.quiz = res.methodResult;
+    this.timerService.getElapsedTime().subscribe((elapsedTime) => {
+      this.elapsedTime = elapsedTime;
+    });
 
-      this.router.navigate(['/submit/1']); //res.methodResult.id id quizu czy tam result
+    this.quizzesService.sendQuizResults(this.answers, this.elapsedTime).subscribe(res => {
+      this.router.navigate(['quiz/result/'+res.methodResult]);
     })
   }
 }

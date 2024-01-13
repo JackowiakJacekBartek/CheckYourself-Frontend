@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ReturnedResponse} from "../../shared/models/returned-response";
 import { quizzesUrl } from 'src/app/shared/constants/constants';
-import { QuizDto } from 'src/app/shared/models/quizzes';
+import { QuizAnswerDto, QuizDto, QuizzesAnswerDto, QuizzesResultDto } from 'src/app/shared/models/quizzes';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +16,19 @@ export class QuizzesService {
     return this.http.get<ReturnedResponse<QuizDto>>(quizzesUrl + `/get-quiz-by-idJobAdvertisement?idJobAdvertisement=${idJobAdvertisement}`);
   }
 
-  sendQuizResults(result: any): Observable<ReturnedResponse<QuizDto>> {
-    return this.http.get<ReturnedResponse<QuizDto>>(quizzesUrl + `/send-results`);
+  sendQuizResults(results: QuizAnswerDto[], elapsedTime: string): Observable<ReturnedResponse<QuizDto>> {
+    const mappedResults: QuizzesResultDto[] = results.flatMap((quizAnswer, index) =>
+        quizAnswer.answers.map(answer => ({
+        id: answer.id,
+        idaccount: Number(localStorage.getItem('userID')),
+        idquizzesanswer: Number(answer.id),
+        elapsedtime: elapsedTime ?? "00:00",
+        idquiz: quizAnswer.question.idquiz,
+        answer: answer.answer ?? ""
+      }))
+    );
+
+    return this.http.post<ReturnedResponse<QuizDto>>(quizzesUrl + `/send-results`, mappedResults);
   }
 
 }
