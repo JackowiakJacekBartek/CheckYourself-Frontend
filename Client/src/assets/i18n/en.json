@@ -1,7 +1,31 @@
 {
+  "CompaniesPage": {
+    "Add company": "+ Add new company",
+    "No offer": "No offers available",
+    "Add job": "Add job offer",
+    "Edit": "Edit",
+    "Delete": "Delete"
+  },
+
+  "Listjob": {
+    "No offer": "No offers available",
+    "Add job": "Add job offer",
+    "Delete": "Delete"
+  },
+
+  "Are u sure": {
+    "Are u": "Are u sure?",
+    "Yes": "Yes",
+    "No": "No"
+  },
+
   "HomePage": {
     "Awesome text": "English Awesome",
-    "Change to": "Change to Polish"
+    "Change to": "Change to Polish",
+    "Find job": "Check Yourself! Find your dream job!",
+    "Jobs": "Job offers",
+    "Find offers": "Find job offers that match your skills! See what skills employers require for specific positions.",
+    "Apply": "Apply" 
   },
 
   "LandingPage": {
@@ -15,8 +39,11 @@
     "Apply and learn all in one": "2. Apply and learn all in one",
     "Let employer find you": "3. Let employer find you",
     "Develop yourself": "4. Develop yourself",
-    "Sign up": "Sign up"
+    "Sign up": "Sign up",
+    "Veification": "verification failed",
+    "Veification failed": " verification successful"
   },
+
   "Footer": {
     "About us": "About us",
     "Terms and Conditions": "Terms and Conditions",
@@ -25,6 +52,7 @@
     "How Check Yourself works": "How Check Yourself works",
     "Security policy": "Security policy",
     "News": "News"
+
   },
   "Login": {
     "Log in": "Log in",

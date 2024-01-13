@@ -32,13 +32,13 @@ export class LandingPageComponent {
     this.emailVerificationService.verifyEmail(this.urlParams).subscribe(res => {
       console.log(res); 
       if (!res || res.isSuccess == false) {
-        this.toastrService.warning("Nie udało się zweryfikować adresu e-mail");
+        this.toastrService.warning("{{'LandingPage.Veification failed' | translate}}");
       } else {
-        this.toastrService.success(res.methodResult.email + " został zweryfikowany");
+        this.toastrService.success(res.methodResult.email + "{{'LandingPage.Veification' | translate}}");
       }
     },
     error => {
-      this.toastrService.warning("Nie udało się zweryfikować adresu e-mail");
+      this.toastrService.warning("{{'LandingPage.Veification failed' | translate}}");
     })
     
   }

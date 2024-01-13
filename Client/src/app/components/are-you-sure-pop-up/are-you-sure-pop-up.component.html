@@ -6,12 +6,12 @@
       <span> Yourself</span>
     </div>
     <div class="two">
-      <span>Na pewno?</span>
+      <span>{{'Are u sure.Are u' | translate}}</span>
     </div>
     <div class="three">
       <form>
-        <button mat-button class="applyButtonPopUp" (click)="closeDialog('tak')"><span>Tak</span></button>
-        <button mat-button class="applyButtonPopUp" (click)="closeDialog('nie')"><span>Nie</span></button>
+        <button mat-button class="applyButtonPopUp" (click)="closeDialog('tak')"><span>{{'Are u sure.Yes' | translate}}</span></button>
+        <button mat-button class="applyButtonPopUp" (click)="closeDialog('nie')"><span>{{'Are u sure.No' | translate}}</span></button>
       </form>
     </div>
   </div>

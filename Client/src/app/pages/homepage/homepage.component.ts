@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { HomepageService } from './homepage.service';
 import { Job } from 'src/app/shared/models/job';
+import { HomepageService } from './homepage.service';
 
 @Component({
   selector: 'app-homepage',

@@ -1,7 +1,7 @@
 <div class="custom-section">
     <div class="background-image"></div>
     <div class="content">
-      <h1>Check Yourself! Znajdź pracę marzeń!</h1>
+      <h1>{{'HomePage.Find job' | translate}}</h1>
       <div class="inputs">   
           <input type="text" placeholder="Junior Java Developer..." class="finddev"/>  
           <input type="text" placeholder="Poznań" class="locatedev"/>
@@ -13,10 +13,10 @@
 
   <div class="info-section">
     <div class="title">
-      <h1>Oferty pracy</h1>
+      <h1>{{'HomePage.Jobs' | translate}}</h1>
     </div>
     <div class="subtitle">
-      <h2>Znajdź oferty pracy dopasowane do twoich umiejętności! Zobacz jakich umiejętności wymagają pracodawcy na konkretne stanowiska. </h2>
+      <h2>{{'HomePage.Find offers' | translate}}</h2>
     </div>
   </div>
 
@@ -24,14 +24,16 @@
   <div class="jobOffers" id="ofert">
     <div class="offer" *ngFor="let offer of offers">
       <div class="left">
-        <img class="avatar" alt="avatar" src="{{company.image}}">
+        <a href="https://www.wp.pl" class="logocompany">
+          <img class="avatar" alt="avatar" src="{{company.image}}">
+        </a>
         <div class="companyName">
-          <div class="jobName">
+            <a href="https://www.wp.pl" class="jobname">
             <span>{{offer.jobName}}</span>
-          </div>
-          <div>
+          </a>       
+            <a href="https://www.wp.pl" class="companyname">
             <span>{{company.longName}}</span>
-          </div>
+          </a>
         </div>
       </div>
       <div class="center">
@@ -41,7 +43,7 @@
       </div>
       <div class="right">
         <p>Poznań</p>
-        <button mat-button class="applyButton"><span>Aplikuj</span></button>
+        <button mat-button class="applyButton"><span>{{'HomePage.Apply' | translate}}</span></button>
       </div>
     </div>
   </div>
