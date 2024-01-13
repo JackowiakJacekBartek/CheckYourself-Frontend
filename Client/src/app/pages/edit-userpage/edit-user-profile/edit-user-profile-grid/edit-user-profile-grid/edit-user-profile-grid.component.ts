@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { UserProfile } from 'src/app/shared/models/accounts';
+import {CompanySize, JobType} from "../../../../../shared/constants/constants";
 
 @Component({
   selector: 'app-edit-user-profile-grid',
@@ -12,12 +13,17 @@ export class EditUserProfileGridComponent implements OnInit, OnChanges, AfterVie
 @Input() form!: FormGroup;
 @Input() data!: UserProfile;
 
+JobType = JobType;
+
 public phoneMask = [/[1-9]/, /[1-9]/, /[1-9]/, '-', /[1-9]/, /[1-9]/, /[1-9]/, '-', /[1-9]/, /[1-9]/, /[1-9]/];
 
 constructor(private ref: ChangeDetectorRef) { }
 
   ngAfterViewInit(): void {
+  }
 
+  getTypesWork(): string[] {
+    return Object.keys(JobType).filter(key => isNaN(Number(JobType[key])));
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -41,4 +47,6 @@ constructor(private ref: ChangeDetectorRef) { }
     // this.gridData = this.data;
 
   }
+
+  protected readonly CompanySize = CompanySize;
 }
