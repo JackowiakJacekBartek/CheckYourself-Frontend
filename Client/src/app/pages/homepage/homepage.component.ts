@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Job } from 'src/app/shared/models/job';
 import { HomepageService } from './homepage.service';
+import { Job, JobsQuickInfo } from 'src/app/shared/models/jobOffer';
 
 @Component({
   selector: 'app-homepage',
@@ -13,7 +13,7 @@ export class HomepageComponent {
     email:`test@example.com`
   }
 
-  jobs?: Job[];
+  jobs?: JobsQuickInfo[];
 
   constructor (private homepageService: HomepageService) { }
   
@@ -28,48 +28,18 @@ export class HomepageComponent {
     })
   }
 
-  company = {
-    "longName": "T-Mobile Polska S.A.",
-    "name": "T-Mobile",
-    "image": "../../../assets/images/LogoTmobile.png", 
-    "location": 'Poznan',
-  }
+  // company = {
+  //   "longName": "T-Mobile Polska S.A.",
+  //   "name": "T-Mobile",
+  //   "image": '../../../assets/images/logoEmpty.png', 
+  //   "location": 'Poznan',
+  // }
 
-  offers = [
-    {
-      "jobName": "Junior Fullstack Developer",
-      "place": "Poznań",
-      "tags": ["HTML", "CSS", "Java", "Angular"]
-    },
-    {
-      "jobName": "Mid Angular Developer",
-      "place": "Zdalnie",
-      "tags": ["Angular"]
-    },
-    {
-      "jobName": "Remote Technical Project Leader",
-      "place": "Zdalnie",
-      "tags": ["HTML", "CSS"]
-    },
-    {
-      "jobName": "Remote Technical Project Leader",
-      "place": "Zdalnie",
-      "tags": ["HTML", "CSS"]
-    },
-    {
-      "jobName": "Remote Technical Project Leader",
-      "place": "Zdalnie",
-      "tags": ["HTML", "CSS"]
-    },
-    {
-      "jobName": "Remote Technical Project Leader",
-      "place": "Zdalnie",
-      "tags": ["HTML", "CSS"]
-    },
-    {
-      "jobName": "Remote Technical Project Leader",
-      "place": "Zdalnie",
-      "tags": ["HTML", "CSS"]
-    }
-  ];
+  // offers = [
+  //   {
+  //     "jobName": "Junior Fullstack Developer",
+  //     "place": "Poznań",
+  //     "tags": ["HTML", "CSS", "Java", "Angular"]
+  //   }
+  // ];
 }

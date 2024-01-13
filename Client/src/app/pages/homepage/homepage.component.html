@@ -20,27 +20,29 @@
     </div>
   </div>
 
-  
   <div class="jobOffers" id="ofert">
-    <div class="offer" *ngFor="let offer of offers">
+    <div class="offer" *ngFor="let job of jobs">
       <div class="left">
         <a href="https://www.wp.pl" class="logocompany">
-          <img class="avatar" alt="avatar" src="{{company.image}}">
+          <img class="avatar" alt="avatar" src="{{job.company.logo}}">
         </a>
         <div class="companyName">
-            <a href="https://www.wp.pl" class="jobname">
-            <span>{{offer.jobName}}</span>
-          </a>       
-            <a href="https://www.wp.pl" class="companyname">
-            <span>{{company.longName}}</span>
+          <a href="https://www.wp.pl" class="jobname">
+            <span>{{job.job.name}} {{job.job.id}}</span>
+          </a>
+          <a href="/company/{{job.company.id}}" class="companyname">
+            <span>{{job.company.name}}</span>
           </a>
         </div>
       </div>
       <div class="center">
         <div class="tags">
-          <div class="tag" *ngFor="let tag of offer.tags">{{tag}}</div>
+          <div class="tag" *ngFor="let technology of job.jobTechnologies.slice(0, 8)">
+            {{ technology.icon }}
+          </div>
         </div>
       </div>
+      
       <div class="right">
         <p>Poznań</p>
         <button mat-button class="applyButton"><span>{{'HomePage.Apply' | translate}}</span></button>
