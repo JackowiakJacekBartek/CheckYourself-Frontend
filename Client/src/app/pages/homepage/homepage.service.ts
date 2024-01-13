@@ -12,10 +12,6 @@ import { Job } from 'src/app/shared/models/job';
 })
 export class HomepageService {
 
-  user = {
-    email:`test@example.com`
-  }
-
   constructor(private http: HttpClient) { }
 
   getJobs(): Observable<ReturnedResponse<Job[]>> {

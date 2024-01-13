@@ -1,7 +1,7 @@
 <main class="quiz-main" #scrollTo>
     <form>
         <div *ngFor="let question of quiz.questions; let i = index">
-            <mat-card *ngIf="question.type === 'finish sentence' && i === questionNumber" class="main-card">
+            <mat-card *ngIf="question.type === 'multiple-select' && i === questionNumber" class="main-card">
                 <div class="question-text">
                     {{'Quiz.Complete Sentence' | translate}}
                 </div>
@@ -19,7 +19,10 @@
                         </span>
                 </mat-card-content>
                 <div class="next-question">
-                    <button type="button" class="next-question-button" (click)="nextQuestion(question)">{{'Quiz.Next Question' | translate}}</button>
+                    <button type="button" class="next-question-button" (click)="nextQuestion(question)">{{'Quiz.Prev Question' | translate}}</button>
+                </div>
+                <div class="next-question">
+                    <button type="button" class="next-question-button" (click)="nextQuestion(question)">{{'Quiz.Next Question' | translate}}a</button>
                 </div>
             </mat-card>
         </div>

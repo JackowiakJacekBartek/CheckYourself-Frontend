@@ -105,6 +105,7 @@
   "Quiz": {
     "What will be the output": "Jaki będzie output w poniższym przykładzie",
     "Next Question": "Następne pytanie",
+    "Prev Question": "Poprzednie pytanie",
     "Question": "Pytanie",
     "Complete Sentence": "Uzupełnij zdania",
     "Result of Quiz": "Wynik Quizu"

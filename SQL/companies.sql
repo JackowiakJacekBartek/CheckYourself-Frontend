@@ -67,6 +67,7 @@ create table JobAdvertisements
 	expirationDate timestamp,
 	salaryMin double precision,
 	salaryMax double precision,
+	quizId int,
 	companyId int references Companies(Id) not null
 );
 
