@@ -1,0 +1,103 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 5%;
+    background-image: url('/assets/images/Background_navbar_BC.png');
+    background-position: 2%;
+}
+  
+.navbar a {
+    color: var(--hard-light, #FFF);
+    font-family: Lato;
+    font-size: 24px;
+    padding: 0 5%; /* Dodane wyrównanie tekstu */
+  }
+
+.background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 95%;
+    background-color: #1E232B;
+}
+  
+.content {
+    display: flex;
+    width: 1800px;
+    height: 800px;
+    margin-top: 10px;
+    flex-shrink: 0;
+    border-radius: 50px;
+    background: var(--hard-light, #FFF);
+}
+
+.left{
+    width: 40%;
+    height: 100%;
+}
+
+.right {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/assets/icons/School.svg');
+    background-position: 550px 200px;
+    background-size: 400px 400px; 
+    background-repeat: no-repeat; 
+  }
+  
+.score {
+    color: var(--bg-dark, #1E232B);
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Lato;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal; 
+}
+
+.time {
+  color: var(--bg-dark, #1E232B);
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: Lato;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal; 
+  padding-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timer {
+  color: var(--bg-dark, #1E232B);
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: Lato;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info {
+  color: var(--bg-dark, #1E232B);
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: Lato;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-top: 40px;
+  display: flex;
+  align-items: center;
+}
