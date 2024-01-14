@@ -9,6 +9,7 @@ import {JobOffer, JobOfferGet} from "../../shared/models/jobOffer";
 
 export interface Offer {
     jobName: string,
+    location: string,
     id?: number,
     tags: string[]
 }
@@ -126,6 +127,7 @@ export class CompanyPageComponent implements OnInit {
 
             this.dataJobOfferGet.forEach(a => this.offers.push({
                 jobName: a.name,
+                location: a.image,
                 id: a.id,
                 tags: ['test', 'test2']
             }))
