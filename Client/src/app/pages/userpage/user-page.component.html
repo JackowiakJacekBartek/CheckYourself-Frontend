@@ -38,7 +38,7 @@
         <span>{{person.about}}</span>
       </div>
       <div class="skills">
-        <div class="sectionHeader">
+        <div class="sectionHeader"*ngIf="getSkillCategories().values[0]">
           <mat-icon class="material-symbols-outlined">computer</mat-icon>
           <span>{{'UserPage.Skills' | translate}}:</span>
         </div>
