@@ -135,6 +135,7 @@ FROM
 JOIN
     Companies com ON job.companyId = com.id;
 
+select * from companies;
 select * from JobCompaniesView;
 select companyid, * from JobAdvertisements;
 select name, headquarterAddress, * from companies;
