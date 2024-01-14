@@ -38,20 +38,19 @@
         <span>{{person.about}}</span>
       </div>
       <div class="skills">
-        <div class="sectionHeader">
+        <div class="sectionHeader"*ngIf="getSkillCategories().values[0]">
           <mat-icon class="material-symbols-outlined">computer</mat-icon>
           <span>{{'UserPage.Skills' | translate}}:</span>
         </div>
         <div class="masonryHolder">
-          <ul class="masonryBlocks" *ngFor="let skillCategory of skills | keyvalue: keepOrder">
-            <li class="title">{{ skillCategory.key + ':'}}</li>
+          <ul class="masonryBlocks" *ngFor="let skillCategory of getSkillCategories()">
+            <li class="title" *ngIf="skillCategory.value[0]">{{ skillCategory.key + ':'}}</li>
             <ul>
-              <li *ngFor="let skillValue of skillCategory.value | keyvalue">
+              <li *ngFor="let skill of skillCategory.value">
                 <div class="element">
-                  <span>{{skillValue.key}}</span>
-                  <mat-progress-bar [color]="updateColor(skillValue.value)" mode="determinate"
-                                    value="{{skillValue.value}}"></mat-progress-bar>
-                  <span>{{skillValue.value + '%'}}</span>
+                  <span>{{ skill.name }}</span>
+                  <mat-progress-bar [color]="updateColor(skill.progress*100)" mode="determinate" [value]="skill.progress"></mat-progress-bar>
+                  <span>{{ skill.progress*100 + '%' }}</span>
                 </div>
               </li>
             </ul>

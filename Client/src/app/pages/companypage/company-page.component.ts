@@ -3,12 +3,13 @@ import {CompanyPageService} from "./company-page.service";
 import {CompanyImages, CompanyOffices, CompanyProfile, CompanySocialMediaLinks} from "../../shared/models/companies";
 import {ActivatedRoute} from "@angular/router";
 import {DomSanitizer, SafeResourceUrl, SafeUrl} from "@angular/platform-browser";
-import {CompanySize} from "../../shared/constants/constants";
+import {CompanySize, TechList} from "../../shared/constants/constants";
 import {EditJobofferService} from "../edit-joboffer/edit-joboffer.service";
 import {JobOffer, JobOfferGet} from "../../shared/models/jobOffer";
 
 export interface Offer {
     jobName: string,
+    location: string,
     id?: number,
     tags: string[]
 }
@@ -124,11 +125,16 @@ export class CompanyPageComponent implements OnInit {
             this.dataJobOfferGet = res.methodResult;
             console.log(this.dataJobOfferGet)
 
-            this.dataJobOfferGet.forEach(a => this.offers.push({
-                jobName: a.name,
-                id: a.id,
-                tags: ['test', 'test2']
-            }))
+            this.dataJobOfferGet.forEach(a => {
+                const tags = a.jobtechnologies ? a.jobtechnologies.map(tech => tech.icon) : [];
+
+                this.offers.push({
+                    jobName: a.name,
+                    location: a.image,
+                    id: a.id,
+                    tags: tags
+                })
+            })
         })
     }
 
@@ -145,5 +151,11 @@ export class CompanyPageComponent implements OnInit {
             })
     }
 
+    getTechName(selectedNumber: number): string {
+        const key = Object.keys(TechList).find(key => TechList[key] === selectedNumber);
+        return key || ''; // Zwracamy pusty ciąg znaków, jeśli nie znaleziono klucza
+    }
+
     protected readonly CompanySize = CompanySize;
+    protected readonly Number = Number;
 }

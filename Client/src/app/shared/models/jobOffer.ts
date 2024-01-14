@@ -1,3 +1,4 @@
+import { Company } from "./companies";
 
 //POST
 export interface JobOffer {
@@ -8,7 +9,14 @@ export interface JobOffer {
   jobTechnologies: JobTechnologies[]
 }
 
+export interface JobsQuickInfo {
+  job: Job;
+  company: Company;
+  jobTechnologies: JobTechnologies[];
+}
+
 export interface Job {
+  id?: number,
   name: string,
   publicid: string,
   image: string,
@@ -40,7 +48,8 @@ export interface JobTechnologies {
   iddetail: number,
   name: string,
   idjobadvertisements: number,
-  id: number
+  id: number,
+  icon: string
 }
 
 //GET
@@ -58,5 +67,5 @@ export interface JobOfferGet {
   companyid: number,
   jobapplications: JobApplications[],
   jobDetails: JobDetails[],
-  jobTechnologies: JobTechnologies[]
+  jobtechnologies: JobTechnologies[]
 }

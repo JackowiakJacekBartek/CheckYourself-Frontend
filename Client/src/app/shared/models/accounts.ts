@@ -42,6 +42,7 @@ export interface User {
 export interface UserProfile {
   account: Account,
   accountCoursesCertificates: AccountCoursesCertificate [],
+  accountTechnicalSkills: AccountTechnicalSkill[],
   accountSoftSkills: AccountSoftSkills [],
   accountTags: AccountTags [],
   accountSocialMediaLinksModelDto : AccountSocialMediaLinksModelDto [],
@@ -133,4 +134,13 @@ export interface AccountTags {
 export interface AccountSocialMediaLinksModelDto {
   name: string,
   link: string
+}
+
+export interface AccountTechnicalSkill {
+  id: number;
+  type: number;
+  name: string;
+  progress?: number | null;
+  idaccount: number;
+  idaccountNavigation: Account;
 }

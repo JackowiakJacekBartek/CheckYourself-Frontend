@@ -1,3 +1,4 @@
+drop view if exists JobCompaniesView;
 drop table if exists JobApplications;
 drop table if exists JobDetails;
 drop table if exists JobTechnologies;
@@ -106,20 +107,36 @@ create table JobApplications
 -- 	accountId int not null
 -- );
 
--- CREATE OR REPLACE VIEW AccountCompaniesView AS
--- SELECT
---     acc.id AS id,
---     acc.email,
---     acc.phoneNumber,
---     acc.description,
---     acc.birthDate,
---     acc.isCompany,
---     acc.image,
---     com.id AS companyId,
---     com.nip,
---     com.name AS companyName,
--- 	com.location
--- FROM
---     Accounts acc
--- JOIN
---     Companies com ON acc.id = com.idAccount;
+CREATE OR REPLACE VIEW JobCompaniesView AS
+SELECT
+    job.id AS id,
+    job.name AS jobName,
+    job.publicId AS jobPublicId,
+    job.image AS jobImage,
+    job.description AS jobDescription,
+    job.employmentMethod AS jobEmploymentMethod,
+    job.employmentType AS jobEmploymentType,
+    job.expirationDate AS jobExpirationDate,
+    job.salaryMin AS jobSalaryMin,
+    job.salaryMax AS jobSalaryMax,
+    job.quizId AS jobQuizId,
+    job.companyId AS jobCompanyId,
+    com.id AS companyId,
+    com.logo AS companyLogo,
+    com.nip AS companyNip,
+    com.name AS companyName,
+    com.headquarterAddress AS companyHeadquarterAddress,
+    com.description AS companyDescription,
+    com.employeeCount AS companyEmployeeCount,
+    com.idAccount AS companyIdAccount,
+    com.companyEstablishment AS companyEstablishment
+FROM
+    JobAdvertisements job
+JOIN
+    Companies com ON job.companyId = com.id;
+
+select * from companies;
+select * from JobCompaniesView;
+select companyid, * from JobAdvertisements;
+select name, headquarterAddress, * from companies;
+select * from JobCompaniesView;

@@ -30,7 +30,7 @@ const routes: Routes = [
     path: 'company', component: CompaniesPageComponent, canActivate:[AuthGuard]
   },
   {
-    path: 'company/:id', component: CompanyPageComponent, canActivate:[AuthGuard]
+    path: 'company/:id', component: CompanyPageComponent
   },
   {
     path: 'company/:id/edit', component: EditCompanyPageComponent, canActivate:[AuthGuard]

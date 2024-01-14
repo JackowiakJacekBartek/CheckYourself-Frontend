@@ -16,7 +16,7 @@ export class QuizzesComponent {
       this.quiz = res.methodResult;
     })
   }
-  
+
   onStart() {
     this.isQuizToBeStarted = !this.isQuizToBeStarted;
   }

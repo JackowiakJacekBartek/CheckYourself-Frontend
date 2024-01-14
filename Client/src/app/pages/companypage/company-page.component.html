@@ -104,11 +104,15 @@
           </div>
           <div class="center">
             <div class="tags">
-              <div class="tag" *ngFor="let tag of offer.tags">{{tag}}</div>
+              <ng-container *ngFor="let tag of offer.tags">
+              <div class="tag" *ngIf="tag !== ''">
+                {{ getTechName(Number(tag)) }}
+              </div>
+              </ng-container>
             </div>
           </div>
           <div class="right">
-            <p>{{company.location}}</p>
+            <p>{{offer.location ? offer.location : company.location}}</p>
             <div class="center">
               <button mat-button class="applyButton"><span>Zobacz oferte</span></button>
               <button mat-button class="applyButton" (click)="deleteJobOffer(offer.id)"><span>Usuń oferte</span></button>

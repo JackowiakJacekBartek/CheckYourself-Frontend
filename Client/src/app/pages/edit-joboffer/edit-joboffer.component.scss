@@ -69,4 +69,42 @@ $margin: 20px;
       min-height: 150px;
     }
   }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .grid-item {
+
+    .section {
+      display: flex;
+      flex-direction: column;
+
+      .delete {
+        display: flex;
+        justify-content: flex-end;
+
+        mat-icon {
+          cursor: pointer;
+        }
+      }
+
+      .add-under-cards {
+        margin-top: 10px;
+
+        mat-icon {
+          cursor: pointer;
+        }
+      }
+    }
+
+    div {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
 }

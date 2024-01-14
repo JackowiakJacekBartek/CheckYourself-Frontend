@@ -76,6 +76,7 @@ create table AccountSocialMediaLinks
 create table AccountTechnicalSkills
 (
 	id serial primary key,
+	type int not null,
 	name text not null, --HTML, CSS, C#
 	progress double precision default 0.00, -- %
 	idAccount int references Accounts(id) not null
