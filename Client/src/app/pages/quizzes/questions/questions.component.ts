@@ -3,6 +3,8 @@ import { QuizAnswerDto, QuizDto, QuizQuestionDto, QuizzesAnswerDto, QuizzesQuest
 import { QuizMapper } from '../quiz-mapper';
 import { QuizzesService } from '../quizzes.service';
 import { Router } from '@angular/router';
+import { TimerComponent } from '../timer/timer.component';
+import { TimerService } from '../timer/timer.service';
 
 @Component({
   selector: 'questions',
@@ -13,13 +15,16 @@ export class QuestionsComponent {
 
   quizQuestions: QuizQuestionDto[] = [];
   quiz: QuizDto = {} as QuizDto;
-  
+  elapsedTime: string = '00:00';
+
   @Input() quizz: QuizDto = {} as QuizDto;
 
   answers: QuizAnswerDto[] = [];
 
   constructor(protected quizzesService: QuizzesService,
-    private router: Router) {
+    private router: Router,
+    private timerService: TimerService
+    ) {
     
   }
   currentQuestionNumber: number = 0;
@@ -35,6 +40,10 @@ export class QuestionsComponent {
 
     this.quizQuestions.forEach(question => {
       this.answers.push({ answers: [], question: question.question });
+    });
+
+    this.timerService.getElapsedTime().subscribe((elapsedTime) => {
+      this.elapsedTime = elapsedTime;
     });
   }
 
@@ -54,7 +63,10 @@ export class QuestionsComponent {
       const answer = Number(target.value)
       this.answers[this.currentQuestionNumber].answers = [];
       // this.answers[this.currentQuestionNumber].answers.map(item => this.answers[this.currentQuestionNumber].answers.pop());
-      this.answers[this.currentQuestionNumber].answers.push({id: answer} as QuizzesAnswerDto)
+      this.answers[this.currentQuestionNumber].answers.push({
+        id: answer, 
+        idquestion: this.currentQuestion?.id
+      } as QuizzesAnswerDto)
       // console.log(this.answers);
       // console.log(this.answers[0].answers.map(x => console.log(x)));
       // console.warn('xxxx', this.quizQuestions)
@@ -76,8 +88,6 @@ export class QuestionsComponent {
   onNext(value: Event) {
     const countObjectsWithAnswers = this.answers.filter(item => item.answers.length > 0).length;
 
-    console.log(countObjectsWithAnswers);
-
     if(this.answers[this.currentQuestionNumber].answers.length == 0) return;
 
     ++this.currentQuestionNumber;
@@ -85,11 +95,8 @@ export class QuestionsComponent {
   }
 
   submit() {
-    console.log('wyniki', this.answers);
-    this.quizzesService.sendQuizResults('x').subscribe(res => {
-      this.quiz = res.methodResult;
-
-      this.router.navigate(['/submit/1']); //res.methodResult.id id quizu czy tam result
+    this.quizzesService.sendQuizResults(this.answers, this.elapsedTime).subscribe(res => {
+      this.router.navigate(['quiz/result/'+res.methodResult]);
     })
   }
 }

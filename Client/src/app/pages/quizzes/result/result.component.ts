@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ResultService } from './result.service';
 import { ActivatedRoute } from '@angular/router';
+import { QuizResultDto } from 'src/app/shared/models/quizzes';
 
 @Component({
   selector: 'app-result',
@@ -8,12 +9,15 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./result.component.scss']
 })
 export class ResultComponent {
-  result!: any;
+  quizAttempt!: QuizResultDto;
+  public resultId: number = this.route.snapshot.params['id'];
 
   constructor(protected resultService: ResultService, private route: ActivatedRoute) {
-    resultService.getQuizResultById(1).subscribe(res => {
-      this.result = res.methodResult;
-      console.log('result', this.result, this.route.snapshot.params['id']);
-    })
+
+    resultService.getQuizAttemptResultById(this.resultId).subscribe(res => {
+      this.quizAttempt = res.methodResult;
+      console.log('result', this.quizAttempt, this.route.snapshot.params['id']);
+    });
+
   }
 }

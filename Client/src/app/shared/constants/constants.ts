@@ -46,7 +46,7 @@ export enum TechList {
 // export const localUrl = 'http://localhost:5010'
 export const localUrl = 'http://68.219.240.80:5010' //your local IP
 export const comapniesUrl = 'http://68.219.240.80:5013' //your local company IP
-export const quizzesUrl = 'http://localhost:5015/api/Quizzes' //your local company IP
+export const quizzesUrl = 'http://68.219.240.80:5015/api/Quizzes' //your local company IP
 export const jobsUrl = 'http://68.219.240.80:5013' //your local company IP
 
 

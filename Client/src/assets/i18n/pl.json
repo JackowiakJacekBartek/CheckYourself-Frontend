@@ -1,7 +1,31 @@
 {
+  "CompaniesPage": {
+    "Add company": "+ Dodaj nową firme",
+    "No offer": "Brak ofert",
+    "Add job": "Dodaj oferte pracy",
+    "Edit": "Edytuj",
+    "Delete": "Usuń"
+  },
+
+  "Listjob": {
+    "No offer": "Brak ofert",
+    "Add job": "Dodaj oferte pracy",
+    "Delete": "Usuń"
+  },
+
+  "Are u sure": {
+    "Are u": "Na pewno?",
+    "Yes": "Tak",
+    "No": "Nie"
+   },
+  
   "HomePage": {
     "Awesome text": "Polskie Super",
-    "Change to": "Zmień na Angielski"
+    "Change to": "Zmień na Angielski",
+    "Find job": "Check Yourself! Znajdź pracę marzeń!",
+    "Jobs": "Oferty pracy",
+    "Find offers": "Znajdź oferty pracy dopasowane do twoich umiejętności! Zobacz jakich umiejętności wymagają pracodawcy na konkretne stanowiska.",
+    "Apply": "Aplikuj" 
   },
 
   "LandingPage": {
@@ -15,8 +39,11 @@
     "Apply and learn all in one": "2. Aplikuj i ucz się w jednym",
     "Let employer find you": "3. Pozwól się znaleźć pracodawcy",
     "Develop yourself": "4. Rozwijaj się",
-    "Sign up": "Zarejestruj się"
+    "Sign up": "Zarejestruj się",
+    "Veification": "został zweryfikowany",
+    "Veification failed": " Nie udało się zweryfikować adresu e-mail"
   },
+
   "Footer": {
     "About us": "O nas",
     "Terms and Conditions": "Regulamin",
@@ -26,6 +53,7 @@
     "Security policy": "Zasady bezpieczeństwa",
     "News": "Aktualności"
   },
+
   "Login": {
     "Log in": "Zaloguj się",
     "Sign up": "Zarejestruj się",
