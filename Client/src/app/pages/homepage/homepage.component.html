@@ -2,14 +2,12 @@
     <div class="background-image"></div>
     <div class="content">
       <h1>{{'HomePage.Find job' | translate}}</h1>
-      <div class="inputs">   
-          <input type="text" placeholder="Junior Java Developer..." class="finddev"/>  
-          <input type="text" placeholder="Poznań" class="locatedev"/>
+      <div class="inputs">
+        <input type="text" placeholder="Junior Java Developer..." class="finddev" [(ngModel)]="searchTerm" (ngModelChange)="searchJobs()" />
+        <input type="text" placeholder="Poznań" class="locatedev" [(ngModel)]="locationTerm" (ngModelChange)="searchJobs()" />
       </div>
     </div>
   </div>
-
-
 
   <div class="info-section">
     <div class="title">

@@ -14,8 +14,9 @@ export class HomepageService {
 
   constructor(private http: HttpClient) { }
 
-  getJobs(): Observable<ReturnedResponse<JobsQuickInfo[]>> {
-    return this.http.get<ReturnedResponse<JobsQuickInfo[]>>(comapniesUrl + `/api/Job/get-jobs`);
-  }
+  getJobs(phrase?: string, location?: string, count: number = 10): Observable<ReturnedResponse<JobsQuickInfo[]>> {
+    const query = `${comapniesUrl}/api/Job/get-jobs?phrase=${phrase || ''}&location=${location || ''}&count=${count}`;
 
+    return this.http.get<ReturnedResponse<JobsQuickInfo[]>>(query);
+  }
 }

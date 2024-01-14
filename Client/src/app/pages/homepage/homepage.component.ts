@@ -14,20 +14,22 @@ export class HomepageComponent {
   }
 
   jobs?: JobsQuickInfo[];
+  searchTerm: string = '';
+  locationTerm: string = '';
 
   constructor (private homepageService: HomepageService) { }
   
   ngAfterViewInit(): void {
-    this.homepageService.getJobs().subscribe(res => {
+    this.homepageService.getJobs(this.searchTerm, this.locationTerm).subscribe(res => {
       this.jobs = res.methodResult;
-      
-      // res.methodResult.forEach(job => 
-      //   this.jobs?.push(job))
-
-        // this.jobs && console.log('jobssss', this.jobs[0])
     })
   }
 
+  searchJobs() {
+    this.homepageService.getJobs(this.searchTerm, this.locationTerm).subscribe(res => {
+      this.jobs = res.methodResult;
+    });
+  }
   // company = {
   //   "longName": "T-Mobile Polska S.A.",
   //   "name": "T-Mobile",
