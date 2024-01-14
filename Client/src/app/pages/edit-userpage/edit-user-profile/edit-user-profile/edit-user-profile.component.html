@@ -117,9 +117,8 @@
               </div>
               <div class="card-input-div" style="font-size: 12px;">
                 <mat-form-field class="card-input">
-                  <mat-label for="my-input">Nazwa stanowiska</mat-label>
+                  <mat-label>Nazwa stanowiska</mat-label>
                   <input matInput
-                         id="my-input"
                          class="card-input-field"
                          placeholder="Nazwa stanowiska"
                          formControlName="workcompany"
@@ -245,11 +244,11 @@
           </div>
           <mat-card formArrayName="certificates" class="card"
                     *ngFor="let certificate of certificates.controls | keyvalue; let i = index">
+            <div class="delete">
+              <mat-icon class="material-icons-outlined" (click)="removeAtIndex('certificates', i)">delete_outline
+              </mat-icon>
+            </div>
             <mat-card-content [formGroupName]="i"> <!-- Kursy i Certyfikaty -->
-              <div class="delete">
-                <mat-icon class="material-icons-outlined" (click)="removeAtIndex('certificates', i)">delete_outline
-                </mat-icon>
-              </div>
               <div>
                 <mat-form-field class="card-input">
                   <mat-label>Nazwa certyfikatu</mat-label>
