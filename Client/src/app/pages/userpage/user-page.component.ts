@@ -148,9 +148,9 @@ export class UserPageComponent implements AfterViewInit {
         this.UserProfileService.getUserById(this.currentUserID).subscribe(res => {
             this.data = res.methodResult;
 
-            if (res.isSuccess === true && res.methodResult == null) {
-                this.accountService.logout();
-            }
+            // if (res.isSuccess === true && res.methodResult == null) {
+            //     this.accountService.logout();
+            // }
 
             if (!this.data) return;
             this.person = ({
