@@ -2,8 +2,8 @@
     <div class="background-image"></div>
     <div class="content">
       <h1>{{'HomePage.Find job' | translate}}</h1>
-      <div class="inputs">   
-          <input type="text" placeholder="Junior Java Developer..." class="finddev"/>  
+      <div class="inputs">
+          <input type="text" placeholder="Junior Java Developer..." class="finddev"/>
           <input type="text" placeholder="Poznań" class="locatedev"/>
       </div>
     </div>
@@ -24,7 +24,7 @@
     <div class="offer" *ngFor="let job of jobs">
       <div class="left">
         <a href="https://www.wp.pl" class="logocompany">
-          <img class="avatar" alt="avatar" src="{{job.company.logo ?? '../../../assets/images/logoEmpty.png'}}">
+          <img class="avatar" alt="avatar" src="{{job.company.logo ? job.company.logo :'../../../assets/images/logoEmpty.png'}}">
         </a>
         <div class="companyName">
           <a href="https://www.wp.pl" class="jobname">
@@ -42,11 +42,10 @@
           </div>
         </div>
       </div>
-      
+
       <div class="right">
-        <p>Poznań</p>
+        <p>{{job.job.image ? job.job.image : job.company.headquarteraddress}}</p>
         <button mat-button class="applyButton"><span>{{'HomePage.Apply' | translate}}</span></button>
       </div>
     </div>
   </div>
-  
