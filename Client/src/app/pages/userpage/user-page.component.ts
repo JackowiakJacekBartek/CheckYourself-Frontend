@@ -6,10 +6,11 @@ import {
     AccountCoursesCertificate, accountEducationModelDto,
     AccountSocialMediaLinksModelDto,
     AccountSoftSkills,
-    AccountTags, accountWorkExperiences,
+    AccountTags, AccountTechnicalSkill, accountWorkExperiences,
     UserProfile
 } from "../../shared/models/accounts";
 import {format} from 'date-fns';
+import { AccountService } from 'src/app/shared/services/user-service.service';
 
 enum EmploymentMethodsEnum {
     FullTime = 1,
@@ -17,6 +18,20 @@ enum EmploymentMethodsEnum {
     Freelance = 3,
     FixedTermContract = 4
 }
+
+enum TechnicalSkillsEnum {
+    Frontend = 1,
+    Backend = 2,
+    Tools = 3,
+    ForeignLanguages = 4
+}
+
+interface Skills {
+    frontend: AccountTechnicalSkill[];
+    backend: AccountTechnicalSkill[];
+    tools: AccountTechnicalSkill[];
+    languages: AccountTechnicalSkill[];
+  }
 
 @Component({
     selector: 'app-userpage',
@@ -45,11 +60,11 @@ export class UserPageComponent implements AfterViewInit {
         {info: ''}
     ];
 
-    skills = {
-        "Technologie frontend": {"HTML": 0, "CSS": 0, "JavaScript": 0},
-        "Technologie backend": {"Java": 0, "Spring": 0, "Python": 0},
-        "Narzędzia": {"Git": 0, "Jira": 0},
-        "Języki obce": {"Polski": 0, "Angielski": 0}
+    skills: Skills  = {
+        frontend: [],
+        backend: [],
+        tools: [],
+        languages: [],
     };
 
     experience = [
@@ -100,7 +115,7 @@ export class UserPageComponent implements AfterViewInit {
     public editLink: string = `/user/${this.currentUserID}/edit`;
     public showEditButton: boolean = (+this.currentUserID === +localStorage.getItem('userID')!);
 
-    constructor(private route: ActivatedRoute, private UserProfileService: UserProfileService) {
+    constructor(private route: ActivatedRoute, private UserProfileService: UserProfileService, private accountService: AccountService) {
     }
 
     ngOnInit(): void {
@@ -132,6 +147,10 @@ export class UserPageComponent implements AfterViewInit {
     ngAfterViewInit(): void {
         this.UserProfileService.getUserById(this.currentUserID).subscribe(res => {
             this.data = res.methodResult;
+
+            if (res.isSuccess === true && res.methodResult == null) {
+                this.accountService.logout();
+            }
 
             if (!this.data) return;
             this.person = ({
@@ -195,6 +214,13 @@ export class UserPageComponent implements AfterViewInit {
             const tags: AccountTags[] = this.data.accountTags;
             this.tags = tags;
 
+            const technicalSkills: AccountTechnicalSkill[] = this.data.accountTechnicalSkills
+            this.skills.frontend = technicalSkills.filter(m => m.type === TechnicalSkillsEnum.Frontend);
+            this.skills.backend = technicalSkills.filter(m => m.type === TechnicalSkillsEnum.Backend);
+            this.skills.tools = technicalSkills.filter(m => m.type === TechnicalSkillsEnum.Tools);
+            this.skills.languages = technicalSkills.filter(m => m.type === TechnicalSkillsEnum.ForeignLanguages);
+
+            console.log(this.skills);
         })
     }
 
@@ -211,5 +237,9 @@ export class UserPageComponent implements AfterViewInit {
             return 'primary';
         }
     }
-
+    
+    getSkillCategories(): { key: string, value: { name: string, progress: number }[] }[] {
+        return Object.keys(this.skills).map(key => ({ key, value: this.skills[key] }));
+      }
+      
 }
