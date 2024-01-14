@@ -24,6 +24,25 @@ export enum JobType {
 'Umowa o pracę na czas określony' = 4,
 }
 
+export enum TechList {
+    'html' = 0,
+    'css3' = 1,
+    'angularjs' = 2,
+    'ansic' = 3,
+    'csharp' = 4,
+    'cplus' = 5,
+    'java' = 6,
+    'python' = 7,
+    'js' = 8,
+    'discordjs' = 9,
+    'typescript' = 10,
+    'androidstudio' = 11,
+    'react' = 12,
+    'unrealengine' = 13,
+    'arduino' = 14
+}
+
+
 // export const localUrl = 'http://localhost:5010'
 export const localUrl = 'http://68.219.240.80:5010' //your local IP
 export const comapniesUrl = 'http://68.219.240.80:5013' //your local company IP

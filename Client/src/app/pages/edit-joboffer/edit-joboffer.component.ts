@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {EditJobofferService} from "./edit-joboffer.service";
 import {JobOffer} from "../../shared/models/jobOffer";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {CompanySize, JobType} from "../../shared/constants/constants";
+import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {CompanySize, JobType, TechList} from "../../shared/constants/constants";
 
 @Component({
   selector: 'app-edit-joboffer',
@@ -18,6 +18,7 @@ export class EditJobofferComponent implements OnInit {
   public jobOfferEditForm: FormGroup;
   image = '../../../assets/images/logoEmpty.png'
   JobType = JobType;
+  TechList = TechList;
 
   constructor(private route: ActivatedRoute,
               private EditJobofferService: EditJobofferService,
@@ -31,19 +32,27 @@ export class EditJobofferComponent implements OnInit {
       dateEndOffer: ['', []],
       aboutJobOffer: ['', []],
       jobType: ['', []],
+      tech: this.formBuilder.array([]),
     });
+  }
+
+  public get tech() {
+    return this.jobOfferEditForm.get('tech') as FormArray;
   }
 
   getTypesWork(): string[] {
     return Object.keys(JobType).filter(key => isNaN(Number(JobType[key])));
   }
 
+  getTechList(): string[] {
+    return Object.keys(TechList).filter(key => isNaN(Number(TechList[key])));
+  }
+
   ngOnInit(): void {
-    // Odczytanie parametrów z aktualnej trasy
+      // Odczytanie parametrów z aktualnej trasy
       this.route.queryParams.subscribe(params => {
       // params to obiekt zawierający przekazane parametry
       this.idCompany = params['idCompany'];
-
       // Możesz tutaj wykorzystać odczytane parametry
       console.log('idCompany:', this.idCompany);
     });
