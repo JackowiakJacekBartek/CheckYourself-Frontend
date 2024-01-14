@@ -104,7 +104,11 @@
           </div>
           <div class="center">
             <div class="tags">
-              <div class="tag" *ngFor="let tag of offer.tags">{{tag}}</div>
+              <ng-container *ngFor="let tag of offer.tags">
+              <div class="tag" *ngIf="tag !== ''">
+                {{ getTechName(Number(tag)) }}
+              </div>
+              </ng-container>
             </div>
           </div>
           <div class="right">

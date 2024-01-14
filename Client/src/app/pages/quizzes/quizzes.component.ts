@@ -12,11 +12,11 @@ export class QuizzesComponent {
   quiz!: QuizDto;
 
   constructor(protected quizzesService: QuizzesService) {
-    quizzesService.getQuizByIdJobAdvertisement(1).subscribe(res => {
+    quizzesService.getQuizByIdJobAdvertisement(22).subscribe(res => {
       this.quiz = res.methodResult;
     })
   }
-  
+
   onStart() {
     this.isQuizToBeStarted = !this.isQuizToBeStarted;
   }

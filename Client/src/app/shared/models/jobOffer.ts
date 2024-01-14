@@ -67,5 +67,5 @@ export interface JobOfferGet {
   companyid: number,
   jobapplications: JobApplications[],
   jobDetails: JobDetails[],
-  jobTechnologies: JobTechnologies[]
+  jobtechnologies: JobTechnologies[]
 }
