@@ -28,7 +28,7 @@
                                            formControlName="nameJob"
                                            type="text">
                                 </mat-form-field>
-                                <p>fujitsu</p>
+                                <span>{{companyName}}</span>
                             </div>
                             <div class="icons">
                             </div>
@@ -50,7 +50,7 @@
                             <mat-form-field appearance="outline">
                                 <mat-label>Etat</mat-label>
                                 <mat-select formControlName="jobType">
-                                    <mat-option *ngFor="let key of getTypesWork()" [value]="key">
+                                    <mat-option *ngFor="let key of filterKeys(JobType)" [value]="key">
                                         {{ JobType[key] }}
                                     </mat-option>
                                 </mat-select>
@@ -68,7 +68,7 @@
                     </div>
                 </div>
                 <div class="about">
-                    <p>O mnie:</p>
+                    <p>Opis oferty:</p>
                     <span>
                         <mat-form-field class="about-me-field" appearance="outline">
                                                     <textarea matInput
@@ -98,7 +98,7 @@
                                         <mat-form-field appearance="outline">
                                             <mat-label>Technologia:</mat-label>
                                             <mat-select formControlName="icon">
-                                                <mat-option *ngFor="let key of getTechList()" [value]="key">
+                                                <mat-option *ngFor="let key of filterKeys(TechList)" [value]="key">
                                                     {{ TechList[key] }}
                                                 </mat-option>
                                             </mat-select>
@@ -108,7 +108,7 @@
                                         <mat-form-field appearance="outline">
                                             <mat-label>Wymagany poziom:</mat-label>
                                             <mat-select formControlName="description">
-                                                <mat-option *ngFor="let key of getNecessarySkill()" [value]="key">
+                                                <mat-option *ngFor="let key of filterKeys(NecessarySkill)" [value]="key">
                                                     {{ NecessarySkill[key] }}
                                                 </mat-option>
                                             </mat-select>
@@ -135,7 +135,7 @@
                                         <mat-form-field appearance="outline">
                                             <mat-label>Narzędzie:</mat-label>
                                             <mat-select formControlName="icon">
-                                                <mat-option *ngFor="let key of getToolsList()" [value]="key">
+                                                <mat-option *ngFor="let key of filterKeys(ToolsList)" [value]="key">
                                                     {{ ToolsList[key] }}
                                                 </mat-option>
                                             </mat-select>
@@ -145,7 +145,7 @@
                                         <mat-form-field appearance="outline">
                                             <mat-label>Wymagany poziom:</mat-label>
                                             <mat-select formControlName="description">
-                                                <mat-option *ngFor="let key of getNecessarySkill()" [value]="key">
+                                                <mat-option *ngFor="let key of filterKeys(NecessarySkill)" [value]="key">
                                                     {{ NecessarySkill[key] }}
                                                 </mat-option>
                                             </mat-select>
@@ -158,10 +158,73 @@
                             </div>
                         </div>
                     </div>
-                    <div class="grid-item"><p>Platformy:</p></div>
-                    <div class="grid-item"><p>Języki:</p></div>
+                    <div class="grid-item">
+                        <p>Języki:</p>
+                        <div class="section">
+                            <mat-card formArrayName="jobTechnologies" class="card"
+                                      *ngFor="let jobTech of jobTechnologies.controls; let i = index">
+                                <mat-card-content *ngIf="jobTech.value.idtechnology === 3" [formGroupName]="i">
+                                    <div class="delete">
+                                        <mat-icon class="material-icons-outlined" (click)="removeAtIndex('jobTechnologies', i)">delete_outline
+                                        </mat-icon>
+                                    </div>
+                                    <div>
+                                        <mat-form-field>
+                                            <mat-label>Język</mat-label>
+                                            <input matInput
+                                                   placeholder="Język"
+                                                   formControlName="icon"
+                                                   type="text">
+                                        </mat-form-field>
+                                    </div>
+                                    <div>
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Wymagany poziom:</mat-label>
+                                            <mat-select formControlName="description">
+                                                <mat-option *ngFor="let key of filterKeys(NecessarySkill)" [value]="key">
+                                                    {{ NecessarySkill[key] }}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                </mat-card-content>
+                            </mat-card>
+                            <div class="add-under-cards">
+                                <mat-icon class="material-icons-outlined add-button" (click)="addJobTechnologies(3)">add_circle_outline</mat-icon>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>
+        <div class="details">
+            <div class="left">
+                <p>Główne zadania:</p>
+                <div *ngFor="let o of mainJobs; let i = index; trackBy: trackById">
+                    <mat-form-field>
+                        <input matInput
+                               class="card-input-field"
+                               placeholder="Zadanie {{i+1}}"
+                               [(ngModel)]="o.name">
+                    </mat-form-field>
+                    <mat-icon style="margin-left: 30px" (click)="delMainJobs(i)">delete_circle_outline</mat-icon>
+                </div>
+                <mat-icon (click)="addMainJobs('')">add_circle_outline</mat-icon>
+            </div>
+            <div class="middle"></div>
+            <div class="right">
+                <p>Czego oczekujemy:</p>
+                <div *ngFor="let o of expJobs; let i = index; trackBy: trackById">
+                    <mat-form-field>
+                        <input matInput
+                               class="card-input-field"
+                               placeholder="Oczekiwanie {{i+1}}"
+                               [(ngModel)]="o.name">
+                    </mat-form-field>
+                    <mat-icon style="margin-left: 30px" (click)="delExpJobs(i)">delete_circle_outline</mat-icon>
+                </div>
+                <mat-icon (click)="addExpJobs('')">add_circle_outline</mat-icon>
+            </div>
+        </div>
     </div>
 </main>

@@ -73,7 +73,7 @@ $margin: 20px;
   .grid-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: auto auto;
     gap: 10px;
   }
 
@@ -106,5 +106,20 @@ $margin: 20px;
       justify-content: center;
     }
   }
+}
 
+.title {
+  display: flex;
+  flex-direction: column;
+}
+
+.details {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-evenly;
+
+  .mat-icon {
+    cursor: pointer;
+    margin-left: 80px;
+  }
 }

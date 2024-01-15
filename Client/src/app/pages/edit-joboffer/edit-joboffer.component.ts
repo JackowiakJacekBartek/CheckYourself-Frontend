@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {EditJobofferService} from "./edit-joboffer.service";
-import {JobOffer} from "../../shared/models/jobOffer";
+import {JobDetails, JobOffer} from "../../shared/models/jobOffer";
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CompanySize, JobType, NecessarySkill, TechList, ToolsList} from "../../shared/constants/constants";
+import {CompanyPageService} from "../companypage/company-page.service";
+import {CompanyProfile} from "../../shared/models/companies";
 
 @Component({
     selector: 'app-edit-joboffer',
@@ -13,19 +15,24 @@ import {CompanySize, JobType, NecessarySkill, TechList, ToolsList} from "../../s
 export class EditJobofferComponent implements OnInit {
 
     data!: JobOffer;
+    dataCompany! : CompanyProfile;
     idCompany = 0
     value: string = '';
     public jobOfferEditForm: FormGroup;
-    image = '../../../assets/images/logoEmpty.png'
+    image = '../../../assets/images/logoEmpty.png';
+    companyName = '';
     JobType = JobType;
     TechList = TechList;
     NecessarySkill = NecessarySkill;
     ToolsList = ToolsList;
+    mainJobs : JobDetails[] = [];
+    expJobs : JobDetails[] = [];
 
     constructor(private route: ActivatedRoute,
                 private EditJobofferService: EditJobofferService,
                 private formBuilder: FormBuilder,
                 private router: Router,
+                private companyPageService: CompanyPageService
     ) {
 
         this.jobOfferEditForm = this.formBuilder.group({
@@ -38,6 +45,25 @@ export class EditJobofferComponent implements OnInit {
         });
     }
 
+    addMainJobs(office: string) {
+        this.mainJobs.push({ iddetail: 0, name: office});
+    }
+
+    addExpJobs(office: string) {
+        this.expJobs.push({ iddetail: 1, name: office});
+    }
+
+    delMainJobs(i : number) {
+        this.mainJobs.splice(i, 1);
+    }
+
+    delExpJobs(i : number) {
+        this.expJobs.splice(i, 1);
+    }
+
+    trackById(index: number) {
+        return index
+    }
 
     public get jobTechnologies() {
         return this.jobOfferEditForm.get('jobTechnologies') as FormArray;
@@ -60,20 +86,8 @@ export class EditJobofferComponent implements OnInit {
         }
     }
 
-    getTypesWork(): string[] {
-        return Object.keys(JobType).filter(key => isNaN(Number(JobType[key])));
-    }
-
-    getTechList(): string[] {
-        return Object.keys(TechList).filter(key => isNaN(Number(TechList[key])));
-    }
-
-    getNecessarySkill(): string[] {
-        return Object.keys(NecessarySkill).filter(key => isNaN(Number(NecessarySkill[key])));
-    }
-
-    getToolsList(): string[] {
-        return Object.keys(ToolsList).filter(key => isNaN(Number(ToolsList[key])));
+    filterKeys(obj: Record<string, any>): string[] {
+        return Object.keys(obj).filter(key => isNaN(Number(obj[key])));
     }
 
     ngOnInit(): void {
@@ -85,6 +99,13 @@ export class EditJobofferComponent implements OnInit {
             console.log('idCompany:', this.idCompany);
         });
 
+        this.companyPageService.getCompanyById(this.idCompany).subscribe(res => {
+            this.dataCompany = res.methodResult;
+            console.log(this.dataCompany)
+            this.image = this.dataCompany.company.logo;
+            this.companyName = this.dataCompany.company.name;
+        })
+
 
         // this.EditJobofferService.getJobById(2).subscribe(res => {
         //   this.data = res.methodResult;
@@ -93,6 +114,9 @@ export class EditJobofferComponent implements OnInit {
     }
 
     saveJob() {
+        this.mainJobs = this.mainJobs.filter(item => item.name !== '');
+        this.expJobs = this.expJobs.filter(item => item.name !== '');
+
         this.data = {
             job: {
                 name: this.jobOfferEditForm.value.nameJob,
@@ -106,7 +130,7 @@ export class EditJobofferComponent implements OnInit {
                 salarymax: 14,
                 companyid: this.idCompany,
             },
-            jobDetails: [],
+            jobDetails: [...this.expJobs, ...this.mainJobs],
             jobapplications: [],
             jobTechnologies: this.jobOfferEditForm.value.jobTechnologies,
         }

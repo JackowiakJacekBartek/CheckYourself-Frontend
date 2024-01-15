@@ -38,10 +38,10 @@ export interface JobApplications {
 }
 
 export interface JobDetails {
-  iddetail: number,
+  iddetail?: number,
   name: string,
-  idjobadvertisements: number,
-  id: number
+  idjobadvertisements?: number,
+  id?: number
 }
 
 export interface JobTechnologies {
