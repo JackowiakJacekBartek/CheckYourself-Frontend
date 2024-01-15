@@ -25,7 +25,11 @@
               </div>
               <div class="info">
                   <a>Uzyskałeś/aś łącznie <b>{{quizAttempt.quizAttempt.totalparticipantscore}}</b> z <b>{{quizAttempt.quiz.totalscore}}</b>
-                     punktów uzyskując wynik <b>{{quizAttempt.quiz.totalscore && (quizAttempt.quizAttempt.totalparticipantscore / quizAttempt.quiz.totalscore) * 100}}%</b></a>
+                     punktów uzyskując wynik 
+                     <b>
+                        {{ (quizAttempt.quiz.totalscore && (+quizAttempt.quizAttempt.totalparticipantscore / quizAttempt.quiz.totalscore) * 100)?.toFixed(2) }}%
+
+                    </b></a>
               </div>
       </div>
   </div>
