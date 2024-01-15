@@ -49,6 +49,7 @@ $margin: 20px;
       display: flex;
       flex-direction: column;
       height: 50%;
+      margin-right: 50px;
     }
 
     & .avatar {
@@ -59,7 +60,7 @@ $margin: 20px;
   }
 
   .about {
-    margin-top: $margin;
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
     line-height: 23px;
@@ -78,6 +79,7 @@ $margin: 20px;
   }
 
   .grid-item {
+    margin-top: 50px;
 
     .section {
       display: flex;
@@ -114,12 +116,13 @@ $margin: 20px;
 }
 
 .details {
-  margin-top: 50px;
+  margin-top: 80px;
   display: flex;
   justify-content: space-evenly;
 
   .mat-icon {
     cursor: pointer;
     margin-left: 80px;
+    margin-top: 10px;
   }
 }

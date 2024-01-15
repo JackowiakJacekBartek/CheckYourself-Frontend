@@ -21,21 +21,32 @@
         </span>
       </mat-list-item>
 
-      <mat-list-item class="sidenav-list-item" routerLink="/listjoboffers" (click)="closeMenu()">
-        <span class="sidenav-item">
-          <span class="icon"><mat-icon class="material-icons-outlined">work_outline</mat-icon></span>
-          <span class="text">
-            {{'NavigationMenu.Job offers' | translate}}
-          </span>
-        </span>
-      </mat-list-item>
+<!--      <mat-list-item class="sidenav-list-item" routerLink="/listjoboffers" (click)="closeMenu()">-->
+<!--        <span class="sidenav-item">-->
+<!--          <span class="icon"><mat-icon class="material-icons-outlined">work_outline</mat-icon></span>-->
+<!--          <span class="text">-->
+<!--            {{'NavigationMenu.Job offers' | translate}}-->
+<!--          </span>-->
+<!--        </span>-->
+<!--      </mat-list-item>-->
 
       <mat-list-item class="sidenav-list-item" routerLink="/quiz" (click)="closeMenu()">
         <span class="sidenav-item-quiz">
           <span class="icon"><mat-icon class="material-icons-outlined">quiz</mat-icon></span>
+          <span class="text">
           {{'NavigationMenu.Quizzes' | translate}}
+            </span>
         </span>
       </mat-list-item>
+
+        <mat-list-item class="sidenav-list-item" (click)="changeLanguage()">
+        <span class="sidenav-item">
+          <span class="icon"><mat-icon class="material-icons-outlined">language</mat-icon></span>
+          <span class="text">
+          {{'NavigationMenu.Change language' | translate}}
+            </span>
+        </span>
+        </mat-list-item>
 
       <!-- <mat-list-item class="sidenav-list-item" routerLink="/quiz">
         <span class="sidenav-item-quiz">

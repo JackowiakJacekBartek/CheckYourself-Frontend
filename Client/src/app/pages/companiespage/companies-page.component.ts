@@ -46,7 +46,7 @@ export class CompaniesPageComponent implements AfterViewInit {
     const parametry = {
       idCompany: i
     };
-    this.router.navigate(['/edit-joboffer'], {queryParams: parametry})
+    this.router.navigate(['/create-joboffer'], {queryParams: parametry})
   }
 
   addCompany() {

@@ -25,7 +25,7 @@
     "Find job": "Check Yourself! Find your dream job!",
     "Jobs": "Job offers",
     "Find offers": "Find job offers that match your skills! See what skills employers require for specific positions.",
-    "Apply": "Apply" 
+    "Apply": "Apply"
   },
 
   "LandingPage": {
@@ -136,7 +136,8 @@
     "Purchase quizz": "Purchase quizz",
     "Check grading scale": "Check grading scale",
     "Logout": "Logout",
-    "Add/delete company": "My companies"
+    "Add/delete company": "My companies",
+    "Change language": "Change language"
   },
   "RegisterCompany": {
     "Company added successfully": "Company added successfully"

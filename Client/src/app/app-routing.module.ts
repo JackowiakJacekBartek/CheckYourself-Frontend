@@ -54,7 +54,7 @@ const routes: Routes = [
     path: 'joboffers', component: JoboffersComponent, canActivate:[AuthGuard]
   },
   {
-    path: 'edit-joboffer', component: EditJobofferComponent, canActivate:[AuthGuard]
+    path: 'create-joboffer', component: EditJobofferComponent, canActivate:[AuthGuard]
   },
   {
     path: 'listjoboffers', component: ListjoboffersComponent, canActivate:[AuthGuard]

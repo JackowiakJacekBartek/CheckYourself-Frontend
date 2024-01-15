@@ -151,9 +151,9 @@ export class CompanyPageComponent implements OnInit {
             })
     }
 
-    getTechName(selectedNumber: number): string {
-        const key = Object.keys(TechList).find(key => TechList[key] === selectedNumber);
-        return key || ''; // Zwracamy pusty ciąg znaków, jeśli nie znaleziono klucza
+    getTechName(selectedNumber: string): string {
+        const key = Object.keys(TechList).find(key => TechList[key] === Number(selectedNumber));
+        return key || selectedNumber; // Zwracamy pusty ciąg znaków, jeśli nie znaleziono klucza
     }
 
     protected readonly CompanySize = CompanySize;

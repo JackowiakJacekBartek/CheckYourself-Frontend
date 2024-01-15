@@ -18,14 +18,14 @@
     "Yes": "Tak",
     "No": "Nie"
    },
-  
+
   "HomePage": {
     "Awesome text": "Polskie Super",
     "Change to": "Zmień na Angielski",
     "Find job": "Check Yourself! Znajdź pracę marzeń!",
     "Jobs": "Oferty pracy",
     "Find offers": "Znajdź oferty pracy dopasowane do twoich umiejętności! Zobacz jakich umiejętności wymagają pracodawcy na konkretne stanowiska.",
-    "Apply": "Aplikuj" 
+    "Apply": "Aplikuj"
   },
 
   "LandingPage": {
@@ -136,7 +136,8 @@
     "Purchase quizz": "Zakup quizzy",
     "Check grading scale": "Zobacz skalę oceniającą",
     "Logout": "Wyloguj się",
-    "Add/delete company": "Moje firmy"
+    "Add/delete company": "Moje firmy",
+    "Change language": "Zmień język"
   },
   "RegisterCompany": {
     "Company added successfully": "Dodano firme"

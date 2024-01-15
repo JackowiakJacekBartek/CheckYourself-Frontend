@@ -79,7 +79,7 @@
 
 ::ng-deep.applyButtonPopUp {
   height: 50px !important;
-  background: #C00A68B2 !important;
+  background: rgba(1, 133, 116, 0.9) !important;
   margin-bottom: 1rem !important;
   font-weight: 400 !important;
 
@@ -163,7 +163,7 @@
 
     button {
       height: 50px;
-      background-color: #00A993;
+      background-color: rgba(1, 133, 116, 0.9);
       border: none;
       color: white;
       text-align: center;
@@ -182,6 +182,7 @@
       .avatar {
         width: 75px;
         height: 75px;
+        border-radius: 5px;
       }
 
       .companyName {
@@ -192,7 +193,7 @@
         flex-direction: column;
 
         .jobName {
-          color: #C00A68B2;
+          color: rgba(1, 133, 116, 0.9);
           font-weight: normal;
           font-size: 20px;
 
@@ -220,7 +221,7 @@
           border-style: solid;
           margin-right: 20px;
           padding: 10px;
-          color: #C00A68B2;
+          color: rgba(1, 133, 116, 0.9);
         }
 
         .tag:last-child {

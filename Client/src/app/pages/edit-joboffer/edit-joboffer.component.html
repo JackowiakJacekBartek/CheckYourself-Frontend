@@ -200,30 +200,34 @@
         <div class="details">
             <div class="left">
                 <p>Główne zadania:</p>
-                <div *ngFor="let o of mainJobs; let i = index; trackBy: trackById">
+                <ng-container *ngFor="let o of mainExpJobs; let i = index; trackBy: trackById">
+                    <div *ngIf="o.iddetail === 0">
                     <mat-form-field>
                         <input matInput
                                class="card-input-field"
-                               placeholder="Zadanie {{i+1}}"
+                               placeholder="Zadanie"
                                [(ngModel)]="o.name">
                     </mat-form-field>
-                    <mat-icon style="margin-left: 30px" (click)="delMainJobs(i)">delete_circle_outline</mat-icon>
+                    <mat-icon style="margin-left: 30px" (click)="delMainExpJobs(i)">delete_circle_outline</mat-icon>
                 </div>
-                <mat-icon (click)="addMainJobs('')">add_circle_outline</mat-icon>
+                </ng-container>
+                <mat-icon (click)="addMainExpJobs('', 0)">add_circle_outline</mat-icon>
             </div>
             <div class="middle"></div>
             <div class="right">
                 <p>Czego oczekujemy:</p>
-                <div *ngFor="let o of expJobs; let i = index; trackBy: trackById">
+                <ng-container *ngFor="let o of mainExpJobs; let i = index; trackBy: trackById">
+                <div *ngIf="o.iddetail === 1">
                     <mat-form-field>
                         <input matInput
                                class="card-input-field"
-                               placeholder="Oczekiwanie {{i+1}}"
+                               placeholder="Oczekiwanie"
                                [(ngModel)]="o.name">
                     </mat-form-field>
-                    <mat-icon style="margin-left: 30px" (click)="delExpJobs(i)">delete_circle_outline</mat-icon>
+                    <mat-icon style="margin-left: 30px" (click)="delMainExpJobs(i)">delete_circle_outline</mat-icon>
                 </div>
-                <mat-icon (click)="addExpJobs('')">add_circle_outline</mat-icon>
+                </ng-container>
+                <mat-icon (click)="addMainExpJobs('', 1)">add_circle_outline</mat-icon>
             </div>
         </div>
     </div>

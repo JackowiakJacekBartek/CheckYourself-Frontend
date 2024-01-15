@@ -106,7 +106,7 @@
             <div class="tags">
               <ng-container *ngFor="let tag of offer.tags">
               <div class="tag" *ngIf="tag !== ''">
-                {{ getTechName(Number(tag)) }}
+                {{ getTechName(tag) }}
               </div>
               </ng-container>
             </div>

@@ -25,8 +25,7 @@ export class EditJobofferComponent implements OnInit {
     TechList = TechList;
     NecessarySkill = NecessarySkill;
     ToolsList = ToolsList;
-    mainJobs : JobDetails[] = [];
-    expJobs : JobDetails[] = [];
+    mainExpJobs : JobDetails[] = [];
 
     constructor(private route: ActivatedRoute,
                 private EditJobofferService: EditJobofferService,
@@ -45,20 +44,12 @@ export class EditJobofferComponent implements OnInit {
         });
     }
 
-    addMainJobs(office: string) {
-        this.mainJobs.push({ iddetail: 0, name: office});
+    addMainExpJobs(office: string, iddetail: number) {
+        this.mainExpJobs.push({ iddetail: iddetail, name: office});
     }
 
-    addExpJobs(office: string) {
-        this.expJobs.push({ iddetail: 1, name: office});
-    }
-
-    delMainJobs(i : number) {
-        this.mainJobs.splice(i, 1);
-    }
-
-    delExpJobs(i : number) {
-        this.expJobs.splice(i, 1);
+    delMainExpJobs(i : number) {
+        this.mainExpJobs.splice(i, 1);
     }
 
     trackById(index: number) {
@@ -114,8 +105,7 @@ export class EditJobofferComponent implements OnInit {
     }
 
     saveJob() {
-        this.mainJobs = this.mainJobs.filter(item => item.name !== '');
-        this.expJobs = this.expJobs.filter(item => item.name !== '');
+        this.mainExpJobs = this.mainExpJobs.filter(item => item.name !== '');
 
         this.data = {
             job: {
@@ -130,7 +120,7 @@ export class EditJobofferComponent implements OnInit {
                 salarymax: 14,
                 companyid: this.idCompany,
             },
-            jobDetails: [...this.expJobs, ...this.mainJobs],
+            jobDetails: this.mainExpJobs,
             jobapplications: [],
             jobTechnologies: this.jobOfferEditForm.value.jobTechnologies,
         }
