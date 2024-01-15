@@ -74,7 +74,6 @@ export class DonutChartComponent {
               value: {
                 show: true,
                 formatter: (val) => {
-                    console.log('xxx',val);
                   return Number(val) * 10 + ' %';
                 }
               },
@@ -82,7 +81,6 @@ export class DonutChartComponent {
                 show: true,
                 showAlways: false,
                 formatter: (w) => {
-                    console.log(w.globals.seriesTotals);
                     if (this.userScore === this.totalScore) {
                         return '100 %';
                     }

@@ -51,32 +51,13 @@ export class QuestionsComponent {
     const target = value.target as HTMLInputElement | null;
 
     if (target) {
-      // const answer = this.quizQuestions[this.currentQuestionNumber].answers
-      // this.answers = target.value;
-      // const currentQuestionToUpdate = this.quizQuestions.find(question => question.question === this.currentQuestion);
-      // console.log('xd', currentQuestionToUpdate)
-      // if (currentQuestionToUpdate) {
-      //   // currentQuestionToUpdate.answers.push(Number(target.value));
-      // }
-      
-      // console.log(this.answers);
       const answer = Number(target.value)
       this.answers[this.currentQuestionNumber].answers = [];
-      // this.answers[this.currentQuestionNumber].answers.map(item => this.answers[this.currentQuestionNumber].answers.pop());
+      
       this.answers[this.currentQuestionNumber].answers.push({
         id: answer, 
         idquestion: this.currentQuestion?.id
       } as QuizzesAnswerDto)
-      // console.log(this.answers);
-      // console.log(this.answers[0].answers.map(x => console.log(x)));
-      // console.warn('xxxx', this.quizQuestions)
-      // const res = this.quizQuestions.find(question => {
-      //   question.question.id == Number(target.value)
-      // });
-      // console.warn('xxxx', this.currentQuestion)
-      
-      // const questionToUpdate = this.quizQuestions.find(question => question.question.id === Number(target.value));
-      // console.warn('xxxx', questionToUpdate)
     }
   }
   

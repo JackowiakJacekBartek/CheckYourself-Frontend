@@ -16,7 +16,6 @@ export class ResultComponent {
 
     resultService.getQuizAttemptResultById(this.resultId).subscribe(res => {
       this.quizAttempt = res.methodResult;
-      console.log('result', this.quizAttempt, this.route.snapshot.params['id']);
     });
 
   }
