@@ -12,7 +12,7 @@ export class QuizzesComponent {
   quiz!: QuizDto;
 
   constructor(protected quizzesService: QuizzesService) {
-    quizzesService.getQuizByIdJobAdvertisement(22).subscribe(res => {
+    quizzesService.getQuizByIdJobAdvertisement(50).subscribe(res => {
       this.quiz = res.methodResult;
     })
   }

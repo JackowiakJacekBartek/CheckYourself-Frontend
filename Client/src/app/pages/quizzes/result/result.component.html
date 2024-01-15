@@ -1,48 +1,55 @@
 <div class="navbar">
-  <a>Wynik testu: {{quizAttempt && quizAttempt.quiz.name}}</a>
-</div>
-<div class="background">
-    <div class="content">
-        <div class="left">
+    <a>Wynik testu: {{quizAttempt && quizAttempt.quiz.name}}</a>
+  </div>
+  <div class="background">
+      <div class="content">
+          <div class="left">
+            <!-- <app-donut-chart [userScore]="quizAttempt.quizAttempt.totalparticipantscore" [totalScore]="quizAttempt.quiz.totalscore!"></app-donut-chart> -->
+            <app-donut-chart [userScore]="quizAttempt.quizAttempt.totalparticipantscore" [totalScore]="quizAttempt.quiz.totalscore!"></app-donut-chart>
             
-        </div>
-        <div class="right">
-            <div class="score">
-                Wynik testu: niezaliczony <!--Tutaj wsadzić wynik funckji jeśli jest git to daje tekst że zaliczone zielone jak nie to że niezaliczone czerwone-->
-            </div>
-            <div class="time">
-                Twój czas:
-                    <div class="timer">
-                        {{quizAttempt && quizAttempt.quizAttempt.totalelapsedtime}}
-                    </div>
-            </div>
-            <div class="info">
-                <a>Odpowiedziałeś/aś porpawnie na <b>2</b> z <b>2</b> pytań uzyskując wynik <b>2%</b></a><!--muszą tutaj być warości z serii ile było pytań na ile odpowiedział dobrze i procenty-->
-            </div>
-            <!--brakuje przycisku i tłumaczenia ale to tam raczej zrobię tylko bym potrzebował formułki na to by odsyłała do homepage-->
-    </div>
-</div>
-
-
-
-
-
-<!--<p>result works!</p>
-
-id: {{quizAttempt && quizAttempt.quiz.id}} <br />
-image: {{quizAttempt && quizAttempt.quiz.image}} <br />
-name: {{quizAttempt && quizAttempt.quiz.name}} <br />
-description: {{quizAttempt && quizAttempt.quiz.description}} <br />
-idcompany: {{quizAttempt && quizAttempt.quiz.idcompany}} <br />
-type: {{quizAttempt && quizAttempt.quiz.type}} <br />
-totalscore: {{quizAttempt && quizAttempt.quiz.totalscore}} <br />
-totaltime: {{quizAttempt && quizAttempt.quiz.totaltime}} <br />
-minimal passing threshold: {{quizAttempt && quizAttempt.quiz.passingthreshold}}% <br />
-
-<br />
-
-id: {{quizAttempt && quizAttempt.quizAttempt.id}} <br />
-totalelapsedtime: {{quizAttempt && quizAttempt.quizAttempt.totalelapsedtime}} <br />
-totalparticipantscore: {{quizAttempt && quizAttempt.quizAttempt.totalparticipantscore}} <br />
-idaccount: {{quizAttempt && quizAttempt.quizAttempt.idaccount}} <br />
-idquiz: {{quizAttempt && quizAttempt.quizAttempt.idquiz}} <br />-->
+          </div>
+          <div class="right">
+              <div class="score">
+                  Wynik testu:
+                  <span [style.color]="quizAttempt.quizAttempt.totalparticipantscore*10 >= quizAttempt.quiz.passingthreshold ? '#00A993' : '#EB4335'">
+                    {{ quizAttempt.quizAttempt.totalparticipantscore*10 >= quizAttempt.quiz.passingthreshold ? 'zaliczony' : 'niezaliczony' }}
+                </span>
+              </div>
+              <div class="time">
+                  Twój czas:
+                      <div class="timer">
+                          {{quizAttempt && quizAttempt.quizAttempt.totalelapsedtime}} / {{quizAttempt && quizAttempt.quiz.totaltime}}
+                      </div>
+                      
+                      
+              </div>
+              <div class="info">
+                  <a>Uzyskałeś/aś łącznie <b>{{quizAttempt.quizAttempt.totalparticipantscore}}</b> z <b>{{quizAttempt.quiz.totalscore}}</b>
+                     punktów uzyskując wynik <b>{{quizAttempt.quiz.totalscore && (quizAttempt.quizAttempt.totalparticipantscore / quizAttempt.quiz.totalscore) * 100}}%</b></a>
+              </div>
+      </div>
+  </div>
+  
+  
+  
+  
+  
+  <!--<p>result works!</p>
+  
+  id: {{quizAttempt && quizAttempt.quiz.id}} <br />
+  image: {{quizAttempt && quizAttempt.quiz.image}} <br />
+  name: {{quizAttempt && quizAttempt.quiz.name}} <br />
+  description: {{quizAttempt && quizAttempt.quiz.description}} <br />
+  idcompany: {{quizAttempt && quizAttempt.quiz.idcompany}} <br />
+  type: {{quizAttempt && quizAttempt.quiz.type}} <br />
+  totalscore: {{quizAttempt && quizAttempt.quiz.totalscore}} <br />
+  totaltime: {{quizAttempt && quizAttempt.quiz.totaltime}} <br />
+  minimal passing threshold: {{quizAttempt && quizAttempt.quiz.passingthreshold}}% <br />
+  
+  <br />
+  
+  id: {{quizAttempt && quizAttempt.quizAttempt.id}} <br />
+  totalelapsedtime: {{quizAttempt && quizAttempt.quizAttempt.totalelapsedtime}} <br />
+  totalparticipantscore: {{quizAttempt && quizAttempt.quizAttempt.totalparticipantscore}} <br />
+  idaccount: {{quizAttempt && quizAttempt.quizAttempt.idaccount}} <br />
+  idquiz: {{quizAttempt && quizAttempt.quizAttempt.idquiz}} <br />-->

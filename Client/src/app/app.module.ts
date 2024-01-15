@@ -64,6 +64,8 @@ import { QuestionsComponent } from './pages/quizzes/questions/questions.componen
 import { TimerComponent } from './pages/quizzes/timer/timer.component';
 import { ResultComponent } from './pages/quizzes/result/result.component';
 import { EditJobofferComponent } from './pages/edit-joboffer/edit-joboffer.component';
+import { DonutChartComponent } from './pages/quizzes/DonutChartComponent ';
+import { NgApexchartsModule } from "ng-apexcharts";
 
 @NgModule({
   exports: [
@@ -103,8 +105,10 @@ import { EditJobofferComponent } from './pages/edit-joboffer/edit-joboffer.compo
     QuestionsComponent,
     TimerComponent,
     ResultComponent,
+    DonutChartComponent
   ],
   imports: [
+    NgApexchartsModule,
     MatTableModule,
     MatGridListModule,
     MatIconModule,
