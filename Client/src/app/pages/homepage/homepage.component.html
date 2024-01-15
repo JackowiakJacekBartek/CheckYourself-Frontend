@@ -28,10 +28,10 @@
             </a>
             <div class="companyName">
                 <a href="https://www.wp.pl" class="jobname">
-                    <span>{{job.job.name}} {{job.job.id}}</span>
+                    <span>{{job.job.name | capitalize}} {{job.job.id}}</span>
                 </a>
                 <a href="/company/{{job.company.id}}" class="companyname">
-                    <span>{{job.company.name}}</span>
+                    <span>{{job.company.name | capitalize}}</span>
                 </a>
             </div>
         </div>
@@ -44,7 +44,7 @@
         </div>
 
         <div class="right">
-            <p>{{job.job.image ? job.job.image : job.company.headquarteraddress}}</p>
+            <p>{{(job.job.image ? job.job.image : job.company.headquarteraddress) | capitalize}}</p>
             <button mat-button class="applyButton"><span>{{'HomePage.Apply' | translate}}</span></button>
         </div>
     </div>
