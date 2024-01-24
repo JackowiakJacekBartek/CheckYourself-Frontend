@@ -23,12 +23,12 @@
 <div class="jobOffers" id="ofert">
     <div class="offer" *ngFor="let job of jobs">
         <div class="left">
-            <a href="https://www.wp.pl" class="logocompany">
+            <a href="/joboffer/{{job.job.id}}" class="logocompany">
                 <img class="avatar" alt="avatar" src="{{job.company.logo ? job.company.logo : '../../../assets/images/logoEmpty.png'}}">
             </a>
             <div class="companyName">
-                <a href="https://www.wp.pl" class="jobname">
-                    <span>{{job.job.name | capitalize}} {{job.job.id}}</span>
+                <a href="/joboffer/{{job.job.id}}" class="jobname">
+                    <span>{{job.job.name | capitalize}}</span>
                 </a>
                 <a href="/company/{{job.company.id}}" class="companyname">
                     <span>{{job.company.name | capitalize}}</span>
@@ -45,7 +45,7 @@
 
         <div class="right">
             <p>{{(job.job.image ? job.job.image : job.company.headquarteraddress) | capitalize}}</p>
-            <button mat-button class="applyButton"><span>{{'HomePage.Apply' | translate}}</span></button>
+            <button mat-button class="applyButton" [routerLink]="'/joboffer/' + job.job.id"><span>Zobacz oferte</span></button>
         </div>
     </div>
 </div>

@@ -31,13 +31,12 @@ export class CompanyPageComponent implements OnInit {
     public showEditButton: boolean = false;
 
     company = {
-        "longName": "T-Mobile Polska S.A.",
-        "name": "T-Mobile",
+        "longName": "",
+        "name": "",
         "image": "../../../assets/images/logoEmpty.png",
-        "employeecount": 5000,
-        "location": 'Poznan',
-        "about": "Jesteśmy firmą technologiczną, a naszym celem jest tworzenie innowacyjnych rozwiązań dla klientów indywidualnych i biznesowych. Jako jedni z pierwszych udostępniliśmy na rynku sieć 5G, oferujemy najlepszej jakości usługi mobilne, a dzięki kilkunastu Data Center zapewniamy całe spektrum usług ICT. Oferujemy wiele usług z zakresu rozwiązań chmurowych oraz cyber bezpieczeństwa.\n" +
-            "W T-Mobile wszyscy żyjemy w świecie magenta! Kolor ten jest nam bliski, bo oznacza wiarę w powodzenie podejmowanych działań, pewność siebie i wytrzymałość. Właśnie tacy jesteśmy jako zespół. W #MagentaTeam stawiamy na wymianę doświadczeń, zwinną pracę i szybko adaptujemy się do zmian!"
+        "employeecount": 0,
+        "location": '',
+        "about": ""
     }
 
     technology = ['html', 'css3', 'angularjs', 'ansic', 'csharp', 'cplus', 'java', 'python', 'js', 'discordjs', 'typescript', 'androidstudio', 'react', 'unrealengine', 'arduino']
@@ -52,7 +51,9 @@ export class CompanyPageComponent implements OnInit {
 
     links = [''];
 
-    constructor(private EditJobofferService: EditJobofferService, private companyProfileService: CompanyPageService, private route: ActivatedRoute, private sanitizer: DomSanitizer) {
+    constructor(private EditJobofferService: EditJobofferService,
+                private companyProfileService: CompanyPageService,
+                private route: ActivatedRoute) {
     }
 
     ngOnInit(): void {
