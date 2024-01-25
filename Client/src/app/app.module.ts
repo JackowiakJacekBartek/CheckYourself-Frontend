@@ -42,7 +42,6 @@ import { QuizSolveComponent } from './pages/quizes/quiz-solve/quiz-solve.compone
 import { MultiChoiceQuestionComponent } from './pages/quizes/quiz-solve/multi-choice-question/multi-choice-question.component';
 import { CompleteSentenceQuestionComponent } from './pages/quizes/quiz-solve/complete-sentence-question/complete-sentence-question.component';
 import { EditCompanyPageComponent } from './pages/edit-companypage/edit-company-page.component';
-import { JoboffersComponent } from './pages/joboffers/joboffers.component';
 import { NavigationMenuComponent } from './components/navigation-menu/navigation-menu/navigation-menu.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatMenuModule } from '@angular/material/menu';
@@ -67,6 +66,7 @@ import { EditJobofferComponent } from './pages/edit-joboffer/edit-joboffer.compo
 import { DonutChartComponent } from './pages/quizzes/DonutChartComponent ';
 import { NgApexchartsModule } from "ng-apexcharts";
 import { CapitalizePipe } from './shared/pipes/capitalize.pipe';
+import { JobofferComponent } from './pages/joboffer/joboffer.component';
 
 @NgModule({
   exports: [
@@ -90,7 +90,6 @@ import { CapitalizePipe } from './shared/pipes/capitalize.pipe';
     MultiChoiceQuestionComponent,
     CompleteSentenceQuestionComponent,
     EditCompanyPageComponent,
-    JoboffersComponent,
     NavigationMenuComponent,
     ListjoboffersComponent,
     AreYouSurePopUpComponent,
@@ -107,7 +106,8 @@ import { CapitalizePipe } from './shared/pipes/capitalize.pipe';
     TimerComponent,
     ResultComponent,
     DonutChartComponent,
-    CapitalizePipe
+    CapitalizePipe,
+    JobofferComponent
   ],
   imports: [
     NgApexchartsModule,
