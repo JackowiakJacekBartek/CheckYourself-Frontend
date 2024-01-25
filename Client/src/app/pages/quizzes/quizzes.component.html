@@ -1,8 +1,8 @@
-<div class="quiz-main" *ngIf="quiz">
+<!-- <div class="quiz-main" *ngIf="quiz">
   <div class="header">
     <h3>Quiz: {{quiz.quiz.name}}</h3>
     <timer *ngIf="isQuizToBeStarted" [totalTime]="quiz.quiz.totaltime"></timer>
-  </div>
+  </div> -->
   <div class="quiz-questions" *ngIf="isQuizToBeStarted; else showThis">
     <questions [quizz]="quiz"></questions>
   </div>
@@ -10,6 +10,6 @@
     <div class="start">
       <button (click)="onStart()">Start Quiz</button>
     </div>
-  </ng-template>
+  <!-- </ng-template>
 </div>
-  
+   -->
