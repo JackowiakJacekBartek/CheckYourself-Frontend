@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {CompanyPageService} from "./company-page.service";
 import {CompanyImages, CompanyOffices, CompanyProfile, CompanySocialMediaLinks} from "../../shared/models/companies";
 import {ActivatedRoute} from "@angular/router";
-import {DomSanitizer, SafeResourceUrl, SafeUrl} from "@angular/platform-browser";
 import {CompanySize, TechList} from "../../shared/constants/constants";
 import {EditJobofferService} from "../edit-joboffer/edit-joboffer.service";
 import {JobOffer, JobOfferGet} from "../../shared/models/jobOffer";

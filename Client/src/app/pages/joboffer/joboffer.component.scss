@@ -1,0 +1,91 @@
+$margin: 50px;
+
+.sections {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+
+  .about {
+    margin-top: $margin;
+    word-wrap: break-word;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .technology, .tools, .platforms, .gallery, .map {
+    margin-top: $margin;
+
+    p {
+      margin-bottom: 30px;
+    }
+  }
+
+  .map {
+    height: 100%;
+    margin-bottom: $margin;
+  }
+
+  & .upheader {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .edit-button {
+      display: flex;
+      margin-left: 100%;
+      margin-bottom: 5%;
+      cursor: pointer;
+    }
+  }
+
+  & .header {
+    display: flex;
+    justify-content: space-between;
+
+    .left {
+      display: flex;
+
+      .companyName {
+        min-width: 200px;
+        padding-left: 50px;
+        padding-right: 50px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        .title {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;}
+
+        span {
+          font-size: 24px;
+          margin-bottom: 15px;
+        }
+      }
+    }
+
+    .right {
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+
+      span {
+        font-size: 15px;
+        margin-top: 2px;
+      }
+
+      mat-icon {
+        margin-left: 5vw;
+      }
+    }
+
+    & .avatar {
+      width: 135px;
+      height: 135px;
+      border-radius: 10%;
+    }
+  }
+}
