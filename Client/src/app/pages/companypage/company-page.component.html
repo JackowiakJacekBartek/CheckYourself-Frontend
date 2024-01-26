@@ -94,7 +94,7 @@
           <div class="left">
             <img class="avatar" alt="avatar" src="{{company.image}}">
             <div class="companyName">
-              <div class="jobName">
+              <div class="jobName" [routerLink]="'/joboffer/' + offer.id">
                 <span>{{offer.jobName | capitalize}}</span>
               </div>
               <div>

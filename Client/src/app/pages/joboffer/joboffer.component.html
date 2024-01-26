@@ -33,9 +33,9 @@
           </div>
         </div>
       </div>
-      <div class="about">
-        <p>Opis oferty:</p>
-        <p *ngIf="dataJobOffer?.job">{{dataJobOffer.job.description}}</p>
+      <div *ngIf="dataJobOffer?.job" class="about">
+        <p *ngIf="dataJobOffer.job.description">Opis oferty:</p>
+        <p>{{dataJobOffer.job.description | capitalize}}</p>
       </div>
       <ng-container *ngIf="dataJobOffer?.jobTechnologies">
       <div class="technology" *ngIf="showPlatformSection(dataJobOffer.jobTechnologies, 1)">
