@@ -15,7 +15,7 @@
           </div>
           <div class="companyName">
             <div class="title">
-              <span>{{company.name}}</span>
+              <span>{{company.name | capitalize}}</span>
             </div>
             <div class="icons">
               <ng-container *ngFor="let s of socials">
@@ -28,20 +28,20 @@
         </div>
         <div class="right">
           <mat-icon svgIcon="pin"></mat-icon>
-          <span>{{company.location}}</span>
+          <span>{{company.location | capitalize}}</span>
           <mat-icon svgIcon="user"></mat-icon>
           <span>{{CompanySize[company.employeecount]}}</span>
         </div>
       </div>
       <div class="about">
         <p>O mnie:</p>
-        <p>{{company.about}}</p>
+        <p>{{company.about | capitalize}}</p>
       </div>
       <div class="technology">
         <p>Technologie:</p>
         <mat-grid-list cols="8" rowHeight="50px">
           <mat-grid-tile *ngFor="let icon of technology">
-            <mat-icon matTooltip="{{icon.replace('icon','')}}" svgIcon="{{icon}}"></mat-icon>
+            <mat-icon matTooltip="{{icon.replace('icon','') | capitalize}}" svgIcon="{{icon}}"></mat-icon>
           </mat-grid-tile>
           <mat-grid-tile>
             <!-- <mat-icon class="add" svgIcon="addtool"></mat-icon> -->
@@ -52,7 +52,7 @@
         <p>Narzędzia:</p>
         <mat-grid-list cols="8" rowHeight="50px">
           <mat-grid-tile *ngFor="let icon of tools">
-            <mat-icon matTooltip="{{icon.replace('icon','')}}" svgIcon="{{icon}}"></mat-icon>
+            <mat-icon matTooltip="{{icon.replace('icon','') | capitalize}}" svgIcon="{{icon}}"></mat-icon>
           </mat-grid-tile>
           <mat-grid-tile>
             <!-- <mat-icon class="add" svgIcon="addtool"></mat-icon> -->
@@ -63,7 +63,7 @@
         <p>Platformy:</p>
         <mat-grid-list cols="8" rowHeight="50px">
           <mat-grid-tile *ngFor="let icon of platforms">
-            <mat-icon matTooltip="{{icon.replace('icon','')}}" svgIcon="{{icon}}"></mat-icon>
+            <mat-icon matTooltip="{{icon.replace('icon','') | capitalize}}" svgIcon="{{icon}}"></mat-icon>
           </mat-grid-tile>
           <mat-grid-tile>
             <!-- <mat-icon class="add" svgIcon="addtool"></mat-icon> -->
@@ -94,11 +94,11 @@
           <div class="left">
             <img class="avatar" alt="avatar" src="{{company.image}}">
             <div class="companyName">
-              <div class="jobName">
-                <span>{{offer.jobName}}</span>
+              <div class="jobName" [routerLink]="'/joboffer/' + offer.id">
+                <span>{{offer.jobName | capitalize}}</span>
               </div>
               <div>
-                <span>{{company.name}}</span>
+                <span>{{company.name | capitalize}}</span>
               </div>
             </div>
           </div>
@@ -106,13 +106,13 @@
             <div class="tags">
               <ng-container *ngFor="let tag of offer.tags">
               <div class="tag" *ngIf="tag !== ''">
-                {{ getTechName(tag) }}
+                {{ getTechName(tag) | capitalize }}
               </div>
               </ng-container>
             </div>
           </div>
           <div class="right">
-            <p>{{offer.location ? offer.location : company.location}}</p>
+            <p>{{(offer.location ? offer.location : company.location) | capitalize}}</p>
             <div class="center">
               <button mat-button class="applyButton" [routerLink]="'/joboffer/' + offer.id"><span>Zobacz oferte</span></button>
               <button mat-button class="applyButton" (click)="deleteJobOffer(offer.id)"><span>Usuń oferte</span></button>

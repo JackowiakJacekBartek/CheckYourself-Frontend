@@ -12,29 +12,70 @@
           </div>
           <div class="companyName">
             <div class="title">
-              <span *ngIf="dataJobOffer?.job">{{ dataJobOffer.job.name }}</span>
-              <span *ngIf="dataCompany?.company">{{dataCompany.company.name}}</span>
+              <span *ngIf="dataJobOffer?.job">{{ dataJobOffer.job.name | capitalize}}</span>
+              <span *ngIf="dataCompany?.company">{{dataCompany.company.name | capitalize}}</span>
             </div>
           </div>
         </div>
         <div class="right">
-          <mat-icon>location_on</mat-icon>
-          <span *ngIf="dataJobOffer?.job">{{dataJobOffer.job.image}}</span>
-          <mat-icon>work</mat-icon>
-          <span *ngIf="dataJobOffer?.job">{{JobType[dataJobOffer.job.employmenttype]}}</span>
-          <mat-icon>calendar_month</mat-icon>
-          <span *ngIf="dataJobOffer?.job">Oferta ważna do: {{dataJobOffer.job.expirationdate | date:'shortDate'}}</span>
+          <div>
+            <mat-icon>location_on</mat-icon>
+            <span *ngIf="dataJobOffer?.job">{{dataJobOffer.job.image | capitalize}}</span>
+          </div>
+          <div>
+            <mat-icon>work</mat-icon>
+            <span *ngIf="dataJobOffer?.job">{{JobType[dataJobOffer.job.employmenttype]}}</span>
+          </div>
+          <div>
+            <mat-icon>calendar_month</mat-icon>
+            <span
+              *ngIf="dataJobOffer?.job">Oferta ważna do: {{dataJobOffer.job.expirationdate | date:'shortDate'}}</span>
+          </div>
         </div>
       </div>
-      <div class="about">
-        <p>Opis oferty:</p>
-        <p *ngIf="dataJobOffer?.job">{{dataJobOffer.job.description}}</p>
+      <div *ngIf="dataJobOffer?.job" class="about">
+        <p *ngIf="dataJobOffer.job.description">Opis oferty:</p>
+        <p>{{dataJobOffer.job.description | capitalize}}</p>
       </div>
-      <div class="details">
-        <div class="left"></div>
-        <div class="middle"></div>
-        <div class="right"></div>
+      <ng-container *ngIf="dataJobOffer?.jobTechnologies">
+      <div class="technology" *ngIf="showPlatformSection(dataJobOffer.jobTechnologies, 1)">
+        <p>Technologie:</p>
+        <mat-grid-list cols="2" rowHeight="50px">
+          <ng-container *ngFor="let icon of dataJobOffer.jobTechnologies">
+            <mat-grid-tile *ngIf="icon.idtechnology === 1 && icon!.icon">
+              <mat-icon matTooltip="{{TechList[icon.icon] | capitalize}}" svgIcon="{{TechList[icon.icon]}}"></mat-icon>
+              <span>{{'- ' + ((icon.description ? NecessarySkill[icon.description] : NecessarySkill[0]) | capitalize)}}</span>
+            </mat-grid-tile>
+          </ng-container>
+        </mat-grid-list>
       </div>
+      </ng-container>
+      <ng-container *ngIf="dataJobOffer?.jobTechnologies">
+      <div class="technology" *ngIf="showPlatformSection(dataJobOffer.jobTechnologies, 2)">
+        <p>Platformy:</p>
+        <mat-grid-list cols="2" rowHeight="50px">
+          <ng-container *ngFor="let icon of dataJobOffer.jobTechnologies">
+          <mat-grid-tile *ngIf="icon.idtechnology === 2 && icon!.icon">
+              <mat-icon matTooltip="{{ToolsList[icon.icon] | capitalize}}" svgIcon="{{ToolsList[icon.icon]}}"></mat-icon>
+              <span>{{'- ' + ((icon.description ? NecessarySkill[icon.description] : NecessarySkill[0]) | capitalize)}}</span>
+          </mat-grid-tile>
+          </ng-container>
+        </mat-grid-list>
+      </div>
+      </ng-container>
+      <ng-container *ngIf="dataJobOffer?.jobTechnologies">
+      <div class="technology" *ngIf="showPlatformSection(dataJobOffer.jobTechnologies, 3)">
+        <p>Języki:</p>
+        <mat-grid-list cols="2" rowHeight="50px">
+          <ng-container *ngFor="let icon of dataJobOffer.jobTechnologies">
+            <mat-grid-tile *ngIf="icon.idtechnology === 3 && icon!.icon">
+              <span>{{icon.icon | capitalize}}</span>
+              <span>{{'- ' + ((icon.description ? NecessarySkill[icon.description] : NecessarySkill[0]) | capitalize)}}</span>
+            </mat-grid-tile>
+          </ng-container>
+        </mat-grid-list>
+      </div>
+      </ng-container>
     </div>
   </div>
 </main>

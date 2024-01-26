@@ -49,7 +49,9 @@ export interface JobTechnologies {
   name: string,
   idjobadvertisements: number,
   id: number,
-  icon: string
+  icon: string,
+  description: number,
+  idtechnology : number
 }
 
 //GET
