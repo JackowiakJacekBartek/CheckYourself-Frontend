@@ -4,7 +4,7 @@ import {JobOffer} from "../../shared/models/jobOffer";
 import {ActivatedRoute} from "@angular/router";
 import {CompanyProfile} from "../../shared/models/companies";
 import {CompanyPageService} from "../companypage/company-page.service";
-import {JobType} from "../../shared/constants/constants";
+import {JobType, TechList, NecessarySkill} from "../../shared/constants/constants";
 
 @Component({
   selector: 'app-joboffer',
@@ -37,4 +37,6 @@ export class JobofferComponent implements OnInit {
   }
 
   protected readonly JobType = JobType;
+  protected readonly TechList = TechList;
+  protected readonly NecessarySkill = NecessarySkill;
 }

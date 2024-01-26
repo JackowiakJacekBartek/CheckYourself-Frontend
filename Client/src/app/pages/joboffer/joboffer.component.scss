@@ -68,17 +68,18 @@ $margin: 50px;
     }
 
     .right {
-      margin-top: 40px;
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
+      justify-content: center;
+      margin-right: 10px;
 
-      span {
-        font-size: 15px;
-        margin-top: 2px;
+      div {
+        margin-bottom: 10px;
       }
 
       mat-icon {
-        margin-left: 5vw;
+        margin-left: 25px;
+        margin-right: 10px;
       }
     }
 
@@ -87,5 +88,11 @@ $margin: 50px;
       height: 135px;
       border-radius: 10%;
     }
+  }
+}
+
+.technology {
+  span {
+    margin-left: 10px;
   }
 }

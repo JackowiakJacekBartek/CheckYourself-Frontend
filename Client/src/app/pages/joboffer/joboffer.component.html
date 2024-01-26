@@ -18,22 +18,33 @@
           </div>
         </div>
         <div class="right">
-          <mat-icon>location_on</mat-icon>
-          <span *ngIf="dataJobOffer?.job">{{dataJobOffer.job.image}}</span>
-          <mat-icon>work</mat-icon>
-          <span *ngIf="dataJobOffer?.job">{{JobType[dataJobOffer.job.employmenttype]}}</span>
-          <mat-icon>calendar_month</mat-icon>
-          <span *ngIf="dataJobOffer?.job">Oferta ważna do: {{dataJobOffer.job.expirationdate | date:'shortDate'}}</span>
+          <div>
+            <mat-icon>location_on</mat-icon>
+            <span *ngIf="dataJobOffer?.job">{{dataJobOffer.job.image}}</span>
+          </div>
+          <div>
+            <mat-icon>work</mat-icon>
+            <span *ngIf="dataJobOffer?.job">{{JobType[dataJobOffer.job.employmenttype]}}</span>
+          </div>
+          <div>
+            <mat-icon>calendar_month</mat-icon>
+            <span
+              *ngIf="dataJobOffer?.job">Oferta ważna do: {{dataJobOffer.job.expirationdate | date:'shortDate'}}</span>
+          </div>
         </div>
       </div>
       <div class="about">
         <p>Opis oferty:</p>
         <p *ngIf="dataJobOffer?.job">{{dataJobOffer.job.description}}</p>
       </div>
-      <div class="details">
-        <div class="left"></div>
-        <div class="middle"></div>
-        <div class="right"></div>
+      <div class="technology" *ngIf="dataJobOffer?.jobTechnologies">
+        <p>Technologie:</p>
+        <mat-grid-list cols="2" rowHeight="50px">
+          <mat-grid-tile *ngFor="let icon of dataJobOffer.jobTechnologies">
+            <mat-icon matTooltip="{{TechList[icon.icon]}}" svgIcon="{{TechList[icon.icon]}}"></mat-icon>
+            <span>{{(icon.description ? NecessarySkill[icon.description] : NecessarySkill[0]) | capitalize}}</span>
+          </mat-grid-tile>
+        </mat-grid-list>
       </div>
     </div>
   </div>
