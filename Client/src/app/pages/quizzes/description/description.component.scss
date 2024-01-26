@@ -32,16 +32,70 @@
 }
 
 .content {
-  position: relative;
-  display: flex;
-  width: 1800px;
-  height: 800px;
-  margin-top: 10px;
-  flex-direction: column;
-  flex-shrink: 0;
-  border-radius: 50px;
-  background: var(--hard-light, #FFF);
+position: relative;
+display: flex;
+width: 1800px;
+height: 800px;
+margin-top: 10px;
+flex-direction: column;
+flex-shrink: 0;
+border-radius: 50px;
+background: var(--hard-light, #FFF);
 }
+
+.title {
+color: var(--primary-color, #00A993);
+font-size: 40px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+text-align: center; 
+margin-top: 5%; 
+}
+
+.description {
+color: #000;
+font-feature-settings: 'clig' off, 'liga' off;
+font-size: 15px;
+font-style: normal;
+font-weight: 300;
+line-height: normal;
+text-align: left; 
+margin-top: 5%; 
+margin-left: 10%; 
+margin-right: 10%; 
+}
+
+.quiz-info {
+margin-top: 5%;
+margin-left: 10%;
+margin-right: 10%;
+font-size: 25px;
+white-space: nowrap;
+text-align: center;
+display: flex;
+justify-content: center; 
+align-items: center;
+}
+
+.quiz-info > div {
+margin-right: 80px; 
+justify-content: center; 
+}
+
+.quiz-info a{
+color:#00A993;
+}
+
+.line {
+width: 80%;
+height: 1.5px;
+background: #00A993;
+margin: 5% auto 0; 
+justify-content: center; 
+}
+
+
 
 .question {
   width: 100%;
@@ -85,7 +139,7 @@
 
 .next {
   height: 50px;
-  width: 158px;
+  width: 188px;
   font-size: 20px;
   padding: 10px 20px;
   position: absolute;
@@ -98,3 +152,4 @@
   text-align: center;
   cursor: pointer;
 }
+
