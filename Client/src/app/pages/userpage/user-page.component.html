@@ -24,7 +24,7 @@
             <mat-grid-tile *ngIf="info.text !== null && info.text.length > 0">
               <div class="text-inside-grid">
                 <mat-icon class="material-symbols-outlined">{{ info.icon }}</mat-icon>
-                {{ info.text }}
+                {{ info.text | capitalize}}
               </div>
             </mat-grid-tile>
           </div>
@@ -35,12 +35,12 @@
           <mat-icon class="material-symbols-outlined">account_circle</mat-icon>
           <span>{{'UserPage.About me' | translate}}:</span>
         </div>
-        <span>{{person.about}}</span>
+        <span>{{person.about | capitalize}}</span>
       </div>
       <div class="skills">
-        <div class="sectionHeader"*ngIf="getSkillCategories().values[0]">
+        <div class="sectionHeader" *ngIf="getSkillCategories().values[0]">
           <mat-icon class="material-symbols-outlined">computer</mat-icon>
-          <span>{{'UserPage.Skills' | translate}}:</span>
+          <span>{{'UserPage.Skills' | translate }}:</span>
         </div>
         <div class="masonryHolder">
           <ul class="masonryBlocks" *ngFor="let skillCategory of getSkillCategories()">
@@ -49,8 +49,9 @@
               <li *ngFor="let skill of skillCategory.value">
                 <div class="element">
                   <span>{{ skill.name }}</span>
-                  <mat-progress-bar [color]="updateColor(skill.progress*100)" mode="determinate" [value]="skill.progress"></mat-progress-bar>
-                  <span>{{ skill.progress*100 + '%' }}</span>
+                  <mat-progress-bar [color]="updateColor(skill.progress*100)" mode="determinate"
+                                    [value]="skill.progress"></mat-progress-bar>
+                  <span>{{ skill.progress * 100 + '%' }}</span>
                 </div>
               </li>
             </ul>
@@ -65,8 +66,8 @@
           </div>
           <ul class="sessions">
             <li *ngFor="let exp of experience">
-              <div class="name">{{exp.name}}</div>
-              <div class="time">{{exp.time}}</div>
+              <div class="name">{{exp.name | capitalize}}</div>
+              <div class="time">{{exp.time | capitalize}}</div>
               <!--              <p *ngFor="let expTasks of exp.tasks">&#x2022; {{expTasks}}</p>-->
             </li>
           </ul>
@@ -78,9 +79,9 @@
           </div>
           <ul class="sessions">
             <li *ngFor="let edu of education">
-              <div class="name">{{edu.name}}</div>
-              <div class="time">{{edu.time}}</div>
-              <div class="time">{{edu.school}}</div>
+              <div class="name">{{edu.name | capitalize}}</div>
+              <div class="time">{{edu.time | capitalize}}</div>
+              <div class="time">{{edu.school | capitalize}}</div>
             </li>
           </ul>
         </div>
@@ -91,9 +92,9 @@
           </div>
           <ul class="sessions">
             <li *ngFor="let cert of certificates">
-              <div class="name">{{cert.name}}</div>
-              <div class="time">{{cert.time}}</div>
-              <div class="time">{{cert.cert}}</div>
+              <div class="name">{{cert.name | capitalize}}</div>
+              <div class="time">{{cert.time | capitalize}}</div>
+              <div class="time">{{cert.cert | capitalize}}</div>
             </li>
           </ul>
         </div>
@@ -102,9 +103,11 @@
         <div class="organizations" *ngFor="let other of other">
           <div class="sectionHeader">
             <mat-icon class="material-symbols-outlined">{{other.icon}}</mat-icon>
-            <span>{{other.name}}:</span>
+            <span>{{other.name }}:</span>
           </div>
-          <p *ngFor="let duties of other.duties">&#x2022; {{duties}}</p>
+          <ng-container *ngFor="let duties of other.duties">
+            <p *ngIf="duties.length>0">&#x2022; {{duties | capitalize}}</p>
+          </ng-container>
         </div>
       </div>
     </div>

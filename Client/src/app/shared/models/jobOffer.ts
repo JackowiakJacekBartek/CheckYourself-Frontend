@@ -50,7 +50,8 @@ export interface JobTechnologies {
   idjobadvertisements: number,
   id: number,
   icon: string,
-  description: number
+  description: number,
+  idtechnology : number
 }
 
 //GET
