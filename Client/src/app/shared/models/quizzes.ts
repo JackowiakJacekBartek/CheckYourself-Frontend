@@ -5,7 +5,7 @@ export interface QuizDto {
 }
 
 export interface QuizModelDto {
-    id: number;
+    id?: number;
     image?: string | null;
     name: string;
     description?: string | null;
@@ -14,12 +14,14 @@ export interface QuizModelDto {
     totalscore?: number | null;
     totaltime?: string | null;
     passingthreshold: number;
+    technology: string;
 }
 
 export interface QuizzesAnswerDto {
-    id: number,
+    id?: number,
     answer: string;
     image?: string | null;
+    isCorrect?: number;
     idaccount: number;
     idquestion: number;
     idquiz: number;
@@ -28,7 +30,7 @@ export interface QuizzesAnswerDto {
 }
 
 export interface QuizzesQuestionDto {
-    id: number;
+    id?: number;
     question: string;
     additionaltext?: string | null;
     type: number;
@@ -49,7 +51,7 @@ export interface QuizAnswerDto {
 }
 
 export interface QuizzesResultDto {
-    id: number;
+    id?: number;
     idaccount: number;
     idquiz: number;
     idquestion: number;
@@ -70,3 +72,32 @@ export interface QuizResultDto {
     quiz: QuizModelDto;
     quizAttempt: QuizAttemptDto;
 }
+
+
+
+// NEW
+
+export interface QuizData {
+    quizName: string;
+    maxDuration: string;
+    maxPoints: number;
+    questions: QuestionData[];
+    quizDescription: string;
+    passingThreshold: number;
+    quizTechnology: string;
+}
+
+export interface QuestionData {
+    questionContent: string;
+    correctAnswers: CorrectAnswerData[];
+    falseAnswers: FalseAnswerData[];
+}
+
+export interface CorrectAnswerData {
+    correctAnswer: string;
+}
+
+export interface FalseAnswerData {
+    falseAnswer: string;
+}
+

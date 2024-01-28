@@ -24,6 +24,10 @@ export enum JobType {
     'Umowa o pracę na czas określony' = 4,
 }
 
+export enum QuizzesTypes {
+    'single-choice' = 1
+}
+
 export enum TechList {
     'html' = 0,
     'css3' = 1,
@@ -57,7 +61,7 @@ export enum ToolsList {
 // export const localUrl = 'http://localhost:5010'
 export const localUrl = 'http://20.215.201.170:5010' //your local IP
 export const comapniesUrl = 'http://20.215.201.170:5013' //your local company IP
-export const quizzesUrl = 'http://20.215.201.170:5015/api/Quizzes' //your local company IP
+export const quizzesUrl = 'http://localhost:5015/api/Quizzes' //your local company IP
 export const jobsUrl = 'http://20.215.201.170:5013' //your local company IP
 
 

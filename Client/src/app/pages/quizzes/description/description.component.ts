@@ -7,7 +7,7 @@ import { TimerComponent } from '../timer/timer.component';
 import { TimerService } from '../timer/timer.service';
 
 @Component({
-  selector: 'questions',
+  selector: 'questions-x',
   templateUrl: './questions.component.html',
   styleUrls: ['./questions.component.scss']
 })
