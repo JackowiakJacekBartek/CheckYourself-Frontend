@@ -1,1 +1,32 @@
-<p>quiz-creat works!</p>
+<form [formGroup]="quizForm" (ngSubmit)="submitQuiz()">
+    <label for="quizName">Quiz Name:</label>
+    <input id="quizName" type="text" formControlName="quizName" required>
+  
+    <label for="maxDuration">Max Duration (minutes):</label>
+    <input id="maxDuration" type="number" formControlName="maxDuration" required>
+  
+    <label for="maxPoints">Max Points:</label>
+    <input id="maxPoints" type="number" formControlName="maxPoints" required>
+  
+    <div formArrayName="questions">
+      <div *ngFor="let question of questionsArray.controls; let i=index">
+        <div [formGroupName]="i">
+          <label for="questionContent">Question Content:</label>
+          <textarea id="questionContent" formControlName="questionContent" required></textarea>
+  
+          <label for="correctAnswer">Correct Answer:</label>
+          <input id="correctAnswer" type="text" formControlName="correctAnswer" required>
+  
+          <label for="falseAnswer">False Answer:</label>
+          <input id="falseAnswer" type="text" formControlName="falseAnswer" required>
+  
+          <button type="button" (click)="removeQuestion(i)">Remove Question</button>
+        </div>
+      </div>
+    </div>
+  
+    <button type="button" (click)="addQuestion()">Add Question</button>
+  
+    <button type="submit">Submit</button>
+  </form>
+  
