@@ -13,7 +13,7 @@
           <div class="companyName">
             <div class="title">
               <span *ngIf="dataJobOffer?.job">{{ dataJobOffer.job.name | capitalize}}</span>
-              <span *ngIf="dataCompany?.company">{{dataCompany.company.name | capitalize}}</span>
+              <span class="company" [routerLink]="'/company/' + companyId" *ngIf="dataCompany?.company">{{dataCompany.company.name | capitalize}}</span>
             </div>
           </div>
         </div>

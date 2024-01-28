@@ -58,7 +58,14 @@ $margin: 50px;
         .title {
           display: flex;
           flex-direction: column;
-          justify-content: center;}
+          justify-content: center;
+
+          .company {
+            cursor: pointer;
+          }
+        ;
+
+        }
 
         span {
           font-size: 24px;

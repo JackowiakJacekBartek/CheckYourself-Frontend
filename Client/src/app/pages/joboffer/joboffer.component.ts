@@ -16,6 +16,7 @@ export class JobofferComponent implements OnInit {
 
   dataJobOffer!: JobOffer;
   dataCompany!: CompanyProfile;
+  companyId: number = 0;
   image = '../../../assets/images/logoEmpty.png';
   public jobOfferId: number = +this.route.snapshot.params['id'];
 
@@ -29,6 +30,7 @@ export class JobofferComponent implements OnInit {
       this.dataJobOffer = res.methodResult;
       console.log(this.dataJobOffer)
 
+      this.companyId = this.dataJobOffer.job.companyid;
       this.companyProfileService.getCompanyById(this.dataJobOffer.job.companyid).subscribe(res => {
         this.dataCompany = res.methodResult;
         console.log(this.dataCompany)

@@ -45,7 +45,7 @@
 
         <div class="right">
             <p>{{(job.job.image ? job.job.image : job.company.headquarteraddress) | capitalize}}</p>
-            <button mat-button class="applyButton" [routerLink]="'/joboffer/' + job.job.id"><span>Zobacz oferte</span></button>
+            <button mat-button class="applyButton" [routerLink]="'/joboffer/' + job.job.id"><span>{{'HomePage.See offer' | translate}}</span></button>
         </div>
     </div>
 </div>
