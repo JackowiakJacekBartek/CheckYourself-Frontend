@@ -1,15 +1,45 @@
+<div class="quiz-questions" *ngIf="isQuizToBeStarted; else showThis">
+  <questions [quizz]="quiz"></questions>
+</div>
+      
+      <ng-template #showThis>
+        <div class="start">
+          <div class="navbar">
+            <a>Profil > np Tmobile > {{quiz.quiz.name}}</a>
+          </div>
+          <div class="background">
+              <div class="content">
+          
+                <a class="title">Junior C# Developer - Twing team</a>
+                <a class="description">Cześć. Jesteśmy szybko rozwijającą się ekipą różnorakich osobistości, które łączy wspólna pasja oraz praca. Przygotowany przez nas dwuczęściowy egzamin sprawdzi waszą wiedzę oraz umiejętności z zakresu technologi C#. Niezależnie od posiadanego przez was zaplecza doświadczenia oraz umiejętności profilaktycznie zalecamy zapoznanie się z danymi materiałami oraz wykładami, które mogą wam wyjaśnić kilka zagadanień, których mogliście nie znać, co pokażę również waszą umiejętność adaptacji. W przypadku jakichkolwiek pytań co do zagadnień można się zemną kontaktować mailowo chętnie wytłumaczę niektórę zagadnienia. Powodzenia i do zobaczenia w Twing team.  
+                  <br>
+                  <br>Senior developer
+                  <br>Joanna Stasik 
+                  <br>joasta@gmail.com </a>
+          
+                <div class="line"></div>
+          
+                <div class="quiz-info">
+                    <div>Nazwa Quizu: <a>Frontend developer</a></div>
+                    <div>Ilość Pytań: <a>20</a></div>
+                    <div>Czas Trwania: <a>20min</a></div>
+                    <div>Przypisane Firmy: <a>Tmobile</a></div>
+                </div>
+                
+                <div class="quiz-questions" *ngIf="isQuizToBeStarted; else showThis">
+                  <questions [quizz]="quiz"></questions>
+                </div>
+          <button (click)="onStart()">Start Quiz</button>
+        </div>
+      <ng-template>
+    
+
+
 <!-- <div class="quiz-main" *ngIf="quiz">
   <div class="header">
     <h3>Quiz: {{quiz.quiz.name}}</h3>
     <timer *ngIf="isQuizToBeStarted" [totalTime]="quiz.quiz.totaltime"></timer>
   </div> -->
-  <div class="quiz-questions" *ngIf="isQuizToBeStarted; else showThis">
-    <questions [quizz]="quiz"></questions>
-  </div>
-  <ng-template #showThis>
-    <div class="start">
-      <button (click)="onStart()">Start Quiz</button>
-    </div>
   <!-- </ng-template>
 </div>
    -->
