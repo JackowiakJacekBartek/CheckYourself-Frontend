@@ -1,100 +1,107 @@
-// .navbar {
-//     display: flex;
-//     align-items: center;
-//     width: 100%;
-//     height: 5%;
-//     background-image: url('/assets/images/Background_navbar_BC.png');
-//     background-position: 2%;
-// }
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 5vh;
+    background-image: url('/assets/images/Background_navbar_BC.png');
+    background-position: 2%;
+  }
   
-// .navbar a {
-//     color: var(--hard-light, #FFF);
-//     font-family: Lato;
-//     font-size: 24px;
-//     padding: 0 5%; /* Dodane wyrównanie tekstu */
-//   }
-
-// .background {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     width: auto;
-//     height: 95%;
-//     background-color: #1E232B;
-// }
+  .navbar a {
+    color: var(--hard-light, #FFF);
+    font-family: Lato;
+    font-size: 24px;
+    padding: 0 5%;
+  }
   
-// .content {
-//     display: flex;
-//     width: 1800px;
-//     height: 800px;
-//     margin-top: 10px;
-//     flex-direction: column;
-//     flex-shrink: 0;
-//     border-radius: 50px;
-//     background: var(--hard-light, #FFF);
-// }
-
-// .start button{
-//     display: flex;
-//     width: 158px;
-//     padding: 10px 20px;
-//     justify-content: center;
-//     align-items: center;
-//     gap: 50px;
-//     border: none;
-//     border-radius: 5px;
-//     color: #F6F7EB;
-//     background: var(--primary-color, #00A993);
-//     bottom:50%;
-//     bottom:50%;
-// }
-
-// .quiz-main {
-//     background-color: thistle;
-//     position: absolute;
-//     top: 50%;
-//     left: 50%;
-//     transform: translate(-50%, -50%);
-//     height: 400px;
-//     width: 50%;
-// }
-
-// .header {
-//     display: flex;
-//     justify-content: space-between;
-//     align-items: center;
-//     background-color: indigo;
-// }
-
-// timer {
-//     margin-right: 10px;
-// }
-
-// h3 {
-//     text-align: center;
-//     /* background-color: plum; */
-//     /* background-color: indigo; */
-//     color: #fff;
-//     padding: 10px;
-// }
-
-// .start {
-//     background-color: lavender;
-//     height: 100%;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-// }
-
-// button {
-//     padding: 12px 15px;
-//     background-color: indigo;
-//     color: #fff;
-//     border: none;
-//     border-radius: 0.5em;
-// }
-
-// .quiz-questions {
-//     background-color: lavender;
-//     height: 100%;
-// }
+  .background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 86vh;
+    background-color: #1E232B;
+  }
+  
+  .content {
+  position: relative;
+  display: flex;
+  width: 1800px;
+  height: 800px;
+  margin-top: 10px;
+  flex-direction: column;
+  flex-shrink: 0;
+  border-radius: 50px;
+  background: var(--hard-light, #FFF);
+  }
+  
+  .title {
+  color: var(--primary-color, #00A993);
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center; 
+  margin-top: 5%; 
+  }
+  
+  .description {
+  color: #000;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  text-align: left; 
+  margin-top: 5%; 
+  margin-left: 10%; 
+  margin-right: 10%; 
+  }
+  
+  .quiz-info {
+  margin-top: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+  font-size: 25px;
+  white-space: nowrap;
+  text-align: center;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  }
+  
+  .quiz-info > div {
+  margin-right: 80px; 
+  justify-content: center; 
+  }
+  
+  .quiz-info a{
+  color:#00A993;
+  }
+  
+  .line {
+  width: 80%;
+  height: 1.5px;
+  background: #00A993;
+  margin: 5% auto 0; 
+  justify-content: center; 
+  }
+  
+  .next {
+    height: 50px;
+    width: 188px;
+    font-size: 20px;
+    padding: 10px 20px;
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    border: none;
+    border-radius: 5px;
+    background: var(--primary-color, #00A993);
+    color: #F6F7EB;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  
