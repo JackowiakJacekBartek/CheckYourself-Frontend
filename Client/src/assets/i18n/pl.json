@@ -142,5 +142,9 @@
   },
   "RegisterCompany": {
     "Company added successfully": "Dodano firme"
+  },
+
+  "All": {
+    "Add quiz": "Dodaj quiz"
   }
 }

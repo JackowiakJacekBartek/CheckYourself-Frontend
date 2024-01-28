@@ -142,6 +142,10 @@
   },
   "RegisterCompany": {
     "Company added successfully": "Company added successfully"
+  },
+
+  "All": {
+    "Add quiz": "Add quiz"
   }
 }
 

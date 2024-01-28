@@ -57,7 +57,7 @@ const routes: Routes = [
     path: 'listjoboffers', component: ListjoboffersComponent, canActivate:[AuthGuard]
   },
   {
-    path: 'joboffer/:id', component: JobofferComponent, canActivate:[AuthGuard]
+    path: 'joboffer/:id', component: JobofferComponent
   },
   {
     path: '**', redirectTo: '',
