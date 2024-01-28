@@ -37,7 +37,6 @@ import { EditUserProfileGridComponent } from './pages/edit-userpage/edit-user-pr
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 import { MatSliderModule } from '@angular/material/slider';
-import { QuizCreatComponent } from './pages/quizes/quiz-creat/quiz-creat.component';
 import { QuizSolveComponent } from './pages/quizes/quiz-solve/quiz-solve.component';
 import { MultiChoiceQuestionComponent } from './pages/quizes/quiz-solve/multi-choice-question/multi-choice-question.component';
 import { CompleteSentenceQuestionComponent } from './pages/quizes/quiz-solve/complete-sentence-question/complete-sentence-question.component';
@@ -67,6 +66,7 @@ import { DonutChartComponent } from './pages/quizzes/DonutChartComponent ';
 import { NgApexchartsModule } from "ng-apexcharts";
 import { CapitalizePipe } from './shared/pipes/capitalize.pipe';
 import { JobofferComponent } from './pages/joboffer/joboffer.component';
+import { QuizCreateComponent } from './pages/quizes/quiz-create/quiz-create.component';
 
 @NgModule({
   exports: [
@@ -85,7 +85,7 @@ import { JobofferComponent } from './pages/joboffer/joboffer.component';
     CompanyPageComponent,
     EditUserProfileComponent,
     EditUserProfileGridComponent,
-    QuizCreatComponent,
+    QuizCreateComponent,
     QuizSolveComponent,
     MultiChoiceQuestionComponent,
     CompleteSentenceQuestionComponent,

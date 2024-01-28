@@ -32,7 +32,7 @@ export class JwtInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
       if (this.currentUserToken && this.currentUserToken != "undefined") {
         if (this.isTokenExpired(this.currentUserToken)) {
-          this.accountService.logout();
+          // this.accountService.logout();
           // return this.refreshTokenAndRetry(request, next);
         } else {
           request = request.clone({

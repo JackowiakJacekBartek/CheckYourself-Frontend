@@ -11,7 +11,7 @@ import {EditCompanyPageComponent} from "./pages/edit-companypage/edit-company-pa
 import {ListjoboffersComponent} from "./pages/listjoboffers/listjoboffers.component";
 import { CompaniesPageComponent } from './pages/companiespage/companies-page.component';
 import {EditJobofferComponent} from "./pages/edit-joboffer/edit-joboffer.component";
-import { QuizCreatComponent } from './pages/quizes/quiz-creat/quiz-creat.component';
+import { QuizCreateComponent } from './pages/quizes/quiz-create/quiz-create.component';
 import { QuizzesComponent } from './pages/quizzes/quizzes.component';
 import { ResultComponent } from './pages/quizzes/result/result.component';
 import {JobofferComponent} from "./pages/joboffer/joboffer.component";
@@ -48,7 +48,7 @@ const routes: Routes = [
     path: 'quiz/result/:id', component: ResultComponent, canActivate:[AuthGuard]
   },
   {
-    path: 'quiz/create', component: QuizCreatComponent, canActivate:[AuthGuard]
+    path: 'quiz/create', component: QuizCreateComponent, canActivate:[AuthGuard]
   },
   {
     path: 'create-joboffer', component: EditJobofferComponent, canActivate:[AuthGuard]
@@ -58,6 +58,9 @@ const routes: Routes = [
   },
   {
     path: 'joboffer/:id', component: JobofferComponent
+  },
+  {
+    path: 'joboffer/:id/create-quiz', component: QuizCreateComponent
   },
   {
     path: '**', redirectTo: '',
