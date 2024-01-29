@@ -104,12 +104,23 @@
     "Return to profile": "Wróć do profilu"
   },
   "Quiz": {
-    "What will be the output": "Jaki będzie output w poniższym przykładzie",
+    "Profile":"Profil ",
+    "Name":"Nazwa quizu: ",
+    "Question_no": "Ilość pytań: ",
+    "Time":"Czas trwania: ",
+    "Company":"Przypisana firma: ",
+    "Start Quiz": "Rozpocznij quiz",
     "Next Question": "Następne pytanie",
     "Prev Question": "Poprzednie pytanie",
-    "Question": "Pytanie",
-    "Complete Sentence": "Uzupełnij zdania",
-    "Result of Quiz": "Wynik Quizu"
+    "Result of Quiz": "Zakończ quiz",
+    "Result": "Wynik quizu: ",
+    "Leave": "Opuść quiz",
+    "Passed":"Zaliczony",
+    "Failed":"Niezaliczony",
+    "Your time":"Twój czas: ",
+    "info1":"Uzyskałeś/aś łącznie ",
+    "info2":" z ",
+    "info3":" punktów uzyskując wynik  "
   },
   "EditUserpage": {
     "Image uploaded": "Załadowano obraz",

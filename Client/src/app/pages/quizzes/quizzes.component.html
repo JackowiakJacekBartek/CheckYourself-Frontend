@@ -9,7 +9,7 @@
   <ng-template #showThis>
     <!-- <div class="start"> -->
     <div class="navbar">
-      <a>Profil > np Tmobile > {{quiz.quiz.name}}</a>
+      <a>{{'Quiz.Profile' | translate}}> np Tmobile > {{quiz.quiz.name}}</a>
     </div>
     <div class="background">
       <div class="content">
@@ -30,13 +30,13 @@
         <div class="line"></div>
 
         <div class="quiz-info">
-          <div>Nazwa Quizu: <a>Frontend developer</a></div>
-          <div>Ilość Pytań: <a>20</a></div>
-          <div>Czas Trwania: <a>20min</a></div>
-          <div>Przypisane Firmy: <a>Tmobile</a></div>
+          <div>{{'Quiz.Name' | translate}}<a>Frontend developer</a></div>
+          <div>{{'Quiz.Question_no' | translate}}<a>20</a></div>
+          <div>{{'Quiz.Time' | translate}}<a>20min</a></div>
+          <div>{{'Quiz.Company' | translate}}<a>Tmobile</a></div>
         </div>
 
-        <button (click)="onStart()">Start Quiz</button>
+        <button class="start" (click)="onStart()">{{'Quiz.Start Quiz' | translate}}</button>
       </div>
     </div>
   </ng-template>

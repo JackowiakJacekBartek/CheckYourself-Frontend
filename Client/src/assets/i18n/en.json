@@ -104,12 +104,25 @@
     "Return to profile": "Return to profile"
   },
   "Quiz": {
-    "What will be the output": "What will be the output",
+    "Profile":"Profile ",
+    "Name":"Quiz name: ",
+    "Question_no": "Number of questions: ",
+    "Time":"Time: ",
+    "Company":"Assigned company: ",
+    "Start Quiz": "Start Quiz",
     "Next Question": "Next Question",
     "Prev Question": "Previous Question",
-    "Question": "Question",
-    "Complete Sentence": "Complete Sentence",
-    "Result of Quiz": "Result of Quiz"
+    "Result of Quiz": "Finish the quiz",
+    "Result": "Result of the quiz: ",
+    "Leave": "Leave the quiz",
+    "Passed":"Passed",
+    "Failed":"Failed",
+    "Your time":"Your time: ",
+    "info1":"You obtained the total ",
+    "info2":" of ",
+    "info3":" points by obtaining a result ",
+    "Correct":"Correct answers ",
+    "Wrong":"Wrong answers "
   },
   "EditUserpage": {
     "Image uploaded": "Image uploaded",
