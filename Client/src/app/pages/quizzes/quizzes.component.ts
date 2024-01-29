@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { QuizDto } from 'src/app/shared/models/quizzes';
+import { QuizAnswerDto, QuizDto, QuizQuestionDto, QuizzesAnswerDto, QuizzesQuestionDto } from 'src/app/shared/models/quizzes';
 import { QuizzesService } from './quizzes.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quizzes',
@@ -11,8 +12,14 @@ export class QuizzesComponent {
   isQuizToBeStarted: boolean = false;
   quiz!: QuizDto;
 
-  constructor(protected quizzesService: QuizzesService) {
-    quizzesService.getQuizByIdJobAdvertisement(50).subscribe(res => {
+  currentQuestionNumber: number = 0;
+  currentQuestion: QuizzesQuestionDto | undefined = {} as QuizzesQuestionDto;
+  elapsedTime: string = '00:00';
+  quizQuestions: QuizQuestionDto[] = [];
+  answers: QuizAnswerDto[] = [];
+
+  constructor(protected quizzesService: QuizzesService, private router: Router) {
+    quizzesService.getQuizByIdJobAdvertisement(1).subscribe(res => {
       this.quiz = res.methodResult;
     })
   }
@@ -20,4 +27,26 @@ export class QuizzesComponent {
   onStart() {
     this.isQuizToBeStarted = !this.isQuizToBeStarted;
   }
+
+  
+  onSelecting(value: Event) {
+    const target = value.target as HTMLInputElement | null;
+
+    if (target) {
+      const answer = Number(target.value)
+      this.answers[this.currentQuestionNumber].answers = [];
+      
+      this.answers[this.currentQuestionNumber].answers.push({
+        id: answer, 
+        idquestion: this.currentQuestion?.id
+      } as QuizzesAnswerDto)
+    }
+  }
+
+  submit() {
+    this.quizzesService.sendQuizResults(this.answers, this.elapsedTime).subscribe(res => {
+      this.router.navigate(['quiz/result/'+res.methodResult]);
+    })
+  }
+
 }

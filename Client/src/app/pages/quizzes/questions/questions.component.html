@@ -31,9 +31,9 @@
   
       
       
-      <button class="prev" *ngIf="currentQuestionNumber > 0" (click)="onPrev()">prev</button>
-      <button class="next" *ngIf="quizQuestions.length > currentQuestionNumber+1" (click)="onNext($event)">next</button>
-      <button class="next" *ngIf="quizQuestions.length == currentQuestionNumber+1" (click)="submit()">FINISH</button>
+      <button class="prev" *ngIf="currentQuestionNumber > 0" (click)="onPrev()">{{'Quiz.Prev Question' | translate}}</button>
+      <button class="next" *ngIf="quizQuestions.length > currentQuestionNumber+1" (click)="onNext($event)">{{'Quiz.Next Question' | translate}}</button>
+      <button class="next" *ngIf="quizQuestions.length == currentQuestionNumber+1" (click)="submit()">{{'Quiz.Result of Quiz' | translate}}</button>
     </div>
 </div>
 

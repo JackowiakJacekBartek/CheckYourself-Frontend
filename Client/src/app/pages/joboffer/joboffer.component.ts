@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {EditJobofferService} from "../edit-joboffer/edit-joboffer.service";
-import {JobOffer, JobTechnologies} from "../../shared/models/jobOffer";
+import {JobOffer, JobTechnologies, JobDetails} from "../../shared/models/jobOffer";
 import {ActivatedRoute} from "@angular/router";
 import {CompanyProfile} from "../../shared/models/companies";
 import {CompanyPageService} from "../companypage/company-page.service";
@@ -17,8 +17,12 @@ export class JobofferComponent implements OnInit {
   dataJobOffer!: JobOffer;
   dataCompany!: CompanyProfile;
   companyId: number = 0;
+  quizId : number = 0;
   image = '../../../assets/images/logoEmpty.png';
   public jobOfferId: number = +this.route.snapshot.params['id'];
+  public companyIdAccount: number = 0;
+  public showEditButton: boolean = false;
+  public currentUserID2: string = localStorage.getItem('userID')!
 
   constructor(private EditJobofferService: EditJobofferService,
               private route: ActivatedRoute,
@@ -33,8 +37,14 @@ export class JobofferComponent implements OnInit {
       this.companyId = this.dataJobOffer.job.companyid;
       this.companyProfileService.getCompanyById(this.dataJobOffer.job.companyid).subscribe(res => {
         this.dataCompany = res.methodResult;
+
+        this.companyIdAccount = this.dataCompany.company.idaccount;
+        this.showEditButton = (+this.currentUserID2 === +this.companyIdAccount);
+
         console.log(this.dataCompany)
-        this.image = res.methodResult.company.logo;
+        this.image = res.methodResult.company.logo ? res.methodResult.company.logo : '../../../assets/images/logoEmpty.png';
+        this.quizId = this.dataJobOffer.job.quizid ? this.dataJobOffer.job.quizid : 0;
+        console.log(this.quizId)
       })
     })
   }
@@ -46,5 +56,13 @@ export class JobofferComponent implements OnInit {
 
   showPlatformSection(a : JobTechnologies[], b : number) : boolean {
     return a.some(icon => icon.idtechnology === b);
+  }
+
+  showTasksExpectations(a : JobDetails[] | undefined, b : number) : boolean {
+    return !!a && a.some(icon => icon.iddetail === b);
+  }
+
+  isNumber(value: any): boolean {
+    return !isNaN(Number(value));
   }
 }

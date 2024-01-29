@@ -1,5 +1,5 @@
 <div class="navbar">
-    <a>Wynik testu: {{quizAttempt && quizAttempt.quiz.name}}</a>
+    <a>{{'Quiz.Result' | translate}}{{quizAttempt && quizAttempt.quiz.name}}</a>
   </div>
   <div class="background">
       <div class="content">
@@ -9,15 +9,15 @@
             
           </div>
           <div class="right">
-            <button class="done">FINISH</button>
+            <button class="done">{{'Quiz.Leave' | translate}}</button>
               <div class="score">
-                  Wynik testu:
+                {{'Quiz.Result' | translate}}
                   <span [style.color]="quizAttempt.quizAttempt.totalparticipantscore*10 >= quizAttempt.quiz.passingthreshold ? '#00A993' : '#EB4335'">
-                    {{ quizAttempt.quizAttempt.totalparticipantscore*10 >= quizAttempt.quiz.passingthreshold ? 'zaliczony' : 'niezaliczony' }}
+                    {{ quizAttempt.quizAttempt.totalparticipantscore * 10 >= quizAttempt.quiz.passingthreshold ? ('Quiz.Passed' | translate) : ('Quiz.Failed' | translate) }}
                 </span>
               </div>
               <div class="time">
-                  Twój czas:
+                {{'Quiz.Your time' | translate}}
                       <div class="timer">
                           {{quizAttempt && quizAttempt.quizAttempt.totalelapsedtime}} / {{quizAttempt && quizAttempt.quiz.totaltime}}
                       </div>
@@ -25,8 +25,8 @@
                       
               </div>
               <div class="info">
-                  <a>Uzyskałeś/aś łącznie <b>{{quizAttempt.quizAttempt.totalparticipantscore}}</b> z <b>{{quizAttempt.quiz.totalscore}}</b>
-                     punktów uzyskując wynik 
+                  <a>{{'Quiz.info1' | translate}} <b>{{quizAttempt.quizAttempt.totalparticipantscore}}</b>{{'Quiz.info2' | translate}}<b>{{quizAttempt.quiz.totalscore}}</b>
+                    {{'Quiz.info3' | translate}}
                      <b>
                         {{ (quizAttempt.quiz.totalscore && (+quizAttempt.quizAttempt.totalparticipantscore / quizAttempt.quiz.totalscore) * 100)?.toFixed(2) }}%
 

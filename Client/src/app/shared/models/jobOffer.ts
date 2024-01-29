@@ -27,6 +27,7 @@ export interface Job {
   salarymin: number,
   salarymax: number,
   companyid: number,
+  quizid?: number
 }
 
 export interface JobApplications {
