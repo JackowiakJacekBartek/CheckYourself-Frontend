@@ -22,6 +22,7 @@ export enum JobType {
     'Praca na niepełny etat' = 2,
     'Praca jako freelancer (umowa zlecenie)' = 3,
     'Umowa o pracę na czas określony' = 4,
+    'Inne' = 5
 }
 
 export enum QuizzesTypes {
@@ -61,7 +62,7 @@ export enum ToolsList {
 // export const localUrl = 'http://localhost:5010'
 export const localUrl = 'http://20.215.201.170:5010' //your local IP
 export const comapniesUrl = 'http://20.215.201.170:5013' //your local company IP
-export const quizzesUrl = 'http://localhost:5015/api/Quizzes' //your local company IP
+export const quizzesUrl = 'http://20.215.201.170:5015/api/Quizzes' //your local company IP
 export const jobsUrl = 'http://20.215.201.170:5013' //your local company IP
 
 

@@ -125,7 +125,8 @@
     "Choose tools": "Wybierz narzędzia",
     "Platforms": "Platformy",
     "Choose platforms": "Wybierz platformy",
-    "Enter the address": "Wpisz adres"
+    "Enter the address": "Wpisz adres",
+    "Tell us about yourself": "Napisz coś o sobie"
   },
   "NavigationMenu": {
     "My profile": "Mój profil",
@@ -145,6 +146,9 @@
   },
 
   "All": {
-    "Add quiz": "Dodaj quiz"
+    "Add quiz": "Dodaj quiz",
+    "Address": "Adres",
+    "Save": "Zapisz",
+    "Edit company": "Edytuj firme"
   }
 }

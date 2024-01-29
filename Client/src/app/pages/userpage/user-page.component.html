@@ -8,8 +8,8 @@
           <mat-icon class="material-symbols-outlined" routerLink="{{editLink}}">edit</mat-icon>
         </a>
         <img class="avatar" alt="avatar" src="{{person.image}}">
-        <span class="nameAndSurname">{{person.name}}</span>
-        <span>{{person.title}}</span>
+        <span class="nameAndSurname">{{capitalizeEachWord(person.name)}}</span>
+        <span>{{person.title | capitalize}}</span>
       </div>
       <div class="tags">
         <ng-container *ngFor="let tag of tags">
@@ -30,14 +30,14 @@
           </div>
         </mat-grid-list>
       </div>
-      <div class="about">
+      <div class="about" *ngIf="person.about">
         <div class="sectionHeader">
           <mat-icon class="material-symbols-outlined">account_circle</mat-icon>
           <span>{{'UserPage.About me' | translate}}:</span>
         </div>
         <span>{{person.about | capitalize}}</span>
       </div>
-      <div class="skills">
+      <div class="skills" >
         <div class="sectionHeader" *ngIf="getSkillCategories().values[0]">
           <mat-icon class="material-symbols-outlined">computer</mat-icon>
           <span>{{'UserPage.Skills' | translate }}:</span>

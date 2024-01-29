@@ -36,13 +36,12 @@
             </div>
         </div>
         <div class="center">
-            <div class="tags" *ngFor="let technology of job.jobTechnologies.slice(0, 8)">
+            <div class="tags" *ngFor="let technology of job.jobTechnologies.slice(0, 4)">
                 <div class="tag" *ngIf="technology.icon !== ''">
                     {{ getTechName(technology.icon) | capitalize }}
                 </div>
             </div>
         </div>
-
         <div class="right">
             <p>{{(job.job.image ? job.job.image : job.company.headquarteraddress) | capitalize}}</p>
             <button mat-button class="applyButton" [routerLink]="'/joboffer/' + job.job.id"><span>{{'HomePage.See offer' | translate}}</span></button>
