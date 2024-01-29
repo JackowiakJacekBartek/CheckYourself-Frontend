@@ -22,6 +22,11 @@ export enum JobType {
     'Praca na niepełny etat' = 2,
     'Praca jako freelancer (umowa zlecenie)' = 3,
     'Umowa o pracę na czas określony' = 4,
+    'Inne' = 5
+}
+
+export enum QuizzesTypes {
+    'single-choice' = 1
 }
 
 export enum TechList {

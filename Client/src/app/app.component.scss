@@ -1,3 +1,5 @@
+$margin: 50px;
+
 //Login i register css
 
 ::ng-deep .popup {
@@ -149,10 +151,6 @@
 
 ::ng-deep.jobOffers {
 
-  p {
-    font-weight: bold;
-  }
-
   .offer {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 12px;
@@ -242,5 +240,20 @@
         justify-content: center;
       }
     }
+  }
+}
+
+::ng-deep .about {
+  margin-top: $margin;
+  word-wrap: break-word;
+
+  p {
+    margin: 0;
+  }
+
+  .aboutInfo {
+    margin-top: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
   }
 }

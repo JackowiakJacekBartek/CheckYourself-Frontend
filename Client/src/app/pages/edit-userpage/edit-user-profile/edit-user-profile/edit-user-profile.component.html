@@ -10,7 +10,7 @@
           </button>
         </a>
         <a class="save-button">
-          <button mat-raised-button type="button" (click)="save()" color="warn">Save</button>
+          <button mat-raised-button type="button" (click)="save()" color="warn">{{'All.Save' | translate}}</button>
         </a>
         <div class="logo">
           <label class="custom-file-upload">
@@ -20,16 +20,16 @@
         </div>
         <span>
             <mat-form-field class="name-surname">
-                <mat-label>Imię</mat-label>
+                <mat-label>{{'Login.Name' | translate}}</mat-label>
                 <input matInput
-                       placeholder="Imię"
+                       placeholder="{{'Login.Name' | translate}}"
                        formControlName="name"
                 >
             </mat-form-field>
             <mat-form-field class="name-surname">
-                <mat-label>Nazwisko</mat-label>
+                <mat-label>{{'Login.Surname' | translate}}</mat-label>
                 <input matInput
-                       placeholder="Nazwisko"
+                       placeholder="{{'Login.Surname' | translate}}"
                        formControlName="surname"
                 >
             </mat-form-field>
@@ -59,12 +59,12 @@
         </div>
         <span>
             <mat-form-field class="about-me-field" appearance="outline">
-                <mat-label>Tell us about yourself</mat-label>
+                <mat-label>{{'EditUserpage.Tell us about yourself' | translate}}</mat-label>
                 <textarea matInput
                           #aboutMe
                           maxlength="2000"
                           type="text"
-                          placeholder="Tell us about yourself"
+                          placeholder="{{'EditUserpage.Tell us about yourself' | translate}}"
                           formControlName="aboutMe"
                           cdkTextareaAutosize
                 ></textarea>
@@ -329,7 +329,7 @@
         <div class="organizations">
           <div class="sectionHeader">
             <mat-icon class="material-icons-outlined">mood</mat-icon>
-            <span>Umiejętności miękkie:*</span>
+            <span>Umiejętności miękkie:</span>
           </div>
           <div class="other-wraper">
             <ul class="other-block">

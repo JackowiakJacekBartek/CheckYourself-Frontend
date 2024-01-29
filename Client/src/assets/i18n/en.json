@@ -138,7 +138,8 @@
     "Choose tools": "Choose tools",
     "Platforms": "Platforms",
     "Choose platforms": "Choose platforms",
-    "Enter the address": "Enter the address"
+    "Enter the address": "Enter the address",
+    "Tell us about yourself": "Tell us about yourself"
   },
   "NavigationMenu": {
     "My profile": "My profile",
@@ -158,7 +159,10 @@
   },
 
   "All": {
-    "Add quiz": "Add quiz"
+    "Add quiz": "Add quiz",
+    "Address": "Address",
+    "Save": "Save",
+    "Edit company": "Edit company"
   }
 }
 

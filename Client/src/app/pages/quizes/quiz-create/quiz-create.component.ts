@@ -1,11 +1,13 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { EditUserProfileService } from '../../edit-userpage/edit-user-profile/edit-user-profile.service';
 import { QuizzesService } from '../../quizzes/quizzes.service';
-import { QuizDto } from 'src/app/shared/models/quizzes';
+import { QuizData, QuizDto } from 'src/app/shared/models/quizzes';
+import { QuizMapper } from '../../quizzes/quiz-mapper';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-quiz-create',
@@ -15,9 +17,9 @@ import { QuizDto } from 'src/app/shared/models/quizzes';
 export class QuizCreateComponent {
 
   public currentJobOfferId: number = +this.route.snapshot.params['id'];
-  // quiz!: QuizDto;
   quizForm: FormGroup;
-  
+  totalQuizScore = 0.0;
+
   constructor(
     private ref: ChangeDetectorRef,
     private editUserProfileService: EditUserProfileService,
@@ -30,49 +32,113 @@ export class QuizCreateComponent {
   ) {
     this.quizForm = this.formBuilder.group({
       quizName: ['', [Validators.required]],
-      maxDuration: [30, [Validators.required, Validators.min(1)]],
-      maxPoints: [10, [Validators.required, Validators.min(1)]],
-      questions: this.formBuilder.array([
-        this.createQuestionFormGroup()
-      ])
+      quizTechnology: ['', [Validators.required]],
+      maxDuration: ['10:00', [Validators.required, Validators.min(1)]],
+      passingThreshold: [0, [Validators.required, Validators.min(1)]],
+      maxPoints: [0, [Validators.required, Validators.min(0)]],
+      quizDescription: ['', [Validators.required]],
+      questions: this.formBuilder.array([])
     });
-    // quizzesService.getQuizByIdJobAdvertisement(50).subscribe(res => {
-    //   this.quiz = res.methodResult;
-    // })
+  }
+
+
+  ngOnInit() {
+    this.quizForm.valueChanges.subscribe(() => {
+      this.calculateTotalQuizScore();
+    });
   }
 
   createQuestionFormGroup() {
     return this.formBuilder.group({
+      id: parseInt(uuidv4().substring(0, 8), 16),
       questionContent: ['', [Validators.required]],
-      correctAnswer: ['', [Validators.required]],
-      falseAnswer: ['', [Validators.required]]
+      correctAnswers: this.formBuilder.array([], [Validators.required]),
+      falseAnswers: this.formBuilder.array([], [Validators.required]),
+    });
+  } 
+
+  calculateTotalQuizScore() {
+    let totalScore = 0;
+    const questionsArray = this.quizForm.get('questions') as FormArray;
+
+    questionsArray.controls.forEach((question: any) => {
+      const correctAnswersArray = question.get('correctAnswers') as FormArray;
+
+      correctAnswersArray.controls.forEach((correctAnswer: any) => {
+        const score = correctAnswer.get('correctAnswerScore')?.value || 0;
+        totalScore += score;
+      });
+    });
+
+    this.totalQuizScore = totalScore;
+  }
+
+  get questionsArray() {
+    return this.quizForm.get('questions') as any;
+  }
+
+  createFalseAnswer(value: string, idquestion: string) {
+    return this.formBuilder.group({
+      falseAnswer: [value, [Validators.required]],
+      idquestion: [idquestion, [Validators.required]],
     });
   }
-
-// Getter for easy access to the questions array
-get questionsArray() {
-  return this.quizForm.get('questions') as any;
-}
-
-// Add a new question to the form
-addQuestion() {
-  this.questionsArray.push(this.createQuestionFormGroup());
-}
-
-// Remove a question from the form
-removeQuestion(index: number) {
-  this.questionsArray.removeAt(index);
-}
-
-// Submit the quiz form
-submitQuiz() {
-  if (this.quizForm.valid) {
-    // Handle form submission (e.g., send data to backend)
-    console.log(this.quizForm.value);
-  } else {
-    // Display validation errors
-    console.log('Form is invalid. Please fill in all required fields.');
+  
+  addFalseAnswer(question: FormGroup) {
+    const idquestion = question.get('id')?.value;
+    const falseAnswersArray = question.get('falseAnswers') as FormArray;
+    falseAnswersArray.push(this.createFalseAnswer('', idquestion));
   }
-}
+  
+  removeFalseAnswer(question: FormGroup, index: number) {
+    const falseAnswersArray = question.get('falseAnswers') as FormArray;
+    falseAnswersArray.removeAt(index);
+  }
 
+  addQuestion() {
+    const newQuestion = this.createQuestionFormGroup();
+    this.questionsArray.push(newQuestion);
+  }
+
+  removeQuestion(index: number) {
+    this.questionsArray.removeAt(index);
+  }
+
+  createCorrectAnswer(value: string, score: number = 1, idquestion: string) {
+    return this.formBuilder.group({
+      correctAnswer: [value, [Validators.required]],
+      correctAnswerScore: [score, [Validators.required, Validators.min(1)]],
+      idquestion: [idquestion, [Validators.required]],
+    });
+  }
+  
+  addCorrectAnswer(question: FormGroup) {
+    const idquestion = question.get('id')?.value; 
+    const correctAnswersArray = question.get('correctAnswers') as FormArray;
+    correctAnswersArray.push(this.createCorrectAnswer('', 1, idquestion));
+  }
+  
+  removeCorrectAnswer(question: FormGroup, index: number) {
+    const correctAnswersArray = question.get('correctAnswers') as FormArray;
+    correctAnswersArray.removeAt(index);
+  }
+
+  submitQuiz() {
+
+    if(this.quizForm.get('maxPoints')?.value !== this.totalQuizScore) {
+      this.toastrService.warning('Sumy punktów formularza nie są równe'); // TODO tlumaczenie
+      return;
+    }
+
+    if (this.quizForm.valid) {
+      const formValues: QuizData = this.quizForm.value
+      console.log(formValues);
+      const mappedValues: QuizDto = QuizMapper.mapToQuizRegisterDto(formValues, this.currentJobOfferId, this.totalQuizScore);
+      this.quizzesService.createQuizForJobAdvertisement(this.currentJobOfferId, mappedValues).subscribe(res => {
+        console.log(res)
+      });
+    } else {
+      console.log('Form is invalid. Please fill in all required fields.');
+    }
+  }
 }

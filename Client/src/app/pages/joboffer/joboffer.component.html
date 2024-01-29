@@ -4,9 +4,17 @@
   <div class="wrapperUser">
     <div class="sections">
       <div class="upheader">
-        <button mat-button class="applyButton" [routerLink]="'create-quiz'">
+        <button *ngIf="quizId === 0 && showEditButton" mat-button class="applyButton" [routerLink]="'create-quiz'">
           <mat-icon class="material-symbols-outlined">quiz</mat-icon>
           <span>{{'All.Add quiz' | translate}}</span>
+        </button>
+        <button *ngIf="quizId > 0 && showEditButton" mat-button class="applyButton">
+          <mat-icon class="material-symbols-outlined">quiz</mat-icon>
+          <span>Usuń quiz o Id: {{quizId}}</span>
+        </button>
+        <button *ngIf="!showEditButton" mat-button class="applyButton">
+          <mat-icon class="material-symbols-outlined">quiz</mat-icon>
+          <span>Aplikuj na oferte</span>
         </button>
       </div>
       <div class="header">
@@ -22,7 +30,7 @@
           </div>
         </div>
         <div class="right">
-          <div>
+          <div *ngIf="dataJobOffer && dataJobOffer.job && dataJobOffer.job.image">
             <mat-icon>location_on</mat-icon>
             <span *ngIf="dataJobOffer?.job">{{dataJobOffer.job.image | capitalize}}</span>
           </div>
@@ -39,7 +47,7 @@
       </div>
       <div *ngIf="dataJobOffer?.job" class="about">
         <p *ngIf="dataJobOffer.job.description">Opis oferty:</p>
-        <p>{{dataJobOffer.job.description | capitalize}}</p>
+        <p class="aboutInfo">{{dataJobOffer.job.description | capitalize}}</p>
       </div>
       <ng-container *ngIf="dataJobOffer?.jobTechnologies">
       <div class="technology" *ngIf="showPlatformSection(dataJobOffer.jobTechnologies, 1)">
@@ -47,8 +55,15 @@
         <mat-grid-list cols="2" rowHeight="50px">
           <ng-container *ngFor="let icon of dataJobOffer.jobTechnologies">
             <mat-grid-tile *ngIf="icon.idtechnology === 1 && icon!.icon">
-              <mat-icon matTooltip="{{TechList[icon.icon] | capitalize}}" svgIcon="{{TechList[icon.icon]}}"></mat-icon>
-              <span>{{'- ' + ((icon.description ? NecessarySkill[icon.description] : NecessarySkill[0]) | capitalize)}}</span>
+              <ng-container *ngIf="isNumber(icon.icon); then numberTemplate else notNumberTemplate"></ng-container>
+              <ng-template #numberTemplate>
+                <mat-icon matTooltip="{{TechList[icon.icon] | capitalize}}" svgIcon="{{TechList[icon.icon]}}"></mat-icon>
+                <span>{{'- ' + ((icon.description ? NecessarySkill[icon.description] : NecessarySkill[0]) | capitalize)}}</span>
+              </ng-template>
+              <ng-template #notNumberTemplate>
+                <span>{{icon.icon | capitalize}}</span>
+                <span>{{'- ' + ((icon.description ? icon.description : NecessarySkill[0]) + '' | capitalize)}}</span>
+              </ng-template>
             </mat-grid-tile>
           </ng-container>
         </mat-grid-list>
@@ -60,8 +75,15 @@
         <mat-grid-list cols="2" rowHeight="50px">
           <ng-container *ngFor="let icon of dataJobOffer.jobTechnologies">
           <mat-grid-tile *ngIf="icon.idtechnology === 2 && icon!.icon">
+            <ng-container *ngIf="isNumber(icon.icon); then numberTemplate else notNumberTemplate"></ng-container>
+            <ng-template #numberTemplate>
               <mat-icon matTooltip="{{ToolsList[icon.icon] | capitalize}}" svgIcon="{{ToolsList[icon.icon]}}"></mat-icon>
               <span>{{'- ' + ((icon.description ? NecessarySkill[icon.description] : NecessarySkill[0]) | capitalize)}}</span>
+            </ng-template>
+            <ng-template #notNumberTemplate>
+              <span>{{icon.icon | capitalize}}</span>
+              <span>{{'- ' + ((icon.description ? icon.description : NecessarySkill[0]) + '' | capitalize)}}</span>
+            </ng-template>
           </mat-grid-tile>
           </ng-container>
         </mat-grid-list>
@@ -74,12 +96,36 @@
           <ng-container *ngFor="let icon of dataJobOffer.jobTechnologies">
             <mat-grid-tile *ngIf="icon.idtechnology === 3 && icon!.icon">
               <span>{{icon.icon | capitalize}}</span>
-              <span>{{'- ' + ((icon.description ? NecessarySkill[icon.description] : NecessarySkill[0]) | capitalize)}}</span>
+              <ng-container *ngIf="isNumber(icon.description); then numberTemplate else notNumberTemplate"></ng-container>
+              <ng-template #numberTemplate>
+                <span>{{'- ' + ((icon.description ? NecessarySkill[icon.description] : NecessarySkill[0]) | capitalize)}}</span>
+              </ng-template>
+              <ng-template #notNumberTemplate>
+                <span>{{'- ' + ((icon.description ? icon.description : NecessarySkill[0]) + '' | capitalize)}}</span>
+              </ng-template>
             </mat-grid-tile>
           </ng-container>
         </mat-grid-list>
       </div>
       </ng-container>
+      <div class="tasksExpectations">
+        <div class="tasks" *ngIf="showTasksExpectations(dataJobOffer?.jobDetails, 0)">
+          <div class="sectionHeader">
+            <span>Zadania:</span>
+          </div>
+          <ng-container *ngFor="let task of dataJobOffer?.jobDetails">
+            <p *ngIf="task.iddetail == 0">&#x2022; {{task.name}} </p>
+          </ng-container>
+        </div>
+        <div class="tasks" *ngIf="showTasksExpectations(dataJobOffer?.jobDetails, 1)">
+          <div class="sectionHeader">
+            <span>Oczekiwania:</span>
+          </div>
+          <ng-container *ngFor="let task of dataJobOffer?.jobDetails">
+            <p *ngIf="task.iddetail == 1">&#x2022; {{task.name}} </p>
+          </ng-container>
+        </div>
+      </div>
     </div>
   </div>
 </main>

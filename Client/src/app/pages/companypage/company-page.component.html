@@ -30,14 +30,14 @@
           <mat-icon svgIcon="pin"></mat-icon>
           <span>{{company.location | capitalize}}</span>
           <mat-icon svgIcon="user"></mat-icon>
-          <span>{{CompanySize[company.employeecount]}}</span>
+          <span>{{CompanySize[company.employeecount] || company.employeecount}}</span>
         </div>
       </div>
-      <div class="about">
+      <div class="about" *ngIf="company.about">
         <p>O mnie:</p>
-        <p>{{company.about | capitalize}}</p>
+        <p class="aboutInfo">{{company.about | capitalize}}</p>
       </div>
-      <div class="technology">
+      <div class="technology" *ngIf="technology.length > 0">
         <p>Technologie:</p>
         <mat-grid-list cols="8" rowHeight="50px">
           <mat-grid-tile *ngFor="let icon of technology">
@@ -48,7 +48,7 @@
           </mat-grid-tile>
         </mat-grid-list>
       </div>
-      <div class="tools">
+      <div class="tools" *ngIf="tools.length > 0">
         <p>Narzędzia:</p>
         <mat-grid-list cols="8" rowHeight="50px">
           <mat-grid-tile *ngFor="let icon of tools">
@@ -59,7 +59,7 @@
           </mat-grid-tile>
         </mat-grid-list>
       </div>
-      <div class="platforms">
+      <div class="platforms" *ngIf="platforms.length > 0">
         <p>Platformy:</p>
         <mat-grid-list cols="8" rowHeight="50px">
           <mat-grid-tile *ngFor="let icon of platforms">
@@ -70,7 +70,7 @@
           </mat-grid-tile>
         </mat-grid-list>
       </div>
-      <div class="gallery">
+      <div class="gallery" *ngIf="images.length > 0">
         <p>{{'EditUserpage.Photos' | translate}}:</p>
         <div>
           <div style="display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px;">
@@ -81,7 +81,7 @@
           </div>
         </div>
       </div>
-      <div class="map">
+      <div class="map" *ngIf="offices.length > 0">
         <p>Nasze biura:</p>
         <div *ngFor="let office of offices">
           <iframe [src]="office | sanitizeUrl" width=100% height="400" frameborder="0"
