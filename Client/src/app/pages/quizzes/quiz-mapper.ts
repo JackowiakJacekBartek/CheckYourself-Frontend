@@ -28,26 +28,37 @@ export class QuizMapper {
           technology: quizData.quizTechnology,
           description: quizData.quizDescription,
         },
-        quizzesAnswers: quizData.questions.flatMap(question => {
+        quizzesQuestions: quizData.questions.map(question => ({
+          question: question.questionContent,
+          additionaltext: null,
+          type: QuizzesTypes['single-choice'],
+          totalscore: 0,
+          image: null,
+          idquiz: 0,
+          totaltime: null
+        })),
+        quizzesAnswers: quizData.questions.flatMap((question, i) => {
+          console.log(question)
           const correctAnswersArray = question.correctAnswers as CorrectAnswerData[];
           const falseAnswersArray = question.falseAnswers as FalseAnswerData[];
           const correctAnswers = correctAnswersArray.map((answer, i) => ({
-            id: 0,
+            id: question.id,
             answer: answer.correctAnswer,
             image: null,
-            idaccount: localStorage.getItem('userID') === "undefined" ? Number(localStorage.getItem('userID')) : 0,
+            idaccount: localStorage.getItem('userID') !== "undefined" ? Number(localStorage.getItem('userID')) : 0,
             idquestion: 0,
             idquiz: 0,
             elapsedtime: null,
             Idquizzesanswer: 0,
             iscorrect: 1,
-            additionaltext: null
+            additionaltext: null,
+            totalscore: answer.correctAnswerScore
           }));
           const falseAnswers = falseAnswersArray.map((falseAnswer, i) => ({
-            id: 0,
+            id: question.id,
             answer: falseAnswer.falseAnswer,
             image: null,
-            idaccount: localStorage.getItem('userID') === "undefined" ? Number(localStorage.getItem('userID')) : 0,
+            idaccount: localStorage.getItem('userID') !== "undefined" ? Number(localStorage.getItem('userID')) : 0,
             idquestion: 0,
             idquiz: 0,
             elapsedtime: null,
@@ -57,15 +68,6 @@ export class QuizMapper {
           }));
           return [...correctAnswers, ...falseAnswers];
         }),
-        quizzesQuestions: quizData.questions.map(question => ({
-          question: question.questionContent,
-          additionaltext: null,
-          type: QuizzesTypes['single-choice'],
-          totalscore: 0,
-          image: null,
-          idquiz: 0,
-          totaltime: null
-        }))
       };
     }
   }

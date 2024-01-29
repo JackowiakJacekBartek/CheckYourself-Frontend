@@ -88,6 +88,7 @@ export interface QuizData {
 }
 
 export interface QuestionData {
+    id: number;
     questionContent: string;
     correctAnswers: CorrectAnswerData[];
     falseAnswers: FalseAnswerData[];
@@ -95,6 +96,7 @@ export interface QuestionData {
 
 export interface CorrectAnswerData {
     correctAnswer: string;
+    correctAnswerScore: number;
 }
 
 export interface FalseAnswerData {
