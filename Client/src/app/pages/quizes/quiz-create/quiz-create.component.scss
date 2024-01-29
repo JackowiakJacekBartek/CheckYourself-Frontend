@@ -37,21 +37,19 @@ form {
     }
   }
 
-  button[type="add"] {
+  #add {
     background-color: #4caf50;
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
   }
 
-  button[type="remove"] {
+  #remove {
     background-color: #f44336;
+  }
+
+  button[type="button"] {
     color: white;
-    padding: 5px 10px;
+    padding: 10px 15px;
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
     cursor: pointer;
   }
 

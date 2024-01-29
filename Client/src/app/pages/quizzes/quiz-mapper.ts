@@ -16,7 +16,7 @@ export class QuizMapper {
       });
     }
 
-    static mapToQuizRegisterDto(quizData: QuizData, currentJobOfferId: number): QuizDto {
+    static mapToQuizRegisterDto(quizData: QuizData, currentJobOfferId: number, totalQuizScore: number): QuizDto {
       return {
         quiz: {
           name: quizData.quizName,
@@ -46,7 +46,7 @@ export class QuizMapper {
             answer: answer.correctAnswer,
             image: null,
             idaccount: localStorage.getItem('userID') !== "undefined" ? Number(localStorage.getItem('userID')) : 0,
-            idquestion: 0,
+            idquestion: answer.idquestion,
             idquiz: 0,
             elapsedtime: null,
             Idquizzesanswer: 0,
@@ -59,7 +59,7 @@ export class QuizMapper {
             answer: falseAnswer.falseAnswer,
             image: null,
             idaccount: localStorage.getItem('userID') !== "undefined" ? Number(localStorage.getItem('userID')) : 0,
-            idquestion: 0,
+            idquestion: falseAnswer.idquestion,
             idquiz: 0,
             elapsedtime: null,
             Idquizzesanswer: 0,
