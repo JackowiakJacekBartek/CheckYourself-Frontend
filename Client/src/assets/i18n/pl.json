@@ -120,7 +120,9 @@
     "Your time":"Twój czas: ",
     "info1":"Uzyskałeś/aś łącznie ",
     "info2":" z ",
-    "info3":" punktów uzyskując wynik  "
+    "info3":" punktów uzyskując wynik  ",
+    "Correct":"Poprawne odpowiedz ",
+    "Wrong":"Złe odpowiedzi "
   },
   "EditUserpage": {
     "Image uploaded": "Załadowano obraz",
