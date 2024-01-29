@@ -49,8 +49,10 @@ export class QuizCreateComponent {
   }
 
   createQuestionFormGroup() {
+    let id = parseInt(uuidv4().substring(0, 4), 16)
+
     return this.formBuilder.group({
-      id: parseInt(uuidv4().substring(0, 8), 16),
+      id: id,
       questionContent: ['', [Validators.required]],
       correctAnswers: this.formBuilder.array([], [Validators.required]),
       falseAnswers: this.formBuilder.array([], [Validators.required]),

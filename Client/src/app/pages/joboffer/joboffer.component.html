@@ -12,7 +12,7 @@
           <mat-icon class="material-symbols-outlined">quiz</mat-icon>
           <span>Usuń quiz o Id: {{quizId}}</span>
         </button>
-        <button *ngIf="!showEditButton" mat-button class="applyButton">
+        <button *ngIf="!showEditButton" mat-button class="applyButton" [routerLink]="'create-quiz'">
           <mat-icon class="material-symbols-outlined">quiz</mat-icon>
           <span>Aplikuj na oferte</span>
         </button>
