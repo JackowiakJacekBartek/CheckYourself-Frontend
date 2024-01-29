@@ -31,40 +31,26 @@ export class QuizCreateComponent {
     private quizzesService: QuizzesService,
   ) {
     this.quizForm = this.formBuilder.group({
-      quizName: ['Podstawy obiektowości', [Validators.required]],
-      quizTechnology: ['.Net', [Validators.required]],
+      quizName: ['', [Validators.required]],
+      quizTechnology: ['', [Validators.required]],
       maxDuration: ['10:00', [Validators.required, Validators.min(1)]],
-      passingThreshold: [80, [Validators.required, Validators.min(1)]],
-      maxPoints: [10, [Validators.required, Validators.min(0)]],
-      quizDescription: ['description', [Validators.required]],
-      questions: this.formBuilder.array([
-        // this.createQuestionFormGroup(),
-        // this.createQuestionFormGroup(),
-        // this.createQuestionFormGroup()
-      ])
+      passingThreshold: [0, [Validators.required, Validators.min(1)]],
+      maxPoints: [0, [Validators.required, Validators.min(0)]],
+      quizDescription: ['', [Validators.required]],
+      questions: this.formBuilder.array([])
     });
   }
 
 
   ngOnInit() {
-    // Subscribe to form value changes to recalculate totalQuizScore
     this.quizForm.valueChanges.subscribe(() => {
       this.calculateTotalQuizScore();
     });
   }
-  
-  // createQuestionFormGroup() {
-  //   return this.formBuilder.group({
-  //     id: uuidv4(),
-  //     questionContent: ['q', [Validators.required]],
-  //     correctAnswers: this.formBuilder.array([this.createCorrectAnswer('a', 3, '1')], [Validators.required]),
-  //     falseAnswers: this.formBuilder.array([this.createFalseAnswer('f1', '2'), this.createFalseAnswer('f2', '3'), this.createFalseAnswer('f3', '4')], [Validators.required]),
-  //   });
-  // } 
 
   createQuestionFormGroup() {
     return this.formBuilder.group({
-      id: uuidv4(),
+      id: parseInt(uuidv4().substring(0, 8), 16),
       questionContent: ['', [Validators.required]],
       correctAnswers: this.formBuilder.array([], [Validators.required]),
       falseAnswers: this.formBuilder.array([], [Validators.required]),
@@ -99,7 +85,7 @@ export class QuizCreateComponent {
   }
   
   addFalseAnswer(question: FormGroup) {
-    const idquestion = question.get('id')?.value; // Pobierz id pytania
+    const idquestion = question.get('id')?.value;
     const falseAnswersArray = question.get('falseAnswers') as FormArray;
     falseAnswersArray.push(this.createFalseAnswer('', idquestion));
   }
@@ -127,7 +113,7 @@ export class QuizCreateComponent {
   }
   
   addCorrectAnswer(question: FormGroup) {
-    const idquestion = question.get('id')?.value; // Pobierz id pytania
+    const idquestion = question.get('id')?.value; 
     const correctAnswersArray = question.get('correctAnswers') as FormArray;
     correctAnswersArray.push(this.createCorrectAnswer('', 1, idquestion));
   }

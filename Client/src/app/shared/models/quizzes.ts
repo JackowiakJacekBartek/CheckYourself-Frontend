@@ -23,7 +23,7 @@ export interface QuizzesAnswerDto {
     image?: string | null;
     isCorrect?: number;
     idaccount: number;
-    idquestion: string | any;
+    idquestion: number;
     idquiz: number;
     elapsedtime?: string | null;
     Idquizzesanswer: number;
@@ -97,11 +97,11 @@ export interface QuestionData {
 export interface CorrectAnswerData {
     correctAnswer: string;
     correctAnswerScore: number;
-    idquestion: string;
+    idquestion: number;
 }
 
 export interface FalseAnswerData {
     falseAnswer: string;
-    idquestion: string;
+    idquestion: number;
 }
 

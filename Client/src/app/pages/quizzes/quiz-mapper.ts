@@ -29,6 +29,7 @@ export class QuizMapper {
           description: quizData.quizDescription,
         },
         quizzesQuestions: quizData.questions.map(question => ({
+          id: question.id,
           question: question.questionContent,
           additionaltext: null,
           type: QuizzesTypes['single-choice'],
@@ -38,11 +39,14 @@ export class QuizMapper {
           totaltime: null
         })),
         quizzesAnswers: quizData.questions.flatMap((question, i) => {
-          console.log(question)
+
           const correctAnswersArray = question.correctAnswers as CorrectAnswerData[];
           const falseAnswersArray = question.falseAnswers as FalseAnswerData[];
+          
+          const questionId = question.id
+
           const correctAnswers = correctAnswersArray.map((answer, i) => ({
-            id: question.id,
+            id: questionId,
             answer: answer.correctAnswer,
             image: null,
             idaccount: localStorage.getItem('userID') !== "undefined" ? Number(localStorage.getItem('userID')) : 0,
@@ -55,7 +59,7 @@ export class QuizMapper {
             totalscore: answer.correctAnswerScore
           }));
           const falseAnswers = falseAnswersArray.map((falseAnswer, i) => ({
-            id: question.id,
+            id: questionId, // Use the question id here
             answer: falseAnswer.falseAnswer,
             image: null,
             idaccount: localStorage.getItem('userID') !== "undefined" ? Number(localStorage.getItem('userID')) : 0,
@@ -66,9 +70,11 @@ export class QuizMapper {
             iscorrect: 0,
             additionaltext: null
           }));
+    
           return [...correctAnswers, ...falseAnswers];
         }),
       };
     }
+    
   }
   

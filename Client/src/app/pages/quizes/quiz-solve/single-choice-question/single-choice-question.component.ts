@@ -48,8 +48,6 @@ export class SingleChoiceQuestionComponent {
   }
 
   nextQuestion(option: any) {
-    console.log('hereee1', option.answers.incorrect)
-    console.log('hereee2', this.pickedOptions)
     this.questionChanged.emit(option.answers.incorrect.some(r => this.pickedOptions.includes(r)));
     this.pickedOptions = [];
   }

@@ -8,8 +8,6 @@ import {
 } from 'src/app/components/register-company-pop-up/register-company-pop-up.component';
 import {AreYouSurePopUpComponent} from "../../components/are-you-sure-pop-up/are-you-sure-pop-up.component";
 
-// import { RegisterCompanyPopUpComponent } from 'src/app/components/register-company-pop-up/register-company-pop-up.component';
-
 @Component({
   selector: 'app-companiespage',
   templateUrl: './companies-page.component.html',
@@ -50,7 +48,6 @@ export class CompaniesPageComponent implements AfterViewInit {
   }
 
   addCompany() {
-    console.log('123', this.companies);
     this.companyProfileService.getCompaniesById().subscribe(res => {
       this.data = res.methodResult;
       this.companies = res.methodResult;
