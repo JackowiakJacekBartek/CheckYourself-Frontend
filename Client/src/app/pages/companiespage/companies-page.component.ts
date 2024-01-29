@@ -21,9 +21,9 @@ export class CompaniesPageComponent implements AfterViewInit {
   companies: Company[] = [];
 
   constructor(private router: Router,
-              public popUp: MatDialog,
-              private companyProfileService: CompanyPageService,
-              private route: ActivatedRoute) {
+    public popUp: MatDialog,
+    private companyProfileService: CompanyPageService,
+    private route: ActivatedRoute) {
   }
 
   ngAfterViewInit(): void {

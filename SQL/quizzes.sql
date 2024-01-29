@@ -13,7 +13,7 @@ create table Quizzes
 	totalScore float,
 	passingThreshold float not null,
 	totalTime text, -- "05:00"
-	idCompany int not null,
+	idCompany int not null, -- 0 - public
 	technology text not null, -- .Net / Java / React / JS
 	type int not null -- 1 - jednokrotnego, 2 - wielokrotnego
 );

@@ -124,6 +124,7 @@ export class QuizCreateComponent {
   }
 
   submitQuiz() {
+    if (this.quizForm.get('maxPoints')?.value === 0) return;
 
     if(this.quizForm.get('maxPoints')?.value !== this.totalQuizScore) {
       this.toastrService.warning('Sumy punktów formularza nie są równe'); // TODO tlumaczenie

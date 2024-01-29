@@ -105,16 +105,17 @@
           <div class="center">
             <div class="tags">
               <ng-container *ngFor="let tag of offer.tags">
-              <div class="tag" *ngIf="tag !== ''">
-                {{ getTechName(tag) | capitalize }}
-              </div>
+                <div class="tag" *ngIf="tag !== ''">
+                  {{ getTechName(tag) | capitalize }}
+                </div>
               </ng-container>
             </div>
           </div>
           <div class="right">
             <p>{{(offer.location ? offer.location : company.location) | capitalize}}</p>
             <div class="center">
-              <button mat-button class="applyButton" [routerLink]="'/joboffer/' + offer.id"><span>Zobacz oferte</span></button>
+              <!-- todo tlumaczenie -->
+              <button *ngIf="showEditButton" mat-button class="applyButton" [routerLink]="'/joboffer/' + offer.id"><span>Przypnij quiz</span></button>
               <button mat-button class="applyButton" (click)="deleteJobOffer(offer.id)"><span>Usuń oferte</span></button>
             </div>
           </div>

@@ -67,6 +67,7 @@ import { NgApexchartsModule } from "ng-apexcharts";
 import { CapitalizePipe } from './shared/pipes/capitalize.pipe';
 import { JobofferComponent } from './pages/joboffer/joboffer.component';
 import { QuizCreateComponent } from './pages/quizes/quiz-create/quiz-create.component';
+import { QuizzesListComponent } from './pages/quizzes-list-component/quizzes-list-component.component';
 
 @NgModule({
   exports: [
@@ -107,7 +108,8 @@ import { QuizCreateComponent } from './pages/quizes/quiz-create/quiz-create.comp
     ResultComponent,
     DonutChartComponent,
     CapitalizePipe,
-    JobofferComponent
+    JobofferComponent,
+    QuizzesListComponent
   ],
   imports: [
     NgApexchartsModule,
