@@ -6,10 +6,10 @@
           <div class="left">
             <!-- <app-donut-chart [userScore]="quizAttempt.quizAttempt.totalparticipantscore" [totalScore]="quizAttempt.quiz.totalscore!"></app-donut-chart> -->
             <app-donut-chart [userScore]="quizAttempt.quizAttempt.totalparticipantscore" [totalScore]="quizAttempt.quiz.totalscore!"></app-donut-chart>
-            
+
           </div>
           <div class="right">
-            <button class="done">{{'Quiz.Leave' | translate}}</button>
+            <button [routerLink]="''" class="done">{{'Quiz.Leave' | translate}}</button>
               <div class="score">
                 {{'Quiz.Result' | translate}}
                   <span [style.color]="quizAttempt.quizAttempt.totalparticipantscore*10 >= quizAttempt.quiz.passingthreshold ? '#00A993' : '#EB4335'">
@@ -21,8 +21,8 @@
                       <div class="timer">
                           {{quizAttempt && quizAttempt.quizAttempt.totalelapsedtime}} / {{quizAttempt && quizAttempt.quiz.totaltime}}
                       </div>
-                      
-                      
+
+
               </div>
               <div class="info">
                   <a>{{'Quiz.info1' | translate}} <b>{{quizAttempt.quizAttempt.totalparticipantscore}}</b>{{'Quiz.info2' | translate}}<b>{{quizAttempt.quiz.totalscore}}</b>
@@ -34,13 +34,13 @@
               </div>
       </div>
   </div>
-  
-  
-  
-  
-  
+
+
+
+
+
   <!--<p>result works!</p>
-  
+
   id: {{quizAttempt && quizAttempt.quiz.id}} <br />
   image: {{quizAttempt && quizAttempt.quiz.image}} <br />
   name: {{quizAttempt && quizAttempt.quiz.name}} <br />
@@ -50,9 +50,9 @@
   totalscore: {{quizAttempt && quizAttempt.quiz.totalscore}} <br />
   totaltime: {{quizAttempt && quizAttempt.quiz.totaltime}} <br />
   minimal passing threshold: {{quizAttempt && quizAttempt.quiz.passingthreshold}}% <br />
-  
+
   <br />
-  
+
   id: {{quizAttempt && quizAttempt.quizAttempt.id}} <br />
   totalelapsedtime: {{quizAttempt && quizAttempt.quizAttempt.totalelapsedtime}} <br />
   totalparticipantscore: {{quizAttempt && quizAttempt.quizAttempt.totalparticipantscore}} <br />
