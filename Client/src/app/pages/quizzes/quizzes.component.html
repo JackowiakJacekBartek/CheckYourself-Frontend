@@ -14,26 +14,16 @@
     <div class="background">
       <div class="content">
 
-        <a class="title">Junior C# Developer - Twing team</a>
-        <a class="description">Cześć. Jesteśmy szybko rozwijającą się ekipą różnorakich osobistości, które łączy wspólna
-          pasja oraz praca. Przygotowany przez nas dwuczęściowy egzamin sprawdzi waszą wiedzę oraz umiejętności z
-          zakresu technologi C#. Niezależnie od posiadanego przez was zaplecza doświadczenia oraz umiejętności
-          profilaktycznie zalecamy zapoznanie się z danymi materiałami oraz wykładami, które mogą wam wyjaśnić kilka
-          zagadanień, których mogliście nie znać, co pokażę również waszą umiejętność adaptacji. W przypadku
-          jakichkolwiek pytań co do zagadnień można się zemną kontaktować mailowo chętnie wytłumaczę niektórę
-          zagadnienia. Powodzenia i do zobaczenia w Twing team.
-          <br>
-          <br>Senior developer
-          <br>Joanna Stasik
-          <br>joasta@gmail.com </a>
+        <a class="title">{{quiz.quiz.name}}</a>
+        <a class="description">{{quiz.quiz.description}}</a>
 
         <div class="line"></div>
 
         <div class="quiz-info">
-          <div>{{'Quiz.Name' | translate}}<a>Frontend developer</a></div>
-          <div>{{'Quiz.Question_no' | translate}}<a>20</a></div>
-          <div>{{'Quiz.Time' | translate}}<a>20min</a></div>
-          <div>{{'Quiz.Company' | translate}}<a>Tmobile</a></div>
+          <div>Test jest na <a>{{quiz.quiz.totalscore}}</a> pkt</div>
+          <div>Potrzebujesz <a>{{quiz.quiz.passingthreshold}}</a> pkt do zdania</div>
+          <div>{{'Quiz.Time' | translate}}<a>{{quiz.quiz.totaltime}}</a></div>
+          <div>Test ma <a>{{quiz.quizzesQuestions.length}}</a> pytań</div>
         </div>
 
         <button class="start" (click)="onStart()">{{'Quiz.Start Quiz' | translate}}</button>

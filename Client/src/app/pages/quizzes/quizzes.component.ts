@@ -23,6 +23,7 @@ export class QuizzesComponent {
   constructor(protected quizzesService: QuizzesService, private router: Router, private route: ActivatedRoute) {
     quizzesService.getQuizByIdJobAdvertisement(this.jobOfferID).subscribe(res => {
       this.quiz = res.methodResult;
+      console.log(this.quiz)
     })
   }
 
