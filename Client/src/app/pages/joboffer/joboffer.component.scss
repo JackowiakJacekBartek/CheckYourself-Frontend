@@ -21,14 +21,16 @@ $margin: 50px;
 
   & .upheader {
     display: flex;
-    align-items: flex-end;
+    justify-content: flex-end;
     margin-right: 50px;
     margin-bottom: 20px;
-    flex-direction: column;
+
+    button {
+      margin-left: 20px;
+    }
 
     .edit-button {
       display: flex;
-      //margin-left: 100%;
       margin-bottom: 5%;
       cursor: pointer;
 

@@ -6,6 +6,7 @@ import {CompanyProfile} from "../../shared/models/companies";
 import {CompanyPageService} from "../companypage/company-page.service";
 import {JobType, TechList, NecessarySkill, ToolsList} from "../../shared/constants/constants";
 import {el} from "date-fns/locale";
+import {HeaderComponent} from "../../components/header/header/header.component";
 
 @Component({
   selector: 'app-joboffer',
@@ -26,7 +27,8 @@ export class JobofferComponent implements OnInit {
 
   constructor(private EditJobofferService: EditJobofferService,
               private route: ActivatedRoute,
-              private companyProfileService: CompanyPageService) {
+              private companyProfileService: CompanyPageService,
+              private headerComponent: HeaderComponent) {
   }
 
   ngOnInit(): void {
@@ -54,6 +56,10 @@ export class JobofferComponent implements OnInit {
   protected readonly NecessarySkill = NecessarySkill;
   protected readonly ToolsList = ToolsList;
 
+  openLogin() {
+    this.headerComponent.openLogin();
+  }
+
   showPlatformSection(a : JobTechnologies[], b : number) : boolean {
     return a.some(icon => icon.idtechnology === b);
   }
@@ -65,4 +71,6 @@ export class JobofferComponent implements OnInit {
   isNumber(value: any): boolean {
     return !isNaN(Number(value));
   }
+
+  protected readonly localStorage = localStorage;
 }
