@@ -42,7 +42,7 @@ const routes: Routes = [
     path: 'quizzes', component: QuizzesListComponent, canActivate:[AuthGuard] // myquizzes
   },
   {
-    path: 'joboffer/:id/quiz/:id', component: QuizzesComponent, canActivate:[AuthGuard]
+    path: 'joboffer/:id/quiz', component: QuizzesComponent, canActivate:[AuthGuard]
   },
   {
     path: 'quiz/result/:id', component: ResultComponent, canActivate:[AuthGuard]
