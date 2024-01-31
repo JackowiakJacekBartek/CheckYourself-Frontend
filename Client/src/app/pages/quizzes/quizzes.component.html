@@ -12,9 +12,10 @@
         </div>
         <!-- <div class="start"> -->
         <div class="background">
-            <div class="content">
-
-                <a class="title">Witamy w quizie {{quiz.quiz.name | capitalize}} !</a>
+            <div class="wrapperUser">
+                <div class="title">
+                    <a>Witamy w quizie {{quiz.quiz.name | capitalize}} !</a>
+                </div>
                 <div class="desc">
                     <a *ngIf="quiz.quiz.description" class="description">{{quiz.quiz.description | capitalize}}</a>
                 </div>
