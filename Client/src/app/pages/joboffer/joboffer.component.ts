@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {EditJobofferService} from "../edit-joboffer/edit-joboffer.service";
 import {JobOffer, JobTechnologies, JobDetails} from "../../shared/models/jobOffer";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {CompanyProfile} from "../../shared/models/companies";
 import {CompanyPageService} from "../companypage/company-page.service";
 import {JobType, TechList, NecessarySkill, ToolsList} from "../../shared/constants/constants";
@@ -34,11 +34,15 @@ export class JobofferComponent implements OnInit {
               private headerComponent: HeaderComponent,
               private quizzesService: QuizzesService,
               private toastrService: ToastrService,
+              private router: Router,
               private translate: TranslateService) {
   }
 
   ngOnInit(): void {
     this.EditJobofferService.getJobById(this.jobOfferId).subscribe(res => {
+      if(res.methodResult === null) {
+        this.router.navigate(['/']);
+      }
       this.dataJobOffer = res.methodResult;
       console.log(`job`, this.dataJobOffer)
 
