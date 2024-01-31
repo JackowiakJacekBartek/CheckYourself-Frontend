@@ -59,14 +59,13 @@ export class QuestionsComponent implements OnInit {
     const target = value.target as HTMLInputElement | null;
 
     if (target) {
-      const answer = Number(target.value);
+      const answer = Number(target.value)
       this.answers[this.currentQuestionNumber].answers = [];
       
       this.answers[this.currentQuestionNumber].answers.push({
-        id: answer, 
-        idquestion: this.currentQuestion?.id,
-        image: this.imageUrls[answer - 1] 
-      } as QuizzesAnswerDto);
+        id: answer,
+        idquestion: this.currentQuestion?.id
+      } as QuizzesAnswerDto)
     }
   }
 

@@ -33,7 +33,7 @@ export class QuizzesService {
         idquizzesanswer: Number(answer.id),
         elapsedtime: elapsedTime ?? "00:00",
         idquiz: quizAnswer.question.idquiz,
-        answer: answer.answer ?? "",
+        answer: answer.id?.toString() ?? "",
         idquestion: answer.idquestion
       }))
     );

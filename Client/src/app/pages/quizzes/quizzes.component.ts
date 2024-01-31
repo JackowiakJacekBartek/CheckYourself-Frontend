@@ -30,26 +30,4 @@ export class QuizzesComponent {
   onStart() {
     this.isQuizToBeStarted = !this.isQuizToBeStarted;
   }
-
-
-  onSelecting(value: Event) {
-    const target = value.target as HTMLInputElement | null;
-
-    if (target) {
-      const answer = Number(target.value)
-      this.answers[this.currentQuestionNumber].answers = [];
-
-      this.answers[this.currentQuestionNumber].answers.push({
-        id: answer,
-        idquestion: this.currentQuestion?.id
-      } as QuizzesAnswerDto)
-    }
-  }
-
-  submit() {
-    this.quizzesService.sendQuizResults(this.answers, this.elapsedTime).subscribe(res => {
-      this.router.navigate(['quiz/result/'+res.methodResult]);
-    })
-  }
-
 }

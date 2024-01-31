@@ -71,7 +71,9 @@ export class JobofferComponent implements OnInit {
     if (!userId || userId === 'undefined') {
       this.openLogin();
     } else {
-      // this.router.navigate(['quiz/'])
+      const currentPath = this.route.snapshot.url.map(segment => segment.path).join('/');
+      const newPath = `${currentPath}/quiz`;
+      this.router.navigate([newPath]);
     }
   }
 
