@@ -45,10 +45,12 @@ export class JobofferComponent implements OnInit {
       }
       this.dataJobOffer = res.methodResult;
       console.log(`job`, this.dataJobOffer)
+      localStorage.setItem('jobOfferName', this.dataJobOffer.job.name);
 
       this.companyId = this.dataJobOffer.job.companyid;
       this.companyProfileService.getCompanyById(this.dataJobOffer.job.companyid).subscribe(res => {
         this.dataCompany = res.methodResult;
+        localStorage.setItem('companyName', this.dataCompany.company.name);
 
         this.companyIdAccount = this.dataCompany.company.idaccount;
         this.showEditButton = (+this.currentUserID2 === +this.companyIdAccount);
@@ -79,7 +81,7 @@ export class JobofferComponent implements OnInit {
 
   isApplyVisible(): boolean {
     const userId = localStorage.getItem('userID');
-    
+
     if (this.dataCompany && this.dataCompany.company.idaccount != Number(userId)) {
       return true;
     }
