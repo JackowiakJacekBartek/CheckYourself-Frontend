@@ -1,5 +1,5 @@
 <div class="navbar">
-  <a>NameCompany > {{quiz.quiz.name | capitalize}} <span> > Pytanie: {{currentQuestionNumber+1}} / {{quiz.quizzesQuestions.length}}</span></a>
+  <a>{{companyName | capitalize}} > {{jobOfferName | capitalize}} > {{quiz.quiz.name | capitalize}} <span> > Pytanie: {{currentQuestionNumber+1}} / {{quiz.quizzesQuestions.length}}</span></a>
   <timer [totalTime]="quiz.quiz.totaltime"></timer>
 </div>
 

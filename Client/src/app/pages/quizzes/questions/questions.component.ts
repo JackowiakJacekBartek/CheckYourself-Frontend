@@ -20,6 +20,9 @@ export class QuestionsComponent implements OnInit {
 
   answers: QuizAnswerDto[] = [];
 
+  companyName: string = '';
+  jobOfferName: string = '';
+
   constructor(
     protected quizzesService: QuizzesService,
     private router: Router,
@@ -58,6 +61,13 @@ export class QuestionsComponent implements OnInit {
         this.submit()
       }
     });
+
+    // @ts-ignore
+    this.companyName = localStorage.getItem('companyName');
+    console.log(this.companyName);
+    // @ts-ignore
+    this.jobOfferName = localStorage.getItem('jobOfferName');
+    console.log(this.jobOfferName);
   }
 
   isAnswerSelected(answerId: any): boolean {

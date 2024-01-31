@@ -44,16 +44,21 @@ export class JobofferComponent implements OnInit {
         this.router.navigate(['/']);
       }
       this.dataJobOffer = res.methodResult;
+      console.log(`job`, this.dataJobOffer)
+      localStorage.setItem('jobOfferName', this.dataJobOffer.job.name);
 
       this.companyId = this.dataJobOffer.job.companyid;
       this.companyProfileService.getCompanyById(this.dataJobOffer.job.companyid).subscribe(res => {
         this.dataCompany = res.methodResult;
+        localStorage.setItem('companyName', this.dataCompany.company.name);
 
         this.companyIdAccount = this.dataCompany.company.idaccount;
         this.showEditButton = (+this.currentUserID2 === +this.companyIdAccount);
 
+        console.log(this.dataCompany)
         this.image = res.methodResult.company.logo ? res.methodResult.company.logo : '../../../assets/images/logoEmpty.png';
         this.quizId = this.dataJobOffer.job.quizid ? this.dataJobOffer.job.quizid : 0;
+        console.log(this.quizId)
       })
     })
   }
@@ -76,7 +81,7 @@ export class JobofferComponent implements OnInit {
 
   isApplyVisible(): boolean {
     const userId = localStorage.getItem('userID');
-    
+
     if (this.dataCompany && this.dataCompany.company.idaccount != Number(userId)) {
       return true;
     }
@@ -103,7 +108,9 @@ export class JobofferComponent implements OnInit {
 
   handleDeleteQuiz(quizId: number) {
     this.quizzesService.deleteQuizById(quizId).subscribe(res => {
+      console.log(res)
       if (res.methodResult === 0 || res.methodResult === -1) { // 0 no quiz -1 no joboffer
+        console.log('error usuwania')
         this.toastrService.warning(this.translate.instant('Error.UnableToDoIt'));
       } else {
         window.location.reload();
