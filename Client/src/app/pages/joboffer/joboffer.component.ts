@@ -66,6 +66,24 @@ export class JobofferComponent implements OnInit {
   protected readonly NecessarySkill = NecessarySkill;
   protected readonly ToolsList = ToolsList;
 
+  applyClick() {
+    const userId = localStorage.getItem('userID');
+    if (!userId || userId === 'undefined') {
+      this.openLogin();
+    } else {
+      // this.router.navigate(['quiz/'])
+    }
+  }
+
+  isApplyVisible(): boolean {
+    const userId = localStorage.getItem('userID');
+    
+    if (this.dataCompany && this.dataCompany.company.idaccount != Number(userId)) {
+      return true;
+    }
+    return false;
+  }
+
   openLogin() {
     this.headerComponent.openLogin();
   }
