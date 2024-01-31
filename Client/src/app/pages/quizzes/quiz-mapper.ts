@@ -8,7 +8,7 @@ export class QuizMapper {
           .filter((answer) => {
             return answer.idquestion === question.id;
           })
-  
+
         return {
           question: question,
           answers: answers,
@@ -20,7 +20,7 @@ export class QuizMapper {
       return {
         quiz: {
           name: quizData.quizName,
-          totalscore: quizData.maxPoints,
+          totalscore: totalQuizScore,
           totaltime: quizData.maxDuration.toString(),
           idcompany: currentJobOfferId,
           type: QuizzesTypes['single-choice'],
@@ -42,7 +42,7 @@ export class QuizMapper {
 
           const correctAnswersArray = question.correctAnswers as CorrectAnswerData[];
           const falseAnswersArray = question.falseAnswers as FalseAnswerData[];
-          
+
           const questionId = question.id
 
           const correctAnswers = correctAnswersArray.map((answer, i) => ({
@@ -70,11 +70,10 @@ export class QuizMapper {
             iscorrect: 0,
             additionaltext: null
           }));
-    
+
           return [...correctAnswers, ...falseAnswers];
         }),
       };
     }
-    
+
   }
-  

@@ -8,18 +8,22 @@
           <mat-icon class="material-symbols-outlined">quiz</mat-icon>
           <span>{{'All.Add quiz' | translate}}</span>
         </button>
-        <button *ngIf="quizId > 0 && showEditButton" mat-button class="applyButton">
-          <mat-icon class="material-symbols-outlined">quiz</mat-icon>
-          <span>Edytuj quiz o Id: {{quizId}}</span>
-        </button>
         <button *ngIf="quizId > 0 && showEditButton" mat-button class="applyButton" (click)="handleDeleteQuiz(quizId)">
           <mat-icon class="material-symbols-outlined">quiz</mat-icon>
-          <span>Usuń quiz o Id: {{quizId}}</span>
+          <span>{{'All.Delete quiz' | translate}}</span>
         </button>
-        <button *ngIf="!showEditButton" mat-button class="applyButton" [routerLink]="'create-quiz'">
-          <mat-icon class="material-symbols-outlined">quiz</mat-icon>
-          <span>Aplikuj na oferte</span>
-        </button>
+        <ng-container *ngIf="quizId > 0 && (localStorage.getItem('userID') && localStorage.getItem('userID') != 'undefined'); else otherBlock">
+          <button mat-button class="applyButton" [routerLink]="'quiz/'">
+            <mat-icon class="material-symbols-outlined">quiz</mat-icon>
+            <span>Aplikuj na oferte TODO</span>
+          </button>
+        </ng-container>
+        <ng-template #otherBlock>
+          <button *ngIf="quizId > 0" mat-button class="applyButton" (click)="openLogin()">
+            <mat-icon class="material-symbols-outlined">quiz</mat-icon>
+            <span>Aplikuj na oferte TODO</span>
+          </button>
+        </ng-template>
       </div>
       <div class="header">
         <div class="left">

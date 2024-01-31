@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { QuizAnswerDto, QuizDto, QuizQuestionDto, QuizzesAnswerDto, QuizzesQuestionDto } from 'src/app/shared/models/quizzes';
 import { QuizzesService } from './quizzes.service';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-quizzes',
@@ -18,9 +18,12 @@ export class QuizzesComponent {
   quizQuestions: QuizQuestionDto[] = [];
   answers: QuizAnswerDto[] = [];
 
-  constructor(protected quizzesService: QuizzesService, private router: Router) {
-    quizzesService.getQuizByIdJobAdvertisement(1).subscribe(res => {
+  public jobOfferID: number = this.route.snapshot.params['id'];
+
+  constructor(protected quizzesService: QuizzesService, private router: Router, private route: ActivatedRoute) {
+    quizzesService.getQuizByIdJobAdvertisement(this.jobOfferID).subscribe(res => {
       this.quiz = res.methodResult;
+      console.log(this.quiz)
     })
   }
 
@@ -28,16 +31,16 @@ export class QuizzesComponent {
     this.isQuizToBeStarted = !this.isQuizToBeStarted;
   }
 
-  
+
   onSelecting(value: Event) {
     const target = value.target as HTMLInputElement | null;
 
     if (target) {
       const answer = Number(target.value)
       this.answers[this.currentQuestionNumber].answers = [];
-      
+
       this.answers[this.currentQuestionNumber].answers.push({
-        id: answer, 
+        id: answer,
         idquestion: this.currentQuestion?.id
       } as QuizzesAnswerDto)
     }

@@ -35,7 +35,6 @@ export class QuizCreateComponent {
       quizTechnology: ['', [Validators.required]],
       maxDuration: ['10:00', [Validators.required, Validators.min(1)]],
       passingThreshold: [0, [Validators.required, Validators.min(1)]],
-      maxPoints: [0, [Validators.required, Validators.min(0)]],
       quizDescription: ['', [Validators.required]],
       questions: this.formBuilder.array([])
     });
@@ -57,7 +56,7 @@ export class QuizCreateComponent {
       correctAnswers: this.formBuilder.array([], [Validators.required]),
       falseAnswers: this.formBuilder.array([], [Validators.required]),
     });
-  } 
+  }
 
   calculateTotalQuizScore() {
     let totalScore = 0;
@@ -85,13 +84,13 @@ export class QuizCreateComponent {
       idquestion: [idquestion, [Validators.required]],
     });
   }
-  
+
   addFalseAnswer(question: FormGroup) {
     const idquestion = question.get('id')?.value;
     const falseAnswersArray = question.get('falseAnswers') as FormArray;
     falseAnswersArray.push(this.createFalseAnswer('', idquestion));
   }
-  
+
   removeFalseAnswer(question: FormGroup, index: number) {
     const falseAnswersArray = question.get('falseAnswers') as FormArray;
     falseAnswersArray.removeAt(index);
@@ -113,25 +112,25 @@ export class QuizCreateComponent {
       idquestion: [idquestion, [Validators.required]],
     });
   }
-  
+
   addCorrectAnswer(question: FormGroup) {
-    const idquestion = question.get('id')?.value; 
+    const idquestion = question.get('id')?.value;
     const correctAnswersArray = question.get('correctAnswers') as FormArray;
     correctAnswersArray.push(this.createCorrectAnswer('', 1, idquestion));
   }
-  
+
   removeCorrectAnswer(question: FormGroup, index: number) {
     const correctAnswersArray = question.get('correctAnswers') as FormArray;
     correctAnswersArray.removeAt(index);
   }
 
   submitQuiz() {
-    if (this.quizForm.get('maxPoints')?.value === 0) return;
+    //if (this.quizForm.get('maxPoints')?.value === 0) return;
 
-    if(this.quizForm.get('maxPoints')?.value !== this.totalQuizScore) {
-      this.toastrService.warning('Sumy punktów formularza nie są równe'); // TODO tlumaczenie
-      return;
-    }
+    // if(this.quizForm.get('maxPoints')?.value !== this.totalQuizScore) {
+    //   this.toastrService.warning('Sumy punktów formularza nie są równe'); // TODO tlumaczenie
+    //   return;
+    // }
 
     if (this.quizForm.valid) {
       const formValues: QuizData = this.quizForm.value
@@ -139,7 +138,10 @@ export class QuizCreateComponent {
       const mappedValues: QuizDto = QuizMapper.mapToQuizRegisterDto(formValues, this.currentJobOfferId, this.totalQuizScore);
       this.quizzesService.createQuizForJobAdvertisement(this.currentJobOfferId, mappedValues).subscribe(res => {
         console.log(res)
-        this.router.navigate(['../'], { relativeTo: this.route })
+        if(res.isSuccess) {
+          console.log('sukces')
+          this.router.navigate(['/joboffer/'+this.currentJobOfferId])
+        }
       });
     } else {
       console.log('Form is invalid. Please fill in all required fields.');

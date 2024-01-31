@@ -6,6 +6,7 @@ import {CompanyProfile} from "../../shared/models/companies";
 import {CompanyPageService} from "../companypage/company-page.service";
 import {JobType, TechList, NecessarySkill, ToolsList} from "../../shared/constants/constants";
 import {el} from "date-fns/locale";
+import {HeaderComponent} from "../../components/header/header/header.component";
 import { QuizzesService } from '../quizzes/quizzes.service';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
@@ -30,6 +31,7 @@ export class JobofferComponent implements OnInit {
   constructor(private EditJobofferService: EditJobofferService,
               private route: ActivatedRoute,
               private companyProfileService: CompanyPageService,
+              private headerComponent: HeaderComponent,
               private quizzesService: QuizzesService,
               private toastrService: ToastrService,
               private translate: TranslateService) {
@@ -38,7 +40,7 @@ export class JobofferComponent implements OnInit {
   ngOnInit(): void {
     this.EditJobofferService.getJobById(this.jobOfferId).subscribe(res => {
       this.dataJobOffer = res.methodResult;
-      console.log(this.dataJobOffer)
+      console.log(`job`, this.dataJobOffer)
 
       this.companyId = this.dataJobOffer.job.companyid;
       this.companyProfileService.getCompanyById(this.dataJobOffer.job.companyid).subscribe(res => {
@@ -60,6 +62,10 @@ export class JobofferComponent implements OnInit {
   protected readonly NecessarySkill = NecessarySkill;
   protected readonly ToolsList = ToolsList;
 
+  openLogin() {
+    this.headerComponent.openLogin();
+  }
+
   showPlatformSection(a : JobTechnologies[], b : number) : boolean {
     return a.some(icon => icon.idtechnology === b);
   }
@@ -71,6 +77,8 @@ export class JobofferComponent implements OnInit {
   isNumber(value: any): boolean {
     return !isNaN(Number(value));
   }
+
+  protected readonly localStorage = localStorage;
 
   handleDeleteQuiz(quizId: number) {
     this.quizzesService.deleteQuizById(quizId).subscribe(res => {
