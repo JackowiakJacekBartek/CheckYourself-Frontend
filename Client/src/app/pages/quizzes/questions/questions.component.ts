@@ -10,6 +10,7 @@ import { TimerService } from '../timer/timer.service';
   templateUrl: './questions.component.html',
   styleUrls: ['./questions.component.scss']
 })
+
 export class QuestionsComponent implements OnInit {
   quizQuestions: QuizQuestionDto[] = [];
   quiz: QuizDto = {} as QuizDto;
@@ -61,7 +62,7 @@ export class QuestionsComponent implements OnInit {
     if (target) {
       const answer = Number(target.value)
       this.answers[this.currentQuestionNumber].answers = [];
-      
+
       this.answers[this.currentQuestionNumber].answers.push({
         id: answer,
         idquestion: this.currentQuestion?.id

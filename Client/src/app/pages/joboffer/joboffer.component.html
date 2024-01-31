@@ -12,7 +12,8 @@
           <mat-icon class="material-symbols-outlined">quiz</mat-icon>
           <span>{{'All.Delete quiz' | translate}}</span>
         </button>
-        <ng-container *ngIf="isApplyVisible()">
+<!--        *ngIf="isApplyVisible()" dodac do ng container pod spodem-->
+        <ng-container>
           <button mat-button class="applyButton" (click)="applyClick()">
             <mat-icon class="material-symbols-outlined">quiz</mat-icon>
             <span>Aplikuj na oferte</span>

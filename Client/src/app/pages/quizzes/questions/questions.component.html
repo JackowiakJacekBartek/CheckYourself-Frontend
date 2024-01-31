@@ -1,40 +1,39 @@
 <div class="navbar">
-  <a>Quiz: {{quiz.quiz.name}}</a>
-  <div class="timer">{{ elapsedTime }}</div>
+  <a>NameCompany > {{quiz.quiz.name | capitalize}} <span> > Pytanie: {{currentQuestionNumber+1}} / {{quiz.quizzesQuestions.length}}</span></a>
+  <timer [totalTime]="quiz.quiz.totaltime"></timer>
 </div>
 <div class="background">
   <div class="content">
-    
-    <div class="question">{{ quizQuestions[currentQuestionNumber].question.question }}</div>
 
-    <div class="image">
-      <img [src]="'../assets/images/mockQuestion.png'" alt="Background Image">
-    </div>
+    <div class="question">{{ quizQuestions[currentQuestionNumber].question.question | capitalize}}</div>
 
-    <div class="answer" *ngFor="let answer of quizQuestions[currentQuestionNumber].answers; let i = index">
-      <label>
-        <input type="radio"
-               name="answers"
-               [value]="answer.id" 
-               [checked]="this.answers[this.currentQuestionNumber].answers && 
-                           this.answers[this.currentQuestionNumber].answers.length > 0 && 
+    <div class="answers">
+      <div class="answer" *ngFor="let answer of quizQuestions[currentQuestionNumber].answers; let i = index">
+        <label>
+          <input type="radio"
+                 name="answers"
+                 [value]="answer.id"
+                 [checked]="this.answers[this.currentQuestionNumber].answers &&
+                           this.answers[this.currentQuestionNumber].answers.length > 0 &&
                            this.answers[this.currentQuestionNumber].answers[0].id == answer.id"
-               (change)="onSelecting($event)" />
-      
-        <div class="radio-button-content">
-          <img [src]="answer.image" alt="Answer Image">
-          <span class="question-text">{{ answer.answer }}</span>
-        </div>
-      </label>
+                 (change)="onSelecting($event)"/>
+
+          <div class="radio-button-content">
+            <img [src]="answer.image" alt="Answer Image">
+            <span class="question-text">{{ answer.answer | capitalize}}</span>
+          </div>
+        </label>
+      </div>
     </div>
 
-  
-      
-      
-      <button class="prev" *ngIf="currentQuestionNumber > 0" (click)="onPrev()">{{'Quiz.Prev Question' | translate}}</button>
-      <button class="next" *ngIf="quizQuestions.length > currentQuestionNumber+1" (click)="onNext($event)">{{'Quiz.Next Question' | translate}}</button>
-      <button class="next" *ngIf="quizQuestions.length == currentQuestionNumber+1" (click)="submit()">{{'Quiz.Result of Quiz' | translate}}</button>
-    </div>
+
+    <button class="prev" *ngIf="currentQuestionNumber > 0"
+            (click)="onPrev()">{{'Quiz.Prev Question' | translate}}</button>
+    <button class="next" *ngIf="quizQuestions.length > currentQuestionNumber+1"
+            (click)="onNext($event)">{{'Quiz.Next Question' | translate}}</button>
+    <button class="next" *ngIf="quizQuestions.length == currentQuestionNumber+1"
+            (click)="submit()">{{'Quiz.Result of Quiz' | translate}}</button>
+  </div>
 </div>
 
 
@@ -43,17 +42,17 @@
   <h3>{{ quizQuestions[currentQuestionNumber].question.question }}</h3>
   <div class="answer" *ngFor="let answer of quizQuestions[currentQuestionNumber].answers">
     <label>
-      <input type="radio" name="answers" id="answer1" [value]="answer.id" 
-        [checked]="this.answers[this.currentQuestionNumber].answers && 
-                    this.answers[this.currentQuestionNumber].answers.length > 0 && 
+      <input type="radio" name="answers" id="answer1" [value]="answer.id"
+        [checked]="this.answers[this.currentQuestionNumber].answers &&
+                    this.answers[this.currentQuestionNumber].answers.length > 0 &&
                     this.answers[this.currentQuestionNumber].answers[0].id == answer.id"
         (change)="onSelecting($event)" />
       {{ answer.answer }}
       {{ answer.id }}
     </label>
   </div>
-  
-  
+
+
   <button class="prev" *ngIf="currentQuestionNumber > 0" (click)="onPrev()">prev</button>
   <button class="next" *ngIf="quizQuestions.length > currentQuestionNumber+1" (click)="onNext($event)">next</button>
   <button class="next" *ngIf="quizQuestions.length == currentQuestionNumber+1" (click)="submit()">FINISH</button>
