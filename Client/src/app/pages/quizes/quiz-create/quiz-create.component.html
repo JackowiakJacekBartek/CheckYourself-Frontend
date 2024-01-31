@@ -61,8 +61,6 @@
         <input id="quizTechnology" type="text" formControlName="quizTechnology" required>
 
         <div formArrayName="questions">
-          <button id="add" type="button" (click)="addQuestion()" type="button">Add Question</button>
-
           <div *ngFor="let question of questionsArray.controls; let i=index">
             <div [formGroupName]="i" class="question-container">
               <div class="head">
@@ -127,6 +125,7 @@
               <button id="add" type="button" (click)="addFalseAnswer(question)">Add False Answer</button>
             </div>
           </div>
+          <button id="add" type="button" (click)="addQuestion()" type="button">Add Question</button>
         </div>
 
         <button mat-button class="newJobbButton" type="submit">Submit</button>

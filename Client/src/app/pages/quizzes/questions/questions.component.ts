@@ -53,20 +53,49 @@ export class QuestionsComponent implements OnInit {
 
     this.timerService.getElapsedTime().subscribe((elapsedTime) => {
       this.elapsedTime = elapsedTime;
+      
+      if (elapsedTime === this.quiz.quiz.totaltime) {
+        this.submit()
+      }
     });
+  }
+
+  isAnswerSelected(answerId: any): boolean {
+    if (this.quizQuestions[this.currentQuestionNumber].question.type === 2) {
+      return this.answers[this.currentQuestionNumber].answers.some(a => a.id === answerId);
+    } else {
+      return this.answers[this.currentQuestionNumber].answers.length > 0 &&
+             this.answers[this.currentQuestionNumber].answers[0].id === answerId;
+    }
   }
 
   onSelecting(value: Event) {
     const target = value.target as HTMLInputElement | null;
-
+  
     if (target) {
-      const answer = Number(target.value)
-      this.answers[this.currentQuestionNumber].answers = [];
-
-      this.answers[this.currentQuestionNumber].answers.push({
-        id: answer,
-        idquestion: this.currentQuestion?.id
-      } as QuizzesAnswerDto)
+      const answerId = Number(target.value);
+  
+      if (this.quizQuestions[this.currentQuestionNumber].question.type === 2) {
+        // Toggle selection for multiple choice questions (type 2)
+        const existingIndex = this.answers[this.currentQuestionNumber].answers.findIndex(a => a.id === answerId);
+  
+        if (existingIndex !== -1) {
+          // Unselect if already selected
+          this.answers[this.currentQuestionNumber].answers.splice(existingIndex, 1);
+        } else {
+          // Select if not selected
+          this.answers[this.currentQuestionNumber].answers.push({
+            id: answerId,
+            idquestion: this.currentQuestion?.id
+          } as QuizzesAnswerDto);
+        }
+      } else {
+        // For single choice questions (type 1), replace the selected answer
+        this.answers[this.currentQuestionNumber].answers = [{
+          id: answerId,
+          idquestion: this.currentQuestion?.id
+        } as QuizzesAnswerDto];
+      }
     }
   }
 

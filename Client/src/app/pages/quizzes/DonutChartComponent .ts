@@ -74,7 +74,10 @@ export class DonutChartComponent {
               value: {
                 show: true,
                 formatter: (val) => {
-                  return Number(val) * 10 + ' %';
+                  const percentage = Number(val) / this.totalScore * 100;
+                  return percentage + ' %';
+
+                  return Number(val) * 100 + ' %';
                 }
               },
               total: {
@@ -84,7 +87,7 @@ export class DonutChartComponent {
                     if (this.userScore === this.totalScore) {
                         return '100 %';
                     }
-                
+
                     const percentage = (w.globals.seriesTotals[0] / (w.globals.seriesTotals[1]+w.globals.seriesTotals[0])) * 100;
                     return percentage.toFixed(0) + ' %';
                 }
@@ -97,7 +100,7 @@ export class DonutChartComponent {
         '#00A993',
         '#EB4335',
       ],
-      labels: ['Poprawne odp.', 'Niepoprawne odp.'],
+      labels: ['Punkty', 'Punkty'],
       dataLabels: {
         enabled: false,
       },

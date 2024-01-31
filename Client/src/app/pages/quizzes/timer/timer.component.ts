@@ -45,7 +45,6 @@ export class TimerComponent {
 
         if (this.totalTime && this.minutes >= totalMinutes && this.seconds >= totalSeconds) {
           this.isTimeExceeded = true;
-          console.error("Time exceeded!");
           clearInterval(intervalId);
         }
       }
