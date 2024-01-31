@@ -189,8 +189,13 @@
 
   "All": {
     "Add quiz": "Dodaj quiz",
+    "Delete quiz": "Usuń quiz",
     "Address": "Adres",
     "Save": "Zapisz",
     "Edit company": "Edytuj firme"
+  },
+
+  "Error": {
+    "UnableToDoIt": "Nie udało się tego zrobić"
   }
 }

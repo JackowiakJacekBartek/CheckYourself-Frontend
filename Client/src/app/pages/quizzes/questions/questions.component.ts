@@ -10,6 +10,7 @@ import { TimerService } from '../timer/timer.service';
   templateUrl: './questions.component.html',
   styleUrls: ['./questions.component.scss']
 })
+
 export class QuestionsComponent implements OnInit {
   quizQuestions: QuizQuestionDto[] = [];
   quiz: QuizDto = {} as QuizDto;
@@ -18,6 +19,9 @@ export class QuestionsComponent implements OnInit {
   @Input() quizz: QuizDto = {} as QuizDto;
 
   answers: QuizAnswerDto[] = [];
+
+  companyName: string = '';
+  jobOfferName: string = '';
 
   constructor(
     protected quizzesService: QuizzesService,
@@ -53,20 +57,26 @@ export class QuestionsComponent implements OnInit {
     this.timerService.getElapsedTime().subscribe((elapsedTime) => {
       this.elapsedTime = elapsedTime;
     });
+
+    // @ts-ignore
+    this.companyName = localStorage.getItem('companyName');
+    console.log(this.companyName);
+    // @ts-ignore
+    this.jobOfferName = localStorage.getItem('jobOfferName');
+    console.log(this.jobOfferName);
   }
 
   onSelecting(value: Event) {
     const target = value.target as HTMLInputElement | null;
 
     if (target) {
-      const answer = Number(target.value);
+      const answer = Number(target.value)
       this.answers[this.currentQuestionNumber].answers = [];
-      
+
       this.answers[this.currentQuestionNumber].answers.push({
-        id: answer, 
-        idquestion: this.currentQuestion?.id,
-        image: this.imageUrls[answer - 1] 
-      } as QuizzesAnswerDto);
+        id: answer,
+        idquestion: this.currentQuestion?.id
+      } as QuizzesAnswerDto)
     }
   }
 

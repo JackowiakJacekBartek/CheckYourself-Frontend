@@ -1,4 +1,9 @@
 .timer {
-    color: #fff;
-  }
-  
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: white;
+  font-family: Lato;
+  font-size: 24px;
+  margin-right: 50px;
+}

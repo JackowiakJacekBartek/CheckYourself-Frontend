@@ -20,6 +20,10 @@ export class QuizzesService {
     return this.http.post<ReturnedResponse<QuizDto>>(quizzesUrl + `/create-for-job-advertisement?idJobAdvertisement=${idJobAdvertisement}`, formValues);
   }
 
+  deleteQuizById(quizId: number) {
+    return this.http.delete<ReturnedResponse<number>>(quizzesUrl + `/delete-quiz-by-id?id=${quizId}`);
+  }
+
   sendQuizResults(results: QuizAnswerDto[], elapsedTime: string): Observable<ReturnedResponse<QuizDto>> {
 
     const mappedResults: QuizzesResultDto[] = results.flatMap((quizAnswer, index) =>
@@ -29,7 +33,7 @@ export class QuizzesService {
         idquizzesanswer: Number(answer.id),
         elapsedtime: elapsedTime ?? "00:00",
         idquiz: quizAnswer.question.idquiz,
-        answer: answer.answer ?? "",
+        answer: answer.id?.toString() ?? "",
         idquestion: answer.idquestion
       }))
     );

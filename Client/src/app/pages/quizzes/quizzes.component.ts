@@ -19,37 +19,23 @@ export class QuizzesComponent {
   answers: QuizAnswerDto[] = [];
 
   public jobOfferID: number = this.route.snapshot.params['id'];
+  companyName: string = '';
+  jobOfferName: string = '';
 
   constructor(protected quizzesService: QuizzesService, private router: Router, private route: ActivatedRoute) {
     quizzesService.getQuizByIdJobAdvertisement(this.jobOfferID).subscribe(res => {
       this.quiz = res.methodResult;
       console.log(this.quiz)
     })
+    // @ts-ignore
+    this.companyName = localStorage.getItem('companyName');
+    console.log(this.companyName);
+    // @ts-ignore
+    this.jobOfferName = localStorage.getItem('jobOfferName');
+    console.log(this.jobOfferName);
   }
 
   onStart() {
     this.isQuizToBeStarted = !this.isQuizToBeStarted;
   }
-
-
-  onSelecting(value: Event) {
-    const target = value.target as HTMLInputElement | null;
-
-    if (target) {
-      const answer = Number(target.value)
-      this.answers[this.currentQuestionNumber].answers = [];
-
-      this.answers[this.currentQuestionNumber].answers.push({
-        id: answer,
-        idquestion: this.currentQuestion?.id
-      } as QuizzesAnswerDto)
-    }
-  }
-
-  submit() {
-    this.quizzesService.sendQuizResults(this.answers, this.elapsedTime).subscribe(res => {
-      this.router.navigate(['quiz/result/'+res.methodResult]);
-    })
-  }
-
 }

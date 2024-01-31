@@ -28,13 +28,13 @@ export class QuizCreateComponent {
     private router: Router,
     private toastrService: ToastrService,
     private translate: TranslateService,
-    private quizzesService: QuizzesService,
+    private quizzesService: QuizzesService
   ) {
     this.quizForm = this.formBuilder.group({
       quizName: ['', [Validators.required]],
       quizTechnology: ['', [Validators.required]],
       maxDuration: ['10:00', [Validators.required, Validators.min(1)]],
-      passingThreshold: [0, [Validators.required, Validators.min(1)]],
+      passingThreshold: [50, [Validators.required, Validators.min(1)]],
       quizDescription: ['', [Validators.required]],
       questions: this.formBuilder.array([])
     });
@@ -136,6 +136,8 @@ export class QuizCreateComponent {
       const formValues: QuizData = this.quizForm.value
       console.log(formValues);
       const mappedValues: QuizDto = QuizMapper.mapToQuizRegisterDto(formValues, this.currentJobOfferId, this.totalQuizScore);
+
+      console.log('dane create', mappedValues)
       this.quizzesService.createQuizForJobAdvertisement(this.currentJobOfferId, mappedValues).subscribe(res => {
         console.log(res)
         if(res.isSuccess) {
