@@ -6,6 +6,9 @@ import {CompanyProfile} from "../../shared/models/companies";
 import {CompanyPageService} from "../companypage/company-page.service";
 import {JobType, TechList, NecessarySkill, ToolsList} from "../../shared/constants/constants";
 import {el} from "date-fns/locale";
+import { QuizzesService } from '../quizzes/quizzes.service';
+import { ToastrService } from 'ngx-toastr';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-joboffer',
@@ -26,7 +29,10 @@ export class JobofferComponent implements OnInit {
 
   constructor(private EditJobofferService: EditJobofferService,
               private route: ActivatedRoute,
-              private companyProfileService: CompanyPageService) {
+              private companyProfileService: CompanyPageService,
+              private quizzesService: QuizzesService,
+              private toastrService: ToastrService,
+              private translate: TranslateService) {
   }
 
   ngOnInit(): void {
@@ -64,5 +70,17 @@ export class JobofferComponent implements OnInit {
 
   isNumber(value: any): boolean {
     return !isNaN(Number(value));
+  }
+
+  handleDeleteQuiz(quizId: number) {
+    this.quizzesService.deleteQuizById(quizId).subscribe(res => {
+      console.log(res)
+      if (res.methodResult === 0 || res.methodResult === -1) { // 0 no quiz -1 no joboffer
+        console.log('error usuwania')
+        this.toastrService.warning(this.translate.instant('Error.UnableToDoIt'));
+      } else {
+        window.location.reload();
+      }
+    })
   }
 }

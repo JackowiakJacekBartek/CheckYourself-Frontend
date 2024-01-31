@@ -28,7 +28,7 @@ export class QuizCreateComponent {
     private router: Router,
     private toastrService: ToastrService,
     private translate: TranslateService,
-    private quizzesService: QuizzesService,
+    private quizzesService: QuizzesService
   ) {
     this.quizForm = this.formBuilder.group({
       quizName: ['', [Validators.required]],
@@ -139,6 +139,7 @@ export class QuizCreateComponent {
       const mappedValues: QuizDto = QuizMapper.mapToQuizRegisterDto(formValues, this.currentJobOfferId, this.totalQuizScore);
       this.quizzesService.createQuizForJobAdvertisement(this.currentJobOfferId, mappedValues).subscribe(res => {
         console.log(res)
+        this.router.navigate(['../'], { relativeTo: this.route })
       });
     } else {
       console.log('Form is invalid. Please fill in all required fields.');

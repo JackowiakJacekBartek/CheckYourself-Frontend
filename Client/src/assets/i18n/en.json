@@ -163,6 +163,10 @@
     "Address": "Address",
     "Save": "Save",
     "Edit company": "Edit company"
+  },
+
+  "Error": {
+    "UnableToDoIt": "Unable to do it"
   }
 }
 
