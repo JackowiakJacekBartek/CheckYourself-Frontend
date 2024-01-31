@@ -34,7 +34,7 @@ export class QuizCreateComponent {
       quizName: ['', [Validators.required]],
       quizTechnology: ['', [Validators.required]],
       maxDuration: ['10:00', [Validators.required, Validators.min(1)]],
-      passingThreshold: [0, [Validators.required, Validators.min(1)]],
+      passingThreshold: [50, [Validators.required, Validators.min(1)]],
       quizDescription: ['', [Validators.required]],
       questions: this.formBuilder.array([])
     });
