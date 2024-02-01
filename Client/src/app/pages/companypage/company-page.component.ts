@@ -11,6 +11,7 @@ export interface Offer {
     location: string,
     id?: number,
     tags: string[]
+    quizid?: number;
 }
 
 @Component({
@@ -124,7 +125,7 @@ export class CompanyPageComponent implements OnInit {
         this.EditJobofferService.getJobsByIdCompany(this.currentCompanyID).subscribe(res => {
             this.dataJobOfferGet = res.methodResult;
             console.log(this.dataJobOfferGet)
-
+            
             if (this.dataJobOfferGet !== null) {
                 this.dataJobOfferGet.forEach(a => {
                     const tags = a.jobtechnologies ? a.jobtechnologies.map(tech => tech.icon) : [];

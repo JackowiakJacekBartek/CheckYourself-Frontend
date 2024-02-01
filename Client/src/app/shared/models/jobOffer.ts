@@ -71,4 +71,5 @@ export interface JobOfferGet {
   jobapplications: JobApplications[],
   jobDetails: JobDetails[],
   jobtechnologies: JobTechnologies[]
+  quizid?: number;
 }

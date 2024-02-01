@@ -15,6 +15,7 @@ import { QuizzesComponent } from './pages/quizzes/quizzes.component';
 import { ResultComponent } from './pages/quizzes/result/result.component';
 import {JobofferComponent} from "./pages/joboffer/joboffer.component";
 import { QuizzesListComponent } from './pages/quizzes-list-component/quizzes-list-component.component';
+import { JobOfferAppliesComponent } from './pages/job-offer-applies/job-offer-applies.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,9 @@ const routes: Routes = [
   },
   {
     path: 'quiz/result/:id', component: ResultComponent, canActivate:[AuthGuard]
+  },
+  {
+    path: 'joboffer/:id/applies', component: JobOfferAppliesComponent, canActivate:[AuthGuard]
   },
   {
     path: 'quiz/create', component: QuizCreateComponent, canActivate:[AuthGuard]
