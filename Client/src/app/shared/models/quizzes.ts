@@ -40,14 +40,14 @@ export interface QuizzesQuestionDto {
     totaltime?: string | null;
 }
 
-export interface QuizQuestionDto { 
-    question: QuizzesQuestionDto; 
-    answers: QuizzesAnswerDto[] 
+export interface QuizQuestionDto {
+    question: QuizzesQuestionDto;
+    answers: QuizzesAnswerDto[]
 }
 
-export interface QuizAnswerDto { 
-    question: QuizzesQuestionDto; 
-    answers: QuizzesAnswerDto[] 
+export interface QuizAnswerDto {
+    question: QuizzesQuestionDto;
+    answers: QuizzesAnswerDto[]
 }
 
 export interface QuizzesResultDto {

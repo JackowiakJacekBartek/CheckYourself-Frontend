@@ -7,7 +7,7 @@
   <div class="wrapperUser">
 
     <div class="question">{{ quizQuestions[currentQuestionNumber].question.question | capitalize}}</div>
-    
+    <div class="questionInfo">{{quizQuestions[currentQuestionNumber].question.type === 2 ? 'Pytanie wielokrotnego wyboru' : 'Pytanie jednokrotnego wyboru'}}</div>
     <div class="answers">
       <div class="answer" *ngFor="let answer of quizQuestions[currentQuestionNumber].answers; let i = index">
         <label>
@@ -19,7 +19,7 @@
             (change)="onSelecting($event)"/>
 
           <div class="radio-button-content">
-            <img [src]="answer.image" alt="Answer Image">
+            <img [src]="answer.image ? answer.image : '/assets/icons/Odp_BL.svg'" alt="Answer Image">
             <span class="question-text">{{ answer.answer | capitalize}}</span>
           </div>
         </label>

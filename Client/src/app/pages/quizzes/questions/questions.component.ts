@@ -37,6 +37,10 @@ export class QuestionsComponent implements OnInit {
     '/assets/icons/Odp_BL.svg',
     '/assets/icons/Odp_RD.svg',
     '/assets/icons/Odp_YL.svg',
+    '/assets/icons/Odp_GR.svg',
+    '/assets/icons/Odp_BL.svg',
+    '/assets/icons/Odp_RD.svg',
+    '/assets/icons/Odp_YL.svg',
     '/assets/icons/Odp_GR.svg'
   ];
 
@@ -49,14 +53,16 @@ export class QuestionsComponent implements OnInit {
     this.quizQuestions.forEach((question, index) => {
       const answerImage = this.imageUrls[index];
       question.answers.forEach((answer, answerIndex) => {
-        answer.image = this.imageUrls[answerIndex];
+
+          answer.image = this.imageUrls[answerIndex];
+
       });
       this.answers.push({ answers: [], question: question.question });
     });
 
     this.timerService.getElapsedTime().subscribe((elapsedTime) => {
       this.elapsedTime = elapsedTime;
-      
+
       if (elapsedTime === this.quiz.quiz.totaltime) {
         this.submit()
       }
@@ -81,14 +87,14 @@ export class QuestionsComponent implements OnInit {
 
   onSelecting(value: Event) {
     const target = value.target as HTMLInputElement | null;
-  
+
     if (target) {
       const answerId = Number(target.value);
-  
+
       if (this.quizQuestions[this.currentQuestionNumber].question.type === 2) {
         // Toggle selection for multiple choice questions (type 2)
         const existingIndex = this.answers[this.currentQuestionNumber].answers.findIndex(a => a.id === answerId);
-  
+
         if (existingIndex !== -1) {
           // Unselect if already selected
           this.answers[this.currentQuestionNumber].answers.splice(existingIndex, 1);

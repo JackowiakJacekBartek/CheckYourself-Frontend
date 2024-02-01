@@ -125,16 +125,18 @@ export class CompanyPageComponent implements OnInit {
             this.dataJobOfferGet = res.methodResult;
             console.log(this.dataJobOfferGet)
 
-            this.dataJobOfferGet.forEach(a => {
-                const tags = a.jobtechnologies ? a.jobtechnologies.map(tech => tech.icon) : [];
+            if (this.dataJobOfferGet !== null) {
+                this.dataJobOfferGet.forEach(a => {
+                    const tags = a.jobtechnologies ? a.jobtechnologies.map(tech => tech.icon) : [];
 
-                this.offers.push({
-                    jobName: a.name,
-                    location: a.image,
-                    id: a.id,
-                    tags: tags
-                })
-            })
+                    this.offers.push({
+                        jobName: a.name,
+                        location: a.image,
+                        id: a.id,
+                        tags: tags
+                    })
+                });
+            }
         })
     }
 
