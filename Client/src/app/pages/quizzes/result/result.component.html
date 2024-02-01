@@ -12,8 +12,8 @@
             <button [routerLink]="''" class="done">{{'Quiz.Leave' | translate}}</button>
               <div class="score">
                 {{'Quiz.Result' | translate}}
-                  <span [style.color]="quizAttempt.quizAttempt.totalparticipantscore*10 >= quizAttempt.quiz.passingthreshold ? '#00A993' : '#EB4335'">
-                    {{ quizAttempt.quizAttempt.totalparticipantscore * 10 >= quizAttempt.quiz.passingthreshold ? ('Quiz.Passed' | translate) : ('Quiz.Failed' | translate) }}
+                  <span [style.color]="examPassed ? '#00A993' : '#EB4335'">
+                    {{ examPassed ? ('Quiz.Passed' | translate) : ('Quiz.Failed' | translate) }}
                 </span>
               </div>
               <div class="time">
