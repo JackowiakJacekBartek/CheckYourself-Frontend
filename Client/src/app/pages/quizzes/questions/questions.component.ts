@@ -80,8 +80,8 @@ export class QuestionsComponent implements OnInit {
 
   getQuizInfo():string {
     return this.quizQuestions[this.currentQuestionNumber].question.type === 2 ? 
-    this.translate.instant('Quiz.WroSingle Questionng')
-    : this.translate.instant('Quiz.Multi Question')
+    this.translate.instant('Quiz.Multi Question')
+    : this.translate.instant('Quiz.Single Question')
 
   }
   isAnswerSelected(answerId: any): boolean {
