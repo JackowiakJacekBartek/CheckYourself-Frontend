@@ -44,7 +44,6 @@ export class JobofferComponent implements OnInit {
         this.router.navigate(['/']);
       }
       this.dataJobOffer = res.methodResult;
-      console.log(`job`, this.dataJobOffer)
       localStorage.setItem('jobOfferName', this.dataJobOffer.job.name);
 
       this.companyId = this.dataJobOffer.job.companyid;
@@ -55,10 +54,8 @@ export class JobofferComponent implements OnInit {
         this.companyIdAccount = this.dataCompany.company.idaccount;
         this.showEditButton = (+this.currentUserID2 === +this.companyIdAccount);
 
-        console.log(this.dataCompany)
         this.image = res.methodResult.company.logo ? res.methodResult.company.logo : '../../../assets/images/logoEmpty.png';
         this.quizId = this.dataJobOffer.job.quizid ? this.dataJobOffer.job.quizid : 0;
-        console.log(this.quizId)
       })
     })
   }
@@ -82,7 +79,8 @@ export class JobofferComponent implements OnInit {
   isApplyVisible(): boolean {
     const userId = localStorage.getItem('userID');
 
-    if (this.dataCompany && this.dataCompany.company.idaccount != Number(userId)) {
+    if (this.dataJobOffer && this.dataJobOffer.job.quizid && this.dataJobOffer.job.quizid > 0
+      && this.dataCompany && this.dataCompany.company.idaccount != Number(userId)) {
       return true;
     }
     return false;

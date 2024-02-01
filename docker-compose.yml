@@ -32,6 +32,13 @@ services:
       context: .
       dockerfile: Backend/Intotech.Xerion.Companies/Intotech.Xerion.Companies.Api/Dockerfile
 
+  intotech.xerion.quizzes.api:
+    container_name: "xerion_quizzes_api"
+    image: ${DOCKER_REGISTRY-}intotechxerionquizzesapi
+    build:
+      context: .
+      dockerfile: Backend/Intotech.Xerion.Quizzes/Intotech.Xerion.Quizzes.Api/Dockerfile
+
 volumes:
   db:
     driver: local
