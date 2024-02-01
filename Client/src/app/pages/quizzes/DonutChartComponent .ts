@@ -100,7 +100,7 @@ export class DonutChartComponent {
         '#00A993',
         '#EB4335',
       ],
-      labels: ['Punkty', 'Punkty'],
+      labels: ['Punkty zdobyte', 'Punkty niezaliczone'],
       dataLabels: {
         enabled: false,
       },
