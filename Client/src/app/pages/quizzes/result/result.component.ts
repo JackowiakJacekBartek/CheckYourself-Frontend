@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ResultService } from './result.service';
 import { ActivatedRoute } from '@angular/router';
 import { QuizResultDto } from 'src/app/shared/models/quizzes';
@@ -9,7 +9,7 @@ import { take } from 'rxjs';
   templateUrl: './result.component.html',
   styleUrls: ['./result.component.scss']
 })
-export class ResultComponent {
+export class ResultComponent implements OnInit {
   quizAttempt!: QuizResultDto;
   examPassed!: boolean;
   public resultId: number = this.route.snapshot.params['id'];
