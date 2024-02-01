@@ -85,7 +85,6 @@
 
 .answers {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
   color: #ffffff;
@@ -99,8 +98,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 30px;
+  padding-right: 30px;
+  padding-left: 30px;
+  &.big-quiz {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
 }
+
 
 label {
   display: flex;

@@ -9,7 +9,8 @@
     <div class="question">{{ quizQuestions[currentQuestionNumber].question.question | capitalize}}</div>
     <div class="questionInfo">{{quizQuestions[currentQuestionNumber].question.type === 2 ? 'Pytanie wielokrotnego wyboru' : 'Pytanie jednokrotnego wyboru'}}</div>
     <div class="answers">
-      <div class="answer" *ngFor="let answer of quizQuestions[currentQuestionNumber].answers; let i = index">
+      {{quizQuestions[currentQuestionNumber].answers.length}}
+      <div [ngClass]="{ 'big-quiz': quizQuestions[currentQuestionNumber].answers.length >= 5 }" class="answer" *ngFor="let answer of quizQuestions[currentQuestionNumber].answers; let i = index">
         <label>
           <input
             type="{{ quizQuestions[currentQuestionNumber].question.type === 2 ? 'checkbox' : 'radio' }}"

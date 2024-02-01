@@ -15,7 +15,7 @@ export class EditUserProfileGridComponent implements OnInit, OnChanges, AfterVie
 
 JobType = JobType;
 
-public phoneMask = [/[1-9]/, /[1-9]/, /[1-9]/, '-', /[1-9]/, /[1-9]/, /[1-9]/, '-', /[1-9]/, /[1-9]/, /[1-9]/];
+public phoneMask = [/[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/, /[0-9]/];
 
 constructor(private ref: ChangeDetectorRef) { }
 
