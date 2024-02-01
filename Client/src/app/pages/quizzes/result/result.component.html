@@ -1,7 +1,7 @@
 <div class="navbar">
     <a>{{'Quiz.Result' | translate}}{{quizAttempt && quizAttempt.quiz.name}}</a>
   </div>
-  <div class="background">
+  <div class="background" *ngIf="quizAttempt">
       <div class="content">
           <div class="left">
             <!-- <app-donut-chart [userScore]="quizAttempt.quizAttempt.totalparticipantscore" [totalScore]="quizAttempt.quiz.totalscore!"></app-donut-chart> -->
