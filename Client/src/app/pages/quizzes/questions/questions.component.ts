@@ -4,6 +4,7 @@ import { QuizMapper } from '../quiz-mapper';
 import { QuizzesService } from '../quizzes.service';
 import { Router } from '@angular/router';
 import { TimerService } from '../timer/timer.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'questions',
@@ -26,7 +27,8 @@ export class QuestionsComponent implements OnInit {
   constructor(
     protected quizzesService: QuizzesService,
     private router: Router,
-    private timerService: TimerService
+    private timerService: TimerService,
+    private translate: TranslateService
   ) {}
 
   currentQuestionNumber: number = 0;
@@ -76,6 +78,12 @@ export class QuestionsComponent implements OnInit {
     console.log(this.jobOfferName);
   }
 
+  getQuizInfo():string {
+    return this.quizQuestions[this.currentQuestionNumber].question.type === 2 ? 
+    this.translate.instant('Quiz.WroSingle Questionng')
+    : this.translate.instant('Quiz.Multi Question')
+
+  }
   isAnswerSelected(answerId: any): boolean {
     if (this.quizQuestions[this.currentQuestionNumber].question.type === 2) {
       return this.answers[this.currentQuestionNumber].answers.some(a => a.id === answerId);

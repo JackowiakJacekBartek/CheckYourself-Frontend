@@ -1,5 +1,5 @@
 <div class="navbar">
-  <a>{{companyName | capitalize}} > {{jobOfferName | capitalize}} > {{quiz.quiz.name | capitalize}} <span> > Pytanie: {{currentQuestionNumber+1}} / {{quiz.quizzesQuestions.length}}</span></a>
+  <a>{{companyName | capitalize}} > {{jobOfferName | capitalize}} > {{quiz.quiz.name | capitalize}} <span> >{{'Quiz.Question' | translate}}{{currentQuestionNumber+1}} / {{quiz.quizzesQuestions.length}}</span></a>
   <timer [totalTime]="quiz.quiz.totaltime"></timer>
 </div>
 
@@ -7,7 +7,7 @@
   <div class="wrapperUser">
 
     <div class="question">{{ quizQuestions[currentQuestionNumber].question.question | capitalize}}</div>
-    <div class="questionInfo">{{quizQuestions[currentQuestionNumber].question.type === 2 ? 'Pytanie wielokrotnego wyboru' : 'Pytanie jednokrotnego wyboru'}}</div>
+    <div class="questionInfo">{{getQuizInfo()}}</div>
     <div class="answers">
       {{quizQuestions[currentQuestionNumber].answers.length}}
       <div [ngClass]="{ 'big-quiz': quizQuestions[currentQuestionNumber].answers.length >= 5 }" class="answer" *ngFor="let answer of quizQuestions[currentQuestionNumber].answers; let i = index">

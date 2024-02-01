@@ -6,19 +6,19 @@
 
             <form [formGroup]="quizForm" (ngSubmit)="submitQuiz()">
                 <div class="head">
-                    <label for="quizName">Quiz Name:</label>
+                    <label for="quizName">{{'QuizCreator.Name' | translate}}</label>
                     <div *ngIf="quizForm.get('quizName')?.hasError('required') && quizForm.get('quizName')?.touched"
                          class="error-message">
-                        Quiz Name is required
+                         {{'QuizCreator.Namereq' | translate}}
                     </div>
                 </div>
                 <input id="quizName" type="text" formControlName="quizName" required>
 
                 <div class="head">
-                    <label for="maxDuration">Max Duration (minutes):</label>
+                    <label for="maxDuration">{{'QuizCreator.Time' | translate}}</label>
                     <div *ngIf="quizForm.get('maxDuration')?.hasError('required') && quizForm.get('maxDuration')?.touched"
                          class="error-message">
-                        Max Duration is required
+                         {{'QuizCreator.Timereq' | translate}}
                     </div>
                 </div>
                 <input id="maxDuration" type="text" formControlName="maxDuration" required>
@@ -34,28 +34,28 @@
                 <!--        <input id="maxPoints" type="number" formControlName="maxPoints" required>-->
 
                 <div class="head">
-                    <label for="passingThreshold">Min Points (%):</label>
+                    <label for="passingThreshold">{{'QuizCreator.Min' | translate}}</label>
                     <div *ngIf="quizForm.get('passingThreshold')?.hasError('required') && quizForm.get('passingThreshold')?.touched"
                          class="error-message">
-                        Min Points is required
+                         {{'QuizCreator.Minreq' | translate}}
                     </div>
                 </div>
                 <input id="passingThreshold" type="number" formControlName="passingThreshold" required>
 
                 <div class="head">
-                    <label for="quizDescription">Quiz Description:</label>
+                    <label for="quizDescription">{{'QuizCreator.Description' | translate}}</label>
                     <div *ngIf="quizForm.get('quizDescription')?.hasError('required') && quizForm.get('quizDescription')?.touched"
                          class="error-message">
-                        Quiz Description is required
+                         {{'QuizCreator.Descriptionreq' | translate}}
                     </div>
                 </div>
                 <textarea id="quizDescription" formControlName="quizDescription" required></textarea>
 
                 <div class="head">
-                    <label for="quizTechnology">Quiz Technology:</label>
+                    <label for="quizTechnology">{{'QuizCreator.Tech' | translate}}</label>
                     <div *ngIf="quizForm.get('quizTechnology')?.hasError('required') && quizForm.get('quizTechnology')?.touched"
                          class="error-message">
-                        Quiz Technology is required
+                         {{'QuizCreator.Techreq' | translate}}
                     </div>
                 </div>
                 <input id="quizTechnology" type="text" formControlName="quizTechnology" required>
@@ -64,14 +64,14 @@
                     <div *ngFor="let question of questionsArray.controls; let i=index">
                         <div [formGroupName]="i" class="question-container">
                             <div class="headButton">
-                                <button id="remove" type="button" (click)="removeQuestion(i)">Remove Question</button>
+                                <button id="remove" type="button" (click)="removeQuestion(i)">{{'QuizCreator.Remove' | translate}}</button>
                             </div>
                             <div class="head">
-                                <label class="questionNumber" for="questionContent">Pytanie: {{i + 1}}</label>
+                                <label class="questionNumber" for="questionContent">{{'QuizCreator.Question' | translate}}{{i + 1}}</label>
                                 <div
                                         *ngIf="question.get('questionContent').hasError('required') && question.get('questionContent').touched"
                                         class="error-message">
-                                    Question content is required
+                                        {{'QuizCreator.Questionreq' | translate}}
                                 </div>
                             </div>
                             <textarea id="questionContent" formControlName="questionContent" required></textarea>
@@ -82,25 +82,25 @@
                                     <div [formGroupName]="j">
                                         <div class="headButton">
                                             <button id="remove" type="button"
-                                                    (click)="removeCorrectAnswer(question, j)">Remove
-                                                Correct Answer
+                                                    (click)="removeCorrectAnswer(question, j)">
+                                                    {{'QuizCreator.Removegood' | translate}}
                                             </button>
                                         </div>
                                         <div class="head">
-                                            <label for="correctAnswer">Correct Answer {{j + 1}}:</label>
+                                            <label for="correctAnswer">{{'QuizCreator.Answer' | translate}}{{j + 1}}:</label>
                                             <div
                                                     *ngIf="correctAnswer.get('correctAnswer').hasError('required') && correctAnswer.get('correctAnswer').touched"
                                                     class="error-message">
-                                                Correct Answer is required
+                                                    {{'QuizCreator.Answerreq' | translate}}
                                             </div>
                                         </div>
                                         <input id="correctAnswer" type="text" formControlName="correctAnswer" required>
                                         <div class="head">
-                                            <label for="correctAnswerScore">Correct Answer Score:</label>
+                                            <label for="correctAnswerScore">{{'QuizCreator.Points' | translate}}</label>
                                             <div
                                                     *ngIf="correctAnswer.get('correctAnswerScore').hasError('required') && correctAnswer.get('correctAnswerScore').touched"
                                                     class="error-message">
-                                                Correct Answer Score is required
+                                                    {{'QuizCreator.Pointsreq' | translate}}
                                             </div>
                                         </div>
                                         <input id="correctAnswerScore" type="number"
@@ -108,7 +108,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <button id="add" type="button" (click)="addCorrectAnswer(question)">Add Correct Answer
+                            <button id="add" type="button" (click)="addCorrectAnswer(question)">
+                              {{'QuizCreator.Addgood' | translate}}
                             </button>
 
                             <div class="answers" formArrayName="falseAnswers">
@@ -116,16 +117,16 @@
                                      *ngFor="let falseAnswer of question.get('falseAnswers')['controls']; let k=index">
                                     <div [formGroupName]="k">
                                         <div class="headButton">
-                                            <button id="remove" type="button" (click)="removeFalseAnswer(question, k)">
-                                                Remove False Answer
-                                            </button>
+                                          <button id="remove" type="button" (click)="removeFalseAnswer(question, k)">
+                                            {{'QuizCreator.Removebad' | translate}}
+                                          </button>
                                         </div>
                                         <div class="head">
-                                            <label for="falseAnswer">False Answer {{k + 1}}:</label>
+                                            <label for="falseAnswer">{{'QuizCreator.Badanswer' | translate}}{{k + 1}}</label>
                                             <div
                                                     *ngIf="falseAnswer.get('falseAnswer').hasError('required') && falseAnswer.get('falseAnswer').touched"
                                                     class="error-message">
-                                                False Answer is required
+                                                    {{'QuizCreator.Badanswerreq' | translate}}
                                             </div>
                                         </div>
                                         <div class="contentAnswer">
@@ -134,13 +135,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <button id="add" type="button" (click)="addFalseAnswer(question)">Add False Answer</button>
+                            <button id="add" type="button" (click)="addFalseAnswer(question)">{{'QuizCreator.Addbad' | translate}}</button>
                         </div>
                     </div>
-                    <button id="add" type="button" (click)="addQuestion()" type="button">Add Question</button>
+                    <button id="addq" type="button" (click)="addQuestion()" type="button">{{'QuizCreator.Add' | translate}}</button>
                 </div>
 
-                <button mat-button class="newJobbButton" type="submit">Submit</button>
+                <button mat-button class="newJobbButton" type="submit">{{'QuizCreator.Save' | translate}}</button>
             </form>
 
         </div>

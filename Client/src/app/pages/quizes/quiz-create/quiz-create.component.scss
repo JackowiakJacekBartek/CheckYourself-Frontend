@@ -31,11 +31,17 @@ form {
   }
 
   #add {
+    margin-left: 408px;
+    background-color: #36AE7C;
+  }
+
+  #addq {
+    margin-left: 440px;
     background-color: #36AE7C;
   }
 
   #remove {
-    background-color: #EB5353;
+    background-color: #EB4335;
   }
 
   .headButton {
@@ -47,6 +53,7 @@ form {
   button[type="button"] {
     color: white;
     padding: 10px 15px;
+    width: 200px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -55,11 +62,11 @@ form {
 }
 
 .error-message {
-  color: red;
+  color: #EB4335;
 }
 
 .error-border {
-  border: 1px solid red;
+  border: 1px solid #EB4335;
 }
 
 .question-container {
@@ -113,7 +120,11 @@ input {
   height: 60px;
 }
 
-#add {
+#add{
+  margin-top: 20px;
+}
+
+#addq{
   margin-top: 20px;
 }
 

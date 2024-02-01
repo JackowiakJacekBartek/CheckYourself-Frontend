@@ -14,7 +14,7 @@
         <div class="background">
             <div class="wrapperUser">
                 <div class="title">
-                    <a>Witamy w quizie {{quiz.quiz.name | capitalize}} !</a>
+                    <a>{{'Quiz.Welcome' | translate}}{{quiz.quiz.name | capitalize}} !</a>
                 </div>
                 <div class="desc">
                     <a *ngIf="quiz.quiz.description" class="description">{{quiz.quiz.description | capitalize}}</a>
@@ -24,10 +24,10 @@
 
                 <div class="center">
                     <div class="quiz-info">
-                        <span>Łącznie <a>{{quiz.quizzesQuestions.length}}</a> pytań</span>
-                        <span>Możesz zdobyć <a>{{quiz.quiz.totalscore}}</a> pkt</span>
-                        <span>Potrzebujesz <a>{{quiz.quiz.passingthreshold}}%</a> do zdania</span>
-                        <span>{{'Quiz.Time' | translate}}<a>{{quiz.quiz.totaltime}}</a> minut</span>
+                        <span>{{'Quiz.Question_no' | translate}}<a>{{quiz.quizzesQuestions.length}}</a></span>
+                        <span>{{'Quiz.Points_no' | translate}}<a>{{quiz.quiz.totalscore}}</a></span>
+                        <span>{{'Quiz.Min' | translate}}<a>{{quiz.quiz.passingthreshold}}%</a></span>
+                        <span>{{'Quiz.Time' | translate}}<a>{{quiz.quiz.totaltime}}</a></span>
                     </div>
                 </div>
 

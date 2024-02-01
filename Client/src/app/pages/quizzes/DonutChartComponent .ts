@@ -1,4 +1,5 @@
 import { Component, ViewChild, ChangeDetectorRef, Input } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import {
   ApexChart,
   ChartComponent,
@@ -53,7 +54,7 @@ export class DonutChartComponent {
     @Input() totalScore!: number;
     
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef, private translate: TranslateService) {}
     
   ngOnInit(): void {
 
@@ -100,7 +101,7 @@ export class DonutChartComponent {
         '#00A993',
         '#EB4335',
       ],
-      labels: ['Punkty zdobyte', 'Punkty niezaliczone'],
+      labels: [this.translate.instant('Quiz.Wrong'),this.translate.instant('Quiz.Correct')],
       dataLabels: {
         enabled: false,
       },
