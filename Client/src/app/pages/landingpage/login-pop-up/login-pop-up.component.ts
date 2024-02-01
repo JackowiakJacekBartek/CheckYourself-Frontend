@@ -51,10 +51,10 @@ export class LoginPopUpComponent {
           this.toastrService.warning(this.translate.instant('Login.E-mail is not verified'));
         }
         if (res.errorMessage === "Konta nie znaleziono.") {
-          this.toastrService.error(this.translate.instant('Konta nie znaleziono'));
+          this.toastrService.error(this.translate.instant('Login.No such account'));
         }
         if (res.errorMessage === "Jesteś atakowany") {
-          this.toastrService.error(this.translate.instant('zle hrwegaslo'));
+          this.toastrService.error(this.translate.instant('Login.Wrong password'));
         }
         if (res.errorMessage === "Sukces.") {
           this.toastrService.success(this.translate.instant('Login.Successfully logged in'));

@@ -127,8 +127,8 @@
     "info1":"You obtained the total ",
     "info2":" of ",
     "info3":" points by obtaining a result ",
-    "Correct":"Correct answers ",
-    "Wrong":"Wrong answers "
+    "Correct":"Correct answers",
+    "Wrong":"Wrong answers"
   },
   "QuizCreator":{
     "Name": "Quiz Name: ",
@@ -183,12 +183,14 @@
     "Quizzes": "Quizzes",
     "Language": "Language",
     "Add quizz": "Add quizz",
+    "Edit quizz": "Eduit quizz",
     "Delete quizz": "Delete quizz",
     "Manage quizzes": "Manage quizzes",
     "Purchase quizz": "Purchase quizz",
     "Check grading scale": "Check grading scale",
     "Logout": "Logout",
     "Add/delete company": "My companies",
+    "DeleteOffer": "Delete offer",
     "Change language": "Change language"
   },
   "RegisterCompany": {

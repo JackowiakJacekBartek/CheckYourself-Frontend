@@ -101,7 +101,7 @@ export class DonutChartComponent {
         '#00A993',
         '#EB4335',
       ],
-      labels: [this.translate.instant('Quiz.Wrong'),this.translate.instant('Quiz.Correct')],
+      labels: [this.translate.instant('Quiz.Correct'),this.translate.instant('Quiz.Wrong')],
       dataLabels: {
         enabled: false,
       },

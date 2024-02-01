@@ -32,13 +32,13 @@ export class LandingPageComponent {
     this.emailVerificationService.verifyEmail(this.urlParams).subscribe(res => {
       console.log(res); 
       if (!res || res.isSuccess == false) {
-        this.toastrService.warning("{{'LandingPage.Veification failed' | translate}}");
+        this.toastrService.warning(this.translate.instant('LandingPage.Veification failed'));
       } else {
-        this.toastrService.success(res.methodResult.email + "{{'LandingPage.Veification' | translate}}");
+        this.toastrService.success(res.methodResult.email + this.translate.instant('LandingPage.Veification'));
       }
     },
     error => {
-      this.toastrService.warning("{{'LandingPage.Veification failed' | translate}}");
+      this.toastrService.warning(this.translate.instant('LandingPage.Veification failed'));
     })
     
   }

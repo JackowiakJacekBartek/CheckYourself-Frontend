@@ -115,8 +115,8 @@
             <p>{{(offer.location ? offer.location : company.location) | capitalize}}</p>
             <div class="center">
               <!-- todo tlumaczenie -->
-              <button *ngIf="showEditButton" mat-button class="applyButton" [routerLink]="'/joboffer/' + offer.id"><span>Przypnij quiz</span></button>
-              <button mat-button class="applyButton" (click)="deleteJobOffer(offer.id)"><span>Usuń oferte</span></button>
+              <button *ngIf="showEditButton" mat-button class="applyButton" [routerLink]="'/joboffer/' + offer.id"><span>{{'NavigationMenu.Add quizz' | translate}}</span></button>
+              <button mat-button class="applyButton" (click)="deleteJobOffer(offer.id)"><span>{{'NavigationMenu.DeleteOffer' | translate}}</span></button>
             </div>
           </div>
         </div>
