@@ -1,136 +1,148 @@
 <link rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
 <main class="page">
-  <div class="wrapperUser">
-    <div class="sections">
+    <div class="wrapperUser">
+        <div class="sections">
 
-      <form [formGroup]="quizForm" (ngSubmit)="submitQuiz()">
-        <div class="head">
-          <label for="quizName">Quiz Name:</label>
-          <div *ngIf="quizForm.get('quizName')?.hasError('required') && quizForm.get('quizName')?.touched"
-               class="error-message">
-            Quiz Name is required
-          </div>
-        </div>
-        <input id="quizName" type="text" formControlName="quizName" required>
-
-        <div class="head">
-          <label for="maxDuration">Max Duration (minutes):</label>
-          <div *ngIf="quizForm.get('maxDuration')?.hasError('required') && quizForm.get('maxDuration')?.touched"
-               class="error-message">
-            Max Duration is required
-          </div>
-        </div>
-        <input id="maxDuration" type="text" formControlName="maxDuration" required>
-
-<!--        <div class="head">-->
-<!--          <label for="maxPoints">Max Points:</label>-->
-<!--          punkty w formularzu {{totalQuizScore}}-->
-<!--          <div *ngIf="quizForm.get('maxPoints')?.hasError('required') && quizForm.get('maxPoints')?.touched"-->
-<!--               class="error-message">-->
-<!--            Max Points is required-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <input id="maxPoints" type="number" formControlName="maxPoints" required>-->
-
-        <div class="head">
-          <label for="passingThreshold">Min Points (%):</label>
-          <div *ngIf="quizForm.get('passingThreshold')?.hasError('required') && quizForm.get('passingThreshold')?.touched"
-               class="error-message">
-            Min Points is required
-          </div>
-        </div>
-        <input id="passingThreshold" type="number" formControlName="passingThreshold" required>
-
-        <div class="head">
-          <label for="quizDescription">Quiz Description:</label>
-          <div *ngIf="quizForm.get('quizDescription')?.hasError('required') && quizForm.get('quizDescription')?.touched"
-               class="error-message">
-            Quiz Description is required
-          </div>
-        </div>
-        <textarea id="quizDescription" formControlName="quizDescription" required></textarea>
-
-        <div class="head">
-          <label for="quizTechnology">Quiz Technology:</label>
-          <div *ngIf="quizForm.get('quizTechnology')?.hasError('required') && quizForm.get('quizTechnology')?.touched"
-               class="error-message">
-            Quiz Technology is required
-          </div>
-        </div>
-        <input id="quizTechnology" type="text" formControlName="quizTechnology" required>
-
-        <div formArrayName="questions">
-          <div *ngFor="let question of questionsArray.controls; let i=index">
-            <div [formGroupName]="i" class="question-container">
-              <div class="head">
-                <label for="questionContent">Pytanie: {{i + 1}}</label>
-                <button id="remove" type="button" (click)="removeQuestion(i)">Remove Question</button>
-              </div>
-              <textarea id="questionContent" formControlName="questionContent" required></textarea>
-              <div
-                *ngIf="question.get('questionContent').hasError('required') && question.get('questionContent').touched"
-                class="error-message">
-                Question content is required
-              </div>
-
-              <div class="answers" formArrayName="correctAnswers">
-                <div class="answer"
-                     *ngFor="let correctAnswer of question.get('correctAnswers')['controls']; let j=index">
-                  <div [formGroupName]="j">
-                    <div class="head">
-                      <label for="correctAnswer">Correct Answer {{j + 1}}:</label>
-                      <button id="remove" type="button" (click)="removeCorrectAnswer(question, j)">Remove
-                        Correct Answer
-                      </button>
+            <form [formGroup]="quizForm" (ngSubmit)="submitQuiz()">
+                <div class="head">
+                    <label for="quizName">Quiz Name:</label>
+                    <div *ngIf="quizForm.get('quizName')?.hasError('required') && quizForm.get('quizName')?.touched"
+                         class="error-message">
+                        Quiz Name is required
                     </div>
-                    <input id="correctAnswer" type="text" formControlName="correctAnswer" required>
-                    <div
-                      *ngIf="correctAnswer.get('correctAnswer').hasError('required') && correctAnswer.get('correctAnswer').touched"
-                      class="error-message">
-                      Correct Answer is required
-                    </div>
-
-                    <label for="correctAnswerScore">Correct Answer Score:</label>
-                    <input id="correctAnswerScore" type="number" formControlName="correctAnswerScore" required>
-                    <div
-                      *ngIf="correctAnswer.get('correctAnswerScore').hasError('required') && correctAnswer.get('correctAnswerScore').touched"
-                      class="error-message">
-                      Correct Answer Score is required
-                    </div>
-                  </div>
                 </div>
-              </div>
-              <button id="add" type="button" (click)="addCorrectAnswer(question)">Add Correct Answer</button>
+                <input id="quizName" type="text" formControlName="quizName" required>
 
-              <div class="answers" formArrayName="falseAnswers">
-                <div class="answer" *ngFor="let falseAnswer of question.get('falseAnswers')['controls']; let k=index">
-                  <div [formGroupName]="k">
-                    <div class="head">
-                      <label for="falseAnswer">False Answer {{k + 1}}:</label>
-                      <button id="remove" type="button" (click)="removeFalseAnswer(question, k)">Remove False Answer
-                      </button>
+                <div class="head">
+                    <label for="maxDuration">Max Duration (minutes):</label>
+                    <div *ngIf="quizForm.get('maxDuration')?.hasError('required') && quizForm.get('maxDuration')?.touched"
+                         class="error-message">
+                        Max Duration is required
                     </div>
-                    <div class="contentAnswer">
-                      <input id="falseAnswer" type="text" formControlName="falseAnswer" required>
-                      <div
-                        *ngIf="falseAnswer.get('falseAnswer').hasError('required') && falseAnswer.get('falseAnswer').touched"
-                        class="error-message">
-                        False Answer is required
-                      </div>
-                    </div>
-                  </div>
                 </div>
-              </div>
-              <button id="add" type="button" (click)="addFalseAnswer(question)">Add False Answer</button>
-            </div>
-          </div>
-          <button id="add" type="button" (click)="addQuestion()" type="button">Add Question</button>
+                <input id="maxDuration" type="text" formControlName="maxDuration" required>
+
+                <!--        <div class="head">-->
+                <!--          <label for="maxPoints">Max Points:</label>-->
+                <!--          punkty w formularzu {{totalQuizScore}}-->
+                <!--          <div *ngIf="quizForm.get('maxPoints')?.hasError('required') && quizForm.get('maxPoints')?.touched"-->
+                <!--               class="error-message">-->
+                <!--            Max Points is required-->
+                <!--          </div>-->
+                <!--        </div>-->
+                <!--        <input id="maxPoints" type="number" formControlName="maxPoints" required>-->
+
+                <div class="head">
+                    <label for="passingThreshold">Min Points (%):</label>
+                    <div *ngIf="quizForm.get('passingThreshold')?.hasError('required') && quizForm.get('passingThreshold')?.touched"
+                         class="error-message">
+                        Min Points is required
+                    </div>
+                </div>
+                <input id="passingThreshold" type="number" formControlName="passingThreshold" required>
+
+                <div class="head">
+                    <label for="quizDescription">Quiz Description:</label>
+                    <div *ngIf="quizForm.get('quizDescription')?.hasError('required') && quizForm.get('quizDescription')?.touched"
+                         class="error-message">
+                        Quiz Description is required
+                    </div>
+                </div>
+                <textarea id="quizDescription" formControlName="quizDescription" required></textarea>
+
+                <div class="head">
+                    <label for="quizTechnology">Quiz Technology:</label>
+                    <div *ngIf="quizForm.get('quizTechnology')?.hasError('required') && quizForm.get('quizTechnology')?.touched"
+                         class="error-message">
+                        Quiz Technology is required
+                    </div>
+                </div>
+                <input id="quizTechnology" type="text" formControlName="quizTechnology" required>
+
+                <div formArrayName="questions">
+                    <div *ngFor="let question of questionsArray.controls; let i=index">
+                        <div [formGroupName]="i" class="question-container">
+                            <div class="headButton">
+                                <button id="remove" type="button" (click)="removeQuestion(i)">Remove Question</button>
+                            </div>
+                            <div class="head">
+                                <label class="questionNumber" for="questionContent">Pytanie: {{i + 1}}</label>
+                                <div
+                                        *ngIf="question.get('questionContent').hasError('required') && question.get('questionContent').touched"
+                                        class="error-message">
+                                    Question content is required
+                                </div>
+                            </div>
+                            <textarea id="questionContent" formControlName="questionContent" required></textarea>
+
+                            <div class="answers" formArrayName="correctAnswers">
+                                <div class="answer"
+                                     *ngFor="let correctAnswer of question.get('correctAnswers')['controls']; let j=index">
+                                    <div [formGroupName]="j">
+                                        <div class="headButton">
+                                            <button id="remove" type="button"
+                                                    (click)="removeCorrectAnswer(question, j)">Remove
+                                                Correct Answer
+                                            </button>
+                                        </div>
+                                        <div class="head">
+                                            <label for="correctAnswer">Correct Answer {{j + 1}}:</label>
+                                            <div
+                                                    *ngIf="correctAnswer.get('correctAnswer').hasError('required') && correctAnswer.get('correctAnswer').touched"
+                                                    class="error-message">
+                                                Correct Answer is required
+                                            </div>
+                                        </div>
+                                        <input id="correctAnswer" type="text" formControlName="correctAnswer" required>
+                                        <div class="head">
+                                            <label for="correctAnswerScore">Correct Answer Score:</label>
+                                            <div
+                                                    *ngIf="correctAnswer.get('correctAnswerScore').hasError('required') && correctAnswer.get('correctAnswerScore').touched"
+                                                    class="error-message">
+                                                Correct Answer Score is required
+                                            </div>
+                                        </div>
+                                        <input id="correctAnswerScore" type="number"
+                                               formControlName="correctAnswerScore" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="add" type="button" (click)="addCorrectAnswer(question)">Add Correct Answer
+                            </button>
+
+                            <div class="answers" formArrayName="falseAnswers">
+                                <div class="answer"
+                                     *ngFor="let falseAnswer of question.get('falseAnswers')['controls']; let k=index">
+                                    <div [formGroupName]="k">
+                                        <div class="headButton">
+                                            <button id="remove" type="button" (click)="removeFalseAnswer(question, k)">
+                                                Remove False Answer
+                                            </button>
+                                        </div>
+                                        <div class="head">
+                                            <label for="falseAnswer">False Answer {{k + 1}}:</label>
+                                            <div
+                                                    *ngIf="falseAnswer.get('falseAnswer').hasError('required') && falseAnswer.get('falseAnswer').touched"
+                                                    class="error-message">
+                                                False Answer is required
+                                            </div>
+                                        </div>
+                                        <div class="contentAnswer">
+                                            <input id="falseAnswer" type="text" formControlName="falseAnswer" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="add" type="button" (click)="addFalseAnswer(question)">Add False Answer</button>
+                        </div>
+                    </div>
+                    <button id="add" type="button" (click)="addQuestion()" type="button">Add Question</button>
+                </div>
+
+                <button mat-button class="newJobbButton" type="submit">Submit</button>
+            </form>
+
         </div>
-
-        <button mat-button class="newJobbButton" type="submit">Submit</button>
-      </form>
-
     </div>
-  </div>
 </main>

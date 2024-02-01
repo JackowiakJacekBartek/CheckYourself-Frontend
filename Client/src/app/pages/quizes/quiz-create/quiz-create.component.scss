@@ -4,10 +4,6 @@ form {
   width: 50%;
   margin: 0 auto;
 
-  label {
-    margin-top: 10px;
-  }
-
   input[type="text"],
   input[type="number"],
   textarea {
@@ -32,10 +28,6 @@ form {
       margin-top: 10px;
       cursor: pointer;
     }
-
-    div {
-      margin-top: 10px;
-    }
   }
 
   #add {
@@ -44,6 +36,12 @@ form {
 
   #remove {
     background-color: #EB5353;
+  }
+
+  .headButton {
+    margin-top: -10px;
+    display: flex;
+    justify-content: flex-end;
   }
 
   button[type="button"] {
@@ -76,14 +74,19 @@ input {
 }
 
 .answer {
+  margin-top: 20px;
   border: 1px solid #ccc;
   border-radius: 12px;
   //background-color: #E3F4F4;
-  padding: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 15px;
+  padding-bottom: 30px;
 }
 
 
 .head {
+  margin-top: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center
@@ -112,4 +115,8 @@ input {
 
 #add {
   margin-top: 20px;
+}
+
+.questionNumber {
+  font-size: large;
 }
