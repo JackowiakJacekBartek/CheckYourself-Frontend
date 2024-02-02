@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { jobsUrl, quizzesUrl } from 'src/app/shared/constants/constants';
 import { JobOfferGet } from 'src/app/shared/models/jobOffer';
 import { ReturnedResponse } from 'src/app/shared/models/returned-response';
+import {JobOfferApplies} from "../../shared/models/jobOfferApplies";
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +20,8 @@ export class JobOfferAppliesService {
     return "api/Quizzes"
   }
 
-  public GetAllResultsForJobAdvertisements(idOffer: number): Observable<ReturnedResponse<JobOfferGet[]>> {
-    return this.http.get<ReturnedResponse<JobOfferGet[]>>(`${quizzesUrl}/get-all-results-for-job-advertisements?jobOfferId=${idOffer}`);
+  public GetAllResultsForJobAdvertisements(idOffer: number): Observable<ReturnedResponse<JobOfferApplies[]>> {
+    return this.http.get<ReturnedResponse<JobOfferApplies[]>>(`${quizzesUrl}/get-all-results-for-job-advertisements?jobOfferId=${idOffer}`);
   }
 
 }
