@@ -69,6 +69,7 @@ import { JobofferComponent } from './pages/joboffer/joboffer.component';
 import { QuizCreateComponent } from './pages/quizes/quiz-create/quiz-create.component';
 import { QuizzesListComponent } from './pages/quizzes-list-component/quizzes-list-component.component';
 import { JobOfferAppliesComponent } from './pages/job-offer-applies/job-offer-applies.component';
+import { TermsComponent } from './pages/terms/terms.component';
 
 @NgModule({
   exports: [
@@ -111,7 +112,8 @@ import { JobOfferAppliesComponent } from './pages/job-offer-applies/job-offer-ap
     CapitalizePipe,
     JobofferComponent,
     QuizzesListComponent,
-    JobOfferAppliesComponent
+    JobOfferAppliesComponent,
+    TermsComponent
   ],
   imports: [
     NgApexchartsModule,

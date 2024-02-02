@@ -16,6 +16,7 @@ import { ResultComponent } from './pages/quizzes/result/result.component';
 import {JobofferComponent} from "./pages/joboffer/joboffer.component";
 import { QuizzesListComponent } from './pages/quizzes-list-component/quizzes-list-component.component';
 import { JobOfferAppliesComponent } from './pages/job-offer-applies/job-offer-applies.component';
+import { TermsComponent } from './pages/terms/terms.component';
 
 const routes: Routes = [
   {
@@ -40,7 +41,7 @@ const routes: Routes = [
     path: 'email-verification/:email/:code', component: LandingPageComponent
   },
   {
-    path: 'quizzes', component: QuizzesListComponent, canActivate:[AuthGuard] // myquizzes
+    path: 'quizzes', component: QuizzesListComponent, canActivate:[AuthGuard]
   },
   {
     path: 'joboffer/:id/quiz', component: QuizzesComponent, canActivate:[AuthGuard]
@@ -64,7 +65,10 @@ const routes: Routes = [
     path: 'joboffer/:id', component: JobofferComponent
   },
   {
-    path: 'joboffer/:id/create-quiz', component: QuizCreateComponent
+    path: 'joboffer/:id/create-quiz', component: QuizCreateComponent, canActivate:[AuthGuard]
+  },
+  {
+    path: 'terms', component: TermsComponent
   },
   {
     path: '**', redirectTo: '',
