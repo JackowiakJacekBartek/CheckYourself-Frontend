@@ -79,7 +79,7 @@ export class EditCompanyPageComponent implements AfterViewInit {
   private getData() {
     this.companyProfileService.getCompanyById(this.currentCompanyID).subscribe(res => {
       this.data = res.methodResult;
-      console.log(this.data)
+      // console.log(this.data)
       this.companyName.setValue(this.data.company.name)
       this.location.setValue(this.data.company.headquarteraddress)
       this.companySize.setValue(this.data.company.employeecount ? this.data.company.employeecount.toString() : '1')
@@ -117,7 +117,7 @@ export class EditCompanyPageComponent implements AfterViewInit {
       this.tools.patchValue(toolsSelectedValues);
       this.platforms.patchValue(platformsSelectedValues);
 
-      console.log(this.data.companyImages)
+      // console.log(this.data.companyImages)
 
       this.imagesUrl = [];
       this.data.companyImages.forEach(a => {

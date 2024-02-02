@@ -25,14 +25,14 @@ export class QuizzesComponent {
   constructor(protected quizzesService: QuizzesService, private router: Router, private route: ActivatedRoute) {
     quizzesService.getQuizByIdJobAdvertisement(this.jobOfferID).subscribe(res => {
       this.quiz = res.methodResult;
-      console.log(this.quiz)
+      // console.log(this.quiz)
     })
     // @ts-ignore
     this.companyName = localStorage.getItem('companyName');
-    console.log(this.companyName);
+    // console.log(this.companyName);
     // @ts-ignore
     this.jobOfferName = localStorage.getItem('jobOfferName');
-    console.log(this.jobOfferName);
+    // console.log(this.jobOfferName);
   }
 
   onStart() {

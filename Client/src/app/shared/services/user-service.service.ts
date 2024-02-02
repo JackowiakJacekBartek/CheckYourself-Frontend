@@ -57,7 +57,7 @@ export class AccountService {
     }
 
     public refreshToken(accessToken: string): Observable<ReturnedResponse<RefreshToken>> {
-      // console.log('request', `${localUrl}/api/Account/refresh-token`, accessToken)
+      // // console.log('request', `${localUrl}/api/Account/refresh-token`, accessToken)
       return this.http.post<ReturnedResponse<RefreshToken>>(`${localUrl}/api/Account/refresh-token`, {accessToken, refreshToken: ''})
     }
 

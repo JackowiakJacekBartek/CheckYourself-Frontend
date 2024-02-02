@@ -72,10 +72,10 @@ export class QuestionsComponent implements OnInit {
 
     // @ts-ignore
     this.companyName = localStorage.getItem('companyName');
-    console.log(this.companyName);
+    // console.log(this.companyName);
     // @ts-ignore
     this.jobOfferName = localStorage.getItem('jobOfferName');
-    console.log(this.jobOfferName);
+    // console.log(this.jobOfferName);
   }
 
   getQuizInfo():string {

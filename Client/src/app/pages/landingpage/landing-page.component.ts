@@ -22,15 +22,15 @@ export class LandingPageComponent {
     public popUp: MatDialog, private translate: TranslateService) {}
 
   ngOnInit(): void {
-    console.log(this.route.snapshot.params['code'])
-    console.log(this.route.snapshot.params['email'])
+    // console.log(this.route.snapshot.params['code'])
+    // console.log(this.route.snapshot.params['email'])
     this.urlParams.code = Number(this.route.snapshot.params['code']);
     this.urlParams.email = this.route.snapshot.params['email'];
 
-    console.log(this.urlParams)
+    // console.log(this.urlParams)
 
     this.emailVerificationService.verifyEmail(this.urlParams).subscribe(res => {
-      console.log(res);
+      // console.log(res);
       if (!res || res.isSuccess == false) {
         this.toastrService.warning(this.translate.instant('LandingPage.Veification failed'));
       } else {

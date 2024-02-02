@@ -198,7 +198,7 @@ export class QuizSolveComponent {
 
     if (diffInSeconds >= totalTimeInSeconds) {
       // this.onSubmit();
-      console.log('Czas upłynął! o ', -1* (totalTimeInSeconds - diffInSeconds), ' sekund');
+      // console.log('Czas upłynął! o ', -1* (totalTimeInSeconds - diffInSeconds), ' sekund');
     }
   }
 
@@ -213,12 +213,12 @@ export class QuizSolveComponent {
   onQuestionChanged(incorrectQuestion: boolean) {
     this.areCorrectQuestions.push(incorrectQuestion)
     this.quiz.questions.length === this.questionNumber + 1 ? this.showResultScreen = true : this.questionNumber += 1
-    console.log(this.areCorrectQuestions) 
+    // console.log(this.areCorrectQuestions) 
   }
 
   // nextQuestion(option: any) {
-  //   console.log('hereee1', option.answers.incorrect)
-  //   console.log('hereee2', this.pickedOptions)
+  //   // console.log('hereee1', option.answers.incorrect)
+  //   // console.log('hereee2', this.pickedOptions)
   //   this.questionChanged.emit(option.answers.incorrect.some(r => this.pickedOptions.includes(r)));
   //   this.pickedOptions = [];
   // }

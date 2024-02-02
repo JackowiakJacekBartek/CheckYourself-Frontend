@@ -106,9 +106,9 @@ export class JobofferComponent implements OnInit {
 
   handleDeleteQuiz(quizId: number) {
     this.quizzesService.deleteQuizById(quizId).subscribe(res => {
-      console.log(res)
+      // console.log(res)
       if (res.methodResult === 0 || res.methodResult === -1) { // 0 no quiz -1 no joboffer
-        console.log('error usuwania')
+        // console.log('error usuwania')
         this.toastrService.warning(this.translate.instant('Error.UnableToDoIt'));
       } else {
         window.location.reload();

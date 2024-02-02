@@ -21,9 +21,9 @@ export class JobOfferAppliesComponent {
     constructor(private route: ActivatedRoute,
                 protected jobOfferAppliesService: JobOfferAppliesService, private router: Router) {
         this.jobOfferAppliesService.GetAllResultsForJobAdvertisements(this.currentJobOfferID).subscribe(res => {
-            console.log(res)
+            // console.log(res)
             this.jobOfferApplies = res.methodResult;
-            console.log(this.jobOfferApplies[0].account.email)
+            // console.log(this.jobOfferApplies[0].account.email)
         })
     }
 

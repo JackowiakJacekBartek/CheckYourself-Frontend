@@ -19,7 +19,7 @@ export class EditUserProfileService {
     }
 
     public updateUserById(id: number, model: UserProfile): Observable<ReturnedResponse<UserProfile>> {
-        console.log(id)
+        // console.log(id)
         return this.http.patch<ReturnedResponse<UserProfile>>(`${localUrl}/${this.controller}/update-account-by-id?id=${id}`, model);
     }
 

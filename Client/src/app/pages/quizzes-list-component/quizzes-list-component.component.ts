@@ -28,7 +28,7 @@ export class QuizzesListComponent{
     this.jobs = [];
     this.quizzesService.getJobOffers().subscribe(res => {
       this.jobs = res.methodResult;
-      console.log(res.methodResult);
+      // console.log(res.methodResult);
     })
   }
 
@@ -57,7 +57,7 @@ export class QuizzesListComponent{
   }
 
   openRegister() {
-    console.log("openRegister", this.jobs);
+    // console.log("openRegister", this.jobs);
     this.popUp.open(RegisterCompanyPopUpComponent);
   }
 
@@ -65,8 +65,8 @@ export class QuizzesListComponent{
     const dialogRef = this.popUp.open(AreYouSurePopUpComponent);
     // dialogRef.afterClosed().subscribe((result) => {
     //   if (result == 'tak') {
-    //     console.log(element);
-    //     // this.companyProfileService.deleteCompanyById(element).subscribe(res => console.log(res))
+    //     // console.log(element);
+    //     // this.companyProfileService.deleteCompanyById(element).subscribe(res => // console.log(res))
     //     const indexToRemove = this.jobs.findIndex(company => company.id === element);
     //     if (indexToRemove !== -1) {
     //       this.jobs.splice(indexToRemove, 1);

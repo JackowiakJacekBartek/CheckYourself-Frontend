@@ -231,11 +231,11 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
   }
 
   addTask(item) {
-    // console.log(item.getRawValue().accountworkresponsibilities)
+    // // console.log(item.getRawValue().accountworkresponsibilities)
     // item.controls.accountworkresponsibilities.controls.push(this.formBuilder.group({
     //   name: ['', []]
     // }))
-    console.log("Temporary disabled")
+    // console.log("Temporary disabled")
   }
 
   public get experience() {
@@ -344,7 +344,7 @@ export class EditUserProfileComponent implements OnChanges, AfterViewInit, OnIni
 
   public save() {
     this.accountDetails();
-    console.log('data', this.data)
+    // console.log('data', this.data)
     this.data.accountCoursesCertificates = this.userProfileEditForm.value.certificates;
     this.data.accountWorkExperiences = this.userProfileEditForm.value.experience;
     this.data.accountEducationModelDto = this.userProfileEditForm.value.education;

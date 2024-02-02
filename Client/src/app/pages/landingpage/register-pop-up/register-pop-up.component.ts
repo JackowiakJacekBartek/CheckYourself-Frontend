@@ -100,7 +100,7 @@ export class RegisterPopUpComponent implements OnDestroy {
 
   registerButton(formGroup: FormGroup) {
     if (formGroup.get('privacyCheckbox')?.status == INVALID) {
-      console.log('Polityka niezaznaczona');
+      // console.log('Polityka niezaznaczona');
       this.openSnackBar('Uwaga! W celu rejestracji należy zaakceptować regulamin wraz z polityką ochrony danych osobowych.');
     } else if (formGroup.status === VALID) {
 
@@ -112,19 +112,19 @@ export class RegisterPopUpComponent implements OnDestroy {
       };
 
       this.accountService.register(model).subscribe(res => {
-        console.log(res.errorMessage)
-        console.log(res)
+        // console.log(res.errorMessage)
+        // console.log(res)
         this.registerMessages(res);
       });
     }
     else {
-      console.log('Invalid na formularzu');
+      // console.log('Invalid na formularzu');
     }
   }
 
   registerButtonCompany(formGroup: FormGroup) {
     if (formGroup.get('privacyCheckbox')?.status == INVALID) {
-      console.log('Polityka niezaznaczona');
+      // console.log('Polityka niezaznaczona');
       this.openSnackBar('Uwaga! W celu rejestracji należy zaakceptować regulamin wraz z polityką ochrony danych osobowych.');
     } else if (formGroup.status === VALID) {
 
@@ -136,12 +136,12 @@ export class RegisterPopUpComponent implements OnDestroy {
       // };
 
       // this.accountService.CompanyRegister(companyModel).subscribe(res => {
-      //   console.log(res)
+      //   // console.log(res)
       //   this.registerMessages(res);
       // });
     }
     else {
-      console.log('Invalid na formularzu');
+      // console.log('Invalid na formularzu');
     }
   }
 

@@ -31,7 +31,7 @@ export class CompaniesPageComponent implements AfterViewInit {
     this.companyProfileService.getCompaniesById().subscribe(res => {
       this.data = res.methodResult;
       this.companies = res.methodResult;
-      console.log('ngAfterViewInit', this.companies);
+      // console.log('ngAfterViewInit', this.companies);
       this.addCompany();
     })
   }
@@ -55,7 +55,7 @@ export class CompaniesPageComponent implements AfterViewInit {
   }
 
   openRegister() {
-    console.log("openRegister", this.companies);
+    // console.log("openRegister", this.companies);
     this.popUp.open(RegisterCompanyPopUpComponent);
   }
 
@@ -63,8 +63,8 @@ export class CompaniesPageComponent implements AfterViewInit {
     const dialogRef = this.popUp.open(AreYouSurePopUpComponent);
     dialogRef.afterClosed().subscribe((result) => {
       if (result == 'tak') {
-        console.log(element);
-        this.companyProfileService.deleteCompanyById(element).subscribe(res => console.log(res))
+        // console.log(element);
+        this.companyProfileService.deleteCompanyById(element).subscribe(res => // console.log(res))
         const indexToRemove = this.companies.findIndex(company => company.id === element);
         if (indexToRemove !== -1) {
           this.companies.splice(indexToRemove, 1);
