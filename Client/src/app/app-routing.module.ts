@@ -17,6 +17,7 @@ import {JobofferComponent} from "./pages/joboffer/joboffer.component";
 import { QuizzesListComponent } from './pages/quizzes-list-component/quizzes-list-component.component';
 import { JobOfferAppliesComponent } from './pages/job-offer-applies/job-offer-applies.component';
 import { TermsComponent } from './pages/terms/terms.component';
+import { AboutComponent } from './pages/about/about.component';
 
 const routes: Routes = [
   {
@@ -69,6 +70,9 @@ const routes: Routes = [
   },
   {
     path: 'terms', component: TermsComponent
+  },
+  {
+    path: 'about', component: AboutComponent
   },
   {
     path: '**', redirectTo: '',
