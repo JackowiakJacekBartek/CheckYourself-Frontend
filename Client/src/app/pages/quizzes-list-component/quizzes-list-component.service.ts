@@ -19,4 +19,8 @@ export class QuizzesListService {
   getJobOffers(): Observable<ReturnedResponse<JobsQuickInfo[]>> {
     return this.http.get<ReturnedResponse<JobsQuickInfo[]>>(comapniesUrl + `/api/Job/get-jobs-by-idaccount?id=`+localStorage.getItem('userID'));
   }
+  
+  deleteJobOffer(id:number): Observable<ReturnedResponse<number>> {
+    return this.http.delete<ReturnedResponse<number>>(comapniesUrl + `/api/Job/delete-job-by-id?jobId=`+ id);
+  }
 }
