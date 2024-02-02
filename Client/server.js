@@ -15,7 +15,7 @@ app.get('*', (req, res) => {
 });
 
 // Ustaw port na 4200 lub dostepny port zmienna srodowiskowa
-const port = process.env.PORT || 4200;
+const port = process.env.PORT || 80;
 
 // Uruchom serwer
 app.listen(port, () => {
