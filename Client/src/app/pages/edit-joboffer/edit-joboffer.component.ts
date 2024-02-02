@@ -87,12 +87,12 @@ export class EditJobofferComponent implements OnInit {
             // params to obiekt zawierający przekazane parametry
             this.idCompany = params['idCompany'];
             // Możesz tutaj wykorzystać odczytane parametry
-            console.log('idCompany:', this.idCompany);
+            // console.log('idCompany:', this.idCompany);
         });
 
         this.companyPageService.getCompanyById(this.idCompany).subscribe(res => {
             this.dataCompany = res.methodResult;
-            console.log(this.dataCompany)
+            // console.log(this.dataCompany)
             this.image = this.dataCompany.company.logo;
             this.companyName = this.dataCompany.company.name;
         })
@@ -100,7 +100,7 @@ export class EditJobofferComponent implements OnInit {
 
         // this.EditJobofferService.getJobById(2).subscribe(res => {
         //   this.data = res.methodResult;
-        //   console.log(this.data)
+        //   // console.log(this.data)
         // })
     }
 
@@ -127,7 +127,7 @@ export class EditJobofferComponent implements OnInit {
 
         this.EditJobofferService.createJob(this.data).subscribe(res => {
             this.data = res.methodResult;
-            console.log('Wyslana oferta:', this.data)
+            // console.log('Wyslana oferta:', this.data)
             if (res.isSuccess) {
                 this.router.navigate(["/company"])
             }

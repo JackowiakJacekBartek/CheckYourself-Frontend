@@ -75,7 +75,7 @@ export class RegisterCompanyPopUpComponent implements OnDestroy {
 
     registerButtonCompany(formGroup: FormGroup) {
         if (formGroup.get('privacyCheckbox')?.status == INVALID) {
-            console.log('Polityka niezaznaczona');
+            // console.log('Polityka niezaznaczona');
             this.openSnackBar('Uwaga! W celu rejestracji należy zaakceptować regulamin wraz z polityką ochrony danych osobowych.');
         } else if (formGroup.status === VALID) {
 
@@ -86,7 +86,7 @@ export class RegisterCompanyPopUpComponent implements OnDestroy {
                 idAccount: Number(localStorage.getItem('userID'))
             };
 
-            console.log('companyModel', companyModel);
+            // console.log('companyModel', companyModel);
             this.accountService.CompanyRegister(companyModel).subscribe(res => {
                 this.registerMessages(res);
 
@@ -95,7 +95,7 @@ export class RegisterCompanyPopUpComponent implements OnDestroy {
                 }, 1000);
             });
         } else {
-            console.log('Invalid na formularzu');
+            // console.log('Invalid na formularzu');
         }
     }
 

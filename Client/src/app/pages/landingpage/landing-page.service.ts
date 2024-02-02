@@ -14,7 +14,7 @@ export class LandingPageService {
     }
 
     verifyEmail(model: EmailVerification): Observable<ReturnedResponse<EmailVerification>> {
-        console.log(model)
+        // console.log(model)
         return this.http.post<ReturnedResponse<EmailVerification>>(`${localUrl}/${this.controller}/confirm-email`, model);
     }
 }

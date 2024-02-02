@@ -1,0 +1,77 @@
+/* my-company-list.component.scss */
+.topbar {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  margin-left: 16px;
+  button {
+    margin-left: 16px;
+  }
+}
+
+.company-list {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+
+.sections {
+  width: 65%;
+  margin-left: auto;
+  margin-right: auto;
+
+  .newJobbButton {
+    width: 100%;
+    border: solid rgba(1, 133, 116, 0.9);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 12px;
+    font-size: 12px;
+    color: rgba(1, 133, 116, 0.9);
+    margin-bottom: 30px;
+    height: 90px;
+  }
+
+  .noOffers {
+    text-align: center;
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+.avatar {
+  border-radius: 10%;
+}
+
+.tag {
+  font-size: large;
+  font-weight: normal;
+  text-align: center;
+}
+
+.jobName {
+  cursor: pointer;
+}
+
+.title {
+  margin-bottom: 50px;
+  text-align: center;
+  font-size: 30px;
+}

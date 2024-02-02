@@ -147,7 +147,7 @@ export class UserPageComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.UserProfileService.getUserById(this.currentUserID).subscribe(res => {
       this.data = res.methodResult;
-      console.log(this.data)
+      // console.log(this.data)
 
       // if (res.isSuccess === true && res.methodResult == null) {
       //     this.accountService.logout();
@@ -221,7 +221,7 @@ export class UserPageComponent implements AfterViewInit {
       this.skills.tools = technicalSkills.filter(m => m.type === TechnicalSkillsEnum.Tools);
       this.skills.languages = technicalSkills.filter(m => m.type === TechnicalSkillsEnum.ForeignLanguages);
 
-      console.log(this.skills);
+      // console.log(this.skills);
     })
   }
 

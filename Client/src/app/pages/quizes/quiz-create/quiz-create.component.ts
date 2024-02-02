@@ -141,22 +141,22 @@ export class QuizCreateComponent {
     //   this.toastrService.warning('Sumy punktów formularza nie są równe'); // TODO tlumaczenie
     //   return;
     // }
-    console.log(this.quizForm.value)
+    // console.log(this.quizForm.value)
     if (this.quizForm.valid) {
       const formValues: QuizData = this.quizForm.value
-      console.log(formValues);
+      // console.log(formValues);
       const mappedValues: QuizDto = QuizMapper.mapToQuizRegisterDto(formValues, this.currentJobOfferId, this.totalQuizScore);
 
-      console.log('dane create', mappedValues)
+      // console.log('dane create', mappedValues)
       this.quizzesService.createQuizForJobAdvertisement(this.currentJobOfferId, mappedValues).subscribe(res => {
-        console.log(res)
+        // console.log(res)
         if(res.isSuccess) {
-          console.log('sukces')
+          // console.log('sukces')
           this.router.navigate(['/joboffer/'+this.currentJobOfferId])
         }
       });
     } else {
-      console.log('Form is invalid. Please fill in all required fields.');
+      // console.log('Form is invalid. Please fill in all required fields.');
     }
   }
 }

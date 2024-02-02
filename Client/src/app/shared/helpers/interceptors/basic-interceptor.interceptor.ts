@@ -64,7 +64,7 @@ export class JwtInterceptor implements HttpInterceptor {
   }
 
     // private refreshTokenAndRetry(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    //   console.log('leci');
+    //   // console.log('leci');
     
     //   return this.http.post<ReturnedResponse<RefreshToken>>(
     //     `http://68.219.240.80:5010/api/Account/refresh-token`,
@@ -76,7 +76,7 @@ export class JwtInterceptor implements HttpInterceptor {
     //       return throwError(error);
     //     }),
     //     switchMap((response: ReturnedResponse<RefreshToken>) => {
-    //       console.log('HEREEE', response);
+    //       // console.log('HEREEE', response);
     //       const newToken = response.methodResult.accessToken;
     
     //       localStorage.setItem('accessToken', newToken);

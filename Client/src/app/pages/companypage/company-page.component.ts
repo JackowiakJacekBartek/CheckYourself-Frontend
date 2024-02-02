@@ -72,7 +72,7 @@ export class CompanyPageComponent implements OnInit {
     ngAfterViewInit(): void {
         this.companyProfileService.getCompanyById(this.currentCompanyID).subscribe(res => {
             this.data = res.methodResult;
-            console.log(this.data)
+            // console.log(this.data)
             this.companyIdAccount = this.data.company.idaccount;
 
             this.showEditButton = (+this.currentUserID2 === +this.companyIdAccount);
@@ -125,7 +125,7 @@ export class CompanyPageComponent implements OnInit {
 
         this.EditJobofferService.getJobsByIdCompany(this.currentCompanyID).subscribe(res => {
             this.dataJobOfferGet = res.methodResult;
-            console.log(this.dataJobOfferGet)
+            // console.log(this.dataJobOfferGet)
             
             if (this.dataJobOfferGet !== null) {
                 this.dataJobOfferGet.forEach(a => {
