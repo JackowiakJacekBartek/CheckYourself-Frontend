@@ -64,7 +64,7 @@ export class CompaniesPageComponent implements AfterViewInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result == 'tak') {
         // console.log(element);
-        this.companyProfileService.deleteCompanyById(element).subscribe(res => // console.log(res))
+        this.companyProfileService.deleteCompanyById(element).subscribe(res => {})
         const indexToRemove = this.companies.findIndex(company => company.id === element);
         if (indexToRemove !== -1) {
           this.companies.splice(indexToRemove, 1);
