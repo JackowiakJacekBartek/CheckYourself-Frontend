@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./terms.component.scss']
 })
 export class TermsComponent {
-
+constructor(){(protected)}
 }
