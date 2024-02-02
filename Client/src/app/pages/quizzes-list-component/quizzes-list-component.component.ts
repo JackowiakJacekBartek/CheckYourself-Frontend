@@ -32,6 +32,12 @@ export class QuizzesListComponent{
     })
   }
 
+  isImageData(image: string): boolean {
+    if( image && image.startsWith('data:')){
+    return true;}
+    return false;
+}
+
   goToEdit(i: number) {
     this.router.navigate(['/company/' + i + '/edit'])
   }

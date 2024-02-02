@@ -1,12 +1,11 @@
 <main class="page">
     <div class="wrapperUser">
         <div class="sections">
-            <button mat-button class="newJobbButton" (click)="openRegister()"><span>dodaj quiz?</span></button>
             <div class="jobOffers" id="ofert">
                 <div class="offer" *ngFor="let job of jobs">
                     <div class="left">
                         <a href="/joboffer/{{job.job.id}}" class="logocompany">
-                            <img class="avatar" alt="avatar" src="{{job.job.image ? job.job.image : '../../../assets/images/logoEmpty.png'}}">
+                            <img class="avatar" alt="avatar" [src]="isImageData(job.job.image) ? job.job.image : '../../../assets/images/logoEmpty.png'">
                         </a>
                         <div class="companyName">
                             <a href="/joboffer/{{job.job.id}}" class="jobname">
