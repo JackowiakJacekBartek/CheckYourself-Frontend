@@ -7,6 +7,8 @@
     "Delete": "Delete"
   },
 
+  "Tools": "Tools",
+  "ForeignLanguages": "Foreign languages",
   "Listjob": {
     "No offer": "No offers available",
     "Add job": "Add job offer",
@@ -157,8 +159,11 @@
     "Questionreq": "Question content is required",
     "Answerreq": "Correct Answer  is required",
     "Pointsreq": "Correct Answer Score is required",
-    "Badanswerreq": "False Answer is required"
-    
+    "Badanswerreq": "False Answer is required",
+    "Tools": "Tools",
+    "ForeignLanguages": "Foreign languages",
+    "TechType": "Technology type",
+    "TechTypereq": "Technology type is required"
   },
   "EditUserpage": {
     "Image uploaded": "Image uploaded",

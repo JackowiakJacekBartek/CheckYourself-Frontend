@@ -60,6 +60,17 @@
                 </div>
                 <input id="quizTechnology" type="text" formControlName="quizTechnology" required>
 
+                <div class="head">
+                    <label for="quizTechnologyType">{{'QuizCreator.TechType' | translate}}</label>
+                    <div *ngIf="quizForm.get('quizTechnologyType')?.hasError('required') && quizForm.get('quizTechnologyType')?.touched"
+                         class="error-message">
+                         {{'QuizCreator.TechTypereq' | translate}}
+                    </div>
+                </div>
+                <select id="quizTechnologyType" formControlName="quizTechnologyType" required>
+                    <option *ngFor="let techType of technologyTypes" [value]="techType.id">{{ techType.name }}</option>
+                </select>
+                
                 <div formArrayName="questions">
                     <div *ngFor="let question of questionsArray.controls; let i=index">
                         <div [formGroupName]="i" class="question-container">

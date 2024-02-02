@@ -1,4 +1,5 @@
 <div class="navbar">
+  
   <a>{{companyName | capitalize}} > {{jobOfferName | capitalize}} > {{quiz.quiz.name | capitalize}} <span> >{{'Quiz.Question' | translate}}{{currentQuestionNumber+1}} / {{quiz.quizzesQuestions.length}}</span></a>
   <timer [totalTime]="quiz.quiz.totaltime"></timer>
 </div>
@@ -26,12 +27,14 @@
         </label>
       </div>
     </div>
-
+    
     <button class="prev" *ngIf="currentQuestionNumber > 0"
             (click)="onPrev()">{{'Quiz.Prev Question' | translate}}</button>
     <button class="next" *ngIf="quizQuestions.length > currentQuestionNumber+1"
             (click)="onNext($event)">{{'Quiz.Next Question' | translate}}</button>
     <button class="next" *ngIf="quizQuestions.length == currentQuestionNumber+1"
-            (click)="submit()">{{'Quiz.Result of Quiz' | translate}}</button>
+            (click)="submit()">{{'Quiz.Result of Quiz' | translate}} </button>
+    <button class="next" *ngIf="!currentQuestionNumber"
+            (click)="submit()">{{'Quiz.Result of Quiz' | translate}} </button>
   </div>
 </div>

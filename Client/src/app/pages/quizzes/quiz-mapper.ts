@@ -23,10 +23,11 @@ export class QuizMapper {
           totalscore: totalQuizScore,
           totaltime: quizData.maxDuration.toString(),
           idcompany: currentJobOfferId,
-          type: QuizzesTypes['single-choice'],
+          type: Number(quizData.quizTechnologyType) || 0,
           passingthreshold: quizData.passingThreshold,
           technology: quizData.quizTechnology,
           description: quizData.quizDescription,
+          technologytype: Number(quizData.quizTechnologyType) || 0
         },
         quizzesQuestions: quizData.questions.map(question => ({
           id: question.id,

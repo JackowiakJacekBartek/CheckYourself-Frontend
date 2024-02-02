@@ -20,6 +20,15 @@ export class QuizCreateComponent {
   quizForm: FormGroup;
   totalQuizScore = 0.0;
 
+  quizTechnologyType!: number;
+
+  technologyTypes = [
+    { id: 1, name: 'Frontend' },
+    { id: 2, name: 'Backend' },
+    { id: 3, name: "Tools" },
+    { id: 4, name: "Foreign Languages" },
+  ];
+  
   constructor(
     private ref: ChangeDetectorRef,
     private editUserProfileService: EditUserProfileService,
@@ -33,10 +42,11 @@ export class QuizCreateComponent {
     this.quizForm = this.formBuilder.group({
       quizName: ['', [Validators.required]],
       quizTechnology: ['', [Validators.required]],
+      quizTechnologyType: ['', [Validators.required]],
       maxDuration: ['10:00', [Validators.required, Validators.min(1)]],
       passingThreshold: [50, [Validators.required, Validators.min(1)]],
       quizDescription: ['', [Validators.required]],
-      questions: this.formBuilder.array([])
+      questions: this.formBuilder.array([this.createQuestionFormGroup()], [Validators.required])
     });
   }
 
@@ -131,7 +141,7 @@ export class QuizCreateComponent {
     //   this.toastrService.warning('Sumy punktów formularza nie są równe'); // TODO tlumaczenie
     //   return;
     // }
-
+    console.log(this.quizForm.value)
     if (this.quizForm.valid) {
       const formValues: QuizData = this.quizForm.value
       console.log(formValues);

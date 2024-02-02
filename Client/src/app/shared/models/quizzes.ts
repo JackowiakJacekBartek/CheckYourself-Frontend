@@ -15,6 +15,7 @@ export interface QuizModelDto {
     totaltime?: string | null;
     passingthreshold: number;
     technology: string;
+    technologytype?: number;
 }
 
 export interface QuizzesAnswerDto {
@@ -85,6 +86,7 @@ export interface QuizData {
     quizDescription: string;
     passingThreshold: number;
     quizTechnology: string;
+    quizTechnologyType: string;
 }
 
 export interface QuestionData {

@@ -157,7 +157,11 @@
     "Questionreq": "Musisz dodać pytanie",
     "Answerreq": "Musisz dodać poprawną odpowiedź",
     "Pointsreq": "Musisz podać punktację quizu",
-    "Badanswerreq": "Musisz dodać złą odpowedź"
+    "Badanswerreq": "Musisz dodać złą odpowedź",
+    "Tools": "Narzędzia",
+    "ForeignLanguages": "języki obce",
+    "TechType": "Typ technologii",
+    "TechTypereq": "Typ technologii jest wymagany"
   },
   "EditUserpage": {
     "Image uploaded": "Załadowano obraz",
