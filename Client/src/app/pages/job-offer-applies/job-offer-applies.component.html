@@ -1,1 +1,34 @@
-<p>job-offer-applies works!</p>
+<!-- <div class="jobOffers">
+    <p>Oferty pracy:</p>
+    <div class="offer" *ngFor="let offer of offers">
+      <div class="left">
+        <img class="avatar" alt="avatar" src="{{company.image}}">
+        <div class="companyName">
+          <div class="jobName" [routerLink]="'/joboffer/' + offer.id">
+            <span>{{offer.jobName | capitalize}}</span>
+          </div>
+          <div>
+            <span>{{company.name | capitalize}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="center">
+        <div class="tags">
+          <ng-container *ngFor="let tag of offer.tags">
+            <div class="tag" *ngIf="tag !== ''">
+              {{ getTechName(tag) | capitalize }}
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <div class="right">
+        <p id="location">{{(offer.location ? offer.location : company.location) | capitalize}}</p>
+        <div class="center">
+          <button *ngIf="showEditButton && offer.quizid! > 0" mat-button class="applyButton" [routerLink]="'/joboffer/' + offer.id + '/applies'"><span>{{'NavigationMenu.View applies' | translate}}</span></button>
+          <button *ngIf="showEditButton && (offer.quizid == 0 || offer.quizid == null)" mat-button class="applyButton" [routerLink]="'/joboffer/' + offer.id + '/create-quiz'"><span>{{'NavigationMenu.Add quizz' | translate}}</span></button>
+          <button *ngIf="showEditButton" mat-button class="applyButton" (click)="deleteJobOffer(offer.id)"><span>{{'NavigationMenu.DeleteOffer' | translate}}</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
