@@ -74,6 +74,7 @@ export class CompanyPageComponent implements OnInit {
             this.data = res.methodResult;
             console.log(this.data)
             this.companyIdAccount = this.data.company.idaccount;
+
             this.showEditButton = (+this.currentUserID2 === +this.companyIdAccount);
 
             this.company.name = this.data.company.name;
@@ -134,7 +135,8 @@ export class CompanyPageComponent implements OnInit {
                         jobName: a.name,
                         location: a.image,
                         id: a.id,
-                        tags: tags
+                        tags: tags,
+                        quizid: a.quizid || 0
                     })
                 });
             }
