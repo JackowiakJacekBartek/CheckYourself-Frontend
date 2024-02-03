@@ -32,6 +32,12 @@ export class QuizzesListComponent{
     })
   }
 
+  isImageData(image: string): boolean {
+    if( image && image.startsWith('data:')){
+    return true;}
+    return false;
+}
+
   goToEdit(i: number) {
     this.router.navigate(['/company/' + i + '/edit'])
   }
@@ -63,15 +69,15 @@ export class QuizzesListComponent{
 
   areYouSure(element: number) {
     const dialogRef = this.popUp.open(AreYouSurePopUpComponent);
-    // dialogRef.afterClosed().subscribe((result) => {
-    //   if (result == 'tak') {
-    //     // console.log(element);
-    //     // this.companyProfileService.deleteCompanyById(element).subscribe(res => // console.log(res))
-    //     const indexToRemove = this.jobs.findIndex(company => company.id === element);
-    //     if (indexToRemove !== -1) {
-    //       this.jobs.splice(indexToRemove, 1);
-    //     }
-    //   }
-    // });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result == 'tak') {
+        console.log(element);
+        this.quizzesService.deleteJobOffer(element).subscribe(res => {});
+        const indexToRemove = this.jobs.findIndex(company => company.job.id === element);
+        if (indexToRemove !== -1) {
+          this.jobs.splice(indexToRemove, 1);
+        }
+      }
+    });
   }
 }
