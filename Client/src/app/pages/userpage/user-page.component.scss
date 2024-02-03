@@ -38,9 +38,9 @@ $margin: 50px;
   }
 
   & .skills {
-    margin-top: $margin;
     display: flex;
     flex-direction: column;
+    //background-color: red;
   }
 
   & .experience {
@@ -111,6 +111,7 @@ li {
   justify-content: left;
   align-items: center;
   height: 40px;
+  margin-bottom: 50px;
 
   span {
     width: 150px;
@@ -131,12 +132,13 @@ mat-progress-bar {
 
 .masonryBlocks {
   display: inline-block;
-  padding: 20px;
+  //padding: 20px;
   margin: 0 0 15px;
   width: 100%;
   box-sizing: border-box;
 
   & .title {
+    margin-top: 50px;
     margin-bottom: 10px;
   }
 }

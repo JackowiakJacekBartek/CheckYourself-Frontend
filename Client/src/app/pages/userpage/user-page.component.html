@@ -44,7 +44,7 @@
         </div>
         <div class="masonryHolder">
           <ul class="masonryBlocks" *ngFor="let skillCategory of getSkillCategories()">
-            <li class="title" *ngIf="skillCategory.value[0]">{{ skillCategory.key + ':'}}</li>
+            <li class="title" *ngIf="skillCategory.value[0]">{{ skillCategory.key + ':' | capitalize }}</li>
             <ul>
               <li *ngFor="let skill of skillCategory.value">
                 <div class="element">
