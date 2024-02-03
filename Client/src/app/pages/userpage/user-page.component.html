@@ -50,7 +50,7 @@
                 <div class="element">
                   <span>{{ skill.name }}</span>
                   <mat-progress-bar [color]="updateColor(skill.progress*100)" mode="determinate"
-                                    [value]="skill.progress"></mat-progress-bar>
+                                    [value]="skill.progress*100"></mat-progress-bar>
                   <span>{{ skill.progress * 100 + '%' }}</span>
                 </div>
               </li>
