@@ -184,6 +184,8 @@
   },
   "NavigationMenu": {
     "My profile": "My profile",
+    "MyJobOffers": "My job offers",
+    "CompanyView": "Company",
     "Job offers": "Job offers",
     "Quizzes": "Quizzes",
     "Language": "Language",

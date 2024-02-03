@@ -21,10 +21,10 @@
                         </div>
                     </div> -->
                     <div class="center" *ngIf="job.job?.id">
-                        <!-- todo tlumaczenie -->
-                        <button mat-button class="applyButton" [routerLink]="'/joboffer/' + job.job.id + '/create-quiz'" ><span>{{'NavigationMenu.Add quizz' | translate}}</span></button>
-                        <button mat-button class="applyButton" (click)="goToEdit(job.job.id || 0)"><span>{{'NavigationMenu.Edit quizz' | translate}}</span></button>
-                        <button mat-button class="applyButton" (click)="areYouSure(job.job.id || 0)"><span>{{'NavigationMenu.Delete quizz' | translate}}</span></button>
+                        <button mat-button class="applyButton" *ngIf="job.job.quizid == null || job.job.quizid == 0" [routerLink]="'/joboffer/' + job.job.id + '/create-quiz'" ><span>{{'NavigationMenu.Add quizz' | translate}}</span></button>
+                        <button *ngIf="job.job.quizid! > 0" mat-button class="applyButton" [routerLink]="'/joboffer/' + job.job.id + '/applies'"><span>{{'NavigationMenu.View applies' | translate}}</span></button>
+                        <button *ngIf="job.job.companyid != null || job.job.companyid != 0" mat-button class="applyButton" [routerLink]="'/company/' + job.job.companyid"><span>{{'NavigationMenu.CompanyView' | translate}}</span></button>
+                        <button mat-button class="applyButton" (click)="areYouSure(job.job.id || 0)"><span>{{'NavigationMenu.DeleteOffer' | translate}}</span></button>
                     </div>
                 </div>
             </div>
