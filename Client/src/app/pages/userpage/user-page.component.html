@@ -1,12 +1,18 @@
 <link rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+
 <main class="page">
-  <div class="wrapperUser">
+  <ng-template #userSectionTemplate>
     <div class="sections">
-      <div class="header">
+      <div class="headButtons">
+        <a (click)="generateImage()" class="edit-button" matTooltip="Zapisz CV jako JPG">
+          <mat-icon class="material-symbols-outlined">save</mat-icon>
+        </a>
         <a *ngIf="showEditButton" class="edit-button" matTooltip="{{'UserPage.Edit profile' | translate}}">
           <mat-icon class="material-symbols-outlined" routerLink="{{editLink}}">edit</mat-icon>
         </a>
+      </div>
+      <div class="header">
         <img class="avatar" alt="avatar" src="{{person.image}}">
         <span class="nameAndSurname">{{capitalizeEachWord(person.name)}}</span>
         <span>{{person.title | capitalize}}</span>
@@ -37,7 +43,7 @@
         </div>
         <span>{{person.about | capitalize}}</span>
       </div>
-      <div class="skills" >
+      <div class="skills">
         <div class="sectionHeader" *ngIf="getSkillCategories().values[0]">
           <mat-icon class="material-symbols-outlined">computer</mat-icon>
           <span>{{'UserPage.Skills' | translate }}:</span>
@@ -111,5 +117,11 @@
         </div>
       </div>
     </div>
+  </ng-template>
+  <div class="wrapperUser" id="image-section">
+    <ng-container *ngTemplateOutlet="userSectionTemplate"></ng-container>
+  </div>
+  <div class="wrapperUser" id="image-section2">
+    <ng-container *ngTemplateOutlet="userSectionTemplate"></ng-container>
   </div>
 </main>

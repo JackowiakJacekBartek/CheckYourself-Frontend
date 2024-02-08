@@ -1,6 +1,5 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, HostListener, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {EditUserProfileService} from "../edit-userpage/edit-user-profile/edit-user-profile.service";
 import {UserProfileService} from "./user-profile.service";
 import {
   AccountCoursesCertificate, accountEducationModelDto,
@@ -11,6 +10,9 @@ import {
 } from "../../shared/models/accounts";
 import {format} from 'date-fns';
 import {AccountService} from 'src/app/shared/services/user-service.service';
+import * as htmlToImage from 'html-to-image';
+import jsPDF from 'jspdf';
+
 
 enum EmploymentMethodsEnum {
   FullTime = 1,
@@ -245,6 +247,62 @@ export class UserPageComponent implements AfterViewInit {
 
   capitalizeEachWord(name: string): string {
     return name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  }
+
+  generateImage() {
+    var node: any = document.getElementById('image-section');
+
+    // if(node){
+    //   node.style.display = 'flex'
+    // }
+
+    const filter = (node: HTMLElement) => {
+      const exclusionClasses = ['edit-button'];
+      return !exclusionClasses.some((classname) => node.classList?.contains(classname));
+    }
+
+    htmlToImage.toPng(node, { filter: filter, pixelRatio: 1.5 })
+      .then(function (dataUrl) {
+
+        var img = new Image();
+        img.src = dataUrl;
+        const a = document.createElement('a');
+        // a.href = dataUrl;
+        // a.download = 'image.jpg';
+        // a.click();
+
+        // if(node){
+        //   node.style.display = 'none'
+        // }
+
+        img.onload = function () {
+          console.log('width:', img.width)
+          console.log('height:', img.height)
+          let imgWidth = img.width;
+          let imgHeight = img.height
+
+          const pdf = new jsPDF('p', 'pt', 'a4');
+
+          // const pdfWidth = 595.28; // Szerokość strony A4 w punktach (1 punkt = 1/72 cala)
+          // const pdfHeight = 841.89; // Wysokość strony A4 w punktach
+
+          const pdfWidth = pdf.internal.pageSize.getWidth();
+          const pdfHeight = pdf.internal.pageSize.getHeight();
+
+          const scaleFactor = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+          const pdfImgWidth = imgWidth * scaleFactor;
+          const pdfImgHeight = imgHeight * scaleFactor;
+
+          pdf.addImage(img, 'PNG', 0, 0, pdfImgWidth, pdfImgHeight);
+
+          // Zapisanie pliku PDF
+          pdf.save('new-file.pdf');
+        }
+
+      })
+      .catch(function (error) {
+        console.error('oops, something went wrong!', error);
+      });
   }
 
 }
