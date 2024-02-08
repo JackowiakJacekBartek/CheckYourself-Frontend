@@ -250,19 +250,33 @@ export class UserPageComponent implements AfterViewInit {
   }
 
   generateImage() {
+    let name = this.data.account.name;
+    let surname = this.data.account.surname;
     var node: any = document.getElementById('image-section');
+    var node2: any = document.getElementById('image-section2');
 
-    // if(node){
-    //   node.style.display = 'flex'
-    // }
+    if(node2){
+      node2.style.display = 'none'
+    }
+    if(node){
+      node.style.display = 'inline'
+    }
 
     const filter = (node: HTMLElement) => {
       const exclusionClasses = ['edit-button'];
       return !exclusionClasses.some((classname) => node.classList?.contains(classname));
     }
 
-    htmlToImage.toPng(node, { filter: filter, pixelRatio: 1.5 })
+    let pixelRatio = 1.5;
+    htmlToImage.toPng(node, { filter: filter, pixelRatio })
       .then(function (dataUrl) {
+
+        if(node){
+          node.style.display = 'none'
+        }
+        if(node2){
+          node2.style.display = 'inline'
+        }
 
         var img = new Image();
         img.src = dataUrl;
@@ -271,9 +285,6 @@ export class UserPageComponent implements AfterViewInit {
         // a.download = 'image.jpg';
         // a.click();
 
-        // if(node){
-        //   node.style.display = 'none'
-        // }
 
         img.onload = function () {
           console.log('width:', img.width)
@@ -281,7 +292,7 @@ export class UserPageComponent implements AfterViewInit {
           let imgWidth = img.width;
           let imgHeight = img.height
 
-          const pdf = new jsPDF('p', 'pt', [595, imgHeight/1.5/1.8]);
+          const pdf = new jsPDF('p', 'pt', [595, imgHeight/pixelRatio/1.8]);
 
           // const pdfWidth = 595.28; // Szerokość strony A4 w punktach (1 punkt = 1/72 cala)
           // const pdfHeight = 841.89; // Wysokość strony A4 w punktach
@@ -296,7 +307,7 @@ export class UserPageComponent implements AfterViewInit {
           pdf.addImage(img, 'PNG', 0, 0, pdfImgWidth, pdfImgHeight);
 
           // Zapisanie pliku PDF
-          pdf.save('new-file.pdf');
+          pdf.save(name+surname+'-CV.pdf');
         }
 
       })
