@@ -41,7 +41,7 @@
           <mat-icon class="material-symbols-outlined">account_circle</mat-icon>
           <span>{{'UserPage.About me' | translate}}:</span>
         </div>
-        <span>{{person.about | capitalize}}</span>
+        <span class="aboutMeText">{{person.about | capitalize}}</span>
       </div>
       <div class="skills">
         <div class="sectionHeader" *ngIf="getSkillCategories().values[0]">
@@ -118,10 +118,13 @@
       </div>
     </div>
   </ng-template>
-  <div class="wrapperUser" id="image-section">
-    <ng-container *ngTemplateOutlet="userSectionTemplate"></ng-container>
-  </div>
   <div class="wrapperUser" id="image-section2">
     <ng-container *ngTemplateOutlet="userSectionTemplate"></ng-container>
+  </div>
+  <div class="wrapperUser" id="image-section">
+    <ng-container *ngTemplateOutlet="userSectionTemplate"></ng-container>
+    <div class="sections">
+      <span>Wyrażam zgodę na przetwarzanie moich danych osobowych w celu prowadzenia rekrutacji na aplikowane przeze mnie stanowisko.</span>
+    </div>
   </div>
 </main>

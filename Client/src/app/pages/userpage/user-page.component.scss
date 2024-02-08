@@ -1,19 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
 
 $margin: 50px;
+$largeFont: 28px;
+$normalFont: 17px;
+$smallFont: 16px;
+
+.page {
+  padding-top: 1%;
+}
+
 
 #image-section {
   z-index: -1;
   min-width: 1100px;
   max-width: 1100px;
-  min-height: 1500px;
-  max-height: 1500px;
-  //display: none;
+  //min-height: 1500px;
+  //max-height: 1900px;
+  height: 100%;
   box-shadow: none;
-  margin: 0;
   padding: 0;
   border: none;
-
+  //background-color: red;
 }
 
 #image-section2 {
@@ -37,7 +44,7 @@ $margin: 50px;
     flex-direction: column;
 
     span {
-      font-size: 24px;
+      font-size: $largeFont;
       margin-top: 20px;
     }
 
@@ -51,7 +58,6 @@ $margin: 50px;
 
   & .info {
     margin-top: 30px;
-    font-size: 15px;
   }
 
   & .about {
@@ -60,6 +66,10 @@ $margin: 50px;
     flex-direction: column;
     line-height: 23px;
     word-wrap: break-word;
+
+    .aboutMeText{
+      font-size: $smallFont;
+    }
   }
 
   & .skills {
@@ -110,6 +120,7 @@ $margin: 50px;
   display: flex;
   justify-content: left;
   align-items: center;
+  font-size: $normalFont;
 
   span {
     margin: 0;
@@ -133,6 +144,7 @@ li {
   justify-content: left;
   align-items: center;
   height: 40px;
+  font-size: $smallFont;
 
   span {
     width: 150px;
@@ -160,6 +172,7 @@ mat-progress-bar {
   & .title {
     //margin-bottom: 10px;
     //background-color: red;
+    font-size: $normalFont;
   }
 }
 
@@ -206,22 +219,23 @@ mat-progress-bar {
 
 .time {
   color: #2a2839;
-  font-size: 12px;
+  font-size: $smallFont;
 }
 
 p {
   color: #4f4f4f;
   margin-top: 1rem;
-  font-size: 13px;
+  font-size: $smallFont;
 }
 
 .nameAndSurname {
   font-weight: 400;
-  font-size: 24px;
+  font-size: $largeFont;
 }
 
 .text-inside-grid {
   position: absolute;
+  font-size: $smallFont;
   left: 0px;
 }
 
@@ -236,6 +250,7 @@ p {
   margin-right: 20px;
   padding: 10px;
   border-radius: 10px;
+  font-size: $normalFont;
 }
 
 .tag:nth-child(even) {

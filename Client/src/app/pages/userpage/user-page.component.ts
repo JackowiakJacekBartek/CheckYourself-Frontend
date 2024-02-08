@@ -281,7 +281,7 @@ export class UserPageComponent implements AfterViewInit {
           let imgWidth = img.width;
           let imgHeight = img.height
 
-          const pdf = new jsPDF('p', 'pt', 'a4');
+          const pdf = new jsPDF('p', 'pt', [595, imgHeight/1.5/1.8]);
 
           // const pdfWidth = 595.28; // Szerokość strony A4 w punktach (1 punkt = 1/72 cala)
           // const pdfHeight = 841.89; // Wysokość strony A4 w punktach
